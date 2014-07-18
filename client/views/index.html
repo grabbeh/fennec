@@ -1,0 +1,42 @@
+  <!doctype html>
+<html id="ng-app" ng-app='app' ng-controller='authCtrl'>
+  <head>
+  <meta charset="utf-8"/>
+  <title>Fennec</title>
+  </head>
+  <body>
+      <div class="header">
+          <span class="header-logo">Fennec</span>
+          <span ng-show="isUser()" class="logout hover-underline" ng-click="logout()">Logout</span>
+          <span ng-hide="isUser()" class="logout"><a class="white-link" href="/login">Login</a></span>
+      </div>
+      <div class="spinner" ng-show="loadingView"></div>
+      <div ng-view>
+      </div>
+      <div class="footer" style="clear: both"></div>
+      <div ng-class="{'modal-overlay': modal}" ng-show="modal" ng-click="removeModalOverlay()"></div>
+      
+      <link rel="stylesheet" href="/production/bundle.css">
+      <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.6.4/leaflet.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <script src="//cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+      <script src="/vendor/angular-route.js"></script>
+      <script src="/vendor/modal.min.js"></script>
+      <script src="/vendor/angles.js"></script>
+      <script src="/vendor/angular-moment.js"></script>
+      <script src="/vendor/upload.js"></script>
+      <script src="/vendor/config.js"></script>
+      <script src="/production/bundle.js"></script>
+
+      <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.0/mapbox.standalone.js'></script>
+  </body>
+</html>
+
+
+

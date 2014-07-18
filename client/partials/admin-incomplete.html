@@ -1,0 +1,16 @@
+<div>
+    <ul class="tm-list expiry-list">
+        <li class="tm-list-li" ng-click="showModalWrapper(tm)" ng-repeat="tm in items track by $index">
+              <div><span mg-bold>{{ tm.mark }} </span><span> in {{ tm.country.name }} </span></div>
+              <div ng-repeat="issue in tm.issues">- {{ issue }} </div>
+        </li>
+    </ul>
+
+    <div style="float:right; font-size: 16px">
+        <div class="pagination-prev hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="prevPage(pageNumber)">Prev</div>
+        <div class="pagination-first hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="firstPage()">1</div>
+        <div class="pagination-number hover-cursor"> {{ pageNumber }} </div>
+        <div class="pagination-last hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="lastPage()"> {{ groupOfArrays.length }} </div>
+        <div class="pagination-next hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="nextPage(pageNumber)">Next</div>
+    </div>
+</div>

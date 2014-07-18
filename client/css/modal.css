@@ -1,0 +1,12 @@
+/*
+ * angular-modal v0.0.3
+ * (c) 2013 Brian Ford http://briantford.com
+ * License: MIT
+ */
+
+.btf-modal {
+  position: fixed;
+  top: 10%;
+  height: auto;
+  z-index: 2000;
+}

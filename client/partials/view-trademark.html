@@ -1,0 +1,40 @@
+<div ng-hide="loadingView"  class="form-body">
+     <div class="form-holder">
+          <div class="modal-title">{{ trademark.mark }} </div>
+              
+            <div ng-show="trademark.country.coordinates">
+            <img ng-src="http://api.tiles.mapbox.com/v3/grabbeh.gch0omlb/{{trademark.country.coordinates[1]}},{{trademark.country.coordinates[0]}},3/400x200.png">
+            </div>
+        <div class="view-trademark-container">
+            <ul class="view-trademark-list">
+                <li><b>{{ trademark.status }} </b>in <b>{{ trademark.country.name }}</b></li>
+                <li>
+                    <ul class="class-list" ng-repeat="class in trademark.classes track by $index">
+                        <li class="class">{{ class }}</li>
+                    </ul>
+                </li>
+              <div mg-clear></div>
+			  <li ng-show="trademark.filingDate.stringDate" > Filed: {{ trademark.filingDate.stringDate }} </li>
+			  <li ng-show="trademark.applicationNumber" >Application no.: {{ trademark.applicationNumber}}</li>
+			  <li ng-show="trademark.registrationNumber" >Registration no.: {{ trademark.registrationNumber}}</li>
+			  <li ng-show="trademark.registrationDate.stringDate" >Registration date: {{ trademark.registrationDate.stringDate }}</li>
+			  <li ng-show="trademark.expiryDate.stringDate"> Expiry date: {{ trademark.expiryDate.stringDate }}</li>
+
+		      </ul>
+                   <div class="modal-buttons">
+                      <div class="edit-button"><a style="display:block" ng-click="openEditTrademarkModal(trademark)">Edit</a></div>
+                     <div class="delete-button" ng-init="showDeleteButton = false" ng-click="showDeleteButton = !showDeleteButton">Delete</div>
+            
+	            <div mg-clear></div>
+	            <div class="confirm-delete-message" ng-show="showDeleteButton">
+	                <span mg-bold>Are you sure?</span>
+	                <span class="hover-underline" ng-click="deleteTrademark(trademark)">Yes</span>
+	                <span class="hover-underline" ng-click="showDeleteButton = !showDeleteButton"> No </span>
+	            </div>
+                   </div>
+                   <div mg-clear></div>
+                   <div ng-show="message" class="confirmation-message">{{ message }}</div>
+	      </div>
+	</div>
+</div> 
+

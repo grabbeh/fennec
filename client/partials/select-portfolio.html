@@ -1,0 +1,10 @@
+ <div ng-hide="loadingView" id="form-body">
+     <div class="form-container">
+           <div class="form-title">Select portfolio</div>
+          <ul class="tm-list">
+             <li class="tm-list-li hover-underline" ng-click="goToPortfolio(portfolio)" ng-repeat="portfolio in portfolios">
+                <b>{{ portfolio }}</b>
+             </li>
+          </ul>
+      </div> 
+ </div>

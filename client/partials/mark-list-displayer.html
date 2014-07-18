@@ -1,0 +1,12 @@
+<div>
+     <ul class="mark-list">
+            <li ng-class="{  activemark: mark.checked, inactivemark: !mark.checked }" class="hover" ng-repeat="mark in marks">
+                <span style="display: none"><input ng-change="filterMarks()" class="checkbox" ng-model="mark.checked" type="checkbox" value="0"></span><span ng-click="toggleMark($index)">{{ mark.name }}</span>
+            </li>
+      </ul>
+
+        <div mg-clear></div>
+        <div class="tick-boxes">
+            <span class="hover-underline" ng-click="untickAll()">Deselect all</span> | <span class="hover-underline" ng-click="tickAll()">Select all</span>
+        </div>
+    </div>

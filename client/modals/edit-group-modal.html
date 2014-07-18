@@ -1,0 +1,15 @@
+<div class="btf-modal edit-modal">
+	<div class="demo-modal-close" href ng-click="closeModal()"><b>X</b></div>
+	<div class="modal-title">Edit group</div>
+    <div class="modal-container">
+      <form novalidate class="modal-form pure-form" ng-submit="editGroup(trademark)">
+      <div> Existing name: {{ trademark.name }} </div>
+      <div> 
+          <input class="form-input" ng-model="trademark.mark" placeholder="New name">
+      </div>
+      <div mg-clear></div>
+      <div><input class="add-button pure-button" type=submit value="Submit"></div>
+  </form>
+  <div ng-show="message" class="confirmation-message">{{ message }}</div>
+  </div>
+</div>

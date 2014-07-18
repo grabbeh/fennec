@@ -1,0 +1,45 @@
+{
+  "name": "gwr",
+  "dependencies": {
+    "express": "4.0.x",
+    "ejs": ">= 0.8.x",
+    "underscore": "~1.5.2",
+    "mongoose": "3.8.5",
+    "body-parser": "~1.0.1",
+    "cookie-parser": "~1.0.1",
+    "express-session": "~1.0.2",
+    "serve-static": "~1.0.4",
+    "excel": "~0.1.1",
+    "connect-multiparty": "~1.0.3",
+    "multiparty": "~3.2.4",
+    "async": "~0.7.0",
+    "browserify": "~2.35.2",
+    "mongoosastic": "~0.2.6",
+    "moment": "~2.6.0",
+    "uglify-js": "~2.4.13",
+    "agenda": "~0.6.12",
+    "sendgrid": "~1.0.3",
+    "mustache": "~0.8.1",
+    "bcrypt": "~0.7.8",
+    "knox": "~0.9.0",
+    "mime": "~1.2.11"
+  },
+  "devDependencies": {
+    "watchify": "~0.1.0",
+    "catw": "~0.0.1"
+  },
+  "scripts": {
+    "build-js": "browserify client/angular/*.js | uglifyjs -c > client/production/bundle.js",
+    "build-css": "cat client/css/*.css >  client/production/bundle.css",
+    "build": "npm run build-js && npm run build-css",
+    "watch-js": "watchify client/angular/*.js -o client/production/bundle.js -dv",
+    "watch-css": "catw client/css/*.css -o client/production/bundle.css -dv",
+    "watch": "npm run watch-js & npm run watch-css",
+    "develop": "npm run watch & node app.js",
+    "develop-vps": "npm run watch & node gwr-app.js"
+  },
+  "engines": {
+    "node": "v0.10.22"
+  },
+  "version": "0.0.0-01"
+}

@@ -1,0 +1,279 @@
+var trademark = require('../models/trademarkSchema'),
+    mongoose = require('mongoose'),
+    geoj = require('../models/geoJSONSchema'),
+    _ = require('underscore'),
+    moment = require('moment'),
+    EU = require('../data/EU.json'),
+    async = require('async');
+
+function groupByCountry(portfolio, fn){
+	fn(null, _.groupBy(portfolio, 'alpha3'));
+}
+
+function addEUTrademarks(TMsbyCountry, fn){
+	var EUtms = TMsbyCountry['EU'];
+	if (EUtms === undefined){
+	 	fn(null, TMsbyCountry)
+	}
+	else {
+	    EU.forEach(function(country){
+	    	if (TMsbyCountry[country] === undefined){
+	    		TMsbyCountry[country] = [];
+	    	}
+		EUtms.forEach(function(mark){
+			TMsbyCountry[country].push(mark);
+		});
+	    });
+	    fn(null, TMsbyCountry);
+	}
+}
+
+function groupTrademarksByStatus(obj, fn){
+    for (var key in obj){
+    	var groupByStatus = _.groupBy(obj[key], 'status')
+    	obj[key] = groupByStatus;
+    }	
+    fn(null, obj);
+}
+
+function addToGeoJson(gj, tms, fn){
+	var copy = deepCopy(gj);
+	copy.forEach(function(c){
+		c.properties.trademarks = tms[c.id]
+		checkStatusOfCountry(c, tms, function(err, status){
+			c.properties.status = status;
+		});
+	})
+	fn(null, copy);
+}
+
+function checkStatusOfCountry(c, tms, fn){
+	if (tms[c.id] === undefined){ return fn(null, false); }
+	
+	var re = tms[c.id].Registered, pe = tms[c.id].Pending, pu = tms[c.id].Published;
+	
+	if (re != undefined && pe === undefined && pu === undefined){
+		return fn(null, "only registered");
+	}
+	if (re === undefined && pe != undefined && pu === undefined){
+		 return fn(null, "only pending");
+	}
+	if (re === undefined && pe === undefined  && pu != undefined){
+		return fn(null, "only published");
+	}
+	if (re!= undefined && pe != undefined && pu != undefined){
+		return fn(null, "registered pending published");
+	}
+	if (re === undefined  && pe != undefined && pu != undefined){ 
+		return fn(null, "pending published");
+	}
+	if (re != undefined && pe != undefined && pu === undefined){
+		return fn(null, "registered pending");
+	}
+	if (re != undefined && pe === undefined && pu != undefined){
+		return fn(null, "registered published");
+	}
+}
+
+function convertPortfolio(trademarks, fn){
+	async.waterfall([
+		async.apply(groupByCountry, trademarks),
+	    function(TMsGroupedByCountry, callback){
+	    	addEUTrademarks(TMsGroupedByCountry, callback)
+	    },
+	    function(revisedGroupByCountry, callback){
+	    	groupTrademarksByStatus(revisedGroupByCountry, callback)
+
+	    }], function(err, splitByStatus){
+			fn(null, splitByStatus);
+		})
+}
+
+exports.getGeoJSON = function(fn){
+	geoj.find({}).lean().exec(function(err, geojson){
+		fn(null, geojson);
+	})
+}
+
+exports.getTrademarks = function(entity, portfolio, fn){
+	trademark.find({ entity: entity, portfolio: portfolio, active: true }).lean().exec(function(err, trademarks){
+		if (err) { fn(err)} 
+		fn(null, trademarks) 
+	});
+}
+
+exports.getTrademark = function(id, fn){
+	trademark.findOne({ _id: id }).lean().exec(function(err, trademark){
+		fn(null, trademark);
+	});
+}
+
+exports.convertPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
+	convertPortfolio(trademarks, function(err, revisedTMs){
+		addToGeoJson(geojson, revisedTMs, function(err, gj){
+			fn(null, gj)
+		});
+	});
+}
+
+exports.convertYearPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
+	var target = {};
+	async.forEach(Object.keys(trademarks), function(year, callback){
+		async.waterfall([
+			async.apply(convertPortfolio, trademarks[year]),
+			function(revisedTMs, callback){
+				addToGeoJson(geojson, revisedTMs, callback)
+			}], 
+			function(err, revisedGeoJSON){
+				target[year] = revisedGeoJSON;
+				callback()
+			})
+	}, function(err){
+		fn(null, target);
+	});
+}
+	
+exports.addTrademark = function(tm, fn){
+	saveTrademark(tm, function(err, doc){
+		fn(null, doc)
+	})
+}
+
+exports.amendTrademark = function(tm, fn){
+	if (tm.registrationDate.stringDate){
+		tm.registrationDate.DDate = new Date(moment(tm.registrationDate.stringDate, 'MM-DD-YYYY')).toISOString();
+	}
+	if (tm.expiryDate.stringDate){
+		tm.expiryDate.DDate = new Date(moment(tm.expiryDate.stringDate, 'MM-DD-YYYY')).toISOString();
+	}
+	trademark.findOneAndUpdate({_id: exposeId(tm) }, tm, fn)
+}
+
+exports.deleteTrademark = function(id, fn){
+	trademark.findOneAndUpdate({ _id: id }, { active: false }, function(err, success){
+		fn(null, success)
+	})
+}
+
+function exposeId(tm){
+	var id = mongoose.Types.ObjectId(tm._id);
+	delete tm._id;
+	return id;
+}
+
+function stringifyId(tm){
+	tm._id = String(tm._id);
+	return tm;
+}
+
+function saveTrademark(tm, fn){
+	
+	var filingDateObject = {}
+	, registrationDateObject = {}
+	, expiryDateObject = {}; 
+	
+	if (tm.filingDate)
+	
+		filingDateObject.stringDate = tm.filingDate;
+		filingDateObject.DDate = new Date(moment(tm.filingDate, 'MM-DD-YYYY')).toISOString();
+	
+	if (tm.registrationDate)
+	
+		registrationDateObject.stringDate = tm.registrationDate;
+		registrationDateObject.DDate = new Date(moment(tm.registrationDate, 'MM-DD-YYYY')).toISOString();
+	
+	if (tm.expiryDate)
+	
+		expiryDateObject.stringDate = tm.expiryDate;
+		expiryDateObject.DDate = new Date(moment(tm.expiryDate, 'MM-DD-YYYY')).toISOString();
+	
+	new trademark({
+	    mark: tm.mark, 
+	    status: tm.status,
+	    country: tm.country,
+	    alpha3: tm.country.alpha3,
+	    classes: tm.classes,
+	    filingDate: filingDateObject, 
+	    registrationDate: registrationDateObject,
+	    expiryDate: expiryDateObject,
+	    applicationNumber: tm.applicationNumber,
+	    registrationNumber: tm.registrationNumber
+	}).save(fn)
+}
+
+exports.sortTrademarksByExpiryYear = function(trademarks, fn){
+	var obj = {};
+    var currentyear = moment().year()
+    var currentyearPlusTen = moment().add('y', 11).year();
+    for (var i = currentyear; i < currentyearPlusTen ;i++){
+       obj[i] = [];
+       filterByExpiryYear(i, trademarks, obj)
+    }
+    fn(null, obj);
+}
+
+
+
+function filterByExpiryYear(year, trademarks, obj){
+        trademarks.forEach(function(tm){
+        if (moment(tm.expiryDate.stringDate, 'MM/DD/YYYY').year() === year){
+            obj[year].push(tm);
+        }
+    });
+}
+
+exports.getPortfolioSortedByFilingYear = function(fn){
+	var obj = {};
+    trademark.find({}).lean().exec(function(err, trademarks){
+        var currentYear = moment().year() + 1;
+        var oldestYear = 1980;
+        for (var i = oldestYear; i < currentYear; i++){
+           obj[i] = [];
+           filterForOlderThanGivenYear(i, trademarks, function(err, arr){
+           	   obj[i] = arr;
+           });
+        }
+        fn(null, obj);
+    })
+}
+
+function filterForOlderThanGivenYear(year, trademarks, fn){
+	var arr = [];
+	trademarks.forEach(function(tm){
+		if (typeof tm.filingDate.stringDate === "string") {
+			var appYear = moment(tm.filingDate.stringDate).year();
+			if (appYear <= year){
+				arr.push(tm);
+				}
+			}
+		})
+	fn(null, arr);
+}
+
+exports.checkIfEUCountry = function(country, fn){
+    if ((EU.indexOf(country) > -1) ){ 
+         return fn(null, true);
+     }
+    else {
+        fn(null, false);
+    }
+}
+
+
+function deepCopy(obj) {
+    if (Object.prototype.toString.call(obj) === '[object Array]') {
+        var out = [], i = 0, len = obj.length;
+        for ( ; i < len; i++ ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    if (typeof obj === 'object') {
+        var out = {}, i;
+        for ( i in obj ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    return obj;
+}

@@ -1,0 +1,111 @@
+<div ng-hide="loadingView" class="fixed-container">
+    <div class="admin-panel">
+        <div class="admin-panel-holder">
+            <div class="admin-panel-title">Admin panel</div>
+            <div class="panel-subtitle"><a ng-href="/admin/trademark">Add trademark</a> | <a ng-href="/admin/user">Add user</a> | <a ng-href="/map/{{activePortfolio}}">Full map</a> | <a ng-href="/upload">Import trade marks</a> | <span class="hover-underline" ng-click="getJSON()">Download portfolio</span>
+            </div>
+        </div>
+        <div mg-search-input search-results="searchResults"></div>
+    </div>
+    <div class="full-width-container" ng-hide="trademarks">Oops, it looks like there are no trade marks to view. Import some <a href="/upload">here</a></div>
+    <div ng-show="trademarks">
+
+    <div class="group-mark-list" mg-group-selector marks="marks" title="Show group of marks" go-to-group="showGroup"></div>
+    <div class="country-list" mg-country-selector countries="countries" title="Go to country" go-to-group="goToCountry"></div>
+    <div mg-clear></div>
+    <div mg-search-results show-modal="showModal" search-results="searchResults"></div>
+
+    <div mg-clear></div>
+    <div class="chart-container">
+        <div class="pie-chart-container">
+            <div ng-init="activeMark= 'ALL MARKS'" class="view-group-title"> {{ activeMark }} <i class="float-right fa fa-bars"></i></div>
+            <div mg-bold>Summary</div>
+            <div class="stat-header">{{ trademarks.length }}</div>
+            <div class="stat-subtitle">Total</div>
+            <div>
+                <ul class="stat-list stat-list-admin">
+                    <li ng-show="chartSubtitles[0]">
+                        <div class="sub-stat-header">{{ chartSubtitles[0].number }}</div>
+                        <div class="registered-key">{{ chartSubtitles[0].status }}</div>
+                    </li>
+                    <li ng-show="chartSubtitles[1]">
+                        <div class="sub-stat-header">{{ chartSubtitles[1].number }}</div>
+                        <div class="published-key">{{ chartSubtitles[1].status }}</div>
+                    </li>
+                    <li ng-show="chartSubtitles[2]">
+                        <div class="sub-stat-header">{{ chartSubtitles[2].number }}</div>
+                        <div class="pending-key">{{ chartSubtitles[2].status }}</div>
+                    </li>
+                </ul>
+            </div>
+            <div mg-clear></div>
+
+            <canvas piechart options="pieOptions" data="pieData" width="400" height="267"></canvas>
+
+        </div>
+
+        <div ng-show="sortedByExpiry" class="right-half-container">
+            <div mg-bold>Upcoming expiries<i class="float-right fa fa-clock-o fa-2x"></i></div>
+            <div mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8">
+            </div>
+        </div>
+    </div>
+
+    <div mg-clear></div>
+
+    <div  class="bar-chart-container">
+        <div class="expiry-chart-title">Expiry dates<i class="float-right fa fa-bar-chart-o fa-2x"></i></div>
+        <div class="expiry-chart-search">
+            <form name="expiryForm" ng-submit="expirySearch(year)">
+                <input type="number" min="{{ min }}" max=" {{ min + 10 }}" placeholder="Show marks expiring in given year" ng-model="year" class="search-form-input">
+                <input ng-disabled="!expiryFormValid()" class="add-button pure-button" type=submit value="Search">
+            </form>
+        </div>
+        <canvas barchart options="options" data="chart" width="1100" height="400"></canvas>
+    </div>
+
+    <div mg-clear></div>
+
+    
+    <div class="map-container">
+    <div mg-bold>Map<i class="float-right fa fa-globe fa-2x"></i></div>
+    <div class="expiry-search-container">
+
+    </div>
+    <div class="hover" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList">
+        <span ng-hide="showMarkList">Show</span>
+        <span ng-show="showMarkList">Hide</span> 
+        <span style="margin-right: 15px;">list of marks</span>
+        <span ng-hide="showMarkList"><i class="fa fa-chevron-down"></i></span>
+        <span ng-show="showMarkList"><i class="fa fa-chevron-up"></i></span> 
+    </div>
+
+    <div ng-show="showMarkList" mg-mark-list-displayer send-marks-to-server="sendMarksToServer" marks="marks"></div>
+
+    <div mg-map id="admin-map" geojson="geojson"></div>
+    <div class="map-mark-list" mg-group-selector marks="marks" title="Go to group of marks" go-to-group="goToGroup"></div>
+    </div>
+    
+    <div ng-show="incompleteMarks" class="left-half-container">
+        <div mg-bold>Incomplete marks<i class="float-right fa fa-ban fa-2x"></i></div>
+        <div mg-incomplete-paginator show-modal="showModal" incomplete-marks="incompleteMarks" items-per-page="10">
+        </div>
+    </div>
+
+    <div class="user-container">
+        <div class="user-email">{{ user.email }}</div>
+        <div tabs>
+            <div mg-clear></div>
+            <div pane title="Alerts">
+                <div mg-admin-alert-widget user="user"></div>
+            </div>
+
+            <div mg-clear></div>
+            <div pane title="Account">
+                <div mg-account-details-widget user="user"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<br></br>

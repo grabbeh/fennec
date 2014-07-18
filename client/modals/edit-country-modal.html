@@ -1,0 +1,28 @@
+<div class="btf-modal edit-modal">
+	<div class="demo-modal-close" href ng-click="closeModal()"><b>X</b></div>
+	<div class="modal-title">Edit country</div>
+    <div class="modal-container">
+      <form novalidate class="modal-form pure-form" ng-submit="editCountry(trademark)">
+      <div>
+          <input class="form-input" ng-model="trademark.country.name" placeholder="Country name">
+          </div>
+           <div>
+          
+          <input class="form-input" ng-model="trademark.country.alpha3" placeholder="alpha3">
+          </div>
+           <div>
+          
+          <input class="form-input" ng-model="trademark.country.alpha2" placeholder="alpha2">
+          </div>
+          
+          <div>
+          
+          <input class="form-input" ng-model="trademark.country.coordinates" placeholder="Coordinates">
+          </div>
+      <div mg-clear></div>
+      <div><input class="add-button pure-button" type=submit value="Submit"></div>
+   
+  </form>
+  <div ng-show="message" class="confirmation-message">{{ message }}</div>
+  </div>
+</div>

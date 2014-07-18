@@ -1,0 +1,82 @@
+<div ng-hide="loadingView"  class="fixed-container">
+    <div class="view-group-panel-container">
+    <div class="view-group-details">
+        <div class="view-group-title">{{ trademarks[0].mark }}</div>
+        <div mg-bold>Summary</div>
+        <div class="stat-header">{{ trademarks.length }}</div>
+        <div class="stat-subtitle">Total</div>
+        <div>
+            <ul class="stat-list stat-list-group">
+                <li ng-show="chartSubtitles[0]">
+                    <div class="sub-stat-header">{{ chartSubtitles[0].number }}</div>
+                    <div class="sub-stat-row registered-key">{{ chartSubtitles[0].status }}</div>
+                </li>
+                <li ng-show="chartSubtitles[1]">
+                    <div class="sub-stat-header">{{ chartSubtitles[1].number }}</div>
+                    <div class="sub-stat-row published-key">{{ chartSubtitles[1].status }}</div>
+                </li>
+                <li ng-show="chartSubtitles[2]">
+                    <div class="sub-stat-header">{{ chartSubtitles[2].number }}</div>
+                    <div class="sub-stat-row pending-key">{{ chartSubtitles[2].status }}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="view-group-search">
+        <div mg-group-selector marks="marks" title="Go to group of marks" go-to-group="goToGroup"></div>
+       
+       <div>
+            <div ng-show="trademarks[0].imageUrl"><img class="group-logo-holder" ng-src="{{ trademarks[0].imageUrl}}"></div>
+            <div style="float: right">
+                <div class="group-btn edit-group-btn hover-underline" ng-click="showEditGroupModal()">Edit group</div>
+                <div mg-clear></div>
+                <div class="group-btn upload-image-btn hover-underline" ng-click="showUploadImageModal()">Upload image</div>
+            </div>
+        </div>
+        
+    </div>
+   
+</div>
+      <div mg-map id="map" geojson="geojson"></div>
+      
+      <div ng-show="registered || pending || published || nocontent" class="trademark-container">
+        <div class="country-holder f32"> <a href="/admin/country/{{alpha3}}">{{ country }} </a> <div class="flag" ng-class="alpha2"></div></div>
+        <span ng-show="nocontent">No trade marks for this country</span>
+         <div ng-show="registered" class="one-third-column">
+            <div class="registered-title">Registered</div>
+            <ul class="tm-list">
+               <li class="tm-list-li" ng-click="showModal(trademark)" ng-class-even="'grey-li'" ng-repeat="trademark in registered">
+                  <div class="trademark-name">{{ trademark.mark }}</div>
+                  <div><ul class="class-list" ng-repeat="class in trademark.classes track by $index"><li class="class">{{ class }}</li> </ul></div>
+                  <div style="clear: both"></div>
+                  <div class="details-button">Details</div>
+               </li>
+            </ul>
+         </div>
+         
+         <div ng-show="published" class="one-third-column">
+            <div class="published-title">Published</div>
+            <ul class="tm-list">
+               <li class="tm-list-li" ng-click="showModal(publishedtm)" ng-class-even="'grey-li'" ng-repeat="publishedtm in published">
+                  <div class="trademark-name">{{ publishedtm.mark }}</div>
+                   <div><ul class="class-list" ng-repeat="class in publishedtm.classes track by $index"><li class="class">{{ class }}</li> </ul></div>
+                   <div style="clear: both"></div>
+                  <div class="details-button">Details</div>
+               </li>
+            </ul>
+         </div>
+         <div  ng-show="pending" class="one-third-column last">
+            <div class="pending-title">Pending</div>
+            <ul class="tm-list">
+               <li class="tm-list-li" ng-click="showModal(pendingtm)" ng-class-even="'grey-li'" ng-repeat="pendingtm in pending">
+                  <div class="trademark-name">{{ pendingtm.mark }}</div>
+                   <div><ul class="class-list" ng-repeat="class in pendingtm.classes track by $index"><li class="class">{{ class }}</li></ul></div>
+                   <div style="clear: both"></div>
+                  <div class="details-button">Details</div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <br></br>
+   
+</div>

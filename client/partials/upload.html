@@ -1,0 +1,23 @@
+ <div class="fixed-container">
+     <div class="full-width-container">
+         <div class="upload-title">Import trade marks</div>
+         <div class="medium-text">
+             Import trade marks from an Excel spreadsheet (.xlxs format only) with the following requirements:
+             <ul class="upload-list">
+                 <li>- Classes must be comma separated</li>
+                 <li>- Date must be in "MM/DD/YYYY" format</li>
+                 <li>- Columns must be in the order shown in the below example</li>
+             </ul>
+         </div>
+          <div>
+              <img ng-src="https://s3-eu-west-1.amazonaws.com/grabeh-trademarks/spreadsheet.png">
+         </div>
+          
+           <form ng-upload-loading="loading()" ng-upload="uploadComplete(content)" method="post" action="/api/spreadsheet">
+              <div><input required type="text" class="form-input" name="name" placeholder="Portfolio name" ></div>
+              <div><input class="form-upload" type="file" name="spreadsheet" /></div>
+              <div><input class="add-button" type=submit value="Start upload" ng-disabled="$isLoading" ></div>
+            </form>
+            <div ng-show="response" class="error-message">{{ response }} </div>
+      </div> 
+</div>

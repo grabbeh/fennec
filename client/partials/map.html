@@ -1,0 +1,63 @@
+<div ng-hide="loadingView" class="fixed-container">
+    <div class="view-group-panel-container">
+          <div class="view-group-title">Trade marks</div>
+          <div class="small-text">Search by country or click the map below</div>
+          <div>
+              <span class="map-search-input">
+                <form novalidate name="filterTMsForm" class="pure-form" ng-submit="filterPortfolio()">
+                   <input class="search-input" name="searchcountry" required placeholder="Country" ng-model="searchcountry">
+                   <input type="submit" ng-disabled="!canFilter()" class="button pure-button" value="Search">
+                </form>
+             </span>
+          </div>
+          <div mg-clear></div>
+
+          <div class="hover" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks</div>
+          <div ng-show="showMarkList" mg-mark-list-displayer send-marks-to-server="sendMarksToServer" marks="marks"></div>
+
+      </div>
+      <div mg-clear></div>
+
+      <div mg-map id="map" geojson="geojson"></div>
+      
+      <div ng-show="trademarks || pending || published || nocontent" class="trademark-container">
+        <div class="country-holder f32"> {{ country }}  <div class="flag" ng-class="countrycode"></div></div>
+        <span ng-show="nocontent">No trade marks for this country</span>
+         <div ng-show="trademarks" class="one-third-column">
+            <div class="registered-title">Registered</div>
+            <ul class="tm-list">
+               <li class="tm-list-li" ng-click="showModal(trademark)" ng-class-even="'grey-li'" ng-repeat="trademark in trademarks">
+                  <div class="trademark-name">{{ trademark.mark }}</div>
+                  <div><ul class="class-list" ng-repeat="class in trademark.classes track by $index"><li class="class">{{ class }}</li> </ul></div>
+                  <div style="clear: both"></div>
+                  <div class="details-button">Details</div>
+               </li>
+            </ul>
+         </div>
+         
+         <div ng-show="published" class="one-third-column">
+            <div class="published-title">Published</div>
+            <ul class="tm-list">
+               <li class="tm-list-li" ng-click="showModal(publishedtm)" ng-class-even="'grey-li'" ng-repeat="publishedtm in published">
+                  <div class="trademark-name">{{ publishedtm.mark }}</div>
+                   <div><ul class="class-list" ng-repeat="class in publishedtm.classes track by $index"><li class="class">{{ class }}</li> </ul></div>
+                   <div style="clear: both"></div>
+                  <div class="details-button">Details</div>
+               </li>
+            </ul>
+         </div>
+         <div  ng-show="pending" class="one-third-column last">
+            <div class="pending-title">Pending</div>
+            <ul class="tm-list">
+               <li class="tm-list-li" ng-click="showModal(pendingtm)" ng-class-even="'grey-li'" ng-repeat="pendingtm in pending">
+                  <div class="trademark-name">{{ pendingtm.mark }}</div>
+                   <div><ul class="class-list" ng-repeat="class in pendingtm.classes track by $index"><li class="class">{{ class }}</li></ul></div>
+                   <div style="clear: both"></div>
+                  <div class="details-button">Details</div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <br></br>
+   
+</div>
