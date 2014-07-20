@@ -2,7 +2,6 @@
 var mongoose = require('mongoose')
     , Agenda = require('agenda')
     , agenda = new Agenda()
-    , db = require('../config/db')
     , helper = require('./helper')
     , user = require('./users')
     , async = require('async')

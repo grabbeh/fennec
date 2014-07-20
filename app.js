@@ -5,6 +5,9 @@ var express = require('express')
 , serveStatic = require('serve-static')
 , mongoose = require('mongoose')
 
+, https = require('https')
+, http = require('http')
+
 , multipart = require('connect-multiparty')
 
 , db = require('./server/config/paid-db')
@@ -132,5 +135,15 @@ blocked(function(ms){
   console.log('BLOCKED FOR %sms', ms | 0);
 });
 */
-app.listen(2001);
+/*
+var options = {
+  key: fs.readFileSync('./config/domain.pem'),
+  cert: fs.readFileSync('./config/main.pem'),
+  ca: [fs.readFileSync('./config/intermediate.pem')]
+};*/
+
+http.createServer(app).listen(2002);
+
+//https.createServer(app).listen(2003);
+
 
