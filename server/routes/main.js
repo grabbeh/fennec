@@ -235,8 +235,8 @@ exports.filteredCountryData = function(req, res){
 }
 
 exports.search = function(req, res){
-    
-    trademark.search({ filtered: {query: req.body.query}, filter: { entity: req.session.userDetails.entity } }, {hydrate: true}, function(err, results){
+    trademark.search( { query: req.body.query }, { hydrate: true}, function(err, res){ 
+   // trademark.search({ filtered: {query: req.body.query}, filter: { entity: req.session.userDetails.entity } }, {hydrate: true}, function(err, results){
 	if (err){
         console.log(err);
 		res.status(401).send(err);
