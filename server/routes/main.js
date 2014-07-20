@@ -238,7 +238,7 @@ exports.search = function(req, res){
     //trademark.search( { query: req.body.query }, { hydrate: true}, function(err, results){ 
     trademark.search(
     { query: 
-          {filtered: req.session.userDetails.entity}
+     {filtered: { entity: req.session.userDetails.entity}}
     }, {hydrate: true}, function(err, results){
 	if (err){
         console.log(err);
