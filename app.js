@@ -7,6 +7,7 @@ var express = require('express')
 
 , https = require('https')
 , http = require('http')
+, fs = require('fs')
 
 , multipart = require('connect-multiparty')
 
@@ -135,15 +136,15 @@ blocked(function(ms){
   console.log('BLOCKED FOR %sms', ms | 0);
 });
 */
-/*
+
 var options = {
-  key: fs.readFileSync('./config/domain.pem'),
-  cert: fs.readFileSync('./config/main.pem'),
-  ca: [fs.readFileSync('./config/intermediate.pem')]
-};*/
+  key: fs.readFileSync('./server/config/domain.pem'),
+  cert: fs.readFileSync('./server/config/main.pem'),
+  ca: [fs.readFileSync('./server/config/intermediate.pem')]
+};
 
-http.createServer(app).listen(2002);
+//http.createServer(app).listen(2002);
 
-//https.createServer(app).listen(2003);
+https.createServer(options, app).listen(2003);
 
 
