@@ -129,7 +129,6 @@ angular.module('app')
             else {
              $.response = content.msg; 
              $timeout(function(){
-                
                  $location.path('/select-portfolio')
              }, 1000)
             }
@@ -421,11 +420,11 @@ angular.module('app')
             }
         }])
 
-	.controller('createAccountCtrl', ['$scope', '$http', '$location', 'userGetter',
-        function($scope, $http, $location, userGetter){
+	.controller('createAccountCtrl', ['$scope', '$rootScope', '$http', '$location', 'userGetter',
+        function($scope, $rootScope, $http, $location, userGetter){
             var $ = $scope;
             $.createUser = function(){
-                $http.post('/api/createAccount', $.user)
+                $http.post('/api/createAccount', $.newUser)
                     .success(function(){
                         $location.path('/')
                     })
@@ -442,11 +441,9 @@ angular.module('app')
                 $http.post('/api/login', { password: "demo", username: "demo@demo.com" })
                     .success(function(){
                         userGetter.getUser().then(function(response){
-                            userGetter.storeUser(response); 
+                            $rootScope.user = response;
                         });
-
                         $location.path('/demo/ACME INC');
-                       
                     })
                     .error(function(err){
                         $.message = err.message;
@@ -457,7 +454,9 @@ angular.module('app')
     .controller('selectPortfolioCtrl', ['$scope', '$location', 'userGetter', '$rootScope',
         function($scope, $location, userGetter, $rootScope){
             var $ = $scope;
-            $.portfolios = userGetter.returnUser().portfolios;
+            userGetter.getUser().then(function(response){
+                $.portfolios = response.portfolios;
+            })
 
             $.goToPortfolio = function(portfolio){
                 $location.path('/admin/' + portfolio);

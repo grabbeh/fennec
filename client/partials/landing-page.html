@@ -6,7 +6,7 @@
                     Fennec
                 </div>
                 <div class="home-subtitle">
-                    trade mark analysis and visualisation tool
+                    trade mark portfolio analysis and visualisation tool
                 </div>
 
            
@@ -31,9 +31,9 @@
                 <div class="home-form-container">
                   <div class="form-title">Create account</div>
                    <form novalidate name="createUserForm" class="loginform" ng-submit="createUser()">
-                      <div><input required class="form-input" type=email ng-model="user.username" name="username" placeholder="E-mail" ></div>
-                      <div><input required class="form-input" ng-model="user.password" type=password name="password" placeholder="Password" ></div>
-                      <div><input required class="form-input" ng-model="user.entity" type=text name="entity" placeholder="Entity" ></div>
+                      <div><input required class="form-input" type=email ng-model="newUser.username" name="username" placeholder="E-mail" ></div>
+                      <div><input required class="form-input" ng-model="newUser.password" type=password name="password" placeholder="Password" ></div>
+                      <div><input required class="form-input" ng-model="newUser.entity" type=text name="entity" placeholder="Entity" ></div>
                       <div><input class="checkbox" ng-model="user.checked" type="checkbox" name="license" value="0"> Set as admin</div>
 
                       <div><input class="add-button" type=submit ng-disabled="!canSubmitCreateUser()" value="Submit"></div>

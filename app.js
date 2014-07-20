@@ -132,19 +132,19 @@ app.post('/api/upload', image.uploadImage);
 app.get('*', function(req, res){
   res.sendfile(__dirname + '/client/views/index.html');
 });
-
+/*
 var options = {
   key: fs.readFileSync('./server/config/domain.pem'),
   cert: fs.readFileSync('./server/config/main.pem'),
   ca: [fs.readFileSync('./server/config/intermediate.pem')]
-};
+};*/
 
 // Development port
 
-//http.createServer(app).listen(2002);
+http.createServer(app).listen(2002);
 
 // Production port
 
-https.createServer(options, app).listen(2003);
+//https.createServer(options, app).listen(2003);
 
 

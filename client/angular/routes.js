@@ -6,7 +6,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/landing-page.html',
             controller: 'createAccountCtrl'
         }).
-    when('/demo/:portfolio', {
+    	when('/demo/:portfolio', {
             templateUrl: '/partials/admin.html',
             controller: 'adminCtrl',
             resolve: {
@@ -113,7 +113,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }).
-    when('/admin/expiring/:portfolio/:year', {
+    	when('/admin/expiring/:portfolio/:year', {
             templateUrl: '/partials/expiry-map.html',
             controller: 'expiryCtrl',
             resolve: {
@@ -155,7 +155,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl:'/partials/select-portfolio.html',
             controller: 'selectPortfolioCtrl',
             resolve:{
-                 admin: function(userGetter){
+                admin: function(userGetter){
                     return userGetter.isAdmin();
                 }
             }

@@ -18,9 +18,11 @@ angular.module('app')
             });
             
             $.loadingView = false;
+            
             $.$on('$routeChangeStart', function() {
               $scope.loadingView = true;
             });
+            
             $.$on('$routeChangeSuccess', function() {
               $scope.loadingView = false;
             });
@@ -37,14 +39,12 @@ angular.module('app')
             $.logout = function(){
                 $http.get('/api/logout')
                     .success(function(){
-                        userGetter.removeClientUser();
-                        $.user = false;
+                        $rootScope.user = false;
                         $location.path('/');
                     })
             }
             
             userGetter.getUser().then(function(data){
-                console.log(data);
                 $rootScope.user = data;
             });
         
@@ -66,7 +66,6 @@ angular.module('app')
                 $http.post('/api/login', { password: $.password, username: $.username })
                     .success(function(){
                         userGetter.getUser().then(function(response){
-                            userGetter.storeUser(response);
                             $rootScope.user = response;
                         });
                         if (pathHolder.existingPath){
