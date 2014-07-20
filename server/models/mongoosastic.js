@@ -1,10 +1,12 @@
 var mongoose = require('mongoose')
     mongoosastic = require('mongoosastic')
    , Schema = mongoose.Schema
-   , db = require('../config/db')
+   , db = require('../config/paid-db')
    , ObjectId = Schema.ObjectId;
 
 var Trademark = new Schema({
+    entity: {type:String, es_indexed: true},
+    portfolio: { type: String, es_indexed: true},
     mark: {type:String, es_indexed:true},
     status: {type:String, es_indexed:true},
     country: {type:Object, es_indexed:true},

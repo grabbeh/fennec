@@ -56,6 +56,8 @@ app.get('/', function(req, res){
 
 app.get('/api/downloadTrademarks/:portfolio', main.downloadTrademarks);
 
+// Elasticsearch 
+// 
 app.post('/api/search', x, main.search);
 
 // Country data (ISO, coordinates etc)
@@ -105,7 +107,6 @@ app.get('/api/expirydates/:portfolio', x, main.provideExpiryDates);
 
 app.post('/api/expiriesForYear/:portfolio', x, main.getExpiriesForYear);
 
-
 // Users
 
 app.get('/api/anyUsers', user.anyUsers);
@@ -131,11 +132,6 @@ app.post('/api/upload', image.uploadImage);
 app.get('*', function(req, res){
   res.sendfile(__dirname + '/client/views/index.html');
 });
-/*
-blocked(function(ms){
-  console.log('BLOCKED FOR %sms', ms | 0);
-});
-*/
 
 var options = {
   key: fs.readFileSync('./server/config/domain.pem'),
@@ -143,7 +139,11 @@ var options = {
   ca: [fs.readFileSync('./server/config/intermediate.pem')]
 };
 
+// Development port
+
 //http.createServer(app).listen(2002);
+
+// Production port
 
 https.createServer(options, app).listen(2003);
 

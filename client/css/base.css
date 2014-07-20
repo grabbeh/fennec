@@ -448,6 +448,7 @@ input::-webkit-inner-spin-button {
 .screenshot {
     width: 100%;
     border: 0;
+    vertical-align: bottom;
 }
 
 .fennec-img-holder {
@@ -460,6 +461,7 @@ input::-webkit-inner-spin-button {
 .fennec-img {
 	width: 100%;
 	border: 0;
+    vertical-align: bottom;
 }
 
 
