@@ -17,7 +17,7 @@ exports.anyUsers = function(req, res){
 } 
 
 exports.getAllAdmins = function(fn){
-    user.find({ isAdmin: true }).lean().exec(function(err, admins){
+    User.find({ isAdmin: true }).lean().exec(function(err, admins){
          fn(null, admins);
     })
 }
