@@ -9,13 +9,6 @@ var admin = require('../config/sendgrid')
 , path = require('path')
 , bcrypt = require('bcrypt');
 
-exports.anyUsers = function(req, res){
-    User.find({ entity: req.session.userDetails.entity }, function(err, users){
-        if (users.length != 0){ res.status(200).send(); }
-        else { res.status(401).send(); }
-    });
-} 
-
 exports.getAllAdmins = function(fn){
     User.find({ entity: req.session.userDetails.entity, isAdmin: true }).lean().exec(function(err, admins){
          fn(null, admins);
