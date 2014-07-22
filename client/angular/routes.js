@@ -44,14 +44,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         }).
         when('/login', {
             templateUrl: '/partials/login.html',
-            controller: 'loginCtrl',
-            resolve: {
-                anyUsers: function(userGetter){
-                    return userGetter.anyUsers();
-                }
-            }
+            controller: 'loginCtrl'
         }).
-          when('/reset-password', {
+        when('/reset-password', {
             templateUrl: '/partials/password-reset-request.html',
             controller: 'passwordResetCtrl'
         }).
