@@ -197,7 +197,7 @@ angular.module('app')
             }
 
             $.goToGroup = function(obj){
-            	$location.path('/admin/group/' + obj.name);
+            	$location.path('/admin/group/' + $routeParams.portfolio + '/' + obj.name);
             }
             
             $.showUploadImageModal = function(){
