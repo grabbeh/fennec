@@ -80,7 +80,7 @@ app.post('/api/country/:portfolio/:country', x, main.filterCountry);
 
 // Get group of marks
 
-app.get('/api/trademarks/:portfolio/:group', main.getGroup);
+app.get('/api/trademarks/:portfolio/:group', x, main.getGroup);
 
 // Edit individual trade marks
 
