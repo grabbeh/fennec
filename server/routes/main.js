@@ -52,11 +52,14 @@ exports.getGroup = function(req, res){
 }
 
 exports.getCountry = function(req, res){
+    var entity = req.session.userDetails.entity;
+    var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.checkIfEUCountry(req.params.country, function(err, bool){
         if (bool){
              var EU =  "European Union";
         }
         trademark.find()
+        	.and([{ entity: entity }, { portfolio: portfolio }])
         	.or([{ 'country.alpha3': req.params.country}, { 'country.name': EU }])
         	.lean()
         	.exec(function(err, trademarks){
