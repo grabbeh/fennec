@@ -23,7 +23,7 @@ The code also assumes:
 - numbers in classes are comma separated
 - for the purposes of analysis statuses have to be either "Registered", "Published" or "Pending".
 
-Once import is successful, you can navigate to `/admin` or `/map` to see your portfolio.
+Once import is successful, you can navigate to `/select-portfolio` to see your portfolio.
 
 Please get in touch if you would like to know more about the functionality offered by the app or are interested in getting me to configure your portfolio for you.
 
