@@ -109,14 +109,17 @@ app.post('/api/expiriesForYear/:portfolio', x, main.getExpiriesForYear);
 
 // Users
 
-app.get('/api/anyUsers', user.anyUsers);
 app.post('/api/addUser', user.addUser);
 app.post('/api/login', user.logIn);
 app.get('/api/isAdmin', user.isAdmin);
 app.get('/api/isUser', user.isUser);
 app.get('/api/getUser', user.getUser);
 app.get('/api/logout', user.logout);
+
 app.post('/api/updateAlert', user.updateAlert);
+
+// Passwords
+
 app.post('/api/updatePassword', user.updatePassword);
 app.post('/api/requestPasswordReset', user.requestPasswordReset);
 app.post('/api/passwordReset/:id', user.resetPassword);
