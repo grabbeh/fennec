@@ -9,12 +9,9 @@ angular.module('app')
                     originalPath = originalPath.replace(":id", previous.params.id);
                 }
                 pathHolder.insertPath(originalPath);
-                
-                userGetter.anyUsers().then(function(){
-                    $location.path('/login');
-                }, function(err){
-                     $location.path('/create-account');
-                });
+
+                $location.path('/login');
+
             });
             
             $.loadingView = false;
