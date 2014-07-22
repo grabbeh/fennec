@@ -2,8 +2,7 @@
 Fennec
 ==================
 
-
-This is a tool you can use to visualise and analyse your trade mark portfolio (on the assumption you have one!). You can also allow non-legal types (PR/design teams) to check whether you are registered in a particular country to allow them to use appropriate trade marks ('R'/'TM' etc). 
+Fennec is a tool you can use to visualise and analyse your trade mark portfolio (on the assumption you have one!). You can also allow non-legal types (PR/design teams) to check whether you are registered in a particular country to allow them to use appropriate trade marks ('R'/'TM' etc). 
 
 Here's what the admin panel looks like:
 
@@ -23,7 +22,7 @@ The code also assumes:
 - numbers in classes are comma separated
 - for the purposes of analysis statuses have to be either "Registered", "Published" or "Pending".
 
-Once import is successful, you can navigate to `/admin` or `/map` to see your portfolio.
+Once import is successful, you can navigate to `/select-portfolio` to see your portfolio.
 
 Please get in touch if you would like to know more about the functionality offered by the app or are interested in getting me to configure your portfolio for you.
 
