@@ -412,7 +412,8 @@ input::-webkit-inner-spin-button {
 
 .left-home-column {
     float: left;
-    width: 400px;
+    width: 40%;
+    margin-right: 30px;
 }
 
 .features-title {
@@ -432,17 +433,14 @@ input::-webkit-inner-spin-button {
 
 .img-holder {
     float: left;
-    margin-left: 50px;
     border-style: solid;
-    width: 500px;
+    width: 50%;
     margin-top: 70px;
     margin-bottom: 50px;
 }
 
 .features-container {
-    margin-left: 20px;
-    padding: 10px;
-    width
+    padding: 0 30px;
 }
 
 .screenshot {
@@ -1136,12 +1134,11 @@ margin: 0px 10px 10px 0px;
 .logout {
 	color: white;
 	float: right;
-	margin-right: 50px;
+	margin-right: 20px;
 }
 
 .header {
     width:100%;
-    min-width:1300px;
     background: #5e81bb;
     height: 35px;
     padding-top: 10px;
@@ -1149,7 +1146,7 @@ margin: 0px 10px 10px 0px;
 
 .header-logo {
     padding: 10px 0 10px 0;
-    margin-left:100px;
+    margin-left:20px;
     font-size: 24px;
     width: 300px;
     color: white;
@@ -1196,10 +1193,9 @@ margin: 0px 10px 10px 0px;
 }
 
 .home-form-container {
-    margin: 40px auto;
+    margin: 40px 0;
     padding: 10px 15px 15px 30px;
     font-size: 20px;
-    max-width: 400px;
     background: #3F3838;
     color: white;
     overflow: hidden;
@@ -1254,13 +1250,27 @@ margin: 0px 10px 10px 0px;
 
 /* MOBILE RESPONSIVE CHANGE */
 
-@media handheld, only screen and (max-width: 1250px) {
+@media handheld, only screen and (max-width: 700px) {
 	.fixed-container {
 		margin-left: 30px;
 	}
-	
-	.header-logo {
-		margin-left: 30px;
-	}
+    
+    .landing-page-container {
+        width:100%;
+    }
+    
+    .left-home-column {
+        width: 100%;
+    }
+    
+    .img-holder {
+        display:block;
+        width: 100%;
+        margin-top: 0;
+    }
+    
+    .fennec-img-holder {
+        margin-top: 0;
+    }
 	
 }
