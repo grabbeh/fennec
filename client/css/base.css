@@ -495,7 +495,6 @@ input::-webkit-inner-spin-button {
     color: white;
     text-align: center;
     font-size: 30px;
-    height: 100px;
     position: relative;
     box-shadow:0 10px 0 0 #53994b;
 }
