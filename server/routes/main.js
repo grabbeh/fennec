@@ -240,9 +240,19 @@ exports.filteredCountryData = function(req, res){
 
 exports.search = function(req, res){
     //trademark.search( { query: req.body.query }, { hydrate: true}, function(err, results){ 
-    trademark.search(
-    { query: req.body.query
-    }, {hydrate: true}, function(err, results){
+    
+    var query =  {
+	    query: {
+	        query_string: {
+	            query: req.body.query
+	        },
+	        term: {
+	            {entity}: { req.session.userDetails.entity }
+	        }
+	  }
+    }
+    
+    trademark.search( query, { hydrate: true }, function(err, results){
 	if (err){
         console.log(err);
 		res.status(401).send(err);
