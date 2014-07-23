@@ -407,6 +407,7 @@ input::-webkit-inner-spin-button {
 .title-container {
     background: rgb(255, 255, 172);
     padding: 25px;
+    max-width: 325px;
 }
 
 .left-home-column {
