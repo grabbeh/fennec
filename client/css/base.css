@@ -1261,12 +1261,14 @@ margin: 0px 10px 10px 0px;
     
     .left-home-column {
         width: 100%;
+        margin: 0;
     }
     
     .img-holder {
         display:block;
         width: 100%;
         margin-top: 0;
+        
     }
     
     .fennec-img-holder {
