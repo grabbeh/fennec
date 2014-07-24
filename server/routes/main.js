@@ -247,7 +247,7 @@ exports.search = function(req, res){
 	            query: req.body.query
 	        },
 	        term: {
-	            {entity}: { req.session.userDetails.entity }
+	            entity:  req.session.userDetails.entity 
 	        }
 	  }
     }
