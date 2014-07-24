@@ -16,7 +16,7 @@ module.exports = {
                     var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
                         revised = expiry.subtract(f.type, f.number),
                         now = moment();
-                    if (revised.diff(now, 'days') === 0) {
+                    if (revised.diff(now, 'days') === 0 && admin.entity === tm.entity) {
                         var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html')
                         returnHtml(tm, fileLocation, function(err, html) {
                             sendEmail(admin.email, "Trade mark portfolio alert", html, function() {
