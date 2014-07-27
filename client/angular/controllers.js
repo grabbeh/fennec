@@ -1,4 +1,32 @@
 angular.module('app')
+
+	.controller('landingPageCtrl', ['$scope', '$http', 'userGetter', '$location', '$rootScope', function($scope, $http, userGetter, $location, $rootScope){
+       var $ = $scope;
+       $.loadDemo = function(){
+            $http.post('/api/login', { password: "demo", username: "demo@demo.com" })
+                .success(function(){
+                    userGetter.getUser().then(function(response){
+                        $rootScope.user = response;
+                    });
+                    $location.path('/demo/ACME INC');
+                })
+                .error(function(err){
+                    $.message = err.message;
+                });
+            }
+
+         $.canMessage = function(){
+                return $.sendMessageForm.$dirty && $.sendMessageForm.$valid;
+         }
+         
+         $.sendMessage = function(){
+             $http.post('/api/processMessage', {msg: $.msg})
+             	.success(function(response){
+                    console.log(response);
+                    $.message = response.msg;
+               })
+         }
+    }])
     .controller('adminCtrl', 
                ['$scope', 
                 '$routeParams',
@@ -436,19 +464,7 @@ angular.module('app')
             $.canSubmitCreateUser = function(){
                 return $.createUserForm.$dirty && $.createUserForm.$valid;
             }
-            
-            $.loadDemo = function(){
-                $http.post('/api/login', { password: "demo", username: "demo@demo.com" })
-                    .success(function(){
-                        userGetter.getUser().then(function(response){
-                            $rootScope.user = response;
-                        });
-                        $location.path('/demo/ACME INC');
-                    })
-                    .error(function(err){
-                        $.message = err.message;
-                    });
-                }
+           
         }])
 
     .controller('selectPortfolioCtrl', ['$scope', '$location', 'userGetter', '$rootScope',

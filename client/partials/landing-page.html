@@ -8,49 +8,47 @@
                 <div class="home-subtitle">
                     trade mark portfolio analysis and visualisation tool
                 </div>
-
-           
             </div>
             <div class="features-container">
+                 <div>
+                    <div ng-click="loadDemo()" class="demo-button">
+                        <span class="home-demo-link">View demo</span>
+                    </div>
+                </div>
                 <div class="features-title">
- 
                     Features
                 </div>
+                 
                 <ul class="features">
                     <li>Admin panel</li>
                     <li>Quick check for marketing & PR teams</li>
                     <li>Email reminders</li>
                     <li>Full text search</li>
                     <li>Map view</li>
+                    <li>Portfolio audit showing incomplete marks</li>
+                    <li>API-based data requests for extensibility</li>
                 </ul>
-                <div>
-                    <div ng-click="loadDemo()" class="demo-button">
-                        <span class="home-demo-link">View demo</span>
-                    </div>
+                <div class="landing-page-trial">
+                     Sound good? Drop us a line below and we'll get in touch..
                 </div>
                 <div class="home-form-container">
-                  <div class="form-title">Create account</div>
-                   <form novalidate name="createUserForm" class="loginform" ng-submit="createUser()">
-                      <div><input required class="form-input" type=email ng-model="newUser.username" name="username" placeholder="E-mail" ></div>
-                      <div><input required class="form-input" ng-model="newUser.password" type=password name="password" placeholder="Password" ></div>
-                      <div><input required class="form-input" ng-model="newUser.entity" type=text name="entity" placeholder="Entity" ></div>
-                      <div><input class="checkbox" ng-model="user.checked" type="checkbox" name="license" value="0"> Set as admin</div>
+                  <div class="contact-form-title">
+                    Contact form</div>
+                   <form novalidate name="sendMessageForm" ng-submit="sendMessage()">
+                      <div><input required class="form-input" ng-model="msg.name" type=text name="password" placeholder="Name" ></div>
+                      <div><input required class="form-input" type=email ng-model="msg.email" name="email" placeholder="E-mail" ></div>
 
-                      <div><input class="add-button" type=submit ng-disabled="!canSubmitCreateUser()" value="Submit"></div>
-
-
+                      <div><input class="add-button" type=submit ng-disabled="!canMessage()" value="Submit"></div>
                  </form>
                     <div>{{ message }}</div>
               </div> 
-              <div class="fennec-img-holder">
-                  <img class="fennec-img" src="/images/fennec.png">
-              </div>
+              
             </div>
         </div>
         
         
-         <div class="img-holder">
-              <img class="screenshot" src="/images/screenshot.png">
+         <div class="landing-page-right-column">
+              <img class="screenshot" ng-src="/images/screenshot.png">
          </div>
     </div>
 </div>

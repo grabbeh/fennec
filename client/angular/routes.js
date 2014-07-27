@@ -4,7 +4,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     $routeProvider.
         when('/', {
             templateUrl: '/partials/landing-page.html',
-            controller: 'createAccountCtrl'
+            controller: 'landingPageCtrl'
         }).
     	when('/demo/:portfolio', {
             templateUrl: '/partials/admin.html',

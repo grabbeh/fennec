@@ -26,11 +26,10 @@ exports.setUpAgenda = function(db){
       .database(db)
       .processEvery('60 minutes');
 
-
     agenda.define('check for alerts', function(job, done) {
           async.series([
                 async.apply(user.getAllAdmins),
-                async.apply(helper.getTrademarks)
+                async.apply(helper.getAllTrademarks)
             ], function(err, results){
                 executeJobs(results[0], results[1], function(){
                     done();

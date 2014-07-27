@@ -1,7 +1,7 @@
-var admin = require('../config/sendgrid'),
-    sendgrid = require('sendgrid')(admin.username, admin.password),
+
+var email = require('./email')
     moment = require('moment'),
-    mustache = require('mustache'),
+	html = require('./html'),
     fs = require('fs'),
     path = require('path'),
     helper = require('./helper'),
@@ -18,8 +18,8 @@ module.exports = {
                         now = moment();
                     if (revised.diff(now, 'days') === 0 && admin.entity === tm.entity) {
                         var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html')
-                        returnHtml(tm, fileLocation, function(err, html) {
-                            sendEmail(admin.email, "Trade mark portfolio alert", html, function() {
+                        html.returnHtml(tm, fileLocation, function(err, html) {
+                            email.sendEmail(admin.email, "Trade mark portfolio alert", html, function() {
                                 //callback();
                             })
                         })
@@ -44,8 +44,8 @@ module.exports = {
                     now = moment();
                 if (expiry.diff(now, 'days') === 0){
                     var fileLocation = path.resolve(__dirname, '../email-templates/expired-trademark.html')
-                    returnHtml(tm, '../email-templates/expired-trademark.html', function(err, html){
-                         sendEmail(admin.email, "Trade mark portfolio alert", html, function(err, success){
+                    html.returnHtml(tm, '../email-templates/expired-trademark.html', function(err, html){
+                         email.sendEmail(admin.email, "Trade mark portfolio alert", html, function(err, success){
                             //callback();
                        })
                     })
@@ -69,9 +69,9 @@ module.exports = {
                     if (job.functionName === "sendAlertOnChange" && job.checked) {
                         trademark.event = event;
                         var fileLocation = path.resolve(__dirname, '../email-templates/updated-trademark.html');
-                        returnHtml(trademark, fileLocation, function(err, html){
+                        html.returnHtml(trademark, fileLocation, function(err, html){
                             
-                            sendEmail(admin.email, "Trade mark portfolio alert", html, function () {
+                            email.sendEmail(admin.email, "Trade mark portfolio alert", html, function () {
                                 //callback();
                              })
                         })
@@ -87,21 +87,3 @@ module.exports = {
     }
 }
 
-function returnHtml(obj, path, fn) {
-    fs.readFile(path, function (err, contents) {
-        if (err) { console.log(err) }
-        var compiled = mustache.render(contents.toString(), obj);
-        return fn(null, compiled);
-    });
-}
-
-function sendEmail(addressee, subject, html, fn) {
-    sendgrid.send({
-        to: addressee,
-        from: 'michael.goulbourn@guinnessworldrecords.com',
-        subject: subject,
-        html: html
-    }, function(err, json) {
-           fn(null, json);
-    })
-}

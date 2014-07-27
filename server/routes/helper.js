@@ -20,9 +20,9 @@ function addEUTrademarks(TMsbyCountry, fn){
 	    	if (TMsbyCountry[country] === undefined){
 	    		TMsbyCountry[country] = [];
 	    	}
-		EUtms.forEach(function(mark){
-			TMsbyCountry[country].push(mark);
-		});
+            EUtms.forEach(function(mark){
+                TMsbyCountry[country].push(mark);
+            });
 	    });
 	    fn(null, TMsbyCountry);
 	}
@@ -93,6 +93,14 @@ exports.getGeoJSON = function(fn){
 	geoj.find({}).lean().exec(function(err, geojson){
 		fn(null, geojson);
 	})
+}
+
+
+exports.getAllTrademarks = function(fn){
+	trademark.find({ active: true }).lean().exec(function(err, trademarks){
+		if (err) { fn(err)} 
+		fn(null, trademarks) 
+	});
 }
 
 exports.getTrademarks = function(entity, portfolio, fn){

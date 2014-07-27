@@ -18,6 +18,8 @@ var express = require('express')
 , image = require('./server/routes/images')
 , job = require('./server/routes/agenda')
 , spreadsheet = require('./server/routes/excel-process')
+, contact = require('./server/routes/contact')
+
 , app = express();
 
 app.use(bodyParser());
@@ -128,9 +130,17 @@ app.post('/api/passwordReset/:id', user.resetPassword);
 
 app.post('/api/createAccount', user.createAccount);
 
+// Spreadsheet upload
+
 app.post('/api/spreadsheet', spreadsheet.processExcel);
 
+// Image upload
+
 app.post('/api/upload', image.uploadImage);
+
+// Message sending 
+
+app.post('/api/processMessage', contact.processMessage)
 
 app.get('*', function(req, res){
   res.sendfile(__dirname + '/client/views/index.html');
