@@ -1277,15 +1277,11 @@ margin: 0px 10px 10px 0px;
         margin: 0;
     }
     
-    .img-holder {
+    .landing-page-right-column {
         display:block;
         width: 100%;
         margin-top: 0;
         
-    }
-    
-    .fennec-img-holder {
-        margin-top: 0;
     }
     
 }
