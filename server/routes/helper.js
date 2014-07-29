@@ -97,18 +97,22 @@ exports.getGeoJSON = function(fn){
 
 
 exports.getAllTrademarks = function(fn){
-	trademark.find({ active: true }).lean().exec(function(err, trademarks){
-		if (err) { fn(err)} 
-		fn(null, trademarks) 
-	});
-}
+	trademark.find({ active: true })
+		.lean()
+		.sort('-expiryDate.DDate')
+		.exec(function(err, trademarks){
+			fn(null, trademarks) 
+		});
+	}
 
 exports.getTrademarks = function(entity, portfolio, fn){
-	trademark.find({ entity: entity, portfolio: portfolio, active: true }).lean().exec(function(err, trademarks){
-		if (err) { fn(err)} 
-		fn(null, trademarks) 
-	});
-}
+	trademark.find({ entity: entity, portfolio: portfolio, active: true })
+		.lean()
+		.sort('-expiryDate.DDate')
+		.exec(function(err, trademarks){
+			fn(null, trademarks) 
+		});
+	}
 
 exports.getTrademark = function(id, fn){
 	trademark.findOne({ _id: id }).lean().exec(function(err, trademark){
