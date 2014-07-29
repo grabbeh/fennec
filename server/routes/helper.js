@@ -99,7 +99,7 @@ exports.getGeoJSON = function(fn){
 exports.getAllTrademarks = function(fn){
 	trademark.find({ active: true })
 		.lean()
-		.sort('-expiryDate.DDate')
+		.sort('expiryDate.DDate')
 		.exec(function(err, trademarks){
 			fn(null, trademarks) 
 		});
@@ -108,7 +108,7 @@ exports.getAllTrademarks = function(fn){
 exports.getTrademarks = function(entity, portfolio, fn){
 	trademark.find({ entity: entity, portfolio: portfolio, active: true })
 		.lean()
-		.sort('-expiryDate.DDate')
+		.sort('expiryDate.DDate')
 		.exec(function(err, trademarks){
 			fn(null, trademarks) 
 		});
