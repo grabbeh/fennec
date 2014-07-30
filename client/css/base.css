@@ -525,12 +525,15 @@ input::-webkit-inner-spin-button {
     padding: 30px 20px;
     background: white;
     margin-top: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15)
 }
+
 
 .incomplete-container {
     padding: 30px 20px;
     background: white;
     margin-top: 30px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
 .chart-container {
@@ -559,6 +562,7 @@ input::-webkit-inner-spin-button {
     width: 500px;
     float: left;
     margin-left: 30px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15)
 }
 
 .group-mark-select {  
@@ -570,6 +574,7 @@ input::-webkit-inner-spin-button {
     font-size: 20px;
     background: white;
     -webkit-appearance: button;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15)
 }
 
 .group-mark-list {
