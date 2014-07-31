@@ -220,8 +220,8 @@ angular.module('app')
             
             $.showEditGroupModal = function(){
                 $rootScope.modal = true;
-                var id = $.trademarks[0].mark;
-                editGroupModal.activate({ trademark: $.trademarks[0], id: id });
+                var mark = $.trademarks[0].mark;
+                editGroupModal.activate({ trademark: $.trademarks[0], mark: mark, portfolio: $routeParams.portfolio });
             }
 
             $.goToGroup = function(obj){
