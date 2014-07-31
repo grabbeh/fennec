@@ -62,8 +62,8 @@ angular.module('app')
        
     }])
 
-	.controller('editGroupCtrl', ['$scope', '$rootScope', '$http', 'trademarkReviser', 'editGroupModal',
-         function($scope, $rootScope, $http, trademarkReviser, editGroupModal){
+	.controller('editGroupCtrl', ['$scope', '$rootScope', '$routeParams', '$http', 'trademarkReviser', 'editGroupModal',
+         function($scope, $rootScope, $routeParams, $http, trademarkReviser, editGroupModal){
               var $ = $scope;
               $.closeModal = function() {
                     editGroupModal.deactivate();
@@ -71,17 +71,16 @@ angular.module('app')
               };
              
               $.editGroup = function(trademark){
-                  trademarkReviser.editGroup($.id, trademark)
+                  trademarkReviser.editGroup($.portfolio, $.mark, trademark)
                       .success(function(data){
                           $.message = data.msg;
-                          
 			})
                   }
               
          }])
 
-	.controller('editCountryCtrl', ['$scope', '$rootScope', 'trademarkReviser', 'editCountryModal',
-         function($scope, $rootScope, trademarkReviser, editCountryModal){
+	.controller('editCountryCtrl', ['$scope', '$rootScope', '$routeParams', 'trademarkReviser', 'editCountryModal',
+         function($scope, $rootScope, $routeParams, trademarkReviser, editCountryModal){
                 var $ = $scope;
                 $.closeModal = function() {
                     editCountryModal.deactivate();
@@ -89,7 +88,7 @@ angular.module('app')
           		};
              
                 $.editCountry = function(trademark){
-                    trademarkReviser.editMarksInCountry($.id, trademark)
+                    trademarkReviser.editMarksInCountry($routeParams.portfolio, $.iso, trademark)
                       .success(function(data){
                           $.message = data.msg;
 				})
@@ -121,15 +120,15 @@ angular.module('app')
       		};
          	
     		$.uploadComplete = function(content) {
-                 $.contents = content;
-                 $.message = "Image uploaded";
-                 $.url = content.url;
+	                 $.contents = content;
+	                 $.message = "Image uploaded";
+	                 $.url = content.url;
      		}
             
             $.saveLogo = function(mark, url){
               $http.post('/api/addLogoToGroup/' + $routeParams.portfolio + "/" + mark, { url: url})
-                	.success(function(data){
+                  .success(function(data){
                         $.message = data.msg;
-                    })
-            }
+                 })
+              }
          }])
