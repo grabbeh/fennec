@@ -104,14 +104,15 @@ angular.module('app')
               return $http.get('/api/country/' + portfolio + '/' + iso)
               	.then(function(response){
                     return response.data;
-		       })
+		   })
           },
           editGroup: function(portfolio, mark, trademark){
               return $http.post('/api/editGroup/' + portfolio + '/' + mark, { trademark: trademark })
           },
-          editMarksInCountry: function(portfolio, alpha3, trademark){
+          editMarksInCountry: function(portfolio, iso, trademark){
+              console.log(trademark)
               trademark.country.coordinates = _.map(trademark.country.coordinates.split(","), curry(parseInt));
-              return $http.post('/api/editMarksInCountry/' + portfolio + '/' + alpha3, { trademark: trademark })
+              return $http.post('/api/editMarksInCountry/' + portfolio + '/' + iso, { trademark: trademark })
           },
           getExpiryDatesForGroup: function(portfolio, group){
               return $http.get('/api/expirydates/' + portfolio + '/' + group)
