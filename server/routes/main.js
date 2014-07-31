@@ -133,7 +133,6 @@ function createList(trademarks, fn){
 // 
 exports.getFilteredWorld = function(req, res){
       var entity = req.session.userDetails.entity;
-      console.log(entity);
       var portfolio = req.params.portfolio.replace(/%20/g, " ");
       var keys = req.body.marks;
       
@@ -185,11 +184,9 @@ exports.addLogoToGroup = function(req, res){
 }
 
 exports.editMarksInCountry = function(req, res){
-    console.log(req.params);
     var entity = req.session.userDetails.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     trademark.find({ entity: entity, portfolio: portfolio, 'country.alpha3': req.params.alpha3 }).exec(function(err, trademarks){
-        console.log(trademarks.length);
         async.forEach(trademarks, function(tm, callback){
           tm.country = req.body.trademark.country;
           tm.save();
@@ -229,7 +226,7 @@ exports.filteredCountryData = function(req, res){
         tms.forEach(function(tm){
             countryData.forEach(function(c){
                 if (tm.country === undefined){
-                  console.log(tm);
+                  //console.log(tm);
                 }
                 if (tm.country.alpha3 === c.alpha3){
                     arr.push(c);
@@ -260,7 +257,7 @@ exports.search = function(req, res){
 		res.status(401).send(err);
 	}
 	else {
-         console.log(results)
+             console.log(results)
 	     res.json(results.hits);	
 	}
     });
