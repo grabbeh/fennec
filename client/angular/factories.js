@@ -106,12 +106,12 @@ angular.module('app')
                     return response.data;
 		       })
           },
-          editGroup: function(portfolio, id, trademark){
-              return $http.post('/api/editGroup/' + portfolio + '/' + id, { trademark: trademark })
+          editGroup: function(portfolio, mark, trademark){
+              return $http.post('/api/editGroup/' + portfolio + '/' + mark, { trademark: trademark })
           },
-          editMarksInCountry: function(portfolio, id, trademark){
+          editMarksInCountry: function(portfolio, alpha3, trademark){
               trademark.country.coordinates = _.map(trademark.country.coordinates.split(","), curry(parseInt));
-              return $http.post('/api/editMarksInCountry/' + portfolio + '/' + id, { trademark: trademark })
+              return $http.post('/api/editMarksInCountry/' + portfolio + '/' + alpha3, { trademark: trademark })
           },
           getExpiryDatesForGroup: function(portfolio, group){
               return $http.get('/api/expirydates/' + portfolio + '/' + group)
