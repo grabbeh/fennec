@@ -104,10 +104,10 @@ angular.module('app')
           		};
              
                 $.editCountry = function(trademark){
-                    trademarkReviser.editMarksInCountry($.id, trademark)
+                    trademarkReviser.editMarksInCountry($.portfolio, $.iso, trademark)
                       .success(function(data){
                           $.message = data.msg;
-				})
+			})
              }
          }])
 
