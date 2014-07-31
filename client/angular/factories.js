@@ -111,7 +111,7 @@ angular.module('app')
           },
           editMarksInCountry: function(portfolio, iso, trademark){
               console.log(trademark)
-              trademark.country.coordinates = _.map(trademark.country.coordinates.split(","), curry(parseInt));
+              //trademark.country.coordinates = _.map(trademark.country.coordinates.split(","), curry(parseInt));
               return $http.post('/api/editMarksInCountry/' + portfolio + '/' + iso, { trademark: trademark })
           },
           getExpiryDatesForGroup: function(portfolio, group){
