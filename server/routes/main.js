@@ -155,12 +155,10 @@ exports.getFilteredWorld = function(req, res){
 	}
 
 exports.editGroupOfMarks = function(req, res){
-    console.log(req.params);
     var entity = req.session.userDetails.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var mark = req.params.mark.replace(/%20/g, " ");
     trademark.find({ entity: entity, portfolio: portfolio, mark: mark }).exec(function(err, trademarks){
-    	console.log(trademarks.length);
         async.forEach(trademarks, function(tm, callback){
              tm.mark = req.body.trademark.mark;
              tm.save();
@@ -187,9 +185,11 @@ exports.addLogoToGroup = function(req, res){
 }
 
 exports.editMarksInCountry = function(req, res){
+    console.log(req.params);
     var entity = req.session.userDetails.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     trademark.find({ entity: entity, portfolio: portfolio, 'country.alpha3': req.params.alpha3 }).exec(function(err, trademarks){
+        console.log(trademarks.length);
         async.forEach(trademarks, function(tm, callback){
           tm.country = req.body.trademark.country;
           tm.save();
