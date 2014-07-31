@@ -276,7 +276,7 @@ angular.module('app')
                 }
                 else {
                     $.country = _.without($.countries, "European Union")[0];
-				}
+		    }
             });
 
             $http.get('/api/listOfMarks/' + $routeParams.portfolio + '/' + $routeParams.iso)
@@ -323,7 +323,7 @@ angular.module('app')
             
             $.showEditCountryModal = function(){
                 $rootScope.modal = true;
-                editCountryModal.activate({ trademark: $.countryTM, id: $routeParams.id });
+                editCountryModal.activate({ trademark: $.countryTM, iso: $routeParams.iso, portfolio: $routeParams.portfolio });
             };
           
          }])
