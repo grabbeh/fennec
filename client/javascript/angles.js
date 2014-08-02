@@ -52,6 +52,7 @@ angles.chart = function (type) {
             
 			$scope.size();
             var chart = new Chart(ctx);
+            chart.defaults.global.responsive = true;
         }
     }
 }

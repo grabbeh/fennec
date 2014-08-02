@@ -9,6 +9,32 @@
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
 
+  canvas{
+        width: 100% !important;
+        height: auto !important;
+    }
+
+.row {
+    width: 100%;
+    /*margin: 0 auto;*/
+    overflow: hidden;
+}
+
+.one-half-container {
+    margin-right: 3.8%;
+    width: 48%;
+    min-height: 1px;
+    float: left;
+}
+
+.full-width-container {
+    
+}
+
+.last {
+    margin-right: 0;
+}
+
 .float-right {
     float: right;
     opacity: 0.7;
@@ -219,6 +245,10 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+.paginator {
+    overflow: hidden;
+}
+
 .pagination-prev {
     margin-right: 10px;
     float: left;
@@ -265,7 +295,7 @@ input::-webkit-inner-spin-button {
     margin-top: 20px;
     padding: 15px;
     color: white;
-    height: 60px;
+    overflow: hidden;
 }
 
 .admin-panel a {
@@ -374,10 +404,6 @@ input::-webkit-inner-spin-button {
     margin-right: 60px;
 }
 
-.last {
-    margin-right: 0;
-}
-
 .stat-header {
     font-size: 50px;
 }
@@ -392,7 +418,7 @@ input::-webkit-inner-spin-button {
     font-size: 25px;
 }
 
-.full-width-container {
+.no-trademark-container {
     padding: 30px 20px;
     background: white;
     margin-top: 20px;
@@ -464,20 +490,6 @@ input::-webkit-inner-spin-button {
     vertical-align: bottom;
 }
 
-.fennec-img-holder {
-    float: left;
-    width: 300px;
-    margin-top: 85px;
-	margin-left: 30px;
-}
-
-.fennec-img {
-	width: 100%;
-	border: 0;
-    vertical-align: bottom;
-}
-
-
 .home-title {
     margin-top: 50px;
     font-size: 40px;
@@ -524,7 +536,7 @@ input::-webkit-inner-spin-button {
 
 
 .bar-chart-container {
-    padding: 30px 20px;
+    padding: 40px;
     background: white;
     margin-top: 20px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15)
@@ -545,32 +557,24 @@ input::-webkit-inner-spin-button {
 .pie-chart-container {
     padding: 40px;
     background: white;
-    width: 510px;
-    float: left;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
 .left-half-container {
     padding: 40px 40px 23px 40px;
     background: white;
-    width: 510px;
-    float: left;
-    margin-right: 30px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
 .right-half-container {
     padding: 40px 40px 34px 40px;
     background: white;
-    width: 500px;
-    float: left;
-    margin-left: 30px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15)
 }
 
 .group-mark-select {  
     height: 45px;
-    width: 580px;
+    width: 100%;
     margin: 0;
     font-family: 'Karla';
     padding-left: 10px;	
@@ -588,18 +592,14 @@ input::-webkit-inner-spin-button {
 
 .group-mark-list {
     margin-top: 25px;
-    float: left;
 }
 
 .map-mark-list {
     margin-top: 25px;
-    
 }
 
 .country-list{
-    margin-left: 40px;
     margin-top: 25px;
-    float: left;
 }
 
 .mark-list {
@@ -660,7 +660,7 @@ input::-webkit-inner-spin-button {
 }
 
 .alert-number-input {
-    width: 200px;
+    width: 100%;
     border: 0;
     padding: 6px;
     border: 1px solid #999;
@@ -679,7 +679,7 @@ input::-webkit-inner-spin-button {
 }
 
 .alert-type-select {
-    width: 210px;
+    width:100%;
     -webkit-appearance: button;
     padding: 4px;
     font-family: 'Karla';
@@ -738,12 +738,7 @@ input::-webkit-inner-spin-button {
 }
 
 .expiry-chart-title {
-    padding: 0 0 0 20px;
     font-weight: bold;
-}
-
-.expiry-chart-search {
-    padding: 0 0 10px 20px;
 }
 
 .registered-key {
@@ -1078,7 +1073,8 @@ body {
 
 .fixed-container {
     margin: 0 auto;
-    width: 1200px;
+    width: 90%;
+    max-width: 1200px;
 }
 
 input {
@@ -1091,7 +1087,6 @@ input {
     padding: 0; 
     margin: 0;
     margin-right: 6%;
-    
 }
 
 .one-third-column {
@@ -1252,14 +1247,16 @@ margin: 0px 10px 10px 0px;
 }
 
 .search-form-input {
-	position: relative;
 	margin: 10px 10px 10px 0;
 	font-size: 20px;
 	line-height: 1.2em;
 	border: 0;
 	padding: 6px;
 	border: 1px solid #999;
-	width: 390px;
+}
+
+.expiry-form {
+    width: 70%;
 }
 
 .add-button {
@@ -1279,13 +1276,20 @@ margin: 0px 10px 10px 0px;
 /* MOBILE RESPONSIVE CHANGE */
 
 @media handheld, only screen and (max-width: 700px) {
+    
+    .last {
+        margin-top: 20px;
+    }
+    
 	.fixed-container {
-		margin-left: 30px;
+		margin-left: 20px;
+        margin-right: 20px;
 	}
     
     .landing-page-container {
         width:100%;
     }
+    
     
     .left-home-column {
         width: 100%;
@@ -1297,6 +1301,19 @@ margin: 0px 10px 10px 0px;
         width: 100%;
         margin-top: 0;
         
+    }
+    
+    .row, .one-half-container {
+        width: 100%;
+        min-width: 0;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .panel-search {
+        float: none;
     }
     
 }

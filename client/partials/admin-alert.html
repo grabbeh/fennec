@@ -12,14 +12,21 @@
     <div>
         <div class="alert-title">Add expiry reminder</div>
         <div class="alert-subtitle">Receive email alerts when a trade mark is close to expiry</div>
+        
         <div class="alert-form">
             <form novalidate>
-            <span><input required class="alert-number-input" type=number ng-model="alert.number" name="number" placeholder="Provide number" ></span>
-            <span><select class="alert-type-select" ng-change="addAlert(alert)" ng-model="alert.type" ng-options="type for type in types"><option value=""> Choose period from expiry</option>
-    </select></span>
-    </form>
+            <div class="row">
+                <div class="one-half-container">
+                    <span><input required class="alert-number-input" type=number ng-model="alert.number" name="number" placeholder="Provide number" ></span>
+                </div>
+                <div class="one-half-container last">
+                    <span><select class="alert-type-select" ng-change="addAlert(alert)" ng-model="alert.type" ng-options="type for type in types"><option value=""> Choose period from expiry</option></select></span>
+                </div> 
+            </div>
+            </form>
             <div class="alert-subtitle">{{ message }}</div>
         </div>
+        
     </div>
     
     <div class="alert-list-container">

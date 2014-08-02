@@ -199,7 +199,8 @@ angular.module('app')
                         barShowStroke : false,
                         barDatasetSpacing : 5,
                         scaleFontSize : 16,
-                        animationSteps : 120
+                        animationSteps : 120,
+                        responsive: true
                     };
                },
                pieChartData: function(trademarks){
@@ -229,7 +230,8 @@ angular.module('app')
                pieChartOptions: function(){
                     return {
                         segmentShowStroke : false,
-                        animationSteps : 200
+                        animationSteps : 200,
+                        responsive: true
                     };
                }
         }
