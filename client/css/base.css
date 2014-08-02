@@ -100,7 +100,6 @@ input::-webkit-inner-spin-button {
     background: #41B441;
     color: white;
     float: right;
-    margin-right: 10px;
 }
 
 .upload-image-btn {
@@ -136,11 +135,9 @@ input::-webkit-inner-spin-button {
 }
 
 .view-country-line {
-     border-bottom: 1px solid #9a9a9a;
+    border-bottom: 1px solid #9a9a9a;
 	padding-top: 20px;
-	margin-bottom: 20px;
-	width: 500px;	
-	
+	margin-bottom: 20px;	
 }
 
 .view-group-panel-container {
@@ -152,17 +149,6 @@ input::-webkit-inner-spin-button {
 .view-group-title {
     font-size: 30px;
     font-weight: bold;   
-}
-
-.view-group-details {
-    width: 500px;
-    float: left;
-}
-
-.view-group-search {
-    float: left;
-    width: 600px;
-    margin-left: 40px;
 }
 
 .form-holder {
@@ -1316,4 +1302,13 @@ margin: 0px 10px 10px 0px;
         float: none;
     }
     
+    
+    .one-third-column {
+        float: none;
+        width: 100%;
+    }
+    
+    .country-img {
+        width: 100%;
+    }
 }

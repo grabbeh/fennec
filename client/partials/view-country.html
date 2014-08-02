@@ -1,39 +1,51 @@
 <div ng-hide="loadingView" class="fixed-container">
     <div class="view-group-panel-container">
-    <div class="view-group-details">
+     <div class="row">
+         <div class="one-half-container">
+             
+         
         <div class="view-group-title">Trade marks in {{ country }}</div>
+        </div>
+        <div class="one-half-container last">
+            <div class="view-group-search">
+                 <div class="edit-button hover-underline" ng-click="showEditCountryModal()">Edit country</div>
+            </div>
+        </div>
+    </div>
+        
         <div class="view-country-map" ng-show="trademark.country.coordinates">
-           <img ng-src="//api.tiles.mapbox.com/v3/grabbeh.gch0omlb/{{trademark.country.coordinates[1]}},{{trademark.country.coordinates[0]}},3/900x300.png">
+           <img class="country-img" ng-src="//api.tiles.mapbox.com/v3/grabbeh.gch0omlb/{{trademark.country.coordinates[1]}},{{trademark.country.coordinates[0]}},3/900x300.png">
         </div>
-        <div mg-bold>Summary</div>
-        <div class="stat-header">{{ trademarks.length }}</div>
-        <div class="stat-subtitle">Total</div>
-        <div>
-            <ul class="stat-list stat-list-group">
-                <li ng-show="chartSubtitles[0]">
-                    <div class="sub-stat-header">{{ chartSubtitles[0].number }}</div>
-                    <div class="sub-stat-row registered-key">{{ chartSubtitles[0].status }}</div>
-                </li>
-                <li ng-show="chartSubtitles[1]">
-                    <div class="sub-stat-header">{{ chartSubtitles[1].number }}</div>
-                    <div class="sub-stat-row published-key">{{ chartSubtitles[1].status }}</div>
-                </li>
-                <li ng-show="chartSubtitles[2]">
-                    <div class="sub-stat-header">{{ chartSubtitles[2].number }}</div>
-                    <div class="sub-stat-row pending-key">{{ chartSubtitles[2].status }}</div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="view-group-search">
-         <div class="edit-button hover-underline" ng-click="showEditCountryModal()">Edit country</div>
-    </div>
-    <div mg-clear></div>
+        <div class="row">
+            
+            <div class="one-half-container">
+            <div mg-bold>Summary</div>
+            <div class="stat-header">{{ trademarks.length }}</div>
+            <div class="stat-subtitle">Total</div>
+            <div>
+                <ul class="stat-list stat-list-group">
+                    <li ng-show="chartSubtitles[0]">
+                        <div class="sub-stat-header">{{ chartSubtitles[0].number }}</div>
+                        <div class="sub-stat-row registered-key">{{ chartSubtitles[0].status }}</div>
+                    </li>
+                    <li ng-show="chartSubtitles[1]">
+                        <div class="sub-stat-header">{{ chartSubtitles[1].number }}</div>
+                        <div class="sub-stat-row published-key">{{ chartSubtitles[1].status }}</div>
+                    </li>
+                    <li ng-show="chartSubtitles[2]">
+                        <div class="sub-stat-header">{{ chartSubtitles[2].number }}</div>
+                        <div class="sub-stat-row pending-key">{{ chartSubtitles[2].status }}</div>
+                    </li>
+                </ul>
+            </div>
+           
     <div class="view-country-line"></div>   
     <div class="hover" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks</div>
 
     <div ng-show="showMarkList" mg-mark-list-displayer send-marks-to-server="sendMarksToServer" marks="marks"></div>
-
+    </div>
+        
+    </div>
 </div>
       <!-- map -->
       
