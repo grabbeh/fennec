@@ -1278,15 +1278,18 @@ margin: 0px 10px 10px 0px;
         margin-top: 20px;
     }
     
-	.fixed-container {
-		margin-left: 20px;
-        margin-right: 20px;
-	}
-    
     .landing-page-container {
         width:100%;
     }
     
+    .fixed-container {
+        margin: 0;
+        width: 100%;
+    }
+    
+    .country-list {
+        margin-top: 0;
+    }
     
     .left-home-column {
         width: 100%;
