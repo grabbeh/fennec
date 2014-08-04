@@ -1311,4 +1311,18 @@ margin: 0px 10px 10px 0px;
     .country-img {
         width: 100%;
     }
+    
+    .basic-modal {
+	  background: white;
+	  width: 80%;
+	  font-size: 18px;
+	  left: 0;
+	}
+
+
+	.edit-modal {
+	  background: white;
+	  width: 80%;
+	  left: 25%;
+	}
 }
