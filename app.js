@@ -50,6 +50,12 @@ function x(req, res, next) {
   else { res.redirect('/login'); }
 }
 
+function highlightCookie(req, res, next){
+         console.log(req.session);
+          next();
+    
+}
+
 // Routes
 
 app.get('/', function(req, res){

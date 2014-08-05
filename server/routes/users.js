@@ -3,8 +3,8 @@ var admin = require('../config/sendgrid')
 , User = require('../models/userSchema')
 , entities = require('./entities')
 , passwordReset = require('../models/passwordResetSchema')
-, sendgrid = require('sendgrid')(admin.username, admin.password)
-, mustache = require('mustache')
+, email = require('./email')
+, html = require('./html')
 , fs = require('fs')
 , path = require('path')
 , bcrypt = require('bcrypt');
@@ -106,8 +106,8 @@ exports.requestPasswordReset = function(req, res){
                   email: user._id 
               }).save(function(err, reset){
                   var fileLocation = path.resolve(__dirname, '../email-templates/password-reset.html');
-                  returnHtml(reset, fileLocation, function(err, html){
-                       sendEmail(reset.email, "Password reset", html, function(err, json){
+                  html.returnHtml(reset, fileLocation, function(err, html){
+                       email.sendEmail(reset.email, "Password reset", html, function(err, json){
                             res.status(200).send( { message: "Password reset email sent"})
                        })
                   })
@@ -160,26 +160,6 @@ exports.createAccount = function(req, res) {
            })
        })
    }
-
-function sendEmail(addressee, subject, html, fn) {
-    sendgrid.send({
-        to: addressee,
-        from: 'michael.goulbourn@guinnessworldrecords.com',
-        subject: subject,
-        html: html
-    }, function(err, json) {
-           fn(null, json);
-    })
-}
-
-function returnHtml(obj, path, fn) {
-    fs.readFile(path, function (err, contents) {
-        if (err) { console.log(err) }
-        var compiled = mustache.render(contents.toString(), obj);
-        return fn(null, compiled);
-    });
-}
-
 
 function authenticate(name, pass, fn) {
    User.findOne({_id: name}, function(err, user) {
