@@ -782,6 +782,7 @@ input::-webkit-inner-spin-button {
   background: white;
   min-width: 400px;
   left: 25%;
+  right: 25%;
 }
 
 .modal-form {
