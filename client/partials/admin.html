@@ -4,9 +4,8 @@
         <div class="admin-panel">
             <div class="one-half-container">
                 <div class="admin-panel-holder">
-                    <div class="admin-panel-title">Admin panel</div>
-                        <div class="panel-subtitle"><a ng-href="/admin/trademark">Add trademark</a> | <a ng-href="/admin/user">Add user</a> | <a ng-href="/map/{{activePortfolio}}">Full map</a> | <a ng-href="/upload">Import trade marks</a> | <span class="hover-underline" ng-click="getJSON()">Download portfolio</span>
-                    </div>
+                    <div class="admin-panel-title"><i ng-click="showMenuModal()" class="hover fa fa-bars"></i> Admin panel</div>
+                        
                 </div>
             </div>
             <div class="one-half-container last">
@@ -14,10 +13,7 @@
             </div>
         </div>
     </div>
-        
-        
-        
-        
+       
     <div class="no-trademark-container" ng-hide="trademarks">Oops, it looks like there are no trade marks to view. Import some <a href="/upload">here</a>
     </div>
     <div ng-show="trademarks">

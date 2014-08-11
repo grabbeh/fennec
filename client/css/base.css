@@ -14,6 +14,30 @@
         height: auto !important;
     }
 
+.white-link {
+    color: white;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list li {
+    
+    padding: 12px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #9a9a9a;
+}
+
+.menu-container {
+    background: #3F3838;
+    padding: 20px;
+    color: white;
+}
+
 .row {
     width: 100%;
     /*margin: 0 auto;*/
@@ -291,6 +315,7 @@ input::-webkit-inner-spin-button {
 
 .admin-panel-title {
     font-size: 30px;
+    margin-top: 12px;
 }
 
 .admin-panel-holder {
@@ -709,14 +734,6 @@ input::-webkit-inner-spin-button {
     padding-top: 10px;
 }
 
-.menu-container {
-    background: white;
-    width: 579px;
-    height: 77px;
-    position: absolute;
-    margin-top: 700px;
-}
-
 .expiry-chart-title {
     font-weight: bold;
 }
@@ -769,6 +786,17 @@ input::-webkit-inner-spin-button {
   width: 400px;
   font-size: 18px;
   left: 40%;
+}
+
+.menu-modal {
+  position: fixed;
+  top: 0;
+  height: auto;
+  z-index: 2000;
+  background: white;
+  width: 300px;
+  font-size: 18px;
+  left: 0;
 }
 
 .modal-container {

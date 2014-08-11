@@ -1,5 +1,11 @@
 angular.module('app')
-
+  .factory('menuModal', ['btfModal', function(btfModal){
+      return btfModal({
+      controller: 'menuModalCtrl',
+      templateUrl: '/modals/menu-modal.html'
+    });
+      
+  }])
   .factory('trademarkModal', ['btfModal', function (btfModal) {
     return btfModal({
       controller: 'trademarkModalCtrl',

@@ -1,4 +1,18 @@
 angular.module('app')
+
+	.controller('menuModalCtrl', ['$scope', '$rootScope', '$routeParams','$window', 'menuModal', function($scope, $rootScope, $routeParams, $window, menuModal){
+        var $ = $scope;
+        $.closeModal = function(){
+            menuModal.deactivate();
+            $rootScope.modal = false;
+            
+        }
+        
+        $.getJSON = function(){
+                $window.open('/api/downloadTrademarks/' + $routeParams.portfolio)
+            };
+      
+    }])
     
     .controller('trademarkModalCtrl', ['$scope', '$timeout', '$rootScope', 'userGetter', 'trademarkReviser', '$http', 'editTrademarkModal', 'trademarkModal', 
       function ($scope, $timeout, $rootScope, userGetter, trademarkReviser, $http, editTrademarkModal, trademarkModal) {

@@ -30,7 +30,6 @@ angular.module('app')
     .controller('adminCtrl', 
                ['$scope', 
                 '$routeParams',
-                '$window',
                 '$filter',
                 '$rootScope',
                 '$location',
@@ -44,12 +43,12 @@ angular.module('app')
                 'barChartData',
                 'barChartOptions',
                 '$moment',
-                'trademarkModal', 
+                'trademarkModal',
+                'menuModal',
                 '$http', 
        
         function($scope, 
                  $routeParams,
-                 $window,
                  $filter,
                  $rootScope, 
                  $location,
@@ -63,14 +62,18 @@ angular.module('app')
                  barChartData,
                  barChartOptions,
                  $moment, 
-                 trademarkModal, 
+                 trademarkModal,
+                 menuModal,
                  $http){
                      
             var $ = $scope;
-            
-            $.getJSON = function(){
-                $window.open('/api/downloadTrademarks/' + $routeParams.portfolio)
+			
+            $.showMenuModal = function(){
+                $rootScope.modal = true;
+                trademarkModal.deactivate();
+                menuModal.activate({ activePortfolio: $.activePortfolio});
             };
+            
             
             $http.get('/api/filteredCountryData/' + $routeParams.portfolio)
             	.success(function(countries){
