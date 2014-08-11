@@ -252,12 +252,13 @@ exports.search = function(req, res){
     }
     */
     trademark.search( { query: req.body.query }, { hydrate: true }, function(err, results){
-	if (err){
+	console.log(req.body);
+    if (err){
         console.log(err);
 		res.status(401).send(err);
 	}
 	else {
-             console.log(results)
+         console.log(results)
 	     res.json(results.hits);	
 	}
     });
