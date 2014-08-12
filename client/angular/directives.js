@@ -6,6 +6,7 @@ angular.module('app')
         link: function(scope, element, attrs){
             scope.$watch(attrs.menuModal, function(v){
                 if (v){
+                    console.log(v);
                     element.addClass('active-menu')
                 }
                 else {
