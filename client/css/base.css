@@ -21,9 +21,7 @@
 .non-favourite {
               color: #cecece; 
 }
-.favourite-button:hover {
-    cursor:pointer;
-}
+
 .active-menu {
 	margin-left: 300px;
 	right: 0;
