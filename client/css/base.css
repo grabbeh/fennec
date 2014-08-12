@@ -15,8 +15,7 @@
     }
     
 .active-menu {
-	left: 300px;
-	position: fixed;
+	margin-left: 300px;
 	right: 0;
 }
 
