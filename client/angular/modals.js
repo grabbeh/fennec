@@ -16,6 +16,7 @@ angular.module('app')
                 $http.get('/api/logout')
                     .success(function(){
                         $rootScope.user = false;
+                        $rootScope.menuModal = false;
                         $location.path('/');
                 })
         }
