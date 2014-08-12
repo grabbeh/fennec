@@ -9,13 +9,13 @@
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
 
-.animate-enter {
+.animate-ng-enter {
 	-webkit-transition: 1s linear all; /* Chrome */
 	transition: 1s linear all;
 	opacity: 0;
 }
  
-.animate-enter.animate-enter-active {
+.animate-ng-enter.animate-ng-enter-active {
 	opacity: 1;
 }
 
