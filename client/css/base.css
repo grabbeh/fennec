@@ -851,6 +851,10 @@ input::-webkit-inner-spin-button {
 	overflow: hidden;
 }
 
+.favourite-holder {
+    float: left;
+}
+
 .modal-expiry-date {
     padding: 0 0 10px 0;
 }

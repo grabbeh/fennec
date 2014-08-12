@@ -10,9 +10,7 @@
     <div class="view-trademark-container">
         <ul class="view-trademark-list">
             <li><span><b>{{ trademark.status }} </b>in <b><a ng-click="closeModal()" href="/admin/country/{{trademark.country.alpha3}}">{{ trademark.country.name }}</a></b></span>
-                <span ng-show="trademark.favourite" class="favourite-button"><i ng-class="{ favourite: trademark.favourite}"  ng-click="toggleFavourite()" class="fa fa-star fa-2x"></i></span>
-                <span ng-hide="trademark.favourite" class="non-favourite favourite-button"><i  ng-click="toggleFavourite()" class="fa fa-star fa-2x"></i></span>
-            
+               
             </li>
             <li ng-show="trademark.imageUrl"><img class="small-logo-holder" ng-src="{{trademark.imageUrl}}"> </li>
             <li>
@@ -27,6 +25,13 @@
             <li ng-show="trademark.registrationDate.stringDate">Registration date: {{ trademark.registrationDate.stringDate }}</li>
             <li ng-show="trademark.expiryDate.stringDate">Expiry date: {{ trademark.expiryDate.stringDate }}</li>
         </ul>
+        <div mg-clear></div>
+        <div>
+        <div class="favourite-holder">
+         <span ng-show="trademark.favourite" class="favourite-button"><i ng-class="{ favourite: trademark.favourite}"  ng-click="toggleFavourite()" class="fa fa-star fa-2x"></i></span>
+         <span ng-hide="trademark.favourite" class="non-favourite favourite-button"><i  ng-click="toggleFavourite()" class="fa fa-star fa-2x"></i></span>
+        </div>
+        
         <div class="modal-buttons">
             <div class="edit-button"><a style="display:block" ng-click="openEditTrademarkModal(trademark)">Edit</a>
             </div>
@@ -42,6 +47,7 @@
             <div mg-clear></div>
             <div ng-show="message" class="confirmation-message">{{ message }}</div>
 
+        </div>
         </div>
     </div>
 </div>
