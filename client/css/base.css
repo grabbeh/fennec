@@ -1354,11 +1354,15 @@ margin: 0px 10px 10px 0px;
 	.edit-modal {
 	  background: white;
 	  width: 80%;
-	  left: 25%;
+	  left: 0;
 	}
 	
 	.active-menu {
 	    right: -300px;
+	}
+	
+	.menu-modal {
+	    width: 80%;
 	}
 	
 }
