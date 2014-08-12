@@ -9,17 +9,6 @@
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
 
-.menu-modal.ng-leave        {
-    -webkit-animation:slideOutLeft 0.5s both ease-in;
-	-moz-animation:slideOutLeft 0.5s both ease-in;
-	animation:slideOutLeft 0.5s both ease-in;   
-}
-.menu-modal.ng-enter 		{  
-    -webkit-animation:slideInRight 0.5s both ease-in;
-	-moz-animation:slideInRight 0.5s both ease-in;
-	animation:slideInRight 0.5s both ease-in;    
-}
-
   canvas{
         width: 100% !important;
         height: auto !important;
