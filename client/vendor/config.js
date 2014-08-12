@@ -1,2 +1,2 @@
-var app = angular.module('app',['ngRoute', 'btford.modal', 'angles', 'ngAnimate', 'ngUpload','angular-momentjs']);
+var app = angular.module('app',['ngRoute', 'btford.modal', 'angles','ngUpload','angular-momentjs']);
 
