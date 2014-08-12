@@ -85,7 +85,7 @@ angular.module('app')
             $http.get('/api/filteredCountryData/' + $routeParams.portfolio)
             	.success(function(countries){
                     $.countries = $filter('orderBy')(countries, 'name');
-		        })
+		})
 
             $.$on('country.click', function(e, l){
                 $.$apply(function(){
@@ -121,7 +121,7 @@ angular.module('app')
             $.geojson = world;
             $.trademarks = trademarks;
             $.user = user;
-            $.marks = $filter('groupByMarks')(trademarks);
+            $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({ name: "ALL MARKS" })
             $.chart = barChartData;
             $.options = barChartOptions;
@@ -489,19 +489,19 @@ angular.module('app')
             }
         }])
 
-    .controller("mapCtrl", ['$scope', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
-        function($scope, $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
+    .controller("mapCtrl", ['$scope', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
+        function($scope, $routeParams, $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
         var $ = $scope;
 
         $.geojson = world;
         $.marks = $filter('groupByMarks')(trademarks);
         $.marks.unshift({ name: "ALL MARKS" });
         $.sendMarksToServer = function(marks){
-            $http.post('/api/world', { marks: $filter('extractCheckedMarks')(marks) })
-                 .success(function(world){
-                     $.geojson = world;
-                 }); 
-             }
+                $http.post('/api/world/' + $routeParams.portfolio, { marks: $filter('extractCheckedMarks')(marks) })
+                     .success(function(world){
+                         $.geojson = world;
+                     }); 
+                 }
 
         $.canFilter = function(){
             return $.filterTMsForm.$dirty && $.filterTMsForm.$valid;
