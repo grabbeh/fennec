@@ -70,7 +70,6 @@ angular.module('app')
 			
             $.toggleMenuModal = function(){
             	trademarkModal.deactivate();
-            	$rootScope.menuModal = !$rootScope.menuModal;
 		if (!$rootScope.menuModal){
 			menuModal.activate({ activePortfolio: $.activePortfolio});
 		}
