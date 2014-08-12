@@ -1356,7 +1356,7 @@ margin: 0px 10px 10px 0px;
 	}
 	
 	.active-menu {
-	    right: -300px;
+	    margin-left: 0;
 	}
 	
 	.menu-modal {
