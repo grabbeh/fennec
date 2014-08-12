@@ -71,6 +71,7 @@ angular.module('app')
             $.showMenuModal = function(){
                 $rootScope.modal = true;
                 $rootScope.menuModal = true;
+                console.log($rootScope.menuModal);
                 trademarkModal.deactivate();
                 menuModal.activate({ activePortfolio: $.activePortfolio});
             };
