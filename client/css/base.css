@@ -16,7 +16,8 @@
     
 .active-menu {
 	left: 300px;
-	margin-left: 300px;
+	position: fixed;
+	right: 0;
 }
 
 .white-link {
