@@ -2,7 +2,6 @@ angular.module('app')
 
     .directive('mgMenuMover', function(){
         return {
-        template: '<div></div>',
         scope: {
             menuModal: '='
         },
