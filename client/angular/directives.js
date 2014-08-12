@@ -11,11 +11,8 @@ angular.module('app')
                 else {
                     element.removeClass('active-menu')
                 }
-                
             })
-            
         }
-  
     })
 
 
