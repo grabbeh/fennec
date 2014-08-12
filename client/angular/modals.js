@@ -1,6 +1,6 @@
 angular.module('app')
 
-	.controller('menuModalCtrl', ['$scope', '$http', '$rootScope', '$routeParams','$window', 'menuModal', function($scope, $http, $rootScope, $routeParams, $window, menuModal){
+	.controller('menuModalCtrl', ['$scope', '$location', '$http', '$rootScope', '$routeParams','$window', 'menuModal', function($scope, $location, $http, $rootScope, $routeParams, $window, menuModal){
         var $ = $scope;
         $.closeModal = function(){
             menuModal.deactivate();
