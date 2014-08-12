@@ -15,7 +15,6 @@ angular.module('app')
         }
     })
 
-
     .directive('mgMap', function($rootScope) {
     return {
         replace: true,
