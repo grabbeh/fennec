@@ -6,16 +6,11 @@ angular.module('app')
             menuModal: '='
         },
         link: function(scope, element, attrs){
-            console.log(attrs.menuModal)
             scope.$watch(attrs.menuModal, function(v){
-                
                 if (v){
-                    console.log(v);
-                    console.log("Menu modal")
                     element.addClass('active-menu')
                 }
                 else {
-                    console.log("No menu modal")
                     element.removeClass('active-menu')
                 }
             })
