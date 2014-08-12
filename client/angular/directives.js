@@ -6,7 +6,9 @@ angular.module('app')
             menuModal: '='
         },
         link: function(scope, element, attrs){
+            console.log(attrs.menuModal)
             scope.$watch(attrs.menuModal, function(v){
+                
                 if (v){
                     console.log(v);
                     console.log("Menu modal")
