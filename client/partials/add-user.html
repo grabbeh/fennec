@@ -2,7 +2,7 @@
      <div class="form-container">
           <div class="form-title">Add user</div>
            <form novalidate name="createUserForm" class="loginform" ng-submit="createUser()">
-              <div><input required class="form-input" type=email ng-model="user.username" name="username" placeholder="E-mail" ></div>
+              <div><input required class="form-input" type=email ng-model="user.email" name="username" placeholder="E-mail" ></div>
               <div><input required class="form-input" ng-model="user.password" type=password name="password" placeholder="Password" ></div>
               <div><input class="checkbox" ng-model="user.checked" type="checkbox" name="license" value="0"> Set as admin</div>
               <div><input class="add-button" type=submit ng-disabled="!canSubmitCreateUser()" value="Submit"></div>
