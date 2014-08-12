@@ -41,10 +41,10 @@ angular.module('app')
             }
             
             $.logout = function(){
+                  $rootScope.menuModal = false;
                 $http.get('/api/logout')
                     .success(function(){
                         $rootScope.user = false;
-                        $rootScope.menuModal = false;
                         $location.path('/');
                     })
             }
