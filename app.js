@@ -22,6 +22,13 @@ var express = require('express')
 
 , app = express();
 
+// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 app.use(bodyParser());
 app.use(cookieParser());
 app.use(multipart());
