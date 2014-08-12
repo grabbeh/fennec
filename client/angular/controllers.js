@@ -69,13 +69,13 @@ angular.module('app')
             var $ = $scope;
 			
             $.toggleMenuModal = function(){
-            	   trademarkModal.deactivate();
+            	trademarkModal.deactivate();
             	$rootScope.menuModal = !$rootScope.menuModal;
 		if (!$rootScope.menuModal){
-			menuModal.deactivate();
+			menuModal.activate({ activePortfolio: $.activePortfolio});
 		}
 		else {
-			 menuModal.activate({ activePortfolio: $.activePortfolio});	
+			 menuModal.deactivate();	
 		}
 
             };
