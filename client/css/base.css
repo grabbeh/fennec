@@ -1357,4 +1357,8 @@ margin: 0px 10px 10px 0px;
 	  left: 25%;
 	}
 	
+	.active-menu {
+	    right: -300px;
+	}
+	
 }
