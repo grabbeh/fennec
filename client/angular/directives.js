@@ -9,9 +9,11 @@ angular.module('app')
             scope.$watch(attrs.menuModal, function(v){
                 if (v){
                     console.log(v);
+                    console.log("Menu modal")
                     element.addClass('active-menu')
                 }
                 else {
+                    console.log("No menu modal")
                     element.removeClass('active-menu')
                 }
             })
