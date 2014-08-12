@@ -3,6 +3,7 @@ angular.module('app')
     .controller("authCtrl", ['$scope', '$rootScope', '$http', 'trademarkReviser', 'pathHolder', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','uploadImageModal', 'userGetter',
         function($scope, $rootScope, $http, trademarkReviser, pathHolder, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, uploadImageModal, userGetter){
             var $ = $scope;
+            $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, previous){
                 var originalPath = previous.$$route.originalPath;
                 if (previous.params.id){
@@ -26,6 +27,7 @@ angular.module('app')
             
             $.removeModalOverlay = function(){
                 $rootScope.modal = false;
+                $rootScope.menuModal = false;
                 menuModal.deactivate();
                 trademarkModal.deactivate();
                 editTrademarkModal.deactivate();
