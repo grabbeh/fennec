@@ -1,5 +1,26 @@
 angular.module('app')
 
+    .directive('mgMenuMover', function(){
+        template: '<div></div>',
+        scope: {
+                menuModal: '='
+            },
+        link: function(scope, element, attrs){
+            scope.$watch(attrs.menuModal, function(v){
+                if (v){
+                    element.addClass('active-menu')
+                }
+                else {
+                    element.removeClass('active-menu')
+                }
+                
+            })
+            
+        }
+  
+    })
+
+
     .directive('mgMap', function($rootScope) {
     return {
         replace: true,
