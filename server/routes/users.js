@@ -192,9 +192,9 @@ function hashPasswordAndUpdateUser(id, nnew, fn){
 }
     
 function saveUser(obj, hash, fn){
-    new User({_id: obj.username,
-            username: obj.username.toUpperCase(),
-            email: obj.username,
+    new User({_id: obj.email,
+            username: obj.email.toUpperCase(),
+            email: obj.email,
             hash: hash,
             isAdmin: obj.checked,
             portfolios: obj.portfolios,
