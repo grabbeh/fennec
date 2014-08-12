@@ -437,7 +437,7 @@ angular.module('app')
         function($scope, $http, $location){
             var $ = $scope;
             $.createUser = function(){
-                $http.post('/api/addUser', $.user)
+                $http.post('/api/addUser', $.newUser)
                     .success(function(){
                         $location.path('/')
                     })
