@@ -13,6 +13,10 @@
         width: 100% !important;
         height: auto !important;
     }
+    
+.active-menu {
+	left: 300px;
+}
 
 .white-link {
     color: white;
