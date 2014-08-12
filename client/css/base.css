@@ -37,7 +37,6 @@
 }
 
 .menu-container {
-    background: #3F3838;
     padding: 20px;
     color: white;
 }
@@ -797,7 +796,7 @@ input::-webkit-inner-spin-button {
   top: 0;
   height: 100%;
   z-index: 2000;
-  background: white;
+  background: #3F3838;
   width: 300px;
   font-size: 18px;
   left: 0;
