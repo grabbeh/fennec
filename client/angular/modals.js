@@ -33,6 +33,18 @@ angular.module('app')
         trademarkModal.deactivate();
         $rootScope.modal = false;
       };
+          
+      $.toggleFavourite = function(){
+          if ($.trademark.favourite){
+              $.trademark.favourite = false;
+              console.log("Remove fav")
+          }
+          else {
+              $.trademark.favourite = true;
+              console.log("Add fav")
+		  }
+          
+      }
     
       $.openEditTrademarkModal = function(trademark){
         userGetter.isAdmin().then(function(){
