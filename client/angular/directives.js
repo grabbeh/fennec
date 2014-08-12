@@ -1,6 +1,7 @@
 angular.module('app')
 
     .directive('mgMenuMover', function(){
+        return {
         template: '<div></div>',
         scope: {
             menuModal: '='
@@ -16,6 +17,7 @@ angular.module('app')
                 }
             })
         }
+    }
     })
 
     .directive('mgMap', function($rootScope) {
