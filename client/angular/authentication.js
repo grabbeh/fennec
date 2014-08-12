@@ -25,10 +25,14 @@ angular.module('app')
               $scope.loadingView = false;
             });
             
-            $.removeModalOverlay = function(){
-                $rootScope.modal = false;
+            $.removeMenu = function(){
                 $rootScope.menuModal = false;
                 menuModal.deactivate();
+            }
+            
+            $.removeModalOverlay = function(){
+                $rootScope.modal = false;
+               
                 trademarkModal.deactivate();
                 editTrademarkModal.deactivate();
                 editCountryModal.deactivate();
