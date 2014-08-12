@@ -5,7 +5,7 @@ angular.module('app')
         $.closeModal = function(){
             menuModal.deactivate();
             $rootScope.modal = false;
-            
+            $rootScope.menuModal = false;
         }
         
         $.getJSON = function(){
