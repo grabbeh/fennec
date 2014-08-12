@@ -1,6 +1,6 @@
 angular.module('app')
 
-    .directive('mgMenuMover', function(menuModal){
+    .directive('mgMenuMover', function(){
         return {
         scope: {
             menuModal: '='
@@ -8,11 +8,9 @@ angular.module('app')
         link: function(scope, element, attrs){
             scope.$watch(attrs.menuModal, function(v){
                 if (v){
-                    menuModal.activate();
                     element.addClass('active-menu')
                 }
                 else {
-                    menuModal.deactivate();
                     element.removeClass('active-menu')
                 }
             })
