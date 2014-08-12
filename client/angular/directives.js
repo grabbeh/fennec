@@ -2,9 +2,7 @@ angular.module('app')
 
     .directive('mgMenuMover', function(){
         template: '<div></div>',
-        scope: {
-                menuModal: '='
-            },
+        scope: {menuModal: '='},
         link: function(scope, element, attrs){
             scope.$watch(attrs.menuModal, function(v){
                 if (v){
