@@ -39,7 +39,7 @@ function removeId(obj){
    return obj;
 }
 
-exports.updateAlert = function(req, res){
+exports.updateUser = function(req, res){
     User.findOneAndUpdate({_id: req.session.userDetails._id}, removeId(req.body), function(err, user){
          req.session.userDetails = user;
          res.json(user);
