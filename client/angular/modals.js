@@ -26,6 +26,7 @@ angular.module('app')
     .controller('trademarkModalCtrl', ['$scope', '$timeout', '$rootScope', 'userGetter', 'trademarkReviser', '$http', 'editTrademarkModal', 'trademarkModal', 
       function ($scope, $timeout, $rootScope, userGetter, trademarkReviser, $http, editTrademarkModal, trademarkModal) {
       var $ = $scope;
+      console.log($.trademark);
       
       $.alpha2 = $.trademark.country.alpha2.toLowerCase();
       
