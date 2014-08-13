@@ -38,7 +38,7 @@ angular.module('app')
           if ($.trademark.favourite){
               $.trademark.favourite = false;
               $.user.favourites.forEach(function(fav, i){
-              	  if (fav === tm._id){
+              	  if (fav === $.trademark._id){
               	     user.favourites.splice(i, 1);
               	  }
               })
