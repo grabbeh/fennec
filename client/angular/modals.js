@@ -37,12 +37,20 @@ angular.module('app')
       $.toggleFavourite = function(){
           if ($.trademark.favourite){
               $.trademark.favourite = false;
+              user.favourites.forEach(function(fav, i){
+              	  if (fav === tm._id){
+              	     user.favourites.splice(i, 1);
+              	  }
+              })
+              userGetter.updateUser(user);
+              
               console.log("Remove fav")
           }
           else {
               $.trademark.favourite = true;
-              console.log("Add fav")
-		  }
+              user.favourites.push(trademark._id)
+              userGetter.updateUser(user)
+	     }
           
       }
     
