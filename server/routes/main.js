@@ -53,19 +53,17 @@ exports.getGroup = function(req, res){
 }
 
 function addFavouriteProperty(trademarks, favourites){
-     var newTMs = [];
-
      trademarks.forEach(function(tm){
      	favourites.forEach(function(fav){
      	    tm.favourite = false;
      	    if (tm._id.equals(fav)){
      	    	tm.favourite = true;
-     	    	console.log(tm);
+
      	    }
      	})
-     	newTMs.push(tm);
+
      })	
-     return newTMs;
+     return trademarks;
 }
 
 exports.getCountry = function(req, res){
