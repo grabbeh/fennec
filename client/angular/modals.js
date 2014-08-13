@@ -38,12 +38,12 @@ angular.module('app')
       $.toggleFavourite = function(){
           if ($.trademark.favourite){
               $.trademark.favourite = false;
-              user.favourites.forEach(function(fav, i){
+              $.user.favourites.forEach(function(fav, i){
               	  if (fav === tm._id){
               	     user.favourites.splice(i, 1);
               	  }
               })
-              userGetter.updateUser(user).then(function(res){
+              userGetter.updateUser($.user).then(function(res){
               	  console.log("User updated - fav removed")
               });
               
@@ -51,8 +51,8 @@ angular.module('app')
           }
           else {
               $.trademark.favourite = true;
-              user.favourites.push(trademark._id)
-              userGetter.updateUser(user).then(function(res){
+              $.user.favourites.push(trademark._id)
+              userGetter.updateUser($.user).then(function(res){
               	  console.log("User updated");
               })
 	     }
