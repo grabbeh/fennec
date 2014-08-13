@@ -23,7 +23,7 @@ exports.getWorldGroup = function(req, res){
 	var group = req.params.group.replace(/%20/g, " ");
 	
 	async.parallel([ 
-      async.apply(helper.getGeoJSON),
+            async.apply(helper.getGeoJSON),
 	    async.apply(helper.getTrademarks, entity, portfolio)
 	    ],
 	    function(err, results){
@@ -41,14 +41,27 @@ exports.getWorldGroup = function(req, res){
 exports.getGroup = function(req, res){
     var entity = req.session.userDetails.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
+    var favourites = req.session.userDetails.favourites;
     var group = req.params.group.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio,  function(err, trademarks){
-        var tms = trademarks;
+        var tms = addFavouriteProperty(trademarks, favourites);
     	if (group != "ALL MARKS"){
-            var tms = _.groupBy(trademarks, 'mark')[group];	
+            var tms = addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
         }
         res.json(tms);
     });
+}
+
+function addFavouriteProperty(trademarks, favourites){
+     trademarks.forEach(function(tm){
+     	favorites.forEach(function(fav){
+     	    tm.favourite = false;
+     	    if (fav === tm._id){
+     	    	tm.favourite = true;
+     	    }
+     	})
+     })	
+     return trademarks;
 }
 
 exports.getCountry = function(req, res){
