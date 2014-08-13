@@ -42,14 +42,18 @@ angular.module('app')
               	     user.favourites.splice(i, 1);
               	  }
               })
-              userGetter.updateUser(user);
+              userGetter.updateUser(user).then(function(res){
+              	  console.log("User updated - fav removed")
+              });
               
               console.log("Remove fav")
           }
           else {
               $.trademark.favourite = true;
               user.favourites.push(trademark._id)
-              userGetter.updateUser(user)
+              userGetter.updateUser(user).then(function(res){
+              	  console.log("User updated");
+              })
 	     }
           
       }
