@@ -15,6 +15,18 @@ angular.module('app')
 	    }
 	})
 	
+	.filter('favouriteMarks', function(){
+		return function(arr){
+			var newArray = [];
+			arr.forEach(function(a){
+				if (a.favourite){
+				   newArray.push(a);	
+				}
+			})
+			return newArray;
+		}
+	})
+	
 	.filter('groupByStatus', function(){
 		return function(trademarks){
 			var group = _.groupBy(trademarks, 'status');
