@@ -131,7 +131,7 @@ app.get('/api/isUser', user.isUser);
 app.get('/api/getUser', user.getUser);
 app.get('/api/logout', user.logout);
 
-app.post('/api/updateAlert', user.updateAlert);
+app.post('/api/updateUser', user.updateUser);
 
 // Passwords
 
