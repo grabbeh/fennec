@@ -327,7 +327,7 @@ angular.module('app')
       }
 })
 
-    .directive('mgAdminAlertWidget', function() {
+    .directive('mgAdminAlertWidget', function(userGetter) {
       return {
             replace: true, 
             templateUrl: '/partials/admin-alert.html',
@@ -379,8 +379,8 @@ angular.module('app')
                 }
 
                 $.updateAlerts = function(user){
-                     $http.post('/api/updateAlert', user)
-                        .success(function(data){
+                     userGetter.updateUser(user)
+                        .then(function(data){
                              $.alert.type = "";
                              $.alert.number = "";
                              $.user = data;
