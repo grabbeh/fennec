@@ -44,7 +44,6 @@ angular.module('app')
   .factory('userGetter', ['$http', function ($http) {
     var user = [];
     var userGetter = {
-        
       	anyUsers: function(){
       	    return $http.get('/api/anyUsers');	
       	}, 
@@ -59,14 +58,10 @@ angular.module('app')
                 return response.data;
             });
         },
-        storeUser: function(obj){
-            user[0] = obj;
-        },
-        returnUser: function(){
-            return user[0];
-        },
-        removeClientUser: function(){
-            user.splice(0, 1);
+        updateUser: function(user){
+            return $http.post('/api/updateUser', user).then(function(response){
+            	return response.data;
+            })
         }
     }
     return userGetter;
@@ -89,7 +84,6 @@ angular.module('app')
   }])
 
   .factory('trademarkReviser', ['$http', 'userGetter', '$rootScope', function($http, userGetter, $rootScope){
-    
     function curry(fun){
         return function(arg){
             return fun(arg);
@@ -150,8 +144,8 @@ angular.module('app')
               trademark.updated = new Date().toISOString();
             
               return $http.put('/api/trademark/' + trademark._id, { trademark: trademark })
-              }
-          }
+           }
+       	}
       return trademarkReviser;
   }])
 
