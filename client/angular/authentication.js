@@ -41,7 +41,8 @@ angular.module('app')
             }
             
             $.logout = function(){
-                  $rootScope.menuModal = false;
+                $rootScope.menuModal = false;
+                menuModal.deactivate();
                 $http.get('/api/logout')
                     .success(function(){
                         $rootScope.user = false;
