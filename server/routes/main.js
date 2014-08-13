@@ -58,6 +58,7 @@ function addFavouriteProperty(trademarks, favourites){
      	favourites.forEach(function(fav){
      	    tm.favourite = false;
      	    if (fav === tm._id){
+     	    	console.log("Favourite")
      	    	tm.favourite = true;
      	    }
      	})
