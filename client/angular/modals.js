@@ -51,7 +51,7 @@ angular.module('app')
           }
           else {
               $.trademark.favourite = true;
-              $.user.favourites.push(trademark._id)
+              $.user.favourites.push($.trademark._id)
               userGetter.updateUser($.user).then(function(res){
               	  console.log("User updated");
               })
