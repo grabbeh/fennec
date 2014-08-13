@@ -39,7 +39,7 @@ angular.module('app')
               $.trademark.favourite = false;
               $.user.favourites.forEach(function(fav, i){
               	  if (fav === $.trademark._id){
-              	     user.favourites.splice(i, 1);
+              	     $.user.favourites.splice(i, 1);
               	  }
               })
               userGetter.updateUser($.user).then(function(res){
