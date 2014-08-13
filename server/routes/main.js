@@ -55,7 +55,7 @@ exports.getGroup = function(req, res){
 function addFavouriteProperty(trademarks, favourites){
      var newTMs = [];
      console.log(trademarks[0]._id);
-     console.log(favourites);
+     console.log(favourites[0]);
      trademarks.forEach(function(tm){
      	favourites.forEach(function(fav){
            
