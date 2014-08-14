@@ -80,7 +80,6 @@ angular.module('app')
 
             };
             
-            
             $http.get('/api/filteredCountryData/' + $routeParams.portfolio)
             	.success(function(countries){
                     $.countries = $filter('orderBy')(countries, 'name');
@@ -88,7 +87,7 @@ angular.module('app')
 
             $.$on('country.click', function(e, l){
                 $.$apply(function(){
-                    $location.path('/admin/country/' + $routeParams.portfolio + '/' + l.target.feature.id);
+                    $location.path('/admin/country/' + $routeParams.portfolio).search('country', l.target.feature.id);
                 })
             })
             
@@ -137,7 +136,7 @@ angular.module('app')
             }
             
             $.goToCountry = function(obj){
-                $location.path('/admin/country/' + $routeParams.portfolio + '/' + obj.alpha3);
+                $location.path('/admin/country/' + $routeParams.portfolio).search('country', obj.alpha3);
             }
             
             $.$watch('trademarks', function(trademarks){
@@ -288,7 +287,7 @@ angular.module('app')
 		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJson, trademarkReviser, editTrademarkModal, trademarkModal, editCountryModal){
 	        var $ = $scope;
         
-            trademarkReviser.getCountry($routeParams.portfolio, $routeParams.iso).then(function(trademarks){
+            trademarkReviser.getCountry($routeParams.portfolio, $location.search().country).then(function(trademarks){
                 $.trademarks = trademarks;
                 $.trademark = trademarks[0];
                 $.countries = $filter('extractCountries')($.trademarks);
@@ -300,7 +299,7 @@ angular.module('app')
 		    }
             });
 
-            $http.get('/api/listOfMarks/' + $routeParams.portfolio + '/' + $routeParams.iso)
+            $http.get('/api/listOfMarks/' + $routeParams.portfolio + '/' + $location.search().country)
          	   .success(function(list){
           	      $.marks = list;
             })
@@ -358,7 +357,7 @@ angular.module('app')
         });
              
         $.$on('country.click', function(e, l){
-            $.trademarks = false;
+            $.registered = false;
             $.nocontent = true;
             $.$apply(function(){
                 $.country = l.target.feature.properties.name;
@@ -368,7 +367,7 @@ angular.module('app')
                 if (tms){
                     $.nocontent = false;
                     if (tms.Registered)
-                        $.trademarks = tms.Registered;
+                        $.registered = tms.Registered;
                   }
         
              });
@@ -519,7 +518,7 @@ angular.module('app')
         }
 
         $.$on('country.click', function(e, l){
-            $.trademarks = false;
+            $.registered = false;
             $.pending = false;
             $.published = false;
             $.nocontent = true;
@@ -531,7 +530,7 @@ angular.module('app')
                 if (tms){
                     $.nocontent = false;
                     if (tms.Registered)
-                        $.trademarks = tms.Registered;
+                        $.registered = tms.Registered;
 
                     if (tms.Published)
                         $.published = tms.Published;
@@ -544,7 +543,7 @@ angular.module('app')
         });
 
         $.filterPortfolio = function(){
-            $.trademarks = false;
+            $.registered = false;
             $.pending = false;
             $.published = false;
             $.nocontent = true;
@@ -557,7 +556,7 @@ angular.module('app')
                     if (tms){
                         $.nocontent = false;
                         if (tms.Registered)
-                            $.trademarks = tms.Registered;
+                            $.registered = tms.Registered;
                         if (tms.Published)
                             $.published = tms.Published;
                         if (tms.Pending)

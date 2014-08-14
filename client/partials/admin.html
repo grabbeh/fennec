@@ -21,7 +21,7 @@
             <div class="one-half-container">
                 <div class="group-mark-list" mg-group-selector marks="marks" title="Show group of marks" go-to-group="showGroup"></div>
             </div>
-            <div class="one-half-container last">
+            <div class="one-half-container last last-margin-top">
                 <div class="country-list" mg-country-selector countries="countries" title="Go to country" go-to-group="goToCountry"></div>
             </div>
         </div>
@@ -63,7 +63,7 @@
                         <canvas piechart options="pieOptions" data="pieData" ></canvas>
                     </div>
             </div>
-            <div class="one-half-container last">
+            <div class="one-half-container last last-margin-top">
                     <div ng-show="sortedByExpiry" class="right-half-container">
                         <div mg-bold>Upcoming expiries<i class="float-right fa fa-clock-o fa-2x"></i></div>
                         <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
              </div>
-            <div class="one-half-container last">
+            <div class="one-half-container last last-margin-top">
                 <div class="user-container">
                     <div class="user-email">{{ user.email }}</div>
                     <div tabs>

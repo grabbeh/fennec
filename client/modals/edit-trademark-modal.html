@@ -3,45 +3,47 @@
 	<div class="modal-title">Edit trade mark</div>
     <div class="modal-container">
       <form novalidate class="modal-form" ng-submit="editTrademark(trademark)">
-
+      <div>
       <div>
 	      <div class="small-text">Mark</div>
-	      <input class="form-input" ng-model="trademark.mark" placeholder="Mark"></div>
+	      <input class="form-input" ng-model="trademark.mark" placeholder="Mark">
+      </div>
       <div class="one-half-column">
 	      <div class="small-text">Classes</div>
 	      <input required class="form-input" ng-model="trademark.classes" placeholder="Classes"></div>
-      <div>
-      <div class="one-half-column">
-	        <div class="small-text">Status</div>
-	      	<select class="form-select" ng-model="trademark.status" ng-options="status for status in statuses"><option value=""> {{ trademark.status }} </option>
-	      	</select>
       </div>
-      
-      <div class="one-half-column last">
-	      <div class="small-text">Country</div>
-	      <select class="form-select" ng-model="trademark.country" ng-options="country.name for country in countrydata">
-	        <option value=""> {{ trademark.country.name }} </option>
-	      </select>
-  	  	</div>
+      <div class="row">
+          <div class="one-half-container">
+    	        <div class="small-text">Status</div>
+    	      	<select class="form-select" ng-model="trademark.status" ng-options="status for status in statuses"><option value=""> {{ trademark.status }} </option>
+    	      	</select>
+          </div>
+          
+          <div class="one-half-container last">
+    	      <div class="small-text">Country</div>
+    	      <select class="form-select" ng-model="trademark.country" ng-options="country.name for country in countrydata">
+    	        <option value=""> {{ trademark.country.name }} </option>
+    	      </select>
+      	  	</div>
     </div>
-    <div>
-      <div class="one-third-column">
+    <div class="row">
+      <div class="one-third-container">
       <div class="small-text">Filing date</div>
       <input required class="form-input" ng-model="trademark.filingDate.stringDate" placeholder="Filing date"></div>
   
-      <div class="one-third-column">
+      <div class="one-third-container">
 	      <div class="small-text">Registration date</div>
 	      <input class="form-input" ng-model="trademark.registrationDate.stringDate" placeholder="Reg. date"></div>
-      <div class="one-third-column last">
+      <div class="one-third-container last">
 	      <div class="small-text">Expiry date</div>
 	      <input class="form-input" ng-model="trademark.expiryDate.stringDate" placeholder="Expiry date"></div>
   </div>
-  <div>
-      <div class="one-half-column">
+  <div class="row">
+      <div class="one-half-container">
       <div class="small-text">Application number</div>
       <input required class="form-input" ng-model="trademark.applicationNumber" placeholder="App. no."></div>
       
-      <div class="one-half-column last">
+      <div class="one-half-container last">
         <div class="small-text">Registration number</div>
         <input class="form-input" ng-model="trademark.registrationNumber" placeholder="Reg. no."></div>
   	</div>

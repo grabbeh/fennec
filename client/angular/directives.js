@@ -18,6 +18,63 @@ angular.module('app')
     }
     })
 
+     .directive('mgRegisteredTrademarkList', function(){
+        return {
+          replace: true,
+          templateUrl: '/partials/registered-list.html',
+          scope: {
+              registered: '=',
+              showModal: '&'
+          },
+          controller: function($scope){
+               var $ = $scope;
+               $.showModalWrapper = function(tm){
+                    var func = $scope.showModal();
+                    func(tm);
+                }
+          }
+       }
+    })
+
+    .directive('mgPublishedTrademarkList', function(){
+        return {
+          replace: true,
+          templateUrl: '/partials/published-list.html',
+          scope: {
+              published: '=',
+              showModal: '&'
+          },
+          controller: function($scope){
+               var $ = $scope;
+               $.showModalWrapper = function(tm){
+                    var func = $scope.showModal();
+                    func(tm);
+                }
+          }
+       }
+    })
+
+    .directive('mgPendingTrademarkList', function(){
+        return {
+          replace: true,
+          templateUrl: '/partials/pending-list.html',
+          scope: {
+              pending: '=',
+              showModal: '&'
+          },
+          link: function(scope){
+              console.log(scope.pending)
+          },
+          controller: function($scope){
+               var $ = $scope;
+               $.showModalWrapper = function(tm){
+                    var func = $scope.showModal();
+                    func(tm);
+                }
+          }
+       }
+    })
+
     .directive('mgMap', function($rootScope) {
     return {
         replace: true,

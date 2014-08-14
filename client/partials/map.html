@@ -20,43 +20,14 @@
 
       <div mg-map id="map" geojson="geojson"></div>
       
-      <div ng-show="trademarks || pending || published || nocontent" class="trademark-container">
+      <div ng-show="registered || pending || published || nocontent" class="trademark-container">
         <div class="country-holder f32"> {{ country }}  <div class="flag" ng-class="countrycode"></div></div>
         <span ng-show="nocontent">No trade marks for this country</span>
-         <div ng-show="trademarks" class="one-third-column">
-            <div class="registered-title">Registered</div>
-            <ul class="tm-list">
-               <li class="tm-list-li" ng-click="showModal(trademark)" ng-class-even="'grey-li'" ng-repeat="trademark in trademarks">
-                  <div class="trademark-name">{{ trademark.mark }}</div>
-                  <div><ul class="class-list" ng-repeat="class in trademark.classes track by $index"><li class="class">{{ class }}</li> </ul></div>
-                  <div style="clear: both"></div>
-                  <div class="details-button">Details</div>
-               </li>
-            </ul>
-         </div>
+
+         <div class="one-third-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
+         <div class="one-third-container" mg-published-trademark-list published="published" show-modal="showModal"></div>
+         <div class="one-third-container last" mg-pending-trademark-list pending="pending" show-modal="showModal"></div>
          
-         <div ng-show="published" class="one-third-column">
-            <div class="published-title">Published</div>
-            <ul class="tm-list">
-               <li class="tm-list-li" ng-click="showModal(publishedtm)" ng-class-even="'grey-li'" ng-repeat="publishedtm in published">
-                  <div class="trademark-name">{{ publishedtm.mark }}</div>
-                   <div><ul class="class-list" ng-repeat="class in publishedtm.classes track by $index"><li class="class">{{ class }}</li> </ul></div>
-                   <div style="clear: both"></div>
-                  <div class="details-button">Details</div>
-               </li>
-            </ul>
-         </div>
-         <div  ng-show="pending" class="one-third-column last">
-            <div class="pending-title">Pending</div>
-            <ul class="tm-list">
-               <li class="tm-list-li" ng-click="showModal(pendingtm)" ng-class-even="'grey-li'" ng-repeat="pendingtm in pending">
-                  <div class="trademark-name">{{ pendingtm.mark }}</div>
-                   <div><ul class="class-list" ng-repeat="class in pendingtm.classes track by $index"><li class="class">{{ class }}</li></ul></div>
-                   <div style="clear: both"></div>
-                  <div class="details-button">Details</div>
-               </li>
-            </ul>
-         </div>
       </div>
       <br></br>
    

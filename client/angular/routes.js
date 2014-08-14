@@ -100,7 +100,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }).
-        when('/admin/country/:portfolio/:iso', {
+        when('/admin/country/:portfolio', {
+            reloadOnSearch: false,
             templateUrl: '/partials/view-country.html',
             controller: 'countryViewCtrl',
             resolve: {
