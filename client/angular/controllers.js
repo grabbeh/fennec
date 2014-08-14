@@ -234,7 +234,7 @@ angular.module('app')
             }
 
             $.goToGroup = function(obj){
-            	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
+            /*	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
 	            $.geojson = data;
 	        });
             	
@@ -242,9 +242,9 @@ angular.module('app')
                 $.trademarks = data;
                 $.chartSubtitles = $filter('groupByStatus')($.trademarks);
                 $location.url("'/admin/group/' + $routeParams.portfolio + '/' + obj.name'");
-            });
+            });*/
             	
-            	//$location.path('/admin/group/' + $routeParams.portfolio + '/' + obj.name);
+            	$location.path('/admin/group/' + $routeParams.portfolio + '/' + obj.name);
             }
             
             $.showUploadImageModal = function(){
