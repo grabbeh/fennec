@@ -235,6 +235,8 @@ angular.module('app')
 
             $.goToGroup = function(obj){
             	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
+            		console.log("Data received");
+            		console.log(data);
 	            $.geojson = data;
 	        });
             	
