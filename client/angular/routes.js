@@ -91,6 +91,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
         when('/admin/group/:portfolio', {
+            reloadOnSearch: false,
             templateUrl: '/partials/view-group.html',
             controller: 'groupViewCtrl',
             resolve: {
