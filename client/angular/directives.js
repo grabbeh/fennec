@@ -23,14 +23,15 @@ angular.module('app')
         replace: true,
         template: '<div></div>',
         link: function(scope, element, attrs) {
-            map = L.mapbox.map(attrs.id, 'grabbeh.gch0omlb',{
+            if ($rootScope.map){ map.remove() };
+            $rootScope.map = L.mapbox.map(attrs.id, 'grabbeh.gch0omlb',{
                 center: [33, 31],
                 zoom: 2,
                 minZoom: 1
             });
 
             function updateGeoJson(world){
-                if ($rootScope.l){ map.removeLayer($rootScope.l); map.remove(); }
+                if ($rootScope.l){ map.removeLayer($rootScope.l);  }
                 $rootScope.l = L.geoJson(world, 
                     { 
                 style: function(feature) {
