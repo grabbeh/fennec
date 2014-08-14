@@ -236,7 +236,17 @@ angular.module('app')
             }
 
             $.goToGroup = function(obj){
-            	$location.path('/admin/group/' + $routeParams.portfolio + '/' + obj.name);
+            	
+            	geoJson.getWorldGroup($routeParams.portfolio, obj.group).then(function(data){
+	            $.geojson = data;
+	        });
+            	
+            	trademarkReviser.getGroup($routeParams.portfolio, obj.name).then(function(data){
+                $.trademarks = data;
+                $.chartSubtitles = $filter('groupByStatus')($.trademarks);
+            });
+            	
+            	//$location.path('/admin/group/' + $routeParams.portfolio + '/' + obj.name);
             }
             
             $.showUploadImageModal = function(){
