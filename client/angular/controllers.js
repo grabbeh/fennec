@@ -239,6 +239,7 @@ angular.module('app')
             		console.log("Data received");
             		console.log(data);
 	            $.geojson = data;
+	            $location.search('group', obj.name);
 	        });
             	
             	trademarkReviser.getGroup($routeParams.portfolio, obj.name).then(function(data){
@@ -246,7 +247,7 @@ angular.module('app')
                 $.chartSubtitles = $filter('groupByStatus')($.trademarks);
             });
             	
-            	//$location.search('group', obj.name);
+            	
             }
             
             $.showUploadImageModal = function(){
