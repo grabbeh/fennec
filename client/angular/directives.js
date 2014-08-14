@@ -23,8 +23,8 @@ angular.module('app')
         replace: true,
         template: '<div></div>',
         link: function(scope, element, attrs) {
-            if ($rootScope.map){ map.remove() };
-            $rootScope.map = L.mapbox.map(attrs.id, 'grabbeh.gch0omlb',{
+            
+            map = L.mapbox.map(attrs.id, 'grabbeh.gch0omlb',{
                 center: [33, 31],
                 zoom: 2,
                 minZoom: 1
@@ -51,7 +51,7 @@ angular.module('app')
                         $rootScope.$broadcast('country.click', e);
                     })
                 }})
-                $rootScope.l.addTo($rootScope.map)
+                $rootScope.l.addTo(map)
             }
 
             scope.$watch(attrs.geojson, function(world){
