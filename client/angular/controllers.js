@@ -234,12 +234,11 @@ angular.module('app')
             }
 
             $.goToGroup = function(obj){
-            	console.log(obj);
+            	$location.search('group', obj.name);
             	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
-            		console.log("Data received");
-            		console.log(data);
+
 	            $.geojson = data;
-	            $location.search('group', obj.name);
+	            
 	        });
             	
             	trademarkReviser.getGroup($routeParams.portfolio, obj.name).then(function(data){
