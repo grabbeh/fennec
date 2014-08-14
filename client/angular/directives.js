@@ -51,7 +51,7 @@ angular.module('app')
                         $rootScope.$broadcast('country.click', e);
                     })
                 }})
-                $rootScope.l.addTo(map)
+                $rootScope.l.addTo($rootScope.map)
             }
 
             scope.$watch(attrs.geojson, function(world){
