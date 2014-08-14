@@ -30,7 +30,7 @@ angular.module('app')
             });
 
             function updateGeoJson(world){
-                if ($rootScope.l){ map.removeLayer($rootScope.l); }
+                if ($rootScope.l){ map.removeLayer($rootScope.l); map.remove(); }
                 $rootScope.l = L.geoJson(world, 
                     { 
                 style: function(feature) {
