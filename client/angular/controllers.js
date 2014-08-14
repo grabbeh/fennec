@@ -246,7 +246,7 @@ angular.module('app')
                 $.chartSubtitles = $filter('groupByStatus')($.trademarks);
             });
             	
-            	$location.search('group', obj.name);
+            	//$location.search('group', obj.name);
             }
             
             $.showUploadImageModal = function(){
