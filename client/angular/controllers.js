@@ -133,7 +133,7 @@ angular.module('app')
                  }
 
             $.goToGroup = function(obj){
-            	$location.path('/admin/group/' + $routeParams.portfolio_.search('group', obj.name);
+            	$location.path('/admin/group/' + $routeParams.portfolio).search('group', obj.name);
             }
             
             $.goToCountry = function(obj){
