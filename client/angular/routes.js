@@ -90,7 +90,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }).
-        when('/admin/group/:portfolio/:group', {
+        when('/admin/group/:portfolio/', {
             templateUrl: '/partials/view-group.html',
             controller: 'groupViewCtrl',
             resolve: {
