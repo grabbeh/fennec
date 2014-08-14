@@ -206,8 +206,8 @@ angular.module('app')
 		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJson', 'trademarkReviser', 'editTrademarkModal', 'trademarkModal', 'editGroupModal', 'uploadImageModal',
 		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJson, trademarkReviser, editTrademarkModal, trademarkModal, editGroupModal, uploadImageModal){
 	        var $ = $scope;
-                console.log($location.search('group'));
-	        geoJson.getWorldGroup($routeParams.portfolio, $location.search('group')).then(function(data){
+                console.log($location.search().group);
+	        geoJson.getWorldGroup($routeParams.portfolio, $location.search().group).then(function(data){
 	            $.geojson = data;
 	        });
         
