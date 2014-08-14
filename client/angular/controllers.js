@@ -22,7 +22,6 @@ angular.module('app')
          $.sendMessage = function(){
              $http.post('/api/processMessage', {msg: $.msg})
              	.success(function(response){
-                    console.log(response);
                     $.message = response.msg;
                })
          }
@@ -122,7 +121,6 @@ angular.module('app')
             $.trademarks = trademarks;
             $.user = user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
-            console.log($filter('favouriteMarks')(trademarks));
             $.marks.unshift({ name: "ALL MARKS" })
             $.chart = barChartData;
             $.options = barChartOptions;
@@ -236,11 +234,7 @@ angular.module('app')
             }
 
             $.goToGroup = function(obj){
-            	console.log(obj);
-            	console.log($routeParams);
             	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
-                    console.log("Data received");
-                    console.log(data);
 	            $.geojson = data;
 	        });
             	
