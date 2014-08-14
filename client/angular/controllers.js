@@ -241,7 +241,7 @@ angular.module('app')
             	trademarkReviser.getGroup($routeParams.portfolio, obj.name).then(function(data){
                 $.trademarks = data;
                 $.chartSubtitles = $filter('groupByStatus')($.trademarks);
-                $location.url('/admin/group/ + $routeParams.portfolio + '/' + obj.name')
+                $location.url('/admin/group/' + $routeParams.portfolio + '/' + obj.name');
             });
             	
             	//$location.path('/admin/group/' + $routeParams.portfolio + '/' + obj.name);
