@@ -8,7 +8,13 @@ Here's what the admin panel looks like:
 
 ![example](screenshot.png)
 
-As a preliminary step you will also need Node.js installed. Additionally, the app uses a) MongoDB to store data, (so you'll need insert details at `/server/config/db.js`) b) Sendgrid to send reminder emails so would require those details if you want to make use of the app, (details inserted at `/server/config/admin.js`) c) Elastic Search for search functionality, d) an Amazon S3 bucket to store images (key and secret will go in `/server/config/s3.js`) and e) Mapbox to show maps - you will need to insert your own id in the maps directive at `/client/angular/directives/directives.js`.
+As a preliminary step you will also need Node.js installed. Additionally, the app uses 
+
+- MongoDB to store data, (so you'll need insert details at `/server/config/db.js`) 
+- Sendgrid to send reminder emails so would require those details if you want to make use of the app, (details inserted at `/server/config/admin.js`) 
+- Elastic Search for search functionality,
+- an Amazon S3 bucket to store images (key and secret will go in `/server/config/s3.js`) 
+- Mapbox to show maps - you will need to insert your own id in the maps directive at `/client/angular/directives/directives.js`.
 
 To get a copy of the code on your system just `git clone https://github.com/grabbeh/fennec` and then in the home directory `npm install` to install the dependencies. Once the importing process has been completed, you can `node app` in the home directory and go to `http://localhost:2002` where you will be asked to create an account (this should be an admin account). From that point, you will be taken to `/select-portfolio` where you can surprisingly, select your portfolio for viewing.
 
