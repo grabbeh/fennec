@@ -358,7 +358,7 @@ input::-webkit-inner-spin-button {
     background: white;
     padding: 20px;
     margin: 20px 0;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .no-results {
