@@ -65,7 +65,7 @@ app.get('/', function(req, res){
   res.sendfile(__dirname + '/client/views/index.html')
 });
 
-app.get('/download/downloadTrademarks/:portfolio', main.downloadTrademarks);
+app.get('/download/downloadTrademarks', main.downloadTrademarks);
 
 // Elasticsearch 
 // 

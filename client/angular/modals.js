@@ -1,6 +1,7 @@
 angular.module('app')
 
-	.controller('menuModalCtrl', ['$scope', '$location', '$http', '$rootScope', '$routeParams','$window', 'menuModal', function($scope, $location, $http, $rootScope, $routeParams, $window, menuModal){
+	.controller('menuModalCtrl', ['$scope', '$window', '$location', '$http', '$rootScope', '$routeParams','$window', 'menuModal', 
+        function($scope, $window, $location, $http, $rootScope, $routeParams, $window, menuModal){
         var $ = $scope;
         $.closeModal = function(){
             menuModal.deactivate();
@@ -9,8 +10,9 @@ angular.module('app')
         }
         
         $.getJSON = function(){
-                $window.open('/api/downloadTrademarks/' + $routeParams.portfolio)
-            };
+               var token = $window.sessionStorage.token;
+               $window.open('/download/downloadTrademarks?portfolio=' + $routeParams.portfolio + '&token=' + token)
+         };
             
         $.logout = function(){
                 $http.get('/api/logout')

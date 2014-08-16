@@ -4,17 +4,20 @@ var helper = require('./helper.js')
 , trademark = require('../models/trademarkSchema')
 , async = require('async')
 , jobs = require('./jobs')
+, jwt = require('./jwt')
 , fs = require('fs')
 
 exports.downloadTrademarks = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.getTrademarks(entity, portfolio, function(err, trademarks){
+    var portfolio = req.query.portfolio.replace(/%20/g, " ");
+    jwt.verifyToken(req.query.token, function(err, user){
+        var entity = user.entity;
+        helper.getTrademarks(entity, portfolio, function(err, trademarks){
         fs.writeFile('server/config/trademarks.json', JSON.stringify(trademarks), function(err){
             var file = 'server/config/trademarks.json';
             res.download(file);
-        })
-    })
+            });
+        }); 
+    }) 
 }
 
 exports.getWorldGroup = function(req, res){
@@ -23,7 +26,7 @@ exports.getWorldGroup = function(req, res){
 	var group = req.params.group.replace(/%20/g, " ");
 	
 	async.parallel([ 
-            async.apply(helper.getGeoJSON),
+        async.apply(helper.getGeoJSON),
 	    async.apply(helper.getTrademarks, entity, portfolio)
 	    ],
 	    function(err, results){
