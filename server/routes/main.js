@@ -8,6 +8,7 @@ var helper = require('./helper.js')
 , fs = require('fs')
 
 exports.downloadTrademarks = function(req, res){
+    console.log("Route triggered");
     var portfolio = req.query.portfolio.replace(/%20/g, " ");
     jwt.verifyToken(req.query.token, function(err, user){
         var entity = user.entity;
