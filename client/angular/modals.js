@@ -27,7 +27,6 @@ angular.module('app')
     .controller('trademarkModalCtrl', ['$scope', '$timeout', '$rootScope', 'userGetter', 'trademarkReviser', '$http', 'editTrademarkModal', 'trademarkModal', 
       function ($scope, $timeout, $rootScope, userGetter, trademarkReviser, $http, editTrademarkModal, trademarkModal) {
       var $ = $scope;
-      console.log($.trademark);
       $.alpha2 = $.trademark.country.alpha2.toLowerCase();
       
       $.closeModal = function() {
@@ -35,30 +34,6 @@ angular.module('app')
         $rootScope.modal = false;
       };
           
-      $.toggleFavourite = function(){
-          if ($.trademark.favourite){
-              $.trademark.favourite = false;
-              $.user.favourites.forEach(function(fav, i){
-              	  if (fav === $.trademark._id){
-              	     $.user.favourites.splice(i, 1);
-              	  }
-              })
-              userGetter.updateUser($.user).then(function(res){
-              	  console.log("User updated - fav removed")
-              });
-              
-              console.log("Remove fav")
-          }
-          else {
-              $.trademark.favourite = true;
-              $.user.favourites.push($.trademark._id)
-              userGetter.updateUser($.user).then(function(res){
-              	  console.log("User updated");
-              })
-	     }
-          
-      }
-    
       $.openEditTrademarkModal = function(trademark){
         userGetter.isAdmin().then(function(){
                 trademarkModal.deactivate();
@@ -94,8 +69,7 @@ angular.module('app')
           };
     
           $.statuses = ["Registered", "Published", "Pending"];
-    
-    
+
         $http.get('/api/countrydata')
             .success(function(data){
                 $.countrydata = data;

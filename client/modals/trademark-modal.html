@@ -26,11 +26,10 @@
             <li ng-show="trademark.expiryDate.stringDate">Expiry date: {{ trademark.expiryDate.stringDate }}</li>
         </ul>
         <div mg-clear></div>
-        <div>
-        <div class="favourite-holder">
-         <span ng-show="trademark.favourite" ><i ng-class="{ favourite: trademark.favourite}"  ng-click="toggleFavourite()" class="hover fa fa-star fa-2x"></i></span>
-         <span ng-hide="trademark.favourite" class="non-favourite"><i  ng-click="toggleFavourite()" class="hover fa fa-star fa-2x"></i></span>
-        </div>
+        
+        
+        <div mg-favourite-button trademark="trademark" user="user"></div>
+  
         
         <div class="modal-buttons">
             <div class="edit-button"><a style="display:block" ng-click="openEditTrademarkModal(trademark)">Edit</a>
@@ -50,6 +49,6 @@
         </div>
         </div>
     </div>
-</div>
 
-</div>
+
+

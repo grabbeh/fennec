@@ -849,6 +849,8 @@ input::-webkit-inner-spin-button {
 
 .favourite-holder {
     float: left;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .modal-expiry-date {
@@ -1342,5 +1344,13 @@ margin: 0px 10px 10px 0px;
 	.menu-modal {
 	    width: 80%;
 	}
+    
+    .edit-button {
+        display: none;
+    }
+    
+    .delete-button {
+        display: none;
+    }
 	
 }
