@@ -16,6 +16,7 @@ angular.module('app')
                 $http.get('/api/logout')
                     .success(function(){
                         $rootScope.user = false;
+                        delete $window.sessionStorage.token;
                         $rootScope.menuModal = false;
                         $location.path('/');
                 })

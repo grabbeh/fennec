@@ -121,7 +121,8 @@ exports.resetPassword = function(req, res){
 }
 
 exports.logout = function(req, res){
-    
+    req.user = false;
+    res.status(200).send();
 }
 
 exports.addPortfolioToUser = function(id, portfolio, fn){

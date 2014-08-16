@@ -1,5 +1,5 @@
 angular.module('app')
-	.factory('authInterceptor', function ($rootScope, $q, $window) {
+	.factory('authInterceptor', function ($rootScope, $location, $q, $window) {
       return {
         request: function (config) {
           config.headers = config.headers || {};
@@ -10,7 +10,7 @@ angular.module('app')
         },
         response: function (response) {
           if (response.status === 401) {
-            console.log("401 response")
+              $location.path('/');
           }
           return response || $q.when(response);
         }

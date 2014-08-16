@@ -44,6 +44,8 @@ angular.module('app')
                 $rootScope.menuModal = false;
                 menuModal.deactivate();
                 delete $window.sessionStorage.token;
+                $rootScope.user = false;
+                $location.path('/');
             }
             
             userGetter.getUser().then(function(data){
