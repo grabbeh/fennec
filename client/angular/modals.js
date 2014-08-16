@@ -9,7 +9,7 @@ angular.module('app')
         }
         
         $.getJSON = function(){
-                $window.open('/api/downloadTrademarks/' + $routeParams.portfolio)
+                $window.open('/download/downloadTrademarks/' + $routeParams.portfolio)
             };
             
         $.logout = function(){
