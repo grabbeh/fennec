@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller("authCtrl", ['$scope', '$rootScope', '$http', 'trademarkReviser', 'pathHolder', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','uploadImageModal', 'userGetter',
-        function($scope, $rootScope, $http, trademarkReviser, pathHolder, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, uploadImageModal, userGetter){
+    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkReviser', 'pathHolder', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','uploadImageModal', 'userGetter',
+        function($scope, $window, $rootScope, $http, trademarkReviser, pathHolder, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, uploadImageModal, userGetter){
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, previous){
@@ -43,11 +43,7 @@ angular.module('app')
             $.logout = function(){
                 $rootScope.menuModal = false;
                 menuModal.deactivate();
-                $http.get('/api/logout')
-                    .success(function(){
-                        $rootScope.user = false;
-                        $location.path('/');
-                    })
+                delete $window.sessionStorage.token;
             }
             
             userGetter.getUser().then(function(data){
@@ -60,8 +56,8 @@ angular.module('app')
 
         }])
     
-    .controller("loginCtrl", ['$scope', '$rootScope', 'userGetter', 'pathHolder', '$http', '$location', 'trademarkReviser',
-        function($scope, $rootScope, userGetter, pathHolder, $http, $location, trademarkReviser){
+    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userGetter', 'pathHolder', '$http', '$location', 'trademarkReviser',
+        function($scope, $window, $rootScope, userGetter, pathHolder, $http, $location, trademarkReviser){
             var $ = $scope;
             
             $.canSubmitLogin = function(){
@@ -69,11 +65,10 @@ angular.module('app')
             }
             
             $.login = function(){
-                $http.post('/api/login', { password: $.password, username: $.username })
-                    .success(function(){
-                        userGetter.getUser().then(function(response){
-                            $rootScope.user = response;
-                        });
+                $http.post('/auth/login', { password: $.password, username: $.username })
+                    .success(function(res){
+                        $window.sessionStorage.token = res.token;
+                        $rootScope.user = res.user;
                         if (pathHolder.existingPath){
                              $location.path(pathHolder.returnPath());
                         }

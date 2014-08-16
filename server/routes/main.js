@@ -7,7 +7,7 @@ var helper = require('./helper.js')
 , fs = require('fs')
 
 exports.downloadTrademarks = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio, function(err, trademarks){
         fs.writeFile('server/config/trademarks.json', JSON.stringify(trademarks), function(err){
@@ -18,7 +18,7 @@ exports.downloadTrademarks = function(req, res){
 }
 
 exports.getWorldGroup = function(req, res){
-	var entity = req.session.userDetails.entity;
+	var entity = req.user.entity;
 	var portfolio = req.params.portfolio.replace(/%20/g, " ");
 	var group = req.params.group.replace(/%20/g, " ");
 	
@@ -39,9 +39,9 @@ exports.getWorldGroup = function(req, res){
 	}
 
 exports.getGroup = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    var favourites = req.session.userDetails.favourites;
+    var favourites = req.user.favourites;
     var group = req.params.group.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio,  function(err, trademarks){
         var tms = addFavouriteProperty(trademarks, favourites);
@@ -65,7 +65,7 @@ function addFavouriteProperty(trademarks, favourites){
 }
 
 exports.getCountry = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.checkIfEUCountry(req.params.country, function(err, bool){
         if (bool){
@@ -84,7 +84,7 @@ exports.getCountry = function(req, res){
 
 exports.filterCountry = function(req, res){
     var keys = req.body.marks;
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var country = req.params.country;
     trademark.find({ portfolio: portfolio, entity: entity, 'country.alpha3': country}).lean().exec(function(err, trademarks){
@@ -100,7 +100,7 @@ exports.filterCountry = function(req, res){
 }
 
 exports.getListOfMarks = function(req, res){
-   var entity = req.session.userDetails.entity;
+   var entity = req.user.entity;
    var portfolio = req.params.portfolio.replace(/%20/g, " ");
    helper.getTrademarks(entity, portfolio, function(err, trademarks){
           createList(trademarks, function(err, list){
@@ -112,7 +112,7 @@ exports.getListOfMarks = function(req, res){
 // Provides basic list of marks on basis of provided array 
 
 exports.filterListOfMarks = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.checkIfEUCountry(req.params.country, function(err, bool){
         if (bool){
@@ -145,7 +145,7 @@ function createList(trademarks, fn){
 // Provides geojson file with trademarks filtered on basis of given array
 // 
 exports.getFilteredWorld = function(req, res){
-      var entity = req.session.userDetails.entity;
+      var entity = req.user.entity;
       var portfolio = req.params.portfolio.replace(/%20/g, " ");
       var keys = req.body.marks;
       
@@ -167,7 +167,7 @@ exports.getFilteredWorld = function(req, res){
 	}
 
 exports.editGroupOfMarks = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var mark = req.params.mark.replace(/%20/g, " ");
     trademark.find({ entity: entity, portfolio: portfolio, mark: mark }).exec(function(err, trademarks){
@@ -182,7 +182,7 @@ exports.editGroupOfMarks = function(req, res){
 }
 
 exports.addLogoToGroup = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var mark = req.params.mark.replace(/%20/g, " ");
     trademark.find({ entity: entity, portfolio: portfolio, mark: mark }).exec(function(err, trademarks){
@@ -197,7 +197,7 @@ exports.addLogoToGroup = function(req, res){
 }
 
 exports.editMarksInCountry = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     trademark.find({ entity: entity, portfolio: portfolio, 'country.alpha3': req.params.alpha3 }).exec(function(err, trademarks){
         async.forEach(trademarks, function(tm, callback){
@@ -211,7 +211,7 @@ exports.editMarksInCountry = function(req, res){
 }
 
 exports.getExpiriesForYear = function(req, res){
-	var entity = req.session.userDetails.entity;
+	var entity = req.user.entity;
         var portfolio = req.params.portfolio.replace(/%20/g, " ");
 	async.parallel([
 		async.apply(helper.getGeoJSON),
@@ -231,7 +231,7 @@ exports.countryData = function(req, res){
 }
 
 exports.filteredCountryData = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio, function(err, tms){
         var arr = [];
@@ -308,7 +308,7 @@ exports.deleteTrademark = function(req, res){
 }
 
 exports.provideExpiryDates = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio, function(err, tms){
         helper.sortTrademarksByExpiryYear(tms, function(err, trademarks){
@@ -318,7 +318,7 @@ exports.provideExpiryDates = function(req, res){
 }
 
 exports.provideExpiryDatesForGroup = function(req, res){
-    var entity = req.session.userDetails.entity;
+    var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio, function(err, tms){
         var key = req.params.group.replace(/%20/g, " ");

@@ -1,5 +1,6 @@
 
 var admin = require('../config/sendgrid')
+, jwt = require('./jwt')
 , User = require('../models/userSchema')
 , entities = require('./entities')
 , passwordReset = require('../models/passwordResetSchema')
@@ -12,22 +13,22 @@ var admin = require('../config/sendgrid')
 exports.getAllAdmins = function(fn){
     User.find({ isAdmin: true }).lean().exec(function(err, admins){
          fn(null, admins);
-    })
+    });
 }
 
 exports.isUser = function(req, res){
-     if (req.session.user){ res.status(200).send()}
+     if (req.user){ res.status(200).send()}
       else { res.status(401).send({message: "Must be signed in"}) }
     }
 
 exports.isAdmin = function(req, res){
-    if ( req.session.admin){ res.status(200).send() }
+    if ( req.user.isAdmin){ res.status(200).send() }
     else { res.status(401).send({message: "Must be admin"} )}
 }
 
 exports.getUser = function(req, res){
-    if (req.session.user){
-         res.json(req.session.userDetails);
+    if (req.user){
+         res.json(req.user);
     }
     else {
         res.status(401).send();
@@ -40,8 +41,8 @@ function removeId(obj){
 }
 
 exports.updateUser = function(req, res){
-    User.findOneAndUpdate({_id: req.session.userDetails._id}, removeId(req.body), function(err, user){
-         req.session.userDetails = user;
+    User.findOneAndUpdate({_id: req.user._id}, removeId(req.body), function(err, user){
+         req.user = user;
          res.json(user);
     })
 }
@@ -49,14 +50,9 @@ exports.updateUser = function(req, res){
 exports.logIn = function(req, res){
     authenticate(req.body.username, req.body.password, function(err, user){
        if (user) {
-         req.session.regenerate(function(){
-            req.session.user = true;
-            req.session.userDetails = user;
-            if (user.isAdmin){
-                req.session.admin = true;
-            }
-            res.status(200).send();
-         })
+           jwt.createToken(user, function(err, token){
+               res.status(200).send({token: token, user: user});  
+           })
        }
        else { res.status(401).send({message: "Incorrect username or password"})}
     })
@@ -66,20 +62,15 @@ exports.addUser = function(req, res) {
     User.findOne({username: req.body.username.toUpperCase()}, function(err, user) {
         if (user) { res.status(401).send({message: 'Apologies - username already taken'}); return;}
         hashPasswordAndAddUser(req.body, function(err, user){
-            req.session.regenerate(function(){
-                  req.session.user = true;
-                  req.session.userDetails = user;
-                  if (user.isAdmin){
-                     req.session.admin = true;
-                  }
-                  res.status(200).send();
-                });
+                 jwt.createToken(user, function(err, token){
+                 res.status(200).json(token);  
+                 })
             });
        })
    }
 
 exports.updatePassword = function(req, res){
-     var id = req.session.userDetails._id;
+     var id = req.user._id;
      var old = req.body.oldPW;
      var nnew = req.body.newPW;
      authenticate(id, old, function(err, user){
@@ -130,9 +121,7 @@ exports.resetPassword = function(req, res){
 }
 
 exports.logout = function(req, res){
-    req.session.destroy(function(){
-    res.status(200).send();
-  });
+    
 }
 
 exports.addPortfolioToUser = function(id, portfolio, fn){
@@ -148,14 +137,9 @@ exports.createAccount = function(req, res) {
         User.findOne({username: req.body.username.toUpperCase()}, function(err, user) {
             if (user) { res.status(401).send({message: 'Apologies - username already taken'}); return;}
             hashPasswordAndAddUser(req.body, function(err, user){
-                req.session.regenerate(function(){
-                      req.session.user = true;
-                      req.session.userDetails = user;
-                      if (user.isAdmin){
-                         req.session.admin = true;
-                      }
-                      res.status(200).send();
-                    });
+                jwt.createToken(user, function(err, token){
+                      res.status(200).json(token);  
+                   })
                 });
            })
        })

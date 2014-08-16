@@ -12,17 +12,17 @@ var formatTrademarks = require('../utils/convert-trademark-json')
 
 exports.processExcel = function(req, res){
     var opts = {};
-    opts.entity = req.session.userDetails.entity;
+    opts.entity = req.user.entity;
     opts.portfolio = req.body.name;
     // check name of portfolio against existing entity portfolios and return error if name already exists
-    checkNameOfPortfolio(req.body.name, req.session.userDetails.entity, function(err, done){
+    checkNameOfPortfolio(req.body.name, req.user.entity, function(err, done){
         if (err){
             res.status(401).send({err: "Portfolio name already in use"});
             return;
         }
         else {
             entities.updatePortfolio(opts.entity, opts.portfolio, function(err, entity){
-                user.addPortfolioToUser(req.session.userDetails._id, opts.portfolio, function(err, user){
+                user.addPortfolioToUser(req.user._id, opts.portfolio, function(err, user){
                 	createJson(req.files.spreadsheet.path, function(err, json){
 			    if (err){
 			         res.json({err: "File must be .xlxs"});

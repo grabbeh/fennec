@@ -1,9 +1,11 @@
 var express = require('express')
 , bodyParser = require('body-parser')
 , cookieParser = require('cookie-parser')
-, session = require('express-session')
 , serveStatic = require('serve-static')
 , mongoose = require('mongoose')
+
+, expressJwt = require('express-jwt')
+, jwtSecret = require('./server/config/jwt-secret')
 
 , https = require('https')
 , http = require('http')
@@ -22,6 +24,8 @@ var express = require('express')
 
 , app = express();
 
+app.use('/api', expressJwt({secret: jwtSecret.secret }));
+
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -30,10 +34,8 @@ app.all('*', function(req, res, next) {
 });
 
 app.use(bodyParser());
-app.use(cookieParser());
 app.use(multipart());
 app.use(serveStatic(__dirname + '/client'));
-app.use(session({ secret: 'keyboard cat', key: 'Katie cookie', proxy: true, cookie: { httpOnly: false }})); 
 
 var database = 'mongodb://' 
   + db.user + ':' 
@@ -53,14 +55,8 @@ job.setUpAgenda(database);
 // middleware
 
 function x(req, res, next) {
-  if (req.session.user) { next(); } 
+  if (req.user) { next(); } 
   else { res.redirect('/login'); }
-}
-
-function highlightCookie(req, res, next){
-         console.log(req.session);
-          next();
-    
 }
 
 // Routes
@@ -125,7 +121,7 @@ app.post('/api/expiriesForYear/:portfolio', x, main.getExpiriesForYear);
 // Users
 
 app.post('/api/addUser', user.addUser);
-app.post('/api/login', user.logIn);
+app.post('/auth/login', user.logIn);
 app.get('/api/isAdmin', user.isAdmin);
 app.get('/api/isUser', user.isUser);
 app.get('/api/getUser', user.getUser);
