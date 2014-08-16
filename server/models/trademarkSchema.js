@@ -19,7 +19,8 @@ var Trademark = new Schema({
     created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
     active: { type: Boolean, default: true },
-    imageUrl: String
+    imageUrl: String,
+    message: Array
 });
 
 Trademark.plugin(mongoosastic);

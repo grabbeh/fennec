@@ -149,7 +149,7 @@ app.post('/api/upload', image.uploadImage);
 
 // Message sending 
 
-app.post('/api/processMessage', contact.processMessage)
+app.post('/server/processMessage', contact.processMessage)
 
 app.get('*', function(req, res){
   res.sendfile(__dirname + '/client/views/index.html');

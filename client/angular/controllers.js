@@ -19,7 +19,7 @@ angular.module('app')
          }
          
          $.sendMessage = function(){
-             $http.post('/api/processMessage', {msg: $.msg})
+             $http.post('/server/processMessage', {msg: $.msg})
              	.success(function(response){
                     $.message = response.msg;
                })
