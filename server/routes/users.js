@@ -50,12 +50,7 @@ exports.updateUser = function(req, res){
 exports.logIn = function(req, res){
     authenticate(req.body.username, req.body.password, function(err, user){
        if (user) {
-           var payload = {};
-           payload._id = user._id;
-           payload.entity = user.entity;
-           payload.favourites = user.favourites;
-           payload.isAdmin = user.isAdmin;
-           jwt.createToken(payload, function(err, token){
+           jwt.createToken(user, function(err, token){
                res.status(200).send({token: token, user: user});  
            })
        }
