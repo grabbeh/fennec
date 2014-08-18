@@ -232,27 +232,25 @@ exports.getExpiriesForYear = function(req, res){
 	}
 
 exports.countryData = function(req, res){
-	res.json(countryData);
-}
-
-exports.filteredCountryData = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.getTrademarks(entity, portfolio, function(err, tms){
-        var arr = [];
-        var countries = _.groupBy(tms, 'country');
-        tms.forEach(function(tm){
-            countryData.forEach(function(c){
-                if (tm.country === undefined){
-                  //console.log(tm);
-                }
-                if (tm.country.alpha3 === c.alpha3){
-                    arr.push(c);
-                }
-            })
-        })
-        res.json(_.uniq(arr));
-  })
+	if (req.query && req.query.portfolio){
+		var entity = req.user.entity;
+		var portfolio = req.query.portfolio.replace(/%20/g, " ");
+		helper.getTrademarks(entity, portfolio, function(err, tms){
+		var arr = [];
+		var countries = _.groupBy(tms, 'country');
+		tms.forEach(function(tm){
+		     countryData.forEach(function(c){
+		          if (tm.country.alpha3 === c.alpha3){
+		                arr.push(c);
+		          }
+		     })
+		})
+		res.json(_.uniq(arr));
+	    })	
+	}
+	else {
+	     res.json(countryData);	
+	}
 }
 
 exports.search = function(req, res){
