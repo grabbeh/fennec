@@ -70,7 +70,6 @@ angular.module('app')
                 $http.post('/auth/login', { password: $.password, username: $.username })
                     .success(function(res){
                         $window.sessionStorage.token = res.token;
-                        $rootScope.user = res.user;
                         if (pathHolder.existingPath){
                              $location.path(pathHolder.returnPath());
                         }
