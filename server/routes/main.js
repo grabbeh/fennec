@@ -119,7 +119,7 @@ exports.listOfMarks = function(req, res){
 exports.listOfMarksInCountry = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.checkIfEUCountry(req.params.country, function(err, bool){
+    helper.checkIfEUCountry(req.query.country, function(err, bool){
         if (bool){
              var EU =  "European Union";
         }
