@@ -7,8 +7,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             controller: 'landingPageCtrl'
         }).
         when('/simple-search', {
-            templateUrl: '/partials/simple-search.html',
-            controller: 'simpleSearchCtrl'
+            templateUrl: '/partials/quick-search.html',
+            controller: 'quickSearchCtrl'
             resolve: {
                 user: function(userGetter){
                     return userGetter.isUser();
