@@ -122,8 +122,6 @@ angular.module('app')
               return $http.post('/api/editGroup/' + portfolio + '/' + mark, { trademark: trademark })
           },
           editMarksInCountry: function(portfolio, iso, trademark){
-              console.log(trademark)
-              //trademark.country.coordinates = _.map(trademark.country.coordinates.split(","), curry(parseInt));
               return $http.post('/api/editMarksInCountry/' + portfolio + '/' + iso, { trademark: trademark })
           },
           getExpiryDatesForGroup: function(portfolio, group){
