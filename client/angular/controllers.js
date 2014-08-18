@@ -1,17 +1,18 @@
 angular.module('app')
 
  	
- 	.controller('quickSearchCtrl', ['$scope', '$http', function($scope, $http){
+ 	.controller('quickSearchCtrl', ['$scope', '$http', 'trademarkReviser', function($scope, $http, trademarkReviser){
  			
  		 $http.get('/api/countryData')
 	            .success(function(data){
 	                $.countrydata = data;
 	            })
  		
- 		$http.get('/api/listOfMarks/' + $routeParams.portfolio)
-	              .success(function(data){
-	                  $.marks = data;
-	              })
+ 		
+ 		trademarkReviser.getListOfMarks($routeParams.portfolio)
+ 		     .then(function(response){
+ 			$.marks = data;
+ 		})
  		
  		$scope.submitQuery = function(){
  			
@@ -234,16 +235,16 @@ angular.module('app')
                 $.chartSubtitles = $filter('groupByStatus')($.trademarks);
             });
          
-           $http.get('/api/listOfMarks/' + $routeParams.portfolio)
-              .success(function(data){
-                  $.marks = data;
-              })
+           trademarkReviser.getListOfMarks($routeParams.portfolio)
+ 		     .then(function(response){
+ 			$.marks = data;
+ 		})
 	        
-	        $.showModal = function(trademark){
-	            $rootScope.modal = true;
-	            trademarkModal.deactivate();
-	            trademarkModal.activate({ trademark: trademark });
-	          };
+        $.showModal = function(trademark){
+            $rootScope.modal = true;
+            trademarkModal.deactivate();
+            trademarkModal.activate({ trademark: trademark });
+          };
             
             $.showEditGroupModal = function(){
                 $rootScope.modal = true;
