@@ -42,7 +42,7 @@ module.exports = {
             async.forEach(trademarks, function(tm, callback) {
                 var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
                     now = moment();
-                if (expiry.diff(now, 'days') === 0){
+                if (expiry.diff(now, 'days') === 0 && admin.entity === tm.entity){
                     var fileLocation = path.resolve(__dirname, '../email-templates/expired-trademark.html')
                     html.returnHtml(tm, '../email-templates/expired-trademark.html', function(err, html){
                          email.sendEmail(admin.email, "Trade mark portfolio alert", html, function(err, success){
@@ -66,7 +66,7 @@ module.exports = {
         user.getAllAdmins(function(err, admins){ 
             async.forEach(admins, function (admin, callback) {
                 async.forEach(admin.alertOptions, function (job, callback) {
-                    if (job.functionName === "sendAlertOnChange" && job.checked) {
+                    if (job.functionName === "sendAlertOnChange" && job.checked && admin.entity === trademark.entity) {
                         trademark.event = event;
                         var fileLocation = path.resolve(__dirname, '../email-templates/updated-trademark.html');
                         html.returnHtml(trademark, fileLocation, function(err, html){
