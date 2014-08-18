@@ -14,6 +14,9 @@ var express = require('express')
 , multipart = require('connect-multiparty')
 
 , db = require('./server/config/paid-db')
+, world = require('./server/routes/world')
+, country = require('./server/routes/country')
+, group = require('./server/routes/group')
 , main = require('./server/routes/main')
 , user = require('./server/routes/users')
 , helper = require('./server/routes/helper')
@@ -71,26 +74,28 @@ app.get('/download/downloadTrademarks', main.downloadTrademarks);
 // 
 app.post('/api/search', x, main.search);
 
+app.get('/api/searchTrademarks/:portfolio', x, main.searchTrademarks);
+
 // Country data (ISO, coordinates etc)
 
-app.get('/api/countryData', x, main.countryData);
+app.get('/api/countryData', x, world.countryData);
+
+// Provide geojson for group of marks
+
+app.get('/api/world/:portfolio/:group', x, world.worldForGroup);
 
 // Filtered world on basis of given list of marks
 
-app.post('/api/world/:portfolio', x, main.getFilteredWorld);
-
-// Provide geojson for whole portfolio
-
-app.get('/api/worldgroup/:portfolio/:group', x, main.getWorldGroup);
+app.post('/api/world/:portfolio', x, world.worldForListOfMarks);
 
 // Country-limited trade marks
 
-app.get('/api/country/:portfolio/:country', x, main.getCountry);
-app.post('/api/country/:portfolio/:country', x, main.filterCountry);
+app.get('/api/country/:portfolio/:country', x, country.marksForCountry);
+app.post('/api/country/:portfolio/:country', x, country.filterMarksForCountry);
 
 // Get group of marks
 
-app.get('/api/trademarks/:portfolio/:group', x, main.getGroup);
+app.get('/api/trademarks/:portfolio/:group', x, group.groupOfMarks);
 
 // Edit individual trade marks
 
@@ -101,13 +106,13 @@ app.delete('/api/trademark/:id', x, main.deleteTrademark);
 
 // List of marks
 
-app.get('/api/listOfMarks/:portfolio', x, main.listOfMarks);
+app.get('/api/listOfMarks/:portfolio', x, group.listOfMarks);
 
 // Edit portfolio
 
-app.post('/api/editGroup/:portfolio/:mark', x, main.editGroupOfMarks);
-app.post('/api/addLogoToGroup/:portfolio/:mark', x, main.addLogoToGroup);
-app.post('/api/editMarksInCountry/:portfolio/:alpha3', x, main.editMarksInCountry);
+app.post('/api/editGroup/:portfolio/:mark', x, group.editGroupOfMarks);
+app.post('/api/addLogoToGroup/:portfolio/:mark', x, group.addLogoToGroup);
+app.post('/api/editMarksInCountry/:portfolio', x, country.editMarksInCountry);
 
 // Expiry dates
 

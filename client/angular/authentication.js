@@ -49,7 +49,6 @@ angular.module('app')
             }
             
             userGetter.getUser().then(function(data){
-                console.log(data);
                 $rootScope.user = data;
             });
         

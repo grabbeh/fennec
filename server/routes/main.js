@@ -1,7 +1,6 @@
 var helper = require('./helper.js')
 , _ = require('underscore')
-, countryData = require('../data/country-data.json')
-, trademark = require('../models/trademarkSchema')
+, Trademark = require('../models/trademarkSchema')
 , async = require('async')
 , jobs = require('./jobs')
 , jwt = require('./jwt')
@@ -20,198 +19,26 @@ exports.downloadTrademarks = function(req, res){
     }) 
 }
 
-exports.getWorldGroup = function(req, res){
-	var entity = req.user.entity;
-	var portfolio = req.params.portfolio.replace(/%20/g, " ");
-	var group = req.params.group.replace(/%20/g, " ");
-	
-	async.parallel([ 
-        async.apply(helper.getGeoJSON),
-	    async.apply(helper.getTrademarks, entity, portfolio)
-	    ],
-	    function(err, results){
-           	var tms = results[1];
-	        if (group != "ALL MARKS"){
-		        var tms = _.groupBy(results[1], 'mark')[group];	
-		    }
-
-	       helper.convertPortfolioAndAddToGeoJSON(results[0], tms, function(err, gj){
-	      	   	 res.json(gj);
-	      	 });
-	    });
-	}
-
-exports.getGroup = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    var favourites = req.user.favourites;
-    var group = req.params.group.replace(/%20/g, " ");
-    helper.getTrademarks(entity, portfolio,  function(err, trademarks){
-        var tms = addFavouriteProperty(trademarks, favourites);
-    	if (group != "ALL MARKS"){
-            var tms = addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
-        }
-        res.json(tms);
-    });
-}
-
-function addFavouriteProperty(trademarks, favourites){
-     trademarks.forEach(function(tm){
-     	favourites.forEach(function(fav){
-     	    if (tm._id.equals(fav)){
-     	    	tm.favourite = true;
-     	    }
-     	})
-
-     })	
-     return trademarks;
-}
-
-
-
-exports.getCountry = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.checkIfEUCountry(req.params.country, function(err, bool){
-        if (bool){
-             var EU =  "European Union";
-        }
-        trademark.find()
-        	.and([{ entity: entity }, { portfolio: portfolio }])
-        	.or([{ 'country.alpha3': req.params.country}, { 'country.name': EU }])
-        	.lean()
-        	.exec(function(err, trademarks){
-        		res.json(trademarks);
-   		})
-    })
-
-}
-
-exports.filterCountry = function(req, res){
-    var keys = req.body.marks;
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    var country = req.params.country;
-    trademark.find({ portfolio: portfolio, entity: entity, 'country.alpha3': country}).lean().exec(function(err, trademarks){
-        if (keys.indexOf("ALL MARKS") > -1) { 
-	      var trademarks = trademarks; 
-        }
-        else { 
-            keys.unshift(_.groupBy(trademarks, 'mark'));
-            var trademarks = _.flatten(_.values(_.pick.apply(null, keys))); 
-        }
+exports.searchTrademarks = function(req, res){
+    queryTrademarks(req.user.entity, req.params.portfolio, req.query.country, req.query.group, function(err, trademarks){
         res.json(trademarks);
-    })  
+    })
 }
 
-// if country is provided in query, delimit list of marks by country
-
-exports.listOfMarks = function(req, res){
-   var entity = req.user.entity;
-   var portfolio = req.params.portfolio.replace(/%20/g, " ");
-   
-   if (req.query && req.query.country){
-   	helper.checkIfEUCountry(req.query.country, function(err, bool){
+function queryTrademarks(entity, portfolio, country, group, cb){
+    var portfolio = portfolio.replace(/%20/g, " ");
+    var mark = group.replace(/%20/g, " ");
+    helper.checkIfEUCountry(country, function(err, bool){
         if (bool){
              var EU =  "European Union";
         }
-        trademark.find()
-        	.and([{ entity: entity }, { portfolio: portfolio }])
-        	.or([{ 'country.alpha3': req.params.country}, { 'country.name': EU }])
-        	.lean()
-        	.exec(function(err, trademarks){
-        		createList(trademarks, function(err, list){
-        			res.json(list);
-        		})
-   		})
-	 })	
-   }
-   else {
-   	helper.getTrademarks(entity, portfolio, function(err, trademarks){
-          createList(trademarks, function(err, list){
-             res.json(list);  
-	   })
-     })	
-   }
- }
-
-function createList(trademarks, fn){
-    var list = [];
-          var keys = _.keys(_.groupBy(trademarks, 'mark'));
-          keys.forEach(function(k){
-              var o = {};
-              o.name = k;
-              o.checked = true;
-              list.push(o);
-          })
-     fn(null, list)
-}
-
-// Provides geojson file with trademarks filtered on basis of given array
-// 
-exports.getFilteredWorld = function(req, res){
-      var entity = req.user.entity;
-      var portfolio = req.params.portfolio.replace(/%20/g, " ");
-      var keys = req.body.marks;
-      
-      async.parallel([ 
-      	  async.apply(helper.getGeoJSON),
-	      async.apply(helper.getTrademarks, entity, portfolio)
-	      ],
-	      function(err, results){
-	      	   if (keys.indexOf("ALL MARKS") > -1) { 
-	      	   	var trademarks = results[1]; 
-	      	   }
-               else { keys.unshift(_.groupBy(results[1], 'mark'));
-                   var trademarks = _.flatten(_.values(_.pick.apply(null, keys))); 
-               }
-	      	   helper.convertPortfolioAndAddToGeoJSON(results[0], trademarks, function(err, gj){
-	      	   	 res.json(gj);
-	      	   });
-	      });
-	}
-
-exports.editGroupOfMarks = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    var mark = req.params.mark.replace(/%20/g, " ");
-    trademark.find({ entity: entity, portfolio: portfolio, mark: mark }).exec(function(err, trademarks){
-        async.forEach(trademarks, function(tm, callback){
-             tm.mark = req.body.trademark.mark;
-             tm.save();
-             callback();
-        }, function(err){
-            res.json({msg: "Name updated"})
+        Trademark.find()
+            .and([{ entity: entity }, { portfolio: portfolio }, { mark: mark}])
+            .or([{ 'country.alpha3': country}, { 'country.name': EU }])
+            .lean()
+            .exec(function(err, trademarks){
+                cb(null, trademarks);
         })
-    })
-}
-
-exports.addLogoToGroup = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    var mark = req.params.mark.replace(/%20/g, " ");
-    trademark.find({ entity: entity, portfolio: portfolio, mark: mark }).exec(function(err, trademarks){
-        async.forEach(trademarks, function(tm, callback){
-             tm.imageUrl = req.body.url;
-             tm.save();
-             callback();
-        }, function(err){
-            res.json({msg: "Image added to group"})
-        })
-    })
-}
-
-exports.editMarksInCountry = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    trademark.find({ entity: entity, portfolio: portfolio, 'country.alpha3': req.params.alpha3 }).exec(function(err, trademarks){
-        async.forEach(trademarks, function(tm, callback){
-          tm.country = req.body.trademark.country;
-          tm.save();
-          callback();
-       }, function(err){
-           res.json({ msg: "Details updated"})
-       })
     })
 }
 
@@ -231,28 +58,6 @@ exports.getExpiriesForYear = function(req, res){
 		})
 	}
 
-exports.countryData = function(req, res){
-	if (req.query && req.query.portfolio){
-		var entity = req.user.entity;
-		var portfolio = req.query.portfolio.replace(/%20/g, " ");
-		helper.getTrademarks(entity, portfolio, function(err, tms){
-		var arr = [];
-		var countries = _.groupBy(tms, 'country');
-		tms.forEach(function(tm){
-		     countryData.forEach(function(c){
-		          if (tm.country.alpha3 === c.alpha3){
-		                arr.push(c);
-		          }
-		     })
-		})
-		res.json(_.uniq(arr));
-	    })	
-	}
-	else {
-	     res.json(countryData);	
-	}
-}
-
 exports.search = function(req, res){
     //trademark.search( { query: req.body.query }, { hydrate: true}, function(err, results){ 
     /*
@@ -267,7 +72,7 @@ exports.search = function(req, res){
 	  }
     }
     */
-    trademark.search( { query: req.body.query }, { hydrate: true }, function(err, results){
+    Trademark.search( { query: req.body.query }, { hydrate: true }, function(err, results){
 	console.log(req.body);
     if (err){
         console.log(err);

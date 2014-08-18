@@ -6,9 +6,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/landing-page.html',
             controller: 'landingPageCtrl'
         }).
-        when('/simple-search/:portfolio', {
+        when('/quick-search/:portfolio', {
+            reloadOnSearch: false,
             templateUrl: '/partials/quick-search.html',
-            controller: 'quickSearchCtrl'
+            controller: 'quickSearchCtrl',
             resolve: {
                 user: function(userGetter){
                     return userGetter.isUser();
@@ -22,7 +23,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                     return userGetter.isUser();
                 }
             }
-            
         }).
     	when('/demo/:portfolio', {
             templateUrl: '/partials/admin.html',

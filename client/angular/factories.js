@@ -70,10 +70,10 @@ angular.module('app')
   .factory('geoJson', ['$http', 'userGetter', function($http, userGetter){
     var geoJson = {
         getWorldGroup: function(portfolio, group){
-            return $http.get('/api/worldgroup/' +  portfolio + '/' + group)
+            return $http.get('/api/world/' +  portfolio + '/' + group)
             	.then(function(response){
                     return response.data;
-	      })
+	        })
         },
         getExpiriesForYear: function(portfolio, year){
             return $http.post('/api/expiriesForYear/' + portfolio, { year: year })
@@ -93,7 +93,7 @@ angular.module('app')
       var trademarkReviser = {
       	
       	  getListOfMarks: function(portfolio, country){
-      	       var url = '/api/listOfMarks' + portfolio;
+      	       var url = '/api/listOfMarks/' + portfolio;
       	       if (country){
       	       	   var url = '/api/listOfMarks/' + portfolio + '?country=' + country;
       	       }	
@@ -121,8 +121,8 @@ angular.module('app')
           editGroup: function(portfolio, mark, trademark){
               return $http.post('/api/editGroup/' + portfolio + '/' + mark, { trademark: trademark })
           },
-          editMarksInCountry: function(portfolio, iso, trademark){
-              return $http.post('/api/editMarksInCountry/' + portfolio + '/' + iso, { trademark: trademark })
+          editMarksInCountry: function(portfolio, country, trademark){
+              return $http.post('/api/editMarksInCountry/' + portfolio + '?country=' + country, { trademark: trademark })
           },
           getExpiryDatesForGroup: function(portfolio, group){
               return $http.get('/api/expirydates/' + portfolio + '/' + group)

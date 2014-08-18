@@ -1,22 +1,62 @@
 angular.module('app')
 
- 	
- 	.controller('quickSearchCtrl', ['$scope', '$http', 'trademarkReviser', function($scope, $http, trademarkReviser){
- 			
- 		 $http.get('/api/countryData')
-	            .success(function(data){
-	                $.countrydata = data;
-	            })
+ 	.controller('quickSearchCtrl', ['$scope', '$http', '$routeParams', '$location', 'trademarkReviser', function($scope, $http, $routeParams, $location, trademarkReviser){
+ 		var $ = $scope;
+ 		$http.get('/api/countryData')
+            .success(function(data){
+                $.countrydata = data;
+            })
+
+        trademarkReviser.getListOfMarks($routeParams.portfolio)
+         .then(function(data){
+            $.marks = data;
+        })
+
+        $.searchTrademarks = function(tm, country){
+            return $http.get('/api/searchTrademarks/' + $routeParams.portfolio + '?group=' + tm + '&country=' + country)
+               .then(function(response){
+                    $location.search({ group: tm, country: country})
+                    return response.data;   
+            });
+        }
+
+        $.showGroup = function(group){
+            $.group = group;
+            if ($.country === undefined){
+                $.message = "Please provide a country";
+                return;
+            }
+
+            $.searchTrademarks($.group.name, $.country.alpha3).then(function(res){
+                console.log(res)
+                if (res.length > 0){
+                    $.result = "YES! - use the 'R' symbol for printed materials"
+                }
+                else {
+                    $.result = "NO :( - use the 'TM' symbol for printed materials"
+                }
+            })
+            
+        }
  		
- 		
- 		trademarkReviser.getListOfMarks($routeParams.portfolio)
- 		     .then(function(response){
- 			$.marks = data;
- 		})
- 		
- 		$scope.submitQuery = function(){
- 			
+ 		$scope.quickSearch = function(){
+            if ($.group === undefined){
+                $.message = "Please select a mark";
+                return;
+            }
+
+            $.searchTrademarks($.group.name, $.country.alpha3).then(function(res){
+                console.log(res);
+                if (res.length > 0){
+                    $.result = "YES! - use the 'R' symbol for printed materials"
+                }
+                else {
+                    $.result = "NO :( - use the 'TM' symbol for printed materials"
+                }
+            })
+           
  		}
+
  		
  	}])
 
@@ -102,7 +142,7 @@ angular.module('app')
             $http.get('/api/countryData?portfolio=' + $routeParams.portfolio)
             	.success(function(countries){
                     $.countries = $filter('orderBy')(countries, 'name');
-	    })
+	        })
 
             $.$on('country.click', function(e, l){
                 $.$apply(function(){
@@ -111,7 +151,7 @@ angular.module('app')
             })
             
             $.showGroup = function(group){
-            	$location.search('portfolio', group.name);
+            	
                 trademarkReviser.getGroup($routeParams.portfolio, group.name).then(function(trademarks){
                     $.trademarks = trademarks;
                 })
@@ -123,6 +163,7 @@ angular.module('app')
                 })
                 $.marks = $filter('unTickAllExceptSelected')($.marks, group);
                 $.activeMark = group.name;
+
             }
             
             $.showModal = function(trademark){
@@ -237,7 +278,7 @@ angular.module('app')
          
            trademarkReviser.getListOfMarks($routeParams.portfolio)
  		     .then(function(response){
- 			$.marks = data;
+ 			$.marks = response;
  		})
 	        
         $.showModal = function(trademark){
@@ -346,14 +387,13 @@ angular.module('app')
             })
 	        
 	        $.showModal = function(trademark){
-            
 	            $rootScope.modal = true;
 	            trademarkModal.deactivate();
 	            trademarkModal.activate({ trademark: trademark });
 	          };
             
             $.sendMarksToServer = function(marks){
-                $http.post('/api/country/' + $routeParams.portfolio + "/" + $routeParams.iso, { marks: $filter('extractCheckedMarks')(marks) })
+                $http.post('/api/country/' + $routeParams.portfolio + "/" + $location.search().country, { marks: $filter('extractCheckedMarks')(marks) })
                      .success(function(trademarks){
                          $.trademarks = trademarks;
                      }); 
@@ -361,7 +401,7 @@ angular.module('app')
             
             $.showEditCountryModal = function(){
                 $rootScope.modal = true;
-                editCountryModal.activate({ trademark: $.countryTM, iso: $routeParams.iso, portfolio: $routeParams.portfolio });
+                editCountryModal.activate({ trademark: $.countryTM, iso: $location.search().country, portfolio: $routeParams.portfolio });
             };
           
          }])

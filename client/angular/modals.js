@@ -115,8 +115,8 @@ angular.module('app')
                     trademarkReviser.editMarksInCountry($routeParams.portfolio, $.iso, trademark)
                       .success(function(data){
                           $.message = data.msg;
-				})
-             }
+				    })
+                }
          }])
 
 	.controller('editCountryCtrl', ['$scope', '$rootScope', 'trademarkReviser', 'editCountryModal',
@@ -131,9 +131,9 @@ angular.module('app')
                     trademarkReviser.editMarksInCountry($.portfolio, $.iso, trademark)
                       .success(function(data){
                           $.message = data.msg;
-			})
-             }
-         }])
+			         })
+                }
+        }])
 
 		.controller('uploadImageCtrl', ['$scope', '$routeParams', '$rootScope', '$http', 'uploadImageModal',
          function($scope, $routeParams, $rootScope, $http, uploadImageModal){
