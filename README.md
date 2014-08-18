@@ -34,5 +34,7 @@ Please get in touch if you would like to know more about the functionality offer
 
 **Third party code**
 
-- Use is made of https://github.com/mledoze/countries for the purposes of ISO codes and country coordinates. This is licensed under http://opendatacommons.org/licenses/odbl/1.0/. 
+In addition to the packages listed in `package.json` use is also made of:
+
+- https://github.com/mledoze/countries for the purposes of ISO codes and country coordinates. This is licensed under http://opendatacommons.org/licenses/odbl/1.0/. 
 - Geojson for the world is from https://github.com/johan/world.geo.json.
