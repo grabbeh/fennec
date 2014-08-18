@@ -82,7 +82,7 @@ angular.module('app')
             $http.get('/api/filteredCountryData/' + $routeParams.portfolio)
             	.success(function(countries){
                     $.countries = $filter('orderBy')(countries, 'name');
-		})
+	    })
 
             $.$on('country.click', function(e, l){
                 $.$apply(function(){
@@ -90,18 +90,19 @@ angular.module('app')
                 })
             })
             
-            $.showGroup = function(tm){
-                trademarkReviser.getGroup($routeParams.portfolio, tm.name).then(function(trademarks){
+            $.showGroup = function(group){
+            	$location.search('portfolio', group.name);
+                trademarkReviser.getGroup($routeParams.portfolio, group.name).then(function(trademarks){
                     $.trademarks = trademarks;
                 })
-                geoJson.getWorldGroup($routeParams.portfolio, tm.name).then(function(geojson){
+                geoJson.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
                     $.geojson = geojson;
                 })
-                chartGetter.barChartDataForGroup($routeParams.portfolio, tm.name).then(function(barChartData){
+                chartGetter.barChartDataForGroup($routeParams.portfolio, group.name).then(function(barChartData){
                     $.chart = barChartData;
                 })
-                $.marks = $filter('unTickAllExceptSelected')($.marks, tm);
-                $.activeMark = tm.name;
+                $.marks = $filter('unTickAllExceptSelected')($.marks, group);
+                $.activeMark = group.name;
             }
             
             $.showModal = function(trademark){
@@ -204,7 +205,6 @@ angular.module('app')
 		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJson', 'trademarkReviser', 'editTrademarkModal', 'trademarkModal', 'editGroupModal', 'uploadImageModal',
 		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJson, trademarkReviser, editTrademarkModal, trademarkModal, editGroupModal, uploadImageModal){
 	        var $ = $scope;
-                console.log($location.search().group);
 	        geoJson.getWorldGroup($routeParams.portfolio, $location.search().group).then(function(data){
 	            $.geojson = data;
 	        });
@@ -234,15 +234,12 @@ angular.module('app')
             $.goToGroup = function(obj){
             	$location.search('group', obj.name);
             	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
-
 	            $.geojson = data;
-	            
 	        });
-            	
             	trademarkReviser.getGroup($routeParams.portfolio, obj.name).then(function(data){
-                $.trademarks = data;
-                $.chartSubtitles = $filter('groupByStatus')($.trademarks);
-            });
+                    $.trademarks = data;
+        	    $.chartSubtitles = $filter('groupByStatus')($.trademarks);
+            	});
             	
             	
             }
