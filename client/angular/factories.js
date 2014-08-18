@@ -91,6 +91,13 @@ angular.module('app')
       }
 
       var trademarkReviser = {
+      	
+      	  getListOfMarks: function(portfolio){
+      	       return $http.get('/api/listOfMarks/' + portfolio)
+	            .then(function(response){
+	                 return response.data;
+	      })
+	  },
           anyMarks: function(){
             return $http.get('/api/anyMarks');
           },
