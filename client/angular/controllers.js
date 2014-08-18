@@ -6,7 +6,6 @@ angular.module('app')
             $http.post('/auth/login', { password: "demo", username: "demo@demo.com" })
                 .success(function(res){
                     $window.sessionStorage.token = res.token;
-                    $rootScope.user = res.user;
                     $location.path('/demo/ACME INC');
                 })
                 .error(function(err){
