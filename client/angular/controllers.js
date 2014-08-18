@@ -118,6 +118,7 @@ angular.module('app')
             $.geojson = world;
             $.trademarks = trademarks;
             $.user = $rootScope.user;
+            console.log($rootScope.user)
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({ name: "ALL MARKS" })
             $.chart = barChartData;
