@@ -1,1 +1,36 @@
-<div></div>
+<div>Quick search</div>
+<div>Select a trade mark and a country</div>
+
+<div class="row">
+  
+  <div class="one-half-container">
+        <div class="group-mark-list" mg-group-selector marks="marks" title="Show group of marks" go-to-group="showGroup"></div>
+  </div>
+  
+  IN
+ 
+  <div class="one-half-container last">
+    	<div class="small-text">Country</div>
+    	      <select class="form-select" ng-model="trademark.country" ng-options="country.name for country in countrydata">
+    	        <option value=""> {{ trademark.country.name }} </option>
+    	      </select>
+      	 </div>
+  </div>
+</div>
+  
+  
+  <div> {{ result }} </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
