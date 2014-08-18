@@ -317,10 +317,10 @@ angular.module('app')
 		    }
             });
 
-            $http.get('/api/listOfMarks/' + $routeParams.portfolio + '/' + $location.search().country)
-         	   .success(function(list){
-          	      $.marks = list;
-            })
+	    trademarkReviser.getListOfMarks($routeParams.portfolio, $location.search().country)
+	    	.then(function(list){
+	    		$.marks = list;
+	    	})
          
             $.$watch('trademarks', function(data){
                 if (!data){
