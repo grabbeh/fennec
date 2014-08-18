@@ -72,7 +72,7 @@ angular.module('app')
     
           $.statuses = ["Registered", "Published", "Pending"];
 
-        $http.get('/api/countrydata')
+        $http.get('/api/countryData')
             .success(function(data){
                 $.countrydata = data;
             })
