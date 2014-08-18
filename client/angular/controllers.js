@@ -35,7 +35,7 @@ angular.module('app')
                 'trademarkReviser',
                 'geoJson',
                 'world',
-                'user',
+                //'user',
                 'userGetter',
                 'chartGetter', 
                 'barChartData',
@@ -54,7 +54,7 @@ angular.module('app')
                  trademarkReviser,
                  geoJson,
                  world,
-                 user,
+                  //user,
                  userGetter,
                  chartGetter, 
                  barChartData,
@@ -117,7 +117,7 @@ angular.module('app')
             $.activePortfolio = $routeParams.portfolio;
             $.geojson = world;
             $.trademarks = trademarks;
-            $.user = user;
+            $.user = $rootScope.user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({ name: "ALL MARKS" })
             $.chart = barChartData;
