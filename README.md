@@ -32,4 +32,7 @@ Once import is successful, you can navigate to `/select-portfolio` to see your p
 
 Please get in touch if you would like to know more about the functionality offered by the app or are interested in getting me to configure your portfolio for you.
 
-Use is made of https://github.com/mledoze/countries for the purposes of ISO codes and country coordinates. This is licensed under http://opendatacommons.org/licenses/odbl/1.0/. Geojson for the world is from https://github.com/johan/world.geo.json.
+**Third party code**
+
+- Use is made of https://github.com/mledoze/countries for the purposes of ISO codes and country coordinates. This is licensed under http://opendatacommons.org/licenses/odbl/1.0/. 
+- Geojson for the world is from https://github.com/johan/world.geo.json.
