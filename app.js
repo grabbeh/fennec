@@ -101,7 +101,6 @@ app.delete('/api/trademark/:id', x, main.deleteTrademark);
 
 // List of marks
 
-app.get('/api/listOfMarks/:portfolio', x, main.listOfMarksInCountry)
 app.get('/api/listOfMarks/:portfolio', x, main.listOfMarks);
 
 // Edit portfolio
