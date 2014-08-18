@@ -73,8 +73,8 @@ app.post('/api/search', x, main.search);
 
 // Country data (ISO, coordinates etc)
 
-app.get('/api/countrydata', x, main.countryData);
-app.get('/api/filteredCountryData/:portfolio', x, main.filteredCountryData);
+app.get('/api/countryData', x, main.countryData);
+//app.get('/api/filteredCountryData/:portfolio', x, main.filteredCountryData);
 
 // Filtered world on basis of given list of marks
 
