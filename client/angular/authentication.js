@@ -68,7 +68,7 @@ angular.module('app')
             }
             
             $.login = function(){
-                $http.post('/auth/login', { password: $.password, username: $.username })
+                $http.post('/server/login', { password: $.password, username: $.username })
                     .success(function(res){
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
