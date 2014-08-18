@@ -121,7 +121,7 @@ app.post('/api/expiriesForYear/:portfolio', x, main.getExpiriesForYear);
 // Users
 
 app.post('/api/addUser', user.addUser);
-app.post('/auth/login', user.logIn);
+app.post('/server/login', user.logIn);
 app.get('/api/isAdmin', user.isAdmin);
 app.get('/api/isUser', user.isUser);
 app.get('/api/getUser', user.getUser);
@@ -132,8 +132,8 @@ app.post('/api/updateUser', user.updateUser);
 // Passwords
 
 app.post('/api/updatePassword', user.updatePassword);
-app.post('/api/requestPasswordReset', user.requestPasswordReset);
-app.post('/api/passwordReset/:id', user.resetPassword);
+app.post('/server/requestPasswordReset', user.requestPasswordReset);
+app.post('/auth/passwordReset/:id', user.resetPassword);
 
 // Account creation
 
@@ -141,11 +141,11 @@ app.post('/api/createAccount', user.createAccount);
 
 // Spreadsheet upload
 
-app.post('/api/spreadsheet', spreadsheet.processExcel);
+app.post('/api/spreadsheet', x, spreadsheet.processExcel);
 
 // Image upload
 
-app.post('/api/upload', image.uploadImage);
+app.post('/api/upload', x, image.uploadImage);
 
 // Message sending 
 
