@@ -133,7 +133,7 @@ app.post('/api/updateUser', user.updateUser);
 
 app.post('/api/updatePassword', user.updatePassword);
 app.post('/server/requestPasswordReset', user.requestPasswordReset);
-app.post('/auth/passwordReset/:id', user.resetPassword);
+app.post('/server/passwordReset/:id', user.resetPassword);
 
 // Account creation
 
