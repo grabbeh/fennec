@@ -6,7 +6,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/landing-page.html',
             controller: 'landingPageCtrl'
         }).
-        when('/simple-search', {
+        when('/simple-search/:portfolio', {
             templateUrl: '/partials/quick-search.html',
             controller: 'quickSearchCtrl'
             resolve: {
@@ -15,7 +15,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }).
-        when('/home', {
+        when('/home/:portfolio', {
             templateUrl: '/partials/portfolio-home.html',
             resolve: {
                 user: function(userGetter){
