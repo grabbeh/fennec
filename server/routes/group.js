@@ -36,13 +36,14 @@ exports.listOfMarks = function(req, res){
    var portfolio = req.params.portfolio.replace(/%20/g, " ");
    
    if (req.query && req.query.country){
-   	helper.checkIfEUCountry(req.query.country, function(err, bool){
+    var country = req.query.country;
+   	helper.checkIfEUCountry(country, function(err, bool){
         if (bool){
              var EU =  "European Union";
         }
         Trademark.find()
         	.and([{ entity: entity }, { portfolio: portfolio }])
-        	.or([{ 'country.alpha3': req.params.country}, { 'country.name': EU }])
+        	.or([{ 'country.alpha3': country}, { 'country.name': EU }])
         	.lean()
         	.exec(function(err, trademarks){
         		createList(trademarks, function(err, list){
