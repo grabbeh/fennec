@@ -120,6 +120,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
         when('/admin/:portfolio', {
+            reloadOnSearch: false,
             templateUrl: '/partials/admin.html',
             controller: 'adminCtrl',
             resolve: {
