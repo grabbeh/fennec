@@ -401,7 +401,7 @@ angular.module('app')
             if ($.newPassword != $.duplicatePassword){
                 $.message = "The two passwords don't match!";
             }
-            $http.post('/api/passwordReset/' + $routeParams.id, { newPassword: $.newPassword, duplicatePassword: $.duplicatePassword})
+            $http.post('/server/passwordReset/' + $routeParams.id, { newPassword: $.newPassword, duplicatePassword: $.duplicatePassword})
                 .success(function(){
                     $.message = "Password updated";
                     $timeout(function(){
@@ -422,7 +422,7 @@ angular.module('app')
         };
 
         $.requestPasswordReset = function(){
-            $http.post('/api/requestPasswordReset', { email: $.email })
+            $http.post('/server/requestPasswordReset', { email: $.email })
                 .success(function(){
                     $.message = "If the above email address is in our database, you have been sent an email allowing you to change your password";
                 })
