@@ -104,22 +104,14 @@ exports.filterCountry = function(req, res){
     })  
 }
 
+// if country is provided in query, delimit list of marks by country
+
 exports.listOfMarks = function(req, res){
    var entity = req.user.entity;
    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-   helper.getTrademarks(entity, portfolio, function(err, trademarks){
-          createList(trademarks, function(err, list){
-             res.json(list);  
-	   })
-     })
- }
-
-// Create list of marks on basis
-
-exports.listOfMarksInCountry = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.checkIfEUCountry(req.query.country, function(err, bool){
+   
+   if (req.query && req.query.country){
+   	helper.checkIfEUCountry(req.query.country, function(err, bool){
         if (bool){
              var EU =  "European Union";
         }
@@ -132,8 +124,16 @@ exports.listOfMarksInCountry = function(req, res){
         			res.json(list);
         		})
    		})
-    })	
-}
+	 })	
+   }
+   else {
+   	helper.getTrademarks(entity, portfolio, function(err, trademarks){
+          createList(trademarks, function(err, list){
+             res.json(list);  
+	   })
+     })	
+   }
+ }
 
 function createList(trademarks, fn){
     var list = [];
