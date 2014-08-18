@@ -93,9 +93,9 @@ angular.module('app')
       var trademarkReviser = {
       	
       	  getListOfMarks: function(portfolio, country){
-      	       var url = '/api/listOfMarks';
+      	       var url = '/api/listOfMarks' + portfolio;
       	       if (country){
-      	       	   var url = '/api/listOfMarks?country=' + country;
+      	       	   var url = '/api/listOfMarks/' + portfolio + '?country=' + country;
       	       }	
       	  	
       	       return $http.get(url)
