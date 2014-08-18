@@ -79,7 +79,7 @@ angular.module('app')
 
             };
             
-            $http.get('/api/filteredCountryData/' + $routeParams.portfolio)
+            $http.get('/api/countryData/?portfolio=' + $routeParams.portfolio)
             	.success(function(countries){
                     $.countries = $filter('orderBy')(countries, 'name');
 	    })
