@@ -210,6 +210,7 @@ angular.module('app')
 	        });
         
             trademarkReviser.getGroup($routeParams.portfolio, $routeParams.group).then(function(data){
+            	$.title = $location.search().group;
                 $.trademarks = data;
                 $.chartSubtitles = $filter('groupByStatus')($.trademarks);
             });
@@ -233,6 +234,7 @@ angular.module('app')
 
             $.goToGroup = function(obj){
             	$location.search('group', obj.name);
+            	$.title = $location.search().group;
             	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
 	            $.geojson = data;
 	        });
