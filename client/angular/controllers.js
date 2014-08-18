@@ -3,7 +3,7 @@ angular.module('app')
 	.controller('landingPageCtrl', ['$scope', '$window', '$http', 'userGetter', '$location', '$rootScope', function($scope, $window, $http, userGetter, $location, $rootScope){
        var $ = $scope;
        $.loadDemo = function(){
-            $http.post('/auth/login', { password: "demo", username: "demo@demo.com" })
+            $http.post('/server/login', { password: "demo", username: "demo@demo.com" })
                 .success(function(res){
                     $window.sessionStorage.token = res.token;
                     $rootScope.user = true;
