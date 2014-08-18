@@ -74,7 +74,6 @@ app.post('/api/search', x, main.search);
 // Country data (ISO, coordinates etc)
 
 app.get('/api/countryData', x, main.countryData);
-//app.get('/api/filteredCountryData/:portfolio', x, main.filteredCountryData);
 
 // Filtered world on basis of given list of marks
 
@@ -102,8 +101,8 @@ app.delete('/api/trademark/:id', x, main.deleteTrademark);
 
 // List of marks
 
-app.get('/api/listOfMarks/:portfolio/:country', x, main.filterListOfMarks)
-app.get('/api/listOfMarks/:portfolio', x, main.getListOfMarks);
+app.get('/api/listOfMarks/:portfolio/:country', x, main.listOfMarksInCountry)
+app.get('/api/listOfMarks/:portfolio', x, main.listOfMarks);
 
 // Edit portfolio
 
