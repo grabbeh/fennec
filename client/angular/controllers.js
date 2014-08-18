@@ -1,5 +1,24 @@
 angular.module('app')
 
+ 	
+ 	.controller('quickSearchCtrl', ['$scope', '$http', function($scope, $http){
+ 			
+ 		 $http.get('/api/countryData')
+	            .success(function(data){
+	                $.countrydata = data;
+	            })
+ 		
+ 		$http.get('/api/listOfMarks/' + $routeParams.portfolio)
+	              .success(function(data){
+	                  $.marks = data;
+	              })
+ 		
+ 		$scope.submitQuery = function(){
+ 			
+ 		}
+ 		
+ 	}])
+
      .controller('landingPageCtrl', ['$scope', '$window', '$http', 'userGetter', '$location', '$rootScope', function($scope, $window, $http, userGetter, $location, $rootScope){
        var $ = $scope;
        $.loadDemo = function(){
