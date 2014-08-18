@@ -6,6 +6,24 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/landing-page.html',
             controller: 'landingPageCtrl'
         }).
+        when('/simple-search', {
+            templateUrl: '/partials/simple-search.html',
+            controller: 'simpleSearchCtrl'
+            resolve: {
+                user: function(userGetter){
+                    return userGetter.isUser();
+                }
+            }
+        }).
+        when('/home', {
+            templateUrl: '/partials/portfolio-home.html',
+            resolve: {
+                user: function(userGetter){
+                    return userGetter.isUser();
+                }
+            }
+            
+        }).
     	when('/demo/:portfolio', {
             templateUrl: '/partials/admin.html',
             controller: 'adminCtrl',
