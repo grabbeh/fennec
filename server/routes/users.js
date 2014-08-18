@@ -28,7 +28,9 @@ exports.isAdmin = function(req, res){
 
 exports.getUser = function(req, res){
     if (req.user){
-         res.json(req.user);
+        User.find({ _id: req.user._id}, function(err, user){
+            res.json(user);
+        })
     }
     else {
         res.status(401).send();
