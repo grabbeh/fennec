@@ -104,7 +104,7 @@ exports.filterCountry = function(req, res){
     })  
 }
 
-exports.getListOfMarks = function(req, res){
+exports.listOfMarks = function(req, res){
    var entity = req.user.entity;
    var portfolio = req.params.portfolio.replace(/%20/g, " ");
    helper.getTrademarks(entity, portfolio, function(err, trademarks){
@@ -114,9 +114,9 @@ exports.getListOfMarks = function(req, res){
      })
  }
 
-// Provides basic list of marks on basis of provided array 
+// Create list of marks on basis
 
-exports.filterListOfMarks = function(req, res){
+exports.listOfMarksInCountry = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.checkIfEUCountry(req.params.country, function(err, bool){
