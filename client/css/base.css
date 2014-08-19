@@ -1306,6 +1306,11 @@ font-weight: bold;
 margin-top: 15px;
 }
 
+.qs-wording {
+	float: left;
+	padding-top:10px;
+}
+
 /* MOBILE RESPONSIVE CHANGE */
 
 @media handheld, only screen and (max-width: 700px) {
