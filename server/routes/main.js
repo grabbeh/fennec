@@ -20,20 +20,20 @@ exports.downloadTrademarks = function(req, res){
 }
 
 exports.searchTrademarks = function(req, res){
-    queryTrademarks(req.user.entity, req.params.portfolio, req.query.country, req.query.group, function(err, trademarks){
+    queryTrademarks(req.user.entity, req.params.portfolio, req.query.country, req.query.group, "Registered", function(err, trademarks){
         res.json(trademarks);
     })
 }
 
-function queryTrademarks(entity, portfolio, country, group, cb){
+function queryTrademarks(entity, portfolio, country, group, status, cb){
     var portfolio = portfolio.replace(/%20/g, " ");
     var mark = group.replace(/%20/g, " ");
-    helper.checkIfEUCountry(country, function(err, bool){
-        if (bool){
+    helper.checkIfEUCountry(country, function(err, result){
+        if (result){
              var EU =  "European Union";
         }
         Trademark.find()
-            .and([{ entity: entity }, { portfolio: portfolio }, { mark: mark}])
+            .and([{ entity: entity }, { portfolio: portfolio }, { mark: mark}, {status: status}])
             .or([{ 'country.alpha3': country}, { 'country.name': EU }])
             .lean()
             .exec(function(err, trademarks){
