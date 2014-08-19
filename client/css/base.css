@@ -65,7 +65,7 @@
 
 .two-fifths-container {
     margin-right: 2%;
-    width: 40%;
+    width: 38%;
     min-height: 1px;
     float: left;
 }
@@ -1310,6 +1310,12 @@ margin-top: 15px;
 	float: left;
 	padding-top:10px;
 	margin-right: 20px;
+}
+
+.qs-wording-last {
+	float: left;
+	padding-top: 10px;
+	margin-left: 20px;
 }
 
 /* MOBILE RESPONSIVE CHANGE */
