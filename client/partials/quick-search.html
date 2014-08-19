@@ -1,4 +1,8 @@
 <div class="fixed-container">
+
+<div class="quick-search-container">
+
+
 <div class="row">
 <div>Quick search</div>
 <div>Select a trade mark and a country</div>
@@ -6,22 +10,27 @@
 <div class="row">
   
   <div class="one-half-container">
+      <div class="quick-search-mark-selector">
         <div go-to-group="showGroup" mg-group-selector marks="marks" title="Select a trade mark"></div>
+      </div>
   </div>
   
   
  
   <div class="one-half-container last">
+      <div class="quick-search-country-selector">
     	     <select 
              ng-change="quickSearch()" class="group-mark-select" ng-model="country" ng-options="country.name for country in countrydata">
     	        <option value="">Select a country </option>
     	      </select>
       	 </div>
+      </div>
   </div>
 
   
   <div ng-show="message"> {{ message }} </div>
-  <p><h1> {{ result }} </h1></p>
+  <div class="quick-search-result"><h1> {{ result }} </div>
+  </div>
 </div>
   
   
