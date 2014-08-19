@@ -23,9 +23,11 @@
              ng-change="quickSearch()" class="group-mark-select" ng-model="country" ng-options="country.name for country in countrydata">
     	        <option value="">Select a country </option>
     	      </select>
-      	 </div>
       </div>
-  </div>
+   </div>
+   <div class="qs-wording">?</div>
+</div>
+  
 
   <div class="quick-search-msg" ng-show="message"> {{ message }} </div>
   <div class="quick-search-result"> {{ result }} </div>
