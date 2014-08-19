@@ -617,7 +617,7 @@ input::-webkit-inner-spin-button {
 
 @-moz-document url-prefix() {
     .group-mark-select {
-        padding-top: 8px;
+        padding-top: 4px;
     }
 }
 
