@@ -1273,7 +1273,20 @@ margin: 0px 10px 10px 0px;
 .form-title {
     padding: 10px 0 10px 0;
 }
+/* QUICK SEARCH PAGE */
 
+.quick-search-container {
+	padding: 25px;
+}
+
+.quick-search-title {
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+.quick-search-subtitle {
+	margin-bottom: 10px;
+}
 
 /* MOBILE RESPONSIVE CHANGE */
 
