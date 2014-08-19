@@ -1294,7 +1294,9 @@ margin: 0px 10px 10px 0px;
 }
 
 .quick-search-result {
-     	
+     	font-size: 25px;
+font-weight: bold;
+margin-top: 15px;
 }
 
 /* MOBILE RESPONSIVE CHANGE */
