@@ -63,6 +63,13 @@
     float: left;
 }
 
+.two-fifths-container {
+    margin-right: 3.8%;
+    width: 40%;
+    min-height: 1px;
+    float: left;
+}
+
 .one-third-container {
     margin-right: 2%;
     width: 31%;
