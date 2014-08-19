@@ -1,10 +1,10 @@
 angular.module('app')
 
- 	.controller('quickSearchCtrl', ['$scope', '$http', '$routeParams', '$location', 'trademarkReviser', function($scope, $http, $routeParams, $location, trademarkReviser){
+ 	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkReviser', function($scope, $filter, $http, $routeParams, $location, trademarkReviser){
  		var $ = $scope;
  		$http.get('/api/countryData')
-            .success(function(data){
-                $.countrydata = data;
+            .success(function(countries){
+                $.countrydata =  $filter('orderBy')(countries, 'name');
             })
 
         trademarkReviser.getListOfMarks($routeParams.portfolio)
