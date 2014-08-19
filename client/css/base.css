@@ -1289,6 +1289,14 @@ margin: 0px 10px 10px 0px;
 	margin-bottom: 10px;
 }
 
+.quick-search-msg {
+	margin-top: 10px;
+}
+
+.quick-search-result {
+     	
+}
+
 /* MOBILE RESPONSIVE CHANGE */
 
 @media handheld, only screen and (max-width: 700px) {
