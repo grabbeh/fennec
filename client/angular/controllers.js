@@ -28,7 +28,6 @@ angular.module('app')
             }
 
             $.searchTrademarks($.group.name, $.country.alpha3).then(function(res){
-                console.log(res)
                 $scope.message = "";
                 if (res.length > 0){
                     $.result = "YES! - use the 'R' symbol for printed materials"
@@ -40,14 +39,14 @@ angular.module('app')
             
         }
  		
- 		$scope.quickSearch = function(){
+ 	$scope.quickSearch = function(){
             if ($.group === undefined){
                 $.message = "Please select a mark";
                 return;
             }
 
             $.searchTrademarks($.group.name, $.country.alpha3).then(function(res){
-                console.log(res);
+                 $scope.message = "";
                 if (res.length > 0){
                     $.result = "YES! - use the 'R' symbol for printed materials"
                 }
