@@ -8,16 +8,16 @@
 <div class="quick-search-subtitle">Select a trade mark and a country</div>
 </div>
 <div class="row">
-  <div>Is</div>
-  <div class="one-half-container">
+  <span class="qs-wording">Is</span>
+  <div class="two-fifths-container">
       <div class="quick-search-mark-selector">
         <div go-to-group="showGroup" mg-group-selector marks="marks" title="Select a trade mark"></div>
       </div>
   </div>
   
-  <div>registered in </div>
+  <span class="qs-wording">registered in </span>
  
-  <div class="one-half-container last">
+  <div class="two-fifths-container last">
       <div class="quick-search-country-selector">
     	     <select 
              ng-change="quickSearch()" class="group-mark-select" ng-model="country" ng-options="country.name for country in countrydata">
