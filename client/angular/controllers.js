@@ -23,12 +23,13 @@ angular.module('app')
         $.showGroup = function(group){
             $.group = group;
             if ($.country === undefined){
-                $.message = "Please provide a country";
+                $.message = "Now provide a country";
                 return;
             }
 
             $.searchTrademarks($.group.name, $.country.alpha3).then(function(res){
                 console.log(res)
+                $scope.message = "";
                 if (res.length > 0){
                     $.result = "YES! - use the 'R' symbol for printed materials"
                 }
