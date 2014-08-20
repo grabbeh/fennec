@@ -24,7 +24,7 @@ angular.module('app')
 			return _.uniq(_.flatten(newArray))
 		}
 		
-	}
+	})
 	
 	.filter('favouriteMarks', function(){
 		return function(arr){
