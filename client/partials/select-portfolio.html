@@ -2,8 +2,8 @@
      <div class="form-container">
            <div class="form-title">Select portfolio</div>
           <ul class="tm-list">
-             <li class="tm-list-li hover-underline" ng-click="goToPortfolio(portfolio)" ng-repeat="portfolio in portfolios">
-                <b>{{ portfolio }}</b>
+             <li class="tm-list-li hover-underline"  ng-repeat="portfolio in portfolios">
+                <b><a href="/home/{{ portfolio }}"</a></b>
              </li>
           </ul>
       </div> 
