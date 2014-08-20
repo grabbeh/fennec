@@ -10,9 +10,15 @@
 
   <div class="qs-wording">What symbol do I use for </div>
   
-      <div class="quick-search-mark-selector">
-        <div go-to-group="showGroup" mg-group-selector marks="marks" title="Select a trade mark"></div>
-      </div>
+    <div class="quick-search-mark-selector">
+        <div>
+             <select class="group-mark-select" ng-change="selectMark()" ng-model="mark" ng-options="mark.name for mark in marks">
+                 <option value="">{{ title }}</option>
+             </select>
+        </div>
+    </div>
+    
+    
   
   
   <div class="qs-wording">in </div>
