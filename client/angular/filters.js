@@ -15,6 +15,17 @@ angular.module('app')
 	    }
 	})
 	
+	.filter('extractClasses', function(){
+		return function(arr){
+			var newArray = [];
+			arr.forEach(function(a){
+				newArray.push(a.classes);
+			})
+			return _.uniq(_.flatten(newArray))
+		}
+		
+	}
+	
 	.filter('favouriteMarks', function(){
 		return function(arr){
 			var newArray = [];
