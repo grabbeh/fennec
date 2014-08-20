@@ -1314,11 +1314,11 @@ margin: 0px 10px 10px 0px;
 }
 
 
-.qs-incomplete {
+.qsincomplete {
 	border-bottom: dotted 5px rgb(229, 101, 101);	
 }
 
-.qs-complete {
+.qscomplete {
 	border-bottom: dotted 5px rgb(54, 206, 109);		
 }
 
