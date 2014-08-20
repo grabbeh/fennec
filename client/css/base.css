@@ -1300,9 +1300,8 @@ margin-top: 15px;
 }
 
 .qs-wording {
-	float: left;
-	padding-top:10px;
-	margin-right: 20px;
+	margin: 10px 0;
+
 }
 
 .qs-wording-last {
