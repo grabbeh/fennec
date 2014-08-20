@@ -71,7 +71,7 @@ angular.module('app')
                 .success(function(res){
                     $window.sessionStorage.token = res.token;
                     $rootScope.user = true;
-                    $location.path('/demo/ACME INC');
+                    $location.path('/home/ACME INC');
                 })
                 .error(function(err){
                     $.message = err.message;
