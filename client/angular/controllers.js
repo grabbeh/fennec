@@ -43,7 +43,7 @@ angular.module('app')
  		
  	$scope.quickSearch = function(){
             if ($.mark === undefined){
-                $.message = "Please select a mark";
+                $.message = "Now provide a mark";
                 return;
             }
 
