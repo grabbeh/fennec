@@ -7,27 +7,31 @@
     </div>
     <ul ng-click="closeModal()" class="menu-list">
         <li>
-            <a class="white-link" ng-href="/admin/trademark">Add trademark</a>
+            <a class="white-link" ng-href="/home/{{activePortfolio}}">Home</a>
         </li>
         <li>
-            <a class="white-link" ng-href="/admin/user">Add user</a> 
+            <a class="white-link" ng-href="/select-portfolio">Select portfolio</a>
         </li>
+        
         <li>
             <a class="white-link" ng-href="/map/{{activePortfolio}}">Full map</a>
         </li>
         <li>
             <a class="white-link" ng-href="/quick-search/{{activePortfolio}}">Quick search</a>
         </li>
-        
+        <li>
+            <a class="white-link" ng-href="/admin/trademark">Add trademark</a>
+        </li>
+        <li>
+            <a class="white-link" ng-href="/admin/user">Add user</a> 
+        </li>
         <li>
             <a class="white-link" ng-href="/upload">Import trade marks</a>
         </li>
         <li>
             <span class="hover-underline" ng-click="getJSON()">Download portfolio</span>
         </li>
-        <li>
-            <a class="white-link" ng-href="/select-portfolio">Select portfolio</a>
-        </li>
+
         <li>
             <span class="hover-underline" ng-click="logout()">Logout</span>
         </li>
