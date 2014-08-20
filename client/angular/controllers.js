@@ -31,7 +31,7 @@ angular.module('app')
                 $scope.message = "";
                 if (marks.length > 0){
                     $.result = "Use the 'R' symbol for the following:";
-                    $.classes = $filter('addSpecifications')($filter('extractClasses')(marks));
+                    $.classes = $filter('orderBy')($filter('addSpecifications')($filter('extractClasses')(marks))), class);
                 }
                 else {
                     $.result = "Use the 'TM' symbol";
@@ -51,7 +51,7 @@ angular.module('app')
                 $scope.message = "";
                 if (marks.length > 0){
                     $.result = "Use the 'R' symbol for the following";
-                    $.classes = $filter('addSpecifications')($filter('extractClasses')(marks));
+                    $.classes = $filter('orderBy')($filter('addSpecifications')($filter('extractClasses')(marks))), class);
                 }
                 else {
                     $.result = "Use the 'TM' symbol";
