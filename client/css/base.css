@@ -1348,11 +1348,13 @@ margin: 0px 10px 10px 0px;
 /* PORTFOLIO HOME PAGE */
 
 .home-block {
-	padding: 40px;
 	margin-top: 20px;
-	text-align: center;
-	font-size: 25px;
-	font-weight: bold;
+text-align: center;
+font-size: 25px;
+font-weight: bold;
+height: 100px;
+line-height: 4em;
+border: dotted;
 }
 
 /* MOBILE RESPONSIVE CHANGE */
