@@ -1338,6 +1338,16 @@ margin: 0px 10px 10px 0px;
 	border-bottom: dotted 5px rgb(54, 206, 109);		
 }
 
+/* PORTFOLIO HOME PAGE */
+
+.home-block {
+	padding: 40px;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+}
+
 /* MOBILE RESPONSIVE CHANGE */
 
 @media handheld, only screen and (max-width: 700px) {
