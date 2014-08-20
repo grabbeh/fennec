@@ -65,6 +65,10 @@ a.fill-div {
     overflow: hidden;
 }
 
+.show-mark-list {
+    margin-bottom: 10px;
+}
+
 .one-half-container {
     margin-right: 3.8%;
     width: 48%;
@@ -1441,6 +1445,10 @@ border: dotted;
     
     .qs-select {
     	width: 100%;
+    }
+    
+    .search-input {
+        width:100%;
     }
 	
 }
