@@ -22,7 +22,6 @@ angular.module('app')
         }
 
         $.selectMark = function(){
-            console.log($.mark)
             if ($.country === undefined){
                 $.message = "Now provide a country";
                 return;
@@ -35,7 +34,8 @@ angular.module('app')
                     $.classes = $filter('extractClasses')(marks);
                 }
                 else {
-                    $.result = "Use the 'TM' symbol for printed materials"
+                    $.result = "Use the 'TM' symbol for printed materials";
+                    $.classes = "";
                 }
             })
             
@@ -54,7 +54,8 @@ angular.module('app')
                     $.classes = $filter('extractClasses')(marks);
                 }
                 else {
-                    $.result = "Use the 'TM' symbol for printed materials"
+                    $.result = "Use the 'TM' symbol for printed materials";
+                    $.classes = "";
                 }
             })
            
