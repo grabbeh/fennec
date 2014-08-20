@@ -17,7 +17,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
         when('/home/:portfolio', {
-            templateUrl: '/partials/portfolio-home.html'
+            templateUrl: '/partials/portfolio-home.html',
             controller: 'portfolioHomeCtrl',
             resolve: {
                 user: function(userGetter){
