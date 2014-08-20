@@ -89,6 +89,11 @@ angular.module('app')
                })
          }
     }])
+    
+    .controller('portfolioHomeCtrl', ['$scope', '$routeParams', function($scope, $routeParams){
+           $scope.portfolio = $routeParams.portfolio;
+       
+    }])
     .controller('adminCtrl', 
                ['$scope', 
                 '$routeParams',
