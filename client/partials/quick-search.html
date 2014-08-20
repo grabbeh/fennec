@@ -31,7 +31,8 @@
    
   <div class="quick-search-msg" ng-show="message"> {{ message }} </div>
   <div ng-show="result" class="quick-search-result"> {{ result }} </div>
-  <div class=""><ul class="class-list"><li class="class" ng-repeat="class in classes">{{ class }}</li></ul></div>
+  <div class=""><ul class="class-list"><li class="class" ng-repeat="class.class in classes">{{ class }}</li></ul></div>
+  <div class="spec-list"><ul><li ng-repeat="class.specification in classes"</ul></div>
   </div>
 </div>
   
