@@ -1304,12 +1304,6 @@ margin-top: 15px;
 
 }
 
-.qs-wording-last {
-	float: left;
-	padding-top: 10px;
-	margin-left: 20px;
-}
-
 /* MOBILE RESPONSIVE CHANGE */
 
 @media handheld, only screen and (max-width: 700px) {
