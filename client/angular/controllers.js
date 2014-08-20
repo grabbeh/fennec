@@ -561,9 +561,6 @@ angular.module('app')
                 $.portfolios = response.portfolios;
             })
 
-            $.goToPortfolio = function(portfolio){
-                $location.path('/admin/' + portfolio);
-            }
         }])
 
     .controller("mapCtrl", ['$scope', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
