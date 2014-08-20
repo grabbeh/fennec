@@ -1,8 +1,8 @@
 angular.module('app')
 
  	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkReviser', function($scope, $filter, $http, $routeParams, $location, trademarkReviser){
- 		var $ = $scope;
- 		$http.get('/api/countryData')
+ 	    var $ = $scope;
+ 	    $http.get('/api/countryData')
             .success(function(countries){
                 $.countrydata =  $filter('orderBy')(countries, 'name');
             })
@@ -11,6 +11,7 @@ angular.module('app')
          .then(function(data){
             $.marks = data;
         })
+       
 
         $.searchTrademarks = function(tm, country){
             return $http.get('/api/searchTrademarks/' + $routeParams.portfolio + '?group=' + tm + '&country=' + country)
@@ -27,10 +28,11 @@ angular.module('app')
                 return;
             }
 
-            $.searchTrademarks($.mark.name, $.country.alpha3).then(function(res){
+            $.searchTrademarks($.mark.name, $.country.alpha3).then(function(marks){
                 $scope.message = "";
-                if (res.length > 0){
-                    $.result = "Use the 'R' symbol for printed materials"
+                if (marks.length > 0){
+                    $.result = "Use the 'R' symbol for printed materials";
+                    $.classes = $filter('extractClasses')(marks);
                 }
                 else {
                     $.result = "Use the 'TM' symbol for printed materials"
@@ -45,10 +47,11 @@ angular.module('app')
                 return;
             }
 
-            $.searchTrademarks($.mark.name, $.country.alpha3).then(function(res){
-                 $scope.message = "";
-                if (res.length > 0){
-                    $.result = "Use the 'R' symbol for printed materials"
+            $.searchTrademarks($.mark.name, $.country.alpha3).then(function(marks){
+                $scope.message = "";
+                if (marks.length > 0){
+                    $.result = "Use the 'R' symbol for printed materials";
+                    $.classes = $filter('extractClasses')(marks);
                 }
                 else {
                     $.result = "Use the 'TM' symbol for printed materials"
