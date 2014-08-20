@@ -1284,10 +1284,7 @@ margin: 0px 10px 10px 0px;
 .quick-search-title {
 	font-weight: bold;
 	margin: 10px 0;
-}
-
-.quick-search-subtitle {
-	margin-bottom: 10px;
+	font-size: 30px;
 }
 
 .quick-search-msg {
@@ -1302,6 +1299,7 @@ margin: 0px 10px 10px 0px;
 
 .qs-wording {
 	margin: 10px 0;
+	font-size: 25px;
 
 }
 
