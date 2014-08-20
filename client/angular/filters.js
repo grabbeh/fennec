@@ -258,7 +258,7 @@ angular.module('app')
         }
     })
     
-    .filter('addClasses', function(){
+    .filter('addSpecifications', function(){
     	
     	var specifications = [{class: 1, specification:	"Chemicals used in industry, science and photography, as well as in agriculture, horticulture and forestry; unprocessed artificial resins, unprocessed plastics; manures; fire extinguishing compositions; tempering and soldering preparations; chemical substances for preserving foodstuffs; tanning substances; adhesives used in industry; unprocessed plastics in the form of liquids, chips or granules."},
 
