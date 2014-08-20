@@ -319,7 +319,7 @@ angular.module('app')
     			specifications.forEach(function(spec){
     				if (c === spec.class){
     				    var o = {};
-    				    o.class = c;
+    				    o.clss = c;
     				    o.specification = spec.specification;
     				    newArray.push(o);
     				}
