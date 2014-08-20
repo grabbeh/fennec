@@ -34,7 +34,7 @@ angular.module('app')
                     $.classes = $filter('extractClasses')(marks);
                 }
                 else {
-                    $.result = "Use the 'TM' symbol for printed materials";
+                    $.result = "Use the 'TM' symbol";
                     $.classes = "";
                 }
             })
@@ -54,7 +54,7 @@ angular.module('app')
                     $.classes = $filter('extractClasses')(marks);
                 }
                 else {
-                    $.result = "Use the 'TM' symbol for printed materials";
+                    $.result = "Use the 'TM' symbol";
                     $.classes = "";
                 }
             })
