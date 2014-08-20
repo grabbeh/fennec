@@ -1293,9 +1293,11 @@ margin: 0px 10px 10px 0px;
 }
 
 .quick-search-result {
-     	font-size: 25px;
-	font-weight: bold;
-	margin: 15px 0;
+     	margin: 50px 0;
+	background: black;
+	color: white;
+	font-size: 25px;
+	padding: 20px;
 }
 
 .qs-wording {
