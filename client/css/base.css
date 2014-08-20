@@ -1298,7 +1298,7 @@ margin: 0px 10px 10px 0px;
 }
 
 .qs-wording {
-	margin: 10px 0;
+	margin: 20px 0 15px 0;
 	font-size: 25px;
 
 }
@@ -1307,7 +1307,6 @@ margin: 0px 10px 10px 0px;
     height: 45px;
     margin: 0;
     font-family: 'Karla';
-    padding-left: 10px;	
     font-size: 25px;
     background: white;
     -webkit-appearance: button;
