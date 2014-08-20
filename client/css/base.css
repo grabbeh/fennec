@@ -13,6 +13,8 @@
         width: 100% !important;
         height: auto !important;
     }
+    
+
 
 .favourite {
    color: rgb(214, 214, 64);
@@ -77,6 +79,10 @@
 .float-right {
     float: right;
     opacity: 0.7;
+}
+
+.float-left {
+	float: left;
 }
 
 select {
