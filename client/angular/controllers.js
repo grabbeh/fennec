@@ -21,13 +21,13 @@ angular.module('app')
         }
 
         $.selectMark = function(){
-            $.group = group;
+            console.log($.mark)
             if ($.country === undefined){
                 $.message = "Now provide a country";
                 return;
             }
 
-            $.searchTrademarks($.group.name, $.country.alpha3).then(function(res){
+            $.searchTrademarks($.mark.name, $.country.alpha3).then(function(res){
                 $scope.message = "";
                 if (res.length > 0){
                     $.result = "YES! - use the 'R' symbol for printed materials"
