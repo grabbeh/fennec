@@ -248,7 +248,7 @@ angular.module('app')
     })
 
 
-	.filter('extractCountryData', function(){
+    .filter('extractCountryData', function(){
         return function(trademarks){
             var arr = [];
             angular.forEach(trademarks, function(tm){
@@ -256,6 +256,78 @@ angular.module('app')
             })
             return arr;
         }
+    })
+    
+    .filter('addClasses', function(){
+    	
+    	var specifications = [{class: 1, specification:	"Chemicals used in industry, science and photography, as well as in agriculture, horticulture and forestry; unprocessed artificial resins, unprocessed plastics; manures; fire extinguishing compositions; tempering and soldering preparations; chemical substances for preserving foodstuffs; tanning substances; adhesives used in industry; unprocessed plastics in the form of liquids, chips or granules."},
+
+
+{class: 2, specification:"Paints, varnishes, lacquers; preservatives against rust and against deterioration of wood; colorants; mordants; raw natural resins; metals in foil and powder form for painters, decorators, printers and artists."},
+{class:3,	specification:"Bleaching preparations and other substances for laundry use; cleaning, polishing, scouring and abrasive preparations; soaps; perfumery, essential oils, cosmetics, hair lotions; dentifrices."},
+{class: 4, specification:"Industrial oils and greases; lubricants; dust absorbing, wetting and binding compositions; fuels and illuminants; candles and wicks for lighting; combustible fuels, electricity and scented candles."},
+{class:5	, specification:"Pharmaceutical and veterinary preparations; sanitary preparations for medical purposes; dietetic food and substances adapted for medical or veterinary use, food for babies; dietary supplements for humans and animals; plasters, materials for dressings; material for stopping teeth, dental wax; disinfectants; preparations for destroying vermin; fungicides, herbicides."},
+{class:6	, specification:"Common metals and their alloys; metal building materials; transportable buildings of metal; materials of metal for railway tracks; non-electric cables and wires of common metal; ironmongery, small items of metal hardware; pipes and tubes of metal; safes; goods of common metal not included in other classes; ores; unwrought and partly wrought common metals; metallic windows and doors; metallic framed conservatories."},
+{class: 7	, specification:"Machines and machine tools; motors and engines (except for land vehicles); machine coupling and transmission components (except for land vehicles); agricultural implements other than hand-operated; incubators for eggs; automatic vending machines."},
+{class: 8	, specification:"Hand tools and hand operated implements; cutlery; side arms; razors; electric razors and hair cutters."},
+{class:9	, specification:"Scientific, nautical, surveying, photographic, cinematographic, optical, weighing, measuring, signalling, checking (supervision), life-saving and teaching apparatus and instruments; apparatus and instruments for conducting, switching, transforming, accumulating, regulating or controlling electricity; apparatus for recording, transmission or reproduction of sound or images; magnetic data carriers, recording discs; compact discs, DVDs and other digital recording media; mechanisms for coin-operated apparatus; cash registers, calculating machines, data processing equipment, computers; computer software; fire-extinguishing apparatus."},
+{class:10, specification:	"Surgical, medical, dental and veterinary apparatus and instruments, artificial limbs, eyes and teeth; orthopaedic articles; suture materials; sex aids; massage apparatus; supportive bandages; furniture adapted for medical use."},
+{class:11, specification:	"Apparatus for lighting, heating, steam generating, cooking, refrigerating, drying, ventilating, water supply and sanitary purposes; air conditioning apparatus; electric kettles; gas and electric cookers; vehicle lights and vehicle air conditioning units."},
+{class:12, specification:	"Vehicles; apparatus for locomotion by land, air or water; wheelchairs; motors and engines for land vehicles; vehicle body parts and transmissions."},
+{class: 13, specification:	"Firearms; ammunition and projectiles, explosives; fireworks."},
+{class:14, specification:	"Precious metals and their alloys; jewellery, costume jewellery, precious stones; horological and chronometric instruments, clocks and watches."},
+{class:15, specification:	"Musical instruments; stands and cases adapted for musical instruments."},
+{class:16, specification:	"Paper, cardboard and goods made from these materials, not included in other classes; printed matter; bookbinding material; photographs; stationery; adhesives for stationery or household purposes; artists' materials; paint brushes; typewriters and office requisites (except furniture); instructional and teaching material (except apparatus); plastic materials for packaging (not included in other classes); printers' type; printing blocks."},
+{class:17, specification:	"Rubber, gutta-percha, gum, asbestos, mica and goods made from these materials; plastics in extruded form for use in manufacture; semi-finished plastics materials for use in further manufacture; stopping and insulating materials; flexible non-metallic pipes."},
+{class: 18, specification:	"Leather and imitations of leather; animal skins, hides; trunks and travelling bags; handbags, rucksacks, purses; umbrellas, parasols and walking sticks; whips, harness and saddlery; clothing for animals."},
+{class:19, specification:	"Non-metallic building materials; non-metallic rigid pipes for building; asphalt, pitch and bitumen; non-metallic transportable buildings; non-metallic monuments; non-metallic framed conservatories, doors and windows."},
+{class:20, specification:	"Furniture, mirrors, picture frames; articles made of wood, cork, reed, cane, wicker, horn, bone, ivory, whalebone, shell, amber, mother-of-pearl, meerschaum or plastic which are not included in other classes; garden furniture; pillows and cushions."},
+{class: 21, specification:	"Household or kitchen utensils and containers; combs and sponges; brushes (except paintbrushes); brush-making materials; articles for cleaning purposes; steel wool; articles made of ceramics, glass, porcelain or earthenware which are not included in other classes; electric and non-electric toothbrushes."},
+{class: 22, specification:	"Ropes, string, nets, tents, awnings, tarpaulins, sails, sacks for transporting bulk materials; padding and stuffing materials which are not made of rubber or plastics; raw fibrous textile materials."},
+{class: 23, specification:	"Yarns and threads, for textile use."},
+{class: 24, specification:	"Textiles and textile goods; bed and table covers; travellers' rugs, textiles for making articles of clothing; duvets; covers for pillows, cushions or duvets."},
+{class:25, specification:	"Clothing, footwear, headgear."},
+{class: 26, specification:	"Lace and embroidery, ribbons and braid; buttons, hooks and eyes, pins and needles; artificial flowers."},
+{class: 27, specification:	"Carpets, rugs, mats and matting, linoleum and other materials for covering existing floors; wall hangings (non-textile); wallpaper."},
+{class: 28, specification:	"Games and playthings; playing cards; gymnastic and sporting articles; decorations for Christmas trees; childrens' toy bicycles."},
+{class: 29, specification:	"Meat, fish, poultry and game; meat extracts; preserved, dried and cooked fruits and vegetables; jellies, jams, compotes; eggs, milk and milk products; edible oils and fats; prepared meals; soups and potato crisps."},
+{class: 30, specification:	"Coffee, tea, cocoa, sugar, rice, tapioca, sago, artificial coffee; flour and preparations made from cereals, bread, pastry and confectionery, edible ices; honey, treacle; yeast, baking-powder; salt, mustard; vinegar, sauces (condiments); spices; ice; sandwiches; prepared meals; pizzas, pies and pasta dishes."},
+{class: 31, specification:	"Agricultural, horticultural and forestry products; live animals; fresh fruits and vegetables, seeds, natural plants and flowers; foodstuffs for animals; malt; food and beverages for animals."},
+{class: 32, specification:	"Beers; mineral and aerated waters; non-alcoholic drinks; fruit drinks and fruit juices; syrups for making beverages; shandy, de-alcoholised drinks, non-alcoholic beers and wines."},
+{class:33, specification:	"Alcoholic beverages (except beers); alcoholic wines; spirits and liqueurs; alcopops; alcoholic cocktails."},
+{class: 34, specification:	"Tobacco; smokers' articles; matches; lighters for smokers."},
+
+
+
+{class: 35, specification:	"Advertising; business management; business administration; office functions; organisation, operation and supervision of loyalty and incentive schemes; advertising services provided via the Internet; production of television and radio advertisements; accountancy; auctioneering; trade fairs; opinion polling; data processing; provision of business information; retail services connected with the sale of [list specific goods]."},
+{class: 36, specification:	"Insurance; financial services; real estate agency services; building society services; banking; stockbroking; financial services provided via the Internet; issuing of tokens of value in relation to bonus and loyalty schemes; provision of financial information."},
+{class: 37, specification:	"Building construction; repair; installation services; installation, maintenance and repair of computer hardware; painting and decorating; cleaning services."},
+{class: 38, specification:	"Telecommunications services; chat room services; portal services; e-mail services; providing user access to the Internet; radio and television broadcasting."},
+{class: 39, specification:	"Transport; packaging and storage of goods; travel arrangement; distribution of electricity; travel information; provision of car parking facilities."},
+{class: 40, specification:	"Treatment of materials; development, duplicating and printing of photographs; generation of electricity."},
+{class: 41, specification:	"Education; providing of training; entertainment; sporting and cultural activities."},
+{class: 42, specification:	"Scientific and technological services and research and design relating thereto; industrial analysis and research services; design and development of computer hardware and software; computer programming; installation, maintenance and repair of computer software; computer consultancy services; design, drawing and commissioned writing for the compilation of web sites; creating, maintaining and hosting the web sites of others; design services."},
+{class: 43, specification:	"Services for providing food and drink; temporary accommodation; restaurant, bar and catering services; provision of holiday accommodation; booking and reservation services for restaurants and holiday accommodation; retirement home services; creche services."},
+{class: 44, specification:	"Medical services; veterinary services; hygienic and beauty care for human beings or animals; agriculture, horticulture and forestry services; dentistry services; medical analysis for the diagnosis and treatment of persons; pharmacy advice; garden design services."},
+{class: 45, specification:	"Legal services; conveyancing services; security services for the protection of property and individuals; social work services; consultancy services relating to health and safety; consultancy services relating to personal appearance; provision of personal tarot readings; dating services; funeral services and undertaking services; fire-fighting services; detective agency services."},
+    	];
+    	
+    	
+    return function(classes){
+    		var newArray = [];
+    		classes.forEach(function(c){
+    			specifications.forEach(function(spec){
+    				if (c === spec.class){
+    				    var o = {};
+    				    o.class = c;
+    				    o.specification = spec.specification;
+    				    newArray.push(o);
+    				}
+    			})
+    		})
+    		return newArray;
+
+    	}
     })
 
     
