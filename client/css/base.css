@@ -1311,6 +1311,7 @@ margin: 0px 10px 10px 0px;
     font-size: 25px;
     background: white;
     -webkit-appearance: button;
+    border: 0;
 }
 
 
