@@ -1420,5 +1420,9 @@ margin: 0px 10px 10px 0px;
     .delete-button {
         display: none;
     }
+    
+    .qs-select {
+    	width: 100%;
+    }
 	
 }
