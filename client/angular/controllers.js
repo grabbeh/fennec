@@ -30,7 +30,7 @@ angular.module('app')
             $.searchTrademarks($.mark.name, $.country.alpha3).then(function(marks){
                 $scope.message = "";
                 if (marks.length > 0){
-                    $.result = "Use the 'R' symbol for printed materials";
+                    $.result = "Use the 'R' symbol for the following:";
                     $.classes = $filter('extractClasses')(marks);
                 }
                 else {
@@ -50,7 +50,7 @@ angular.module('app')
             $.searchTrademarks($.mark.name, $.country.alpha3).then(function(marks){
                 $scope.message = "";
                 if (marks.length > 0){
-                    $.result = "Use the 'R' symbol for printed materials";
+                    $.result = "Use the 'R' symbol for the following";
                     $.classes = $filter('extractClasses')(marks);
                 }
                 else {
