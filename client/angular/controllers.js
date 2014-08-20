@@ -20,7 +20,7 @@ angular.module('app')
             });
         }
 
-        $.showGroup = function(group){
+        $.selectMark = function(){
             $.group = group;
             if ($.country === undefined){
                 $.message = "Now provide a country";
