@@ -1310,9 +1310,18 @@ margin: 0px 10px 10px 0px;
     padding-left: 10px;	
     font-size: 25px;
     border: 0;
-    border-bottom: dotted 5px black;
+    
     background: white;
     -webkit-appearance: button;
+}
+
+
+.qs-incomplete {
+	border-bottom: dotted 5px rgb(229, 101, 101);	
+}
+
+.qs-complete {
+	border-bottom: dotted 5px rgb(54, 206, 109);		
 }
 
 /* MOBILE RESPONSIVE CHANGE */
