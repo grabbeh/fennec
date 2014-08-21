@@ -18,6 +18,8 @@ exports.groupOfMarks = function(req, res){
 }
 
 function addFavouriteProperty(trademarks, favourites){
+    console.log(favourites.length);
+    console.log(trademarks.length);
      trademarks.forEach(function(tm){
      	favourites.forEach(function(fav){
      	    if (tm._id.equals(fav)){
