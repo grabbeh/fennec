@@ -43,10 +43,8 @@ function removeId(obj){
 }
 
 exports.updateUser = function(req, res){
-    console.log("F triggered");
     User.findOneAndUpdate({_id: req.user._id}, removeId(req.body), function(err, user){
         if (err) { console.log(err)};
-        console.log("User updated")
          req.user = user;
          res.json(user);
     })
