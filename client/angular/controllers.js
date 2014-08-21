@@ -162,6 +162,7 @@ angular.module('app')
             $.showGroup = function(group){
             	
                 trademarkReviser.getGroup($routeParams.portfolio, group.name).then(function(trademarks){
+                
                     $.trademarks = trademarks;
                 })
                 geoJson.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
@@ -188,6 +189,7 @@ angular.module('app')
             $.activePortfolio = $routeParams.portfolio;
             $.geojson = world;
             $.trademarks = trademarks;
+            console.log(trademarks);
             $.user = user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({ name: "ALL MARKS" })
