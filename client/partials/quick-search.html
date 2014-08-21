@@ -22,15 +22,12 @@
 
   <div class="qs-wording">in </div>
  
-  
-      
     	     <select 
              ng-change="quickSearch()"  class="qs-select" ng-model="country" ng-options="country.name for country in countrydata">
     	        <option value="">Choose country </option>
     	      </select>
-    	      <span class="qs-line" ng-class="{ qscomplete: country, qsincomplete: !country }"></span>
-    	       
     	       <span class="qs-question-mark">?</span>
+    	       <span class="qs-line" ng-class="{ qscomplete: country, qsincomplete: !country }"></span>
      
       
    
