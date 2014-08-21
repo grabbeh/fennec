@@ -18,7 +18,7 @@ angular.module('app')
     }
     })
 
-	.directive('mgFavouriteButton', function(){
+    .directive('mgFavouriteButton', function(){
         return {
         replace: true,
         templateUrl: '/partials/favourite-button.html',
@@ -29,6 +29,7 @@ angular.module('app')
          
         controller: function($scope, userGetter){
             var $ = $scope;
+            console.log($.user)
             $.toggleFavourite = function(){
           	if ($.trademark.favourite){
               $.trademark.favourite = false;
