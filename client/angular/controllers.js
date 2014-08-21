@@ -177,7 +177,6 @@ angular.module('app')
             }
             
             $.showModal = function(trademark){
-            	console.log(trademark);
                 $rootScope.modal = true;
                 trademarkModal.deactivate();
                 trademarkModal.activate({ trademark: trademark, user: $rootScope.user });
@@ -190,7 +189,6 @@ angular.module('app')
             $.activePortfolio = $routeParams.portfolio;
             $.geojson = world;
             $.trademarks = trademarks;
-            console.log(trademarks);
             $.user = user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({ name: "ALL MARKS" })
