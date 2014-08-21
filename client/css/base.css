@@ -1326,12 +1326,13 @@ margin: 0px 10px 10px 0px;
 }
 
 .qs-line {
-	width: 250px;
+	width: 400px;
 }
 
 .qs-select {  
     height: 45px;
     margin: 0;
+    width: 400px;
     font-family: 'Karla';
     font-size: 25px;
     /*-webkit-appearance: button;*/
