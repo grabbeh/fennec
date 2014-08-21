@@ -14,6 +14,23 @@
         height: auto !important;
     }
 
+.css-select {
+   -moz-appearance:window;
+   background-image: url('/css/arrow.png);
+   background-repeat: no-repeat;
+   background-position: right center;
+   padding-right: 20px;
+}
+
+@-moz-document url-prefix() {
+.css-select-moz{
+     background-image: url('/css/arrow.png');
+     background-repeat: no-repeat;
+     background-position: right center;
+     padding-right: 20px;
+  }
+} 
+
 select:focus, textarea:focus, input:focus{
     outline: 0;
 }
