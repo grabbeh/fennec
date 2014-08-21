@@ -1330,7 +1330,7 @@ margin: 0px 10px 10px 0px;
     margin: 0;
     font-family: 'Karla';
     font-size: 25px;
-    /*-webkit-appearance: button;*/
+    -webkit-appearance: button;
     border: 0;
 }
 
