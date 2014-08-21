@@ -25,7 +25,7 @@
   
       <div class="quick-search-country-selector">
     	     <select 
-             ng-change="quickSearch()"  class="qs-select float-left" ng-model="country" ng-options="country.name for country in countrydata">
+             ng-change="quickSearch()"  class="qs-select" ng-model="country" ng-options="country.name for country in countrydata">
     	        <option value="">Choose country </option>
     	      </select>
     	      <div ng-class="{ qscomplete: country, qsincomplete: !country }"></div>
