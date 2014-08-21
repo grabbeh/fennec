@@ -16,7 +16,7 @@
                  <option value="">Choose trade mark</option>
             
              </select>
-             <div class="qs-line" ng-class="{ qscomplete: mark, qsincomplete: !mark}" ></div>
+             <span class="qs-line" ng-class="{ qscomplete: mark, qsincomplete: !mark}" ></span>
         </div>
     
 
@@ -28,7 +28,7 @@
              ng-change="quickSearch()"  class="qs-select" ng-model="country" ng-options="country.name for country in countrydata">
     	        <option value="">Choose country </option>
     	      </select>
-    	      <div class="qs-line" ng-class="{ qscomplete: country, qsincomplete: !country }"></div>
+    	      <span class="qs-line" ng-class="{ qscomplete: country, qsincomplete: !country }"></span>
     	       
     	       <span class="qs-question-mark">?</span>
      
