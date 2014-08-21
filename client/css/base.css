@@ -1348,7 +1348,7 @@ margin: 0px 10px 10px 0px;
     font-family: 'Karla';
     font-size: 25px;
     background: white;
-    -webkit-appearance: button;
+    /*-webkit-appearance: button;*/
     border: 0;
 }
 
