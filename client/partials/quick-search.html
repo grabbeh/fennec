@@ -11,7 +11,7 @@
   <div class="qs-wording">Do I use the (R) or (TM) symbol for</div>
   
    
-        <div>
+        <div style="width: 380px; overflow:hidden">
              <select class="qs-select" ng-change="selectMark()" ng-model="mark" ng-options="mark.name for mark in marks">
                  <option value="">Choose trade mark</option>
             
@@ -21,14 +21,14 @@
     
 
   <div class="qs-wording">in </div>
- 
+          <div style="width: 380px; overflow:hidden">
     	     <select 
              ng-change="quickSearch()"  class="qs-select" ng-model="country" ng-options="country.name for country in countrydata">
     	        <option value="">Choose country </option>
     	      </select>
     	       <span class="qs-question-mark">?</span>
     	       <div class="qs-line" ng-class="{ qscomplete: country, qsincomplete: !country }"></div>
-     
+         </div>
       
    
   <div class="quick-search-msg" ng-show="message"> {{ message }} </div>
