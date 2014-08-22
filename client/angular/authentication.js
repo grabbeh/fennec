@@ -74,10 +74,10 @@ angular.module('app')
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
                         if (pathHolder.existingPath){
-                             $location.path(pathHolder.returnPath());
+                            console.log("Existing path");
+                            $location.path(pathHolder.returnPath());
                         }
                         $location.path('/select-portfolio');
-                       
                     })
                     .error(function(err){
                         $.message = err.message;
