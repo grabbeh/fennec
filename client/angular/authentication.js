@@ -78,6 +78,7 @@ angular.module('app')
                         $rootScope.user = true;
                         if (pathHolder.existingPath){
                             console.log("Existing path");
+                            console.log(pathHolder.returnPath());
                             $location.path(pathHolder.returnPath());
                         }
                         $location.path('/select-portfolio');
