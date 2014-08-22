@@ -5,14 +5,14 @@ angular.module('app')
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, previous){
+                console.log("Route change error");
                 var originalPath = previous.$$route.originalPath;
+                console.log(originalPath);
                 if (previous.params.id){
-                    console.log("previous path");
                     originalPath = originalPath.replace(":id", previous.params.id);
-                    console.log(originalPath);
+                    
                 }
                 pathHolder.insertPath(originalPath);
-
                 $location.path('/login');
 
             });
