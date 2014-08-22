@@ -20,38 +20,36 @@ angular.module('app')
 
     .directive('mgFavouriteButton', function(){
         return {
-        replace: true,
-        templateUrl: '/partials/favourite-button.html',
-        scope: {
-                trademark: '=',
-           		user: '='
-        },
-         
-        controller: function($scope, userGetter){
-            var $ = $scope;
-            $.toggleFavourite = function(){
-          	if ($.trademark.favourite){
-              $.trademark.favourite = false;
-              $.user.favourites.forEach(function(fav, i){
-              	  if (fav === $.trademark._id){
-              	     $.user.favourites.splice(i, 1);
-              	  }
-              })
-              userGetter.updateUser($.user).then(function(res){
-
-              });
-
-          }
-          else {
-              $.trademark.favourite = true;
-              $.user.favourites.push($.trademark._id)
-              userGetter.updateUser($.user).then(function(res){
-              	  console.log("User updated");
-              		})
-                 }
-
-              }
-
+	        replace: true,
+	        templateUrl: '/partials/favourite-button.html',
+	        scope: {
+	                trademark: '=',
+	           		user: '='
+	        },
+	         
+	        controller: function($scope, userGetter){
+	            var $ = $scope;
+	            $.toggleFavourite = function(){
+		          	if ($.trademark.favourite){
+		              	$.trademark.favourite = false;
+		              	$.user.favourites.forEach(function(fav, i){
+		              	  	if (fav === $.trademark._id){
+		              	     	$.user.favourites.splice(i, 1);
+		              	  		}
+		              		})
+		              		userGetter.updateUser($.user).then(function(res){
+		
+		            		 });
+		
+		            }
+		        	else {
+		              $.trademark.favourite = true;
+		              $.user.favourites.push($.trademark._id)
+		              userGetter.updateUser($.user).then(function(res){
+		              			
+		              })
+		            }
+	             }
 			}
    		}  
     })
