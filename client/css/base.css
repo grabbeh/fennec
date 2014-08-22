@@ -1349,8 +1349,6 @@ margin: 0px 10px 10px 0px;
 	line-height: 2em;	
 }
 
-
-
 .qsincomplete {
 	border-bottom: dotted 5px rgb(229, 101, 101);	
 }
@@ -1457,6 +1455,11 @@ line-height: 4em;
     .qs-select {
     	width: 80%;
     }
+    
+    .qs-line {
+	width: 80%;
+}
+
     
     .search-input {
         width:100%;
