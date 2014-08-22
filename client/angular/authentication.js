@@ -11,7 +11,7 @@ angular.module('app')
                 console.log(previous.params);
                 if (previous.params){
                     for (var key in previous.params){
-                         originalPath = originalPath.replace(":" + key, previous.params[key];
+                         originalPath = originalPath.replace(":" + key, previous.params[key]);
                          console.log(originalPath);
                     }
                 }
