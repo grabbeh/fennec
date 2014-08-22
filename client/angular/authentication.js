@@ -8,9 +8,9 @@ angular.module('app')
                 console.log("Route change error");
                 var originalPath = previous.$$route.originalPath;
                 console.log(originalPath);
+                console.log(previous.params);
                 if (previous.params.id){
                     originalPath = originalPath.replace(":id", previous.params.id);
-                    
                 }
                 pathHolder.insertPath(originalPath);
                 $location.path('/login');
