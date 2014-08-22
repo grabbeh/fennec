@@ -9,8 +9,11 @@ angular.module('app')
                 var originalPath = previous.$$route.originalPath;
                 console.log(originalPath);
                 console.log(previous.params);
-                if (previous.params.id){
-                    originalPath = originalPath.replace(":id", previous.params.id);
+                if (previous.params){
+                    for (var key in previous.params){
+                         originalPath = originalPath.replace(":" + key, previous.params[key];
+                         console.log(originalPath);
+                    }
                 }
                 pathHolder.insertPath(originalPath);
                 $location.path('/login');
