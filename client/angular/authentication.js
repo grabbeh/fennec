@@ -81,7 +81,9 @@ angular.module('app')
                             console.log(pathHolder.returnPath());
                             $location.path(pathHolder.returnPath());
                         }
-                        $location.path('/select-portfolio');
+                        else {
+                            $location.path('/select-portfolio');
+                        }
                     })
                     .error(function(err){
                         $.message = err.message;
