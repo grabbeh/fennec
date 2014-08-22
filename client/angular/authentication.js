@@ -5,10 +5,7 @@ angular.module('app')
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, previous){
-                console.log("Route change error");
                 var originalPath = previous.$$route.originalPath;
-                console.log(originalPath);
-                console.log(previous.params);
                 if (previous.params){
                     for (var key in previous.params){
                          originalPath = originalPath.replace(":" + key, previous.params[key]);
@@ -77,8 +74,6 @@ angular.module('app')
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
                         if (pathHolder.existingPath){
-                            console.log("Existing path");
-                            console.log(pathHolder.returnPath());
                             $location.path(pathHolder.returnPath());
                         }
                         else {
