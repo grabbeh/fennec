@@ -7,7 +7,9 @@ angular.module('app')
             $rootScope.$on('$routeChangeError', function(event, previous){
                 var originalPath = previous.$$route.originalPath;
                 if (previous.params.id){
+                    console.log("previous path");
                     originalPath = originalPath.replace(":id", previous.params.id);
+                    console.log(originalPath);
                 }
                 pathHolder.insertPath(originalPath);
 
