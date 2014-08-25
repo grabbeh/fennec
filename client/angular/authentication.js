@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkReviser', 'pathHolder', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','uploadImageModal', 'userGetter',
-        function($scope, $window, $rootScope, $http, trademarkReviser, pathHolder, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, uploadImageModal, userGetter){
+    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','uploadImageModal', 'userService',
+        function($scope, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, uploadImageModal, userService){
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, previous){
@@ -9,10 +9,9 @@ angular.module('app')
                 if (previous.params){
                     for (var key in previous.params){
                          originalPath = originalPath.replace(":" + key, previous.params[key]);
-                         console.log(originalPath);
                     }
                 }
-                pathHolder.insertPath(originalPath);
+                pathService.insertPath(originalPath);
                 $location.path('/login');
 
             });
@@ -50,7 +49,7 @@ angular.module('app')
                 $location.path('/');
             }
             
-            userGetter.getUser().then(function(data){
+            userService.getUser().then(function(data){
                 $rootScope.user = data;
             });
         
@@ -60,8 +59,8 @@ angular.module('app')
 
         }])
     
-    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userGetter', 'pathHolder', '$http', '$location', 'trademarkReviser',
-        function($scope, $window, $rootScope, userGetter, pathHolder, $http, $location, trademarkReviser){
+    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userService', 'pathService', '$http', '$location', 'trademarkService',
+        function($scope, $window, $rootScope, userService, pathService, $http, $location, trademarkService){
             var $ = $scope;
             
             $.canSubmitLogin = function(){
@@ -73,8 +72,8 @@ angular.module('app')
                     .success(function(res){
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
-                        if (pathHolder.existingPath){
-                            $location.path(pathHolder.returnPath());
+                        if (pathService.existingPath){
+                            $location.path(pathService.returnPath());
                         }
                         else {
                             $location.path('/select-portfolio');
