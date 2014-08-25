@@ -116,9 +116,7 @@ app.post('/api/editMarksInCountry/:portfolio', x, country.editMarksInCountry);
 
 // Expiry dates
 
-app.get('/api/expirydates/:portfolio/:group', x, main.provideExpiryDatesForGroup);
 app.get('/api/expirydates/:portfolio', x, main.provideExpiryDates);
-
 app.post('/api/expiriesForYear/:portfolio', x, main.getExpiriesForYear);
 
 // Users
