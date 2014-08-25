@@ -1,13 +1,13 @@
 angular.module('app')
 
- 	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkReviser', function($scope, $filter, $http, $routeParams, $location, trademarkReviser){
+ 	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkReviser){
  	    var $ = $scope;
  	    $http.get('/api/countryData')
             .success(function(countries){
                 $.countrydata =  $filter('orderBy')(countries, 'name');
             })
 
-        trademarkReviser.getListOfMarks($routeParams.portfolio)
+        trademarkService.getListOfMarks($routeParams.portfolio)
          .then(function(data){
             $.marks = data;
         })
@@ -64,7 +64,7 @@ angular.module('app')
  		
  	}])
 
-     .controller('landingPageCtrl', ['$scope', '$window', '$http', 'userGetter', '$location', '$rootScope', function($scope, $window, $http, userGetter, $location, $rootScope){
+     .controller('landingPageCtrl', ['$scope', '$window', '$http', 'userService', '$location', '$rootScope', function($scope, $window, $http, userService, $location, $rootScope){
        var $ = $scope;
        $.loadDemo = function(){
             $http.post('/server/login', { password: "demo", username: "demo@demo.com" })
@@ -101,12 +101,12 @@ angular.module('app')
                 '$rootScope',
                 '$location',
                 'trademarks', 
-                'trademarkReviser',
-                'geoJson',
+                'trademarkService',
+                'geoJsonService',
                 'world',
                 'user',
-                'userGetter',
-                'chartGetter', 
+                'userService',
+                'chartService', 
                 'barChartData',
                 'barChartOptions',
                 '$moment',
@@ -120,12 +120,12 @@ angular.module('app')
                  $rootScope, 
                  $location,
                  trademarks,
-                 trademarkReviser,
-                 geoJson,
+                 trademarkService,
+                 geoJsonService,
                  world,
                  user,
-                 userGetter,
-                 chartGetter, 
+                 userService,
+                 chartService, 
                  barChartData,
                  barChartOptions,
                  $moment, 
@@ -163,10 +163,10 @@ angular.module('app')
             	
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
 
-                geoJson.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
+                geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
                     $.geojson = geojson;
                 });
-                chartGetter.barChartDataForGroup($routeParams.portfolio, group.name).then(function(barChartData){
+                chartService.barChartDataForGroup($routeParams.portfolio, group.name).then(function(barChartData){
                     $.chart = barChartData;
                 });
                 $.marks = $filter('unTickAllExceptSelected')($.marks, group);
@@ -214,9 +214,9 @@ angular.module('app')
                 
                 $.incompleteMarks = $filter('incompleteMarks')(trademarks);
                 $.sortedByExpiry = $filter('fromNow')($filter('sortByExpiryDate')($filter('extractRegisteredMarks')(trademarks)));
-                $.pieData = chartGetter.pieChartData(trademarks);
-                $.pieOptions = chartGetter.pieChartOptions();
-                $.chartSubtitles = chartGetter.pieChartSubtitles(trademarks);
+                $.pieData = chartService.pieChartData(trademarks);
+                $.pieOptions = chartService.pieChartOptions();
+                $.chartSubtitles = chartService.pieChartSubtitles(trademarks);
             });
             
              $.expirySearch = function(year){
@@ -226,7 +226,7 @@ angular.module('app')
             $.min = new Date().getFullYear();
         }])
 
-    .controller('uploadCtrl', ['$scope', '$location', 'userGetter', '$timeout', function($scope, $location, userGetter, $timeout){
+    .controller('uploadCtrl', ['$scope', '$location', 'userService', '$timeout', function($scope, $location, userService, $timeout){
         var $ = $scope;
         $.uploadComplete = function (content) {
             if (content.err){
@@ -250,10 +250,10 @@ angular.module('app')
     }])
 
 	.controller('trademarkViewCtrl', 
-	['$scope', '$rootScope', '$routeParams', 'trademarkReviser', 'editTrademarkModal', 'trademarkModal', 
-	function($scope, $rootScope, $routeParams, trademarkReviser, editTrademarkModal, trademarkModal){
+	['$scope', '$rootScope', '$routeParams', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 
+	function($scope, $rootScope, $routeParams, trademarkService, editTrademarkModal, trademarkModal){
 	        var $ = $scope;
-	        trademarkReviser.getTrademark($routeParams.id).then(function(data){
+	        trademarkService.getTrademark($routeParams.id).then(function(data){
 	            $.trademark = data;
 	            $.alpha2 = data.country.alpha2.toLowerCase();
 	        });
@@ -264,7 +264,7 @@ angular.module('app')
 	            }
 	          
 	        $.deleteTrademark = function(){
-	            trademarkReviser.deleteMark($.trademark)
+	            trademarkService.deleteMark($.trademark)
 	               .success(function(data){
 	                   $scope.message = data.message;
 	               })
@@ -272,20 +272,20 @@ angular.module('app')
          }])
          
         .controller('groupViewCtrl', 
-		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJson', 'trademarkReviser', 'editTrademarkModal', 'trademarkModal', 'editGroupModal', 'uploadImageModal',
-		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJson, trademarkReviser, editTrademarkModal, trademarkModal, editGroupModal, uploadImageModal){
+		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 'editGroupModal', 'uploadImageModal',
+		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal, editGroupModal, uploadImageModal){
 	        var $ = $scope;
-	        geoJson.getWorldGroup($routeParams.portfolio, $location.search().group).then(function(data){
+	        geoJsonService.getWorldGroup($routeParams.portfolio, $location.search().group).then(function(data){
 	            $.geojson = data;
 	        });
         
-            trademarkReviser.getGroup($routeParams.portfolio, $routeParams.group).then(function(data){
+            trademarkService.getGroup($routeParams.portfolio, $routeParams.group).then(function(data){
             	$.title = $location.search().group;
                 $.trademarks = data;
                 $.chartSubtitles = $filter('groupByStatus')($.trademarks);
             });
          
-           trademarkReviser.getListOfMarks($routeParams.portfolio)
+           trademarkService.getListOfMarks($routeParams.portfolio)
  		     .then(function(response){
  			$.marks = response;
  		})
@@ -302,13 +302,13 @@ angular.module('app')
                 editGroupModal.activate({ trademark: $.trademarks[0], mark: mark, portfolio: $routeParams.portfolio });
             }
 
-            $.goToGroup = function(obj){
-            	$location.search('group', obj.name);
+            $.goToGroup = function(group){
+            	$location.search('group', group.name);
             	$.title = $location.search().group;
-            	geoJson.getWorldGroup($routeParams.portfolio, obj.name).then(function(data){
+            	geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(data){
 	            $.geojson = data;
 	        });
-            	trademarkReviser.getGroup($routeParams.portfolio, obj.name).then(function(data){
+            	trademarkService.getGroup($routeParams.portfolio, group.name).then(function(data){
                     $.trademarks = data;
         	    $.chartSubtitles = $filter('groupByStatus')($.trademarks);
             	});
@@ -351,11 +351,11 @@ angular.module('app')
          }])
 
 	.controller('countryViewCtrl', 
-		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJson', 'trademarkReviser', 'editTrademarkModal', 'trademarkModal', 'editCountryModal', 
-		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJson, trademarkReviser, editTrademarkModal, trademarkModal, editCountryModal){
+		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 'editCountryModal', 
+		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal, editCountryModal){
 	        var $ = $scope;
         
-            trademarkReviser.getCountry($routeParams.portfolio, $location.search().country).then(function(trademarks){
+            trademarkService.getCountry($routeParams.portfolio, $location.search().country).then(function(trademarks){
                 $.trademarks = trademarks;
                 $.trademark = trademarks[0];
                 $.countries = $filter('extractCountries')($.trademarks);
@@ -367,7 +367,7 @@ angular.module('app')
 		    }
             });
 
-	    trademarkReviser.getListOfMarks($routeParams.portfolio, $location.search().country)
+	    trademarkService.getListOfMarks($routeParams.portfolio, $location.search().country)
 	    	.then(function(list){
 	    		$.marks = list;
 	    	})
@@ -416,10 +416,10 @@ angular.module('app')
          }])
 
 	.controller('expiryCtrl', 
-        ['$scope', '$rootScope',  '$routeParams', '$location', 'geoJson', 'editTrademarkModal', 'trademarkModal', 
-         function($scope, $rootScope, $routeParams, $location, geoJson, editTrademarkModal, trademarkModal){
+        ['$scope', '$rootScope',  '$routeParams', '$location', 'geoJsonService', 'editTrademarkModal', 'trademarkModal', 
+         function($scope, $rootScope, $routeParams, $location, geoJsonService, editTrademarkModal, trademarkModal){
         var $ = $scope;
-        geoJson.getExpiriesForYear($routeParams.portfolio, $routeParams.year).then(function(geojson){
+        geoJsonService.getExpiriesForYear($routeParams.portfolio, $routeParams.year).then(function(geojson){
               $.geojson = geojson;
         });
              
@@ -498,8 +498,8 @@ angular.module('app')
     }])
 
 
-    .controller('addCtrl', ['$scope', '$http', 'trademarkReviser',
-        function($scope, $http, trademarkReviser){
+    .controller('addCtrl', ['$scope', '$http', 'trademarkService',
+        function($scope, $http, trademarkService){
             var $ = $scope;
             $http.get('/api/countrydata')
                 .success(function(data){
@@ -507,7 +507,7 @@ angular.module('app')
                 })
 
             $.addTrademark = function(trademark){
-                trademarkReviser.addMark(trademark)
+                trademarkService.addMark(trademark)
                     .success(function(data){
                         $.message = data.message;
                     })
@@ -535,8 +535,8 @@ angular.module('app')
             }
         }])
 
-	.controller('createAccountCtrl', ['$scope', '$rootScope', '$http', '$location', 'userGetter',
-        function($scope, $rootScope, $http, $location, userGetter){
+	.controller('createAccountCtrl', ['$scope', '$rootScope', '$http', '$location', 'userService',
+        function($scope, $rootScope, $http, $location, userService){
             var $ = $scope;
             $.createUser = function(){
                 $http.post('/api/createAccount', $.newUser)
@@ -554,11 +554,11 @@ angular.module('app')
            
         }])
 
-    .controller('selectPortfolioCtrl', ['$scope', '$location', 'userGetter', '$rootScope',
-        function($scope, $location, userGetter, $rootScope){
+    .controller('selectPortfolioCtrl', ['$scope', '$location', 'userService', '$rootScope',
+        function($scope, $location, userService, $rootScope){
             var $ = $scope;
-            userGetter.getUser().then(function(response){
-                $.portfolios = response.portfolios;
+            userService.getUser().then(function(user){
+                $.portfolios = user.portfolios;
             })
 
         }])
