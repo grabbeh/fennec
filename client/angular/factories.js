@@ -41,9 +41,9 @@ angular.module('app')
         });
     }])
 
-  .factory('userGetter', ['$http', function ($http) {
+  .factory('userService', ['$http', function ($http) {
     var user = [];
-    var userGetter = {
+    var userService = {
       	anyUsers: function(){
       	    return $http.get('/api/anyUsers');	
       	}, 
@@ -64,11 +64,11 @@ angular.module('app')
             })
         }
     }
-    return userGetter;
+    return userService;
   }])
 
-  .factory('geoJson', ['$http', 'userGetter', function($http, userGetter){
-    var geoJson = {
+  .factory('geoJsonService', ['$http', 'userGetter', function($http, userGetter){
+    var geoJsonService = {
         getWorldGroup: function(portfolio, group){
             return $http.get('/api/world/' +  portfolio + '/' + group)
             	.then(function(response){
@@ -83,17 +83,17 @@ angular.module('app')
 
             }
         }
-    return geoJson;
+    return geoJsonService;
   }])
 
-  .factory('trademarkReviser', ['$http', 'userGetter', '$rootScope', function($http, userGetter, $rootScope){
+  .factory('trademarkService', ['$http', 'userGetter', '$rootScope', function($http, userGetter, $rootScope){
     function curry(fun){
         return function(arg){
             return fun(arg);
         }   
       }
 
-      var trademarkReviser = {
+      var trademarkService = {
       	
       	  getListOfMarks: function(portfolio, country){
       	       var url = '/api/listOfMarks/' + portfolio;
@@ -159,13 +159,13 @@ angular.module('app')
               return $http.put('/api/trademark/' + trademark._id, { trademark: trademark })
            }
        	}
-      return trademarkReviser;
+      return trademarkService;
   }])
 
-  .factory('pathHolder', ['trademarkReviser', 'userGetter', function(trademarkReviser, userGetter){
+  .factory('pathService', ['trademarkReviser', 'userGetter', function(trademarkReviser, userGetter){
       
       var path = [];
-      var pathHolder = {
+      var pathService = {
            insertPath: function(url){
                 if (url != "/login"){ path[0] = url; };
            },
@@ -179,11 +179,11 @@ angular.module('app')
            }
 
       }
-      return pathHolder;
+      return pathService;
   }])
   
-  .factory('chartGetter', ['$filter', '$http', 'trademarkReviser', function($filter, $http, trademarkReviser){
-        var chartGetter = {
+  .factory('chartService', ['$filter', '$http', 'trademarkReviser', function($filter, $http, trademarkReviser){
+        var chartService = {
             barChartDataForGroup: function(portfolio, group){
                 return trademarkReviser.getExpiryDatesForGroup(portfolio, group)
                     .then(function(data){
@@ -248,6 +248,6 @@ angular.module('app')
                     };
                }
         }
-        return chartGetter;
+        return chartService;
   }])
 
