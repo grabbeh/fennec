@@ -126,7 +126,7 @@ exports.getExpiriesForYear = function(req, res){
 		],
 		function(err, results){
 			helper.sortTrademarksByExpiryYear(results[1], function(err, tms){
-				helper.convertPortfolioAndAddToGeoJSON(results[0], tms[req.body.year], function(err, o){
+				helper.convertPortfolioAndAddToGeoJSON(results[0], tms[req.query.year], function(err, o){
 					res.json(o);
 				})
 			})
