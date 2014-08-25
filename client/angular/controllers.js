@@ -419,7 +419,7 @@ angular.module('app')
         ['$scope', '$rootScope',  '$routeParams', '$location', 'geoJson', 'editTrademarkModal', 'trademarkModal', 
          function($scope, $rootScope, $routeParams, $location, geoJson, editTrademarkModal, trademarkModal){
         var $ = $scope;
-        geoJson.getExpiriesForYear($routeParams.portfolio, $routeParams.year).success(function(geojson){
+        geoJson.getExpiriesForYear($routeParams.portfolio, $routeParams.year).then(function(geojson){
               $.geojson = geojson;
         });
              
