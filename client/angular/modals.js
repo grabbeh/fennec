@@ -26,8 +26,8 @@ angular.module('app')
       
     }])
     
-    .controller('trademarkModalCtrl', ['$scope', '$timeout', '$rootScope', 'userGetter', 'trademarkReviser', '$http', 'editTrademarkModal', 'trademarkModal', 
-      function ($scope, $timeout, $rootScope, userGetter, trademarkReviser, $http, editTrademarkModal, trademarkModal) {
+    .controller('trademarkModalCtrl', ['$scope', '$timeout', '$rootScope', 'userService', 'trademarkService', '$http', 'editTrademarkModal', 'trademarkModal', 
+      function ($scope, $timeout, $rootScope, userService, trademarkService, $http, editTrademarkModal, trademarkModal) {
       var $ = $scope;
       $.alpha2 = $.trademark.country.alpha2.toLowerCase();
       
@@ -37,7 +37,7 @@ angular.module('app')
       };
           
       $.openEditTrademarkModal = function(trademark){
-        userGetter.isAdmin().then(function(){
+        userService.isAdmin().then(function(){
                 trademarkModal.deactivate();
                 editTrademarkModal.activate({trademark: trademark})
             }, function(res){
@@ -46,8 +46,8 @@ angular.module('app')
           }
     
       $.deleteTrademark = function(trademark){
-        userGetter.isAdmin().then(function(res){
-            trademarkReviser.deleteMark(trademark)
+        userService.isAdmin().then(function(res){
+            trademarkService.deleteMark(trademark)
                .success(function(data){
                    $scope.message = data.message;
                })
@@ -62,8 +62,8 @@ angular.module('app')
     }])
   
     
-    .controller('editTrademarkModalCtrl', ['$scope', '$rootScope', '$http', 'trademarkReviser', 'editTrademarkModal',
-      function ($scope, $rootScope, $http, trademarkReviser, editTrademarkModal) {
+    .controller('editTrademarkModalCtrl', ['$scope', '$rootScope', '$http', 'trademarkService', 'editTrademarkModal',
+      function ($scope, $rootScope, $http, trademarkService, editTrademarkModal) {
           var $ = $scope;
           $.closeModal = function() {
             editTrademarkModal.deactivate();
@@ -78,7 +78,7 @@ angular.module('app')
             })
     
         $.editTrademark = function(trademark){
-            trademarkReviser.editMark(trademark)
+            trademarkService.editMark(trademark)
                 .success(function(data){
                     $.message = data.message;
                 });
@@ -86,8 +86,8 @@ angular.module('app')
        
     }])
 
-	.controller('editGroupCtrl', ['$scope', '$rootScope', '$routeParams', '$http', 'trademarkReviser', 'editGroupModal',
-         function($scope, $rootScope, $routeParams, $http, trademarkReviser, editGroupModal){
+	.controller('editGroupCtrl', ['$scope', '$rootScope', '$routeParams', '$http', 'trademarkService', 'editGroupModal',
+         function($scope, $rootScope, $routeParams, $http, trademarkService, editGroupModal){
               var $ = $scope;
               $.closeModal = function() {
                     editGroupModal.deactivate();
@@ -95,7 +95,7 @@ angular.module('app')
               };
              
               $.editGroup = function(trademark){
-                  trademarkReviser.editGroup($.portfolio, $.mark, trademark)
+                  trademarkService.editGroup($.portfolio, $.mark, trademark)
                       .success(function(data){
                           $.message = data.msg;
 			})
@@ -103,8 +103,8 @@ angular.module('app')
               
          }])
 
-	.controller('editCountryCtrl', ['$scope', '$rootScope', '$routeParams', 'trademarkReviser', 'editCountryModal',
-         function($scope, $rootScope, $routeParams, trademarkReviser, editCountryModal){
+	.controller('editCountryCtrl', ['$scope', '$rootScope', '$routeParams', 'trademarkService', 'editCountryModal',
+         function($scope, $rootScope, $routeParams, trademarkService, editCountryModal){
                 var $ = $scope;
                 $.closeModal = function() {
                     editCountryModal.deactivate();
@@ -112,15 +112,15 @@ angular.module('app')
           		};
              
                 $.editCountry = function(trademark){
-                    trademarkReviser.editMarksInCountry($routeParams.portfolio, $.iso, trademark)
+                    trademarkService.editMarksInCountry($routeParams.portfolio, $.iso, trademark)
                       .success(function(data){
                           $.message = data.msg;
 				    })
                 }
          }])
 
-	.controller('editCountryCtrl', ['$scope', '$rootScope', 'trademarkReviser', 'editCountryModal',
-         function($scope, $rootScope, trademarkReviser, editCountryModal){
+	.controller('editCountryCtrl', ['$scope', '$rootScope', 'trademarkService', 'editCountryModal',
+         function($scope, $rootScope, trademarkService, editCountryModal){
                 var $ = $scope;
                 $.closeModal = function() {
                     editCountryModal.deactivate();
@@ -128,10 +128,10 @@ angular.module('app')
           		};
              
                 $.editCountry = function(trademark){
-                    trademarkReviser.editMarksInCountry($.portfolio, $.iso, trademark)
+                    trademarkService.editMarksInCountry($.portfolio, $.iso, trademark)
                       .success(function(data){
                           $.message = data.msg;
-			         })
+			})
                 }
         }])
 
