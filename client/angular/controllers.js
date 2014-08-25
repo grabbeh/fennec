@@ -1,6 +1,6 @@
 angular.module('app')
 
- 	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkReviser){
+ 	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkService){
  	    var $ = $scope;
  	    $http.get('/api/countryData')
             .success(function(countries){
