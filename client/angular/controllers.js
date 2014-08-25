@@ -161,16 +161,14 @@ angular.module('app')
             
             $.showGroup = function(group){
             	
-                trademarkReviser.getGroup($routeParams.portfolio, group.name).then(function(trademarks){
-                
-                    $.trademarks = trademarks;
-                })
+                $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
+
                 geoJson.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
                     $.geojson = geojson;
-                })
+                });
                 chartGetter.barChartDataForGroup($routeParams.portfolio, group.name).then(function(barChartData){
                     $.chart = barChartData;
-                })
+                });
                 $.marks = $filter('unTickAllExceptSelected')($.marks, group);
                 $.activeMark = group.name;
 
@@ -189,6 +187,7 @@ angular.module('app')
             $.activePortfolio = $routeParams.portfolio;
             $.geojson = world;
             $.trademarks = trademarks;
+            $.allTrademarks = trademarks;
             $.user = user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({ name: "ALL MARKS" })

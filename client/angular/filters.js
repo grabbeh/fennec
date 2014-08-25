@@ -1,4 +1,13 @@
 angular.module('app')
+
+	.filter('extractGroup', function(){
+    	return function(arr, group){
+            return arr.filter(function(i){
+                return i.mark === group;
+            })
+          
+        }
+	})
 	.filter('fromNow', function(){
 		return function(input){
 			input.forEach(function(i){
