@@ -11,8 +11,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/quick-search.html',
             controller: 'quickSearchCtrl',
             resolve: {
-                user: function(userGetter){
-                    return userGetter.isUser();
+                user: function(userService){
+                    return userService.isUser();
                 }
             }
         }).
@@ -20,8 +20,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/portfolio-home.html',
             controller: 'portfolioHomeCtrl',
             resolve: {
-                user: function(userGetter){
-                    return userGetter.isUser();
+                user: function(userService){
+                    return userService.isUser();
                 }
             }
             
@@ -30,20 +30,20 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/admin.html',
             controller: 'adminCtrl',
             resolve: {
-                user: function(userGetter){
-                    return userGetter.getUser();
+                user: function(userService){
+                    return userService.getUser();
                 },
-                trademarks: function($route, trademarkReviser){
-                    return trademarkReviser.getGroup($route.current.params.portfolio, "ALL MARKS");
+                trademarks: function($route, trademarkService){
+                    return trademarkService.getGroup($route.current.params.portfolio, "ALL MARKS");
                 },
-                world: function($route, geoJson){
-                    return geoJson.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
+                world: function($route, geoJsonService){
+                    return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
                 },
-                barChartData: function($route, chartGetter){
-                    return chartGetter.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");
+                barChartData: function($route, chartService){
+                    return chartService.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");
                 },
-                barChartOptions: function(chartGetter){
-                    return chartGetter.barChartOptions();
+                barChartOptions: function(chartService){
+                    return chartService.barChartOptions();
                 }
             }
         }).
@@ -51,14 +51,14 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/map.html',
             controller: 'mapCtrl',
             resolve: {
-                user: function(userGetter){
-                    return userGetter.isUser();
+                user: function(userService){
+                    return userService.isUser();
                 },
-                world: function($route, geoJson){
-                    return geoJson.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
+                world: function($route, geoJsonService){
+                    return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
                 },
-                trademarks: function($route, trademarkReviser){
-                    return trademarkReviser.getGroup($route.current.params.portfolio, "ALL MARKS");
+                trademarks: function($route, trademarkService){
+                    return trademarkService.getGroup($route.current.params.portfolio, "ALL MARKS");
                 }
             }
         }).
@@ -78,8 +78,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/add-user.html',
             controller: 'createUserCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }).
@@ -87,8 +87,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/upload.html',
             controller: 'uploadCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }). 
@@ -96,8 +96,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/add.html',
             controller: 'addCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }).
@@ -105,8 +105,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/view-trademark.html',
             controller: 'trademarkViewCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }).
@@ -115,8 +115,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/view-group.html',
             controller: 'groupViewCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }).
@@ -125,8 +125,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/view-country.html',
             controller: 'countryViewCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }).
@@ -134,8 +134,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/expiry-map.html',
             controller: 'expiryCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }).
@@ -144,23 +144,23 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/admin.html',
             controller: 'adminCtrl',
             resolve: {
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 },
-                user: function(userGetter){
-                    return userGetter.getUser();
+                user: function(userService){
+                    return userService.getUser();
                 },
-                trademarks: function($route, trademarkReviser){
-                    return trademarkReviser.getGroup($route.current.params.portfolio, "ALL MARKS");
+                trademarks: function($route, trademarkService){
+                    return trademarkService.getGroup($route.current.params.portfolio, "ALL MARKS");
                 },
-                world: function($route, geoJson){
-                    return geoJson.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
+                world: function($route, geoJsonService){
+                    return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
                 },
-                barChartData: function($route, chartGetter){
-                    return chartGetter.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");
+                barChartData: function($route, chartService){
+                    return chartService.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");
                 },
-                barChartOptions: function(chartGetter){
-                    return chartGetter.barChartOptions();
+                barChartOptions: function(chartService){
+                    return chartService.barChartOptions();
                 }
             }
         }).
@@ -173,8 +173,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl:'/partials/select-portfolio.html',
             controller: 'selectPortfolioCtrl',
             resolve:{
-                admin: function(userGetter){
-                    return userGetter.isAdmin();
+                admin: function(userService){
+                    return userService.isAdmin();
                 }
             }
         }).
