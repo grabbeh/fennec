@@ -105,9 +105,9 @@ exports.deleteTrademark = function(req, res){
 
 exports.provideExpiryDates = function(req, res){
     var entity = req.user.entity;
-    var portfolio = req.query.portfolio.replace(/%20/g, " ");
+    var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio, function(err, tms){
-        var key = req.params.group.replace(/%20/g, " ");
+        var key = req.query.group.replace(/%20/g, " ");
         if (key != "ALL MARKS"){
             var tms = _.groupBy(tms, 'mark')[key];	
         }

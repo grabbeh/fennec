@@ -92,7 +92,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }). 
-        when('/admin/trademark', {
+    	when('/admin/trademark/:portfolio', {
             templateUrl: '/partials/add.html',
             controller: 'addCtrl',
             resolve: {

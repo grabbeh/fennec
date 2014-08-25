@@ -26,8 +26,7 @@ angular.module('app')
 	                trademark: '=',
 	           		user: '='
 	        },
-	         
-	        controller: function($scope, userGetter){
+	        controller: function($scope, userService){
 	            var $ = $scope;
 	            $.toggleFavourite = function(){
 		          	if ($.trademark.favourite){
@@ -37,16 +36,16 @@ angular.module('app')
 		              	     	$.user.favourites.splice(i, 1);
 		              	  		}
 		              		})
-		              		userGetter.updateUser($.user).then(function(res){
-		
+		              		userService.updateUser($.user).then(function(res){
+                                
 		            		 });
 		
 		            }
 		        	else {
 		              $.trademark.favourite = true;
 		              $.user.favourites.push($.trademark._id)
-		              userGetter.updateUser($.user).then(function(res){
-		              			
+		              userService.updateUser($.user).then(function(res){
+                          
 		              })
 		            }
 	             }
@@ -418,7 +417,7 @@ angular.module('app')
       }
 })
 
-    .directive('mgAdminAlertWidget', function(userGetter) {
+    .directive('mgAdminAlertWidget', function(userService) {
       return {
             replace: true, 
             templateUrl: '/partials/admin-alert.html',
@@ -470,7 +469,7 @@ angular.module('app')
                 }
 
                 $.updateAlerts = function(user){
-                     userGetter.updateUser(user)
+                     userService.updateUser(user)
                         .then(function(data){
                              $.alert.type = "";
                              $.alert.number = "";
@@ -590,6 +589,70 @@ angular.module('app')
           }
       }
 })
+
+.directive('mgFavouritesPaginator', function() {
+      return {
+            templateUrl: "/partials/admin-favourites.html",
+            replace: true, 
+            link: function(scope, elements, attrs){
+                var $ = scope;
+                 $.$watch('favouriteMarks', function(newVal){
+                      if (!newVal){
+                          return;
+                      }
+                     $.groupOfArrays = [];
+                    
+                     
+                      for (var i=0; i < newVal.length; i+= $.itemsPerPage) {
+                           var slice = newVal.slice(i, i+ $.itemsPerPage);
+                           $.groupOfArrays.push(slice);
+                      }
+                      $.items = $.groupOfArrays[0];
+                      $.pageNumber = 1;
+                 })
+
+                  $.$watch('pageNumber', function(newPage){
+                      $.items = $.groupOfArrays[newPage -1];
+                  })
+            },
+            scope: {
+                favouriteMarks: '=',
+                itemsPerPage: '=',
+                showModal: '&',
+                user: '='
+            },
+            controller: function($scope) {
+                var $ = $scope;
+                $.groupOfArrays = [];
+                $.prevPage = function(pageNumber){
+                    $.pageNumber--;
+                };
+                $.nextPage = function(pageNumber){
+                    $.pageNumber++;
+                };
+                $.firstPage = function(){
+                    $.pageNumber = 1;
+                };
+                $.lastPage = function(){
+                    $.pageNumber = $scope.groupOfArrays.length;
+                };
+                $.checkIfFirst = function(pageNumber){
+                    if (pageNumber === 1){
+                      return true;
+                    }
+                };
+                $.checkIfLast = function(pageNumber){
+                   if (pageNumber === $scope.groupOfArrays.length){
+                      return true;
+                   }
+                };
+                $.showModalWrapper = function(tm){
+                    var func = $scope.showModal();
+                    func(tm);
+                }
+          }
+      }
+    })
 
   
 

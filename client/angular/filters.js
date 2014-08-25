@@ -35,16 +35,12 @@ angular.module('app')
 		
 	})
 	
-	.filter('favouriteMarks', function(){
-		return function(arr){
-			var newArray = [];
-			arr.forEach(function(a){
-				if (a.favourite){
-				   newArray.push(a);	
-				}
-			})
-			return newArray;
-		}
+	.filter('extractFavourites', function(){
+    	return function(arr){
+            return arr.filter(function(i){
+                return i.favourite === true;
+            })
+        }
 	})
 	
 	.filter('groupByStatus', function(){

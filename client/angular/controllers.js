@@ -58,10 +58,7 @@ angular.module('app')
                     $.classes = "";
                 }
             })
-           
  		}
-
- 		
  	}])
 
      .controller('landingPageCtrl', ['$scope', '$window', '$http', 'userService', '$location', '$rootScope', function($scope, $window, $http, userService, $location, $rootScope){
@@ -188,6 +185,7 @@ angular.module('app')
             $.geojson = world;
             $.trademarks = trademarks;
             $.allTrademarks = trademarks;
+            $.favouriteMarks = $filter('extractFavourites')(trademarks);
             $.user = user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({ name: "ALL MARKS" })
@@ -201,12 +199,12 @@ angular.module('app')
                      }); 
                  }
 
-            $.goToGroup = function(obj){
-            	$location.path('/admin/group/' + $routeParams.portfolio).search('group', obj.name);
+            $.goToGroup = function(country){
+            	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
             }
             
-            $.goToCountry = function(obj){
-                $location.path('/admin/country/' + $routeParams.portfolio).search('country', obj.alpha3);
+            $.goToCountry = function(country){
+                $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
             }
             
             $.$watch('trademarks', function(trademarks){
@@ -219,7 +217,7 @@ angular.module('app')
                 $.chartSubtitles = chartService.pieChartSubtitles(trademarks);
             });
             
-             $.expirySearch = function(year){
+            $.expirySearch = function(year){
                  $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + year)
             };
 
@@ -498,8 +496,8 @@ angular.module('app')
     }])
 
 
-    .controller('addCtrl', ['$scope', '$http', 'trademarkService',
-        function($scope, $http, trademarkService){
+    .controller('addCtrl', ['$scope', '$http', 'trademarkService', '$routeParams',
+        function($scope, $http, trademarkService, $routeParams){
             var $ = $scope;
             $http.get('/api/countrydata')
                 .success(function(data){
@@ -507,7 +505,7 @@ angular.module('app')
                 })
 
             $.addTrademark = function(trademark){
-                trademarkService.addMark(trademark)
+                trademarkService.addMark(trademark, $routeParams.portfolio)
                     .success(function(data){
                         $.message = data.message;
                     })

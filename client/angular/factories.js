@@ -67,7 +67,7 @@ angular.module('app')
     return userService;
   }])
 
-  .factory('geoJsonService', ['$http', 'userGetter', function($http, userGetter){
+  .factory('geoJsonService', ['$http', function($http){
     var geoJsonService = {
         getWorldGroup: function(portfolio, group){
             return $http.get('/api/world/' +  portfolio + '/' + group)
@@ -86,7 +86,7 @@ angular.module('app')
     return geoJsonService;
   }])
 
-  .factory('trademarkService', ['$http', 'userGetter', '$rootScope', function($http, userGetter, $rootScope){
+  .factory('trademarkService', ['$http', '$rootScope', function($http, $rootScope){
     function curry(fun){
         return function(arg){
             return fun(arg);
@@ -128,7 +128,7 @@ angular.module('app')
               return $http.post('/api/editMarksInCountry/' + portfolio + '?country=' + country, { trademark: trademark })
           },
           getExpiryDatesForGroup: function(portfolio, group){
-              return $http.get('/api/expirydates/' + portfolio + '/' + group)
+              return $http.get('/api/expirydates/' + portfolio + '?group=' + group)
                  .then(function(response){
                      return response.data;
 				})
@@ -142,9 +142,9 @@ angular.module('app')
           deleteMark: function(trademark){
               return $http.delete('/api/trademark/' + trademark._id);
           },
-          addMark: function(trademark){
+          addMark: function(trademark, portfolio){
                 trademark.classes = _.map(trademark.classes.split(","), curry(parseInt));
-                trademark.portfolio = userGetter.returnUser().activePortfolio;
+                trademark.portfolio = portfolio;
                 return $http.post('/api/trademark', { trademark: trademark })
           },
           editMark: function(trademark){
@@ -155,14 +155,13 @@ angular.module('app')
                       trademark.classes = _.map(trademark.country.coordinates.split(","), curry(parseInt));
               }
               trademark.updated = new Date().toISOString();
-            
               return $http.put('/api/trademark/' + trademark._id, { trademark: trademark })
            }
        	}
       return trademarkService;
   }])
 
-  .factory('pathService', ['trademarkReviser', 'userGetter', function(trademarkReviser, userGetter){
+  .factory('pathService', ['trademarkService', 'userService', function(trademarkService, userService){
       
       var path = [];
       var pathService = {
@@ -182,10 +181,10 @@ angular.module('app')
       return pathService;
   }])
   
-  .factory('chartService', ['$filter', '$http', 'trademarkReviser', function($filter, $http, trademarkReviser){
+  .factory('chartService', ['$filter', '$http', 'trademarkService', function($filter, $http, trademarkService){
         var chartService = {
             barChartDataForGroup: function(portfolio, group){
-                return trademarkReviser.getExpiryDatesForGroup(portfolio, group)
+                return trademarkService.getExpiryDatesForGroup(portfolio, group)
                     .then(function(data){
                         var barData = $filter('extractExpiryDates')(data);
                         var fullBarData = {

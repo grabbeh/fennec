@@ -773,6 +773,10 @@ input::-webkit-inner-spin-button {
     padding-top: 10px;
 }
 
+.favourites-container {
+    background: white
+}
+
 .expiry-chart-title {
     font-weight: bold;
 }
@@ -875,6 +879,13 @@ input::-webkit-inner-spin-button {
     float: left;
     margin-bottom: 10px;
     margin-top: 15px;
+}
+
+.favourite-container {
+    padding: 20px;
+    background: white;
+    margin-top: 20px;
+
 }
 
 .modal-expiry-date {
