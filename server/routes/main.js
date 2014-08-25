@@ -42,22 +42,6 @@ function queryTrademarks(entity, portfolio, country, group, status, cb){
     })
 }
 
-exports.getExpiriesForYear = function(req, res){
-	var entity = req.user.entity;
-        var portfolio = req.params.portfolio.replace(/%20/g, " ");
-	async.parallel([
-		async.apply(helper.getGeoJSON),
-		async.apply(helper.getTrademarks, entity, portfolio)
-		],
-		function(err, results){
-			helper.sortTrademarksByExpiryYear(results[1], function(err, tms){
-				helper.convertPortfolioAndAddToGeoJSON(results[0], tms[req.body.year], function(err, o){
-					res.json(o);
-				})
-			})
-		})
-	}
-
 exports.search = function(req, res){
     //trademark.search( { query: req.body.query }, { hydrate: true}, function(err, results){ 
     /*
@@ -121,17 +105,7 @@ exports.deleteTrademark = function(req, res){
 
 exports.provideExpiryDates = function(req, res){
     var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.getTrademarks(entity, portfolio, function(err, tms){
-        helper.sortTrademarksByExpiryYear(tms, function(err, trademarks){
-		   res.json(trademarks)
-		})
-    })
-}
-
-exports.provideExpiryDatesForGroup = function(req, res){
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
+    var portfolio = req.query.portfolio.replace(/%20/g, " ");
     helper.getTrademarks(entity, portfolio, function(err, tms){
         var key = req.params.group.replace(/%20/g, " ");
         if (key != "ALL MARKS"){
@@ -142,5 +116,21 @@ exports.provideExpiryDatesForGroup = function(req, res){
     	})	 
     })
 }
+
+exports.getExpiriesForYear = function(req, res){
+	var entity = req.user.entity;
+        var portfolio = req.params.portfolio.replace(/%20/g, " ");
+	async.parallel([
+		async.apply(helper.getGeoJSON),
+		async.apply(helper.getTrademarks, entity, portfolio)
+		],
+		function(err, results){
+			helper.sortTrademarksByExpiryYear(results[1], function(err, tms){
+				helper.convertPortfolioAndAddToGeoJSON(results[0], tms[req.body.year], function(err, o){
+					res.json(o);
+				})
+			})
+		})
+	}
 
 
