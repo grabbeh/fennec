@@ -417,11 +417,13 @@ angular.module('app')
         ['$scope', '$rootScope',  '$routeParams', '$location', 'geoJsonService', 'editTrademarkModal', 'trademarkModal', 
          function($scope, $rootScope, $routeParams, $location, geoJsonService, editTrademarkModal, trademarkModal){
         var $ = $scope;
-        geoJsonService.getExpiriesForYear($routeParams.portfolio, $routeParams.year).then(function(geojson){
-              $.geojson = geojson;
+        $.activeYear = $routeParams.year;
+        geoJsonService.getExpiriesForYear($routeParams.portfolio, $routeParams.year).then(function(response){
+              $.geojson = response.data;
         });
              
         $.$on('country.click', function(e, l){
+            console.log(l);
             $.registered = false;
             $.nocontent = true;
             $.$apply(function(){
@@ -429,8 +431,10 @@ angular.module('app')
                 $.countrycode = l.target.feature.alpha2.toLowerCase();
                
                 var tms = l.target.feature.properties.trademarks;
+                console.log(tms);
                 if (tms){
                     $.nocontent = false;
+                    console.log(tms.Registered)
                     if (tms.Registered)
                         $.registered = tms.Registered;
                   }
@@ -449,7 +453,7 @@ angular.module('app')
         };
         
         $.changeYear = function(){
-            $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + $.year)
+            $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + $.year);
         };
              
         $.min = new Date().getFullYear();

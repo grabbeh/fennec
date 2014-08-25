@@ -21,6 +21,7 @@ var express = require('express')
 , user = require('./server/routes/users')
 , helper = require('./server/routes/helper')
 , image = require('./server/routes/images')
+, expiry = require('./server/routes/expiry')
 , job = require('./server/routes/agenda')
 , spreadsheet = require('./server/routes/excel-process')
 , contact = require('./server/routes/contact')
@@ -116,8 +117,8 @@ app.post('/api/editMarksInCountry/:portfolio', x, country.editMarksInCountry);
 
 // Expiry dates
 
-app.get('/api/expirydates/:portfolio', x, main.provideExpiryDates);
-app.post('/api/expiriesForYear/:portfolio', x, main.getExpiriesForYear);
+app.get('/api/expirydates/:portfolio', x, expiry.expiriesForGroup);
+app.get('/api/expiriesForYear/:portfolio', x, expiry.expiriesForYear);
 
 // Users
 

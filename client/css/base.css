@@ -1280,16 +1280,34 @@ margin: 0px 10px 10px 0px;
 }
 
 .search-form-input {
-	margin: 10px 10px 10px 0;
 	font-size: 20px;
-	line-height: 1.2em;
 	border: 0;
 	padding: 6px;
-	border: 1px solid #999;
+    margin-right: -5px;
+}
+
+.expiry-form-input {
+    font-size: 20px;
+	border: solid 1px #999;
+	padding: 6px;
+    margin: 10px -40px 10px 0;
+    width:90%;
+}
+
+
+.search-button {
+    color: black;
+    background: white;
+    padding: 7px 7px 8px 7px;
 }
 
 .expiry-form {
     width: 70%;
+}
+
+.expiry-title { 
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .add-button {

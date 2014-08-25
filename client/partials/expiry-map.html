@@ -1,17 +1,31 @@
 <div ng-hide="loadingView" class="fixed-container">
-       <div>
-           <form name="expiryForm" ng-submit="changeYear(year)"><input type="number" min="{{ min }}" max=" {{ min + 10 }}" placeholder="Show marks expiring in given year" ng-model="year" class="search-form-input">
-           <input ng-disabled="!expiryFormValid()" class="add-button" type=submit value="Search">
-           </form>
+    <div class="view-group-panel-container">
+        
+    
+    <div class="row">
+        <div class="one-half-container">
+        <div class="expiry-title">
+            Trademarks expiring in {{ activeYear }}
+            </div>
+        <div>
+           <form name="expiryForm">
+            <input type="number" min="{{ min }}" max=" {{ min + 10 }}" placeholder="Show expiries for given year" ng-model="year" class="expiry-form-input">
+            <i ng-show="expiryFormValid()" ng-click="changeYear(year)" class="hover search-button fa fa-search"></i> 
+        </form>
        </div>
+    </div>
+        
+    </div>
+       
 
       <div mg-clear></div>
 
       <div mg-map id="map" geojson="geojson"></div>
       
-      <div ng-show="trademarks || pending || published || nocontent" class="trademark-container">
+      <div ng-show="registered" class="trademark-container">
         <div class="country-holder f32"> {{ country }}  <div class="flag" ng-class="countrycode"></div></div>
         <span ng-show="nocontent">No trade marks for this country</span>
          <div class="full-width-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
       </div>
+    </div>
 </div>

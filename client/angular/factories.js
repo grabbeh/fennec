@@ -77,10 +77,6 @@ angular.module('app')
         },
         getExpiriesForYear: function(portfolio, year){
             return $http.get('/api/expiriesForYear/' + portfolio + '?year=' + year)
-            	then(function(response){
-            		return response.data;
-            	})
-
             }
         }
     return geoJsonService;
