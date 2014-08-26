@@ -169,6 +169,8 @@ angular.module('app')
                 return path[0];
            },
            existingPath: function(){
+           	console.log(path);
+           	console.log(path.length)
                 if (path.length > 0){
                      return true;
                 }
