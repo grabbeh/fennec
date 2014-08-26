@@ -73,6 +73,7 @@ angular.module('app')
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
                         if (pathService.existingPath){
+                            console.log(pathService.returnPath())
                             $location.path(pathService.returnPath());
                         }
                         else {
