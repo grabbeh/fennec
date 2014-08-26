@@ -161,6 +161,7 @@ angular.module('app')
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
 
                 geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
+                    console.log(geojson);
                     $.geojson = geojson;
                 });
                 chartService.barChartDataForGroup($routeParams.portfolio, group.name).then(function(barChartData){
