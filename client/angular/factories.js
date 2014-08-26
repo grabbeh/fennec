@@ -172,6 +172,7 @@ angular.module('app')
            	console.log(path);
            	console.log(path.length)
                 if (path.length > 0){
+                	console.log("Existing path in factory")
                      return true;
                 }
            }
