@@ -618,8 +618,7 @@ angular.module('app')
             scope: {
                 favouriteMarks: '=',
                 itemsPerPage: '=',
-                showModal: '&',
-                user: '='
+                showModal: '&'
             },
             controller: function($scope) {
                 var $ = $scope;
