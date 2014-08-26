@@ -72,13 +72,11 @@ angular.module('app')
                     .success(function(res){
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
-                        if (pathService.existingPath){
-                            console.log(pathService.returnPath())
-                            $location.path(pathService.returnPath());
+                        if (pathService.returnPath() === undefined){
+                            $location.path('/select-portfolio');
                         }
                         else {
-                            console.log("No path")
-                            $location.path('/select-portfolio');
+                            $location.path(pathService.returnPath());
                         }
                     })
                     .error(function(err){
