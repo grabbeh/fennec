@@ -72,7 +72,6 @@ angular.module('app')
         getWorldGroup: function(portfolio, group){
             return $http.get('/api/world/' +  portfolio + '/' + group)
             	.then(function(response){
-                	console.log(response);
                     return response.data;
 	        })
         },
