@@ -1490,5 +1490,9 @@ line-height: 4em;
     .search-input {
         width:100%;
     }
+    
+    .hide-on-mobile {
+    	display: none;
+    }
 	
 }
