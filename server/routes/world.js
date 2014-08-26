@@ -42,6 +42,7 @@ exports.worldForGroup = function(req, res){
 		    }
 
 	       helper.convertPortfolioAndAddToGeoJSON(results[0], tms, function(err, gj){
+	                 console.log(gj);
 	      	   	 res.json(gj);
 	      	 });
 	    });
