@@ -32,8 +32,8 @@ exports.worldForGroup = function(req, res){
 	var group = req.params.group.replace(/%20/g, " ");
 	
 	async.parallel([ 
-        async.apply(helper.getGeoJSON),
-	    async.apply(helper.getTrademarks, entity, portfolio)
+        	async.apply(helper.getGeoJSON),
+	    	async.apply(helper.getTrademarks, entity, portfolio)
 	    ],
 	    function(err, results){
            	var tms = results[1];
