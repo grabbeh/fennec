@@ -122,6 +122,12 @@ angular.module('app')
                     return response.data;
 		   })
           },
+          favourites: function(portfolio){
+           	return $http.get('/api/favourites/' + portfolio)
+           	    .then(function(response){
+           	    	return response.data;
+           	    })
+          },
           editGroup: function(portfolio, mark, trademark){
               return $http.post('/api/editGroup/' + portfolio + '/' + mark, { trademark: trademark })
           },
