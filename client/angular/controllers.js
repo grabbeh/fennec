@@ -1,7 +1,9 @@
 angular.module('app')
-	    .controller('favouritesCtrl', ['$scope', 'favourites', function($scope, favourites){
+	    .controller('favouritesCtrl', ['$scope', 'favourites', '$rootScope', function($scope, favourites, $rootScope){
 	        var $ = $scope;
 	        $.favourites = favourites;
+	        $.user = $rootScope.user;
+	        console.log($.user);
 	        $.activateTrademark = function(trademark){
 	        	$.activeTrademark = trademark;
 	        }
