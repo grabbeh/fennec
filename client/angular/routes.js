@@ -200,8 +200,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl:'/partials/select-portfolio.html',
             controller: 'selectPortfolioCtrl',
             resolve:{
-                admin: function(userService){
-                    return userService.isAdmin();
+                isUser: function(userService){
+                    return userService.isUser();
                 }
             }
         }).

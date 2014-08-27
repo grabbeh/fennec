@@ -52,12 +52,10 @@ module.exports = {
                 }
                 callback();
             }, function (err) {
-                if (err){ console.log(err)}
                 callback();
             })
 
         }, function (err) {
-            if (err){ console.log(err)}
             fn();
         })
     },

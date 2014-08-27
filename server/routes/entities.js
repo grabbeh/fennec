@@ -21,3 +21,9 @@ exports.updatePortfolio = function(entity, portfolio, fn){
         return fn(null, true);
     })
 }
+
+exports.getEntity = function(entity, fn){
+    Entity.findOne({ _id: entity}, function(err, entity){
+        return fn(null, entity);
+    })
+}

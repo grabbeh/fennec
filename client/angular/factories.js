@@ -44,6 +44,14 @@ angular.module('app')
   .factory('userService', ['$http', function ($http) {
     var user = [];
     var userService = {
+        logIn: function(user){
+            return $http.post('/server/login', user)
+            	.then(function(res){
+                 	return res.data;
+                }, function(res){
+					return res.data;
+                })
+        },
       	anyUsers: function(){
       	    return $http.get('/api/anyUsers');	
       	}, 
@@ -184,17 +192,13 @@ angular.module('app')
       var path = [];
       var pathService = {
            insertPath: function(url){
-                if (url != "/login"){ path[0] = url; console.log(path) };
+                if (url != "/login"){ path[0] = url; };
            },
            returnPath: function(){
-           	console.log(path)
                 return path[0];
            },
            existingPath: function(){
-           	console.log(path);
-           	console.log(path.length)
                 if (path.length > 0){
-                	console.log("Existing path in factory")
                      return true;
                 }
            }

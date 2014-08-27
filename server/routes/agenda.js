@@ -70,7 +70,7 @@ function executeJobs(admins, trademarks, fn){
     	async.forEach(admin.alertOptions, function(job, callback){
             if (job.checked && job.type === "recurring"){
               	jobs[job.functionName](admins, trademarks, function(){
-                   // console.log("Job completed = " + job.functionName)
+                    
                 })
             }
            callback();

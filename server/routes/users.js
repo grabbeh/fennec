@@ -9,6 +9,7 @@ var admin = require('../config/sendgrid')
 , fs = require('fs')
 , path = require('path')
 , helper = require('./helper')
+, entity = require('./entities')
 , bcrypt = require('bcrypt');
 
 exports.getAllAdmins = function(fn){
@@ -18,7 +19,7 @@ exports.getAllAdmins = function(fn){
 }
 
 exports.isUser = function(req, res){
-     if (req.user){ res.status(200).send()}
+      if (req.user){ res.status(200).send()}
       else { res.status(401).send({message: "Must be signed in"}) }
     }
 
@@ -45,14 +46,13 @@ function removeId(obj){
 
 exports.updateUser = function(req, res){
     User.findOneAndUpdate({_id: req.user._id}, removeId(req.body), function(err, user){
-        if (err) { console.log(err)};
          req.user = user;
          res.json(user);
     })
 }
 
 exports.logIn = function(req, res){
-    authenticate(req.body.username, req.body.password, function(err, user){
+    authenticate(req.body.email, req.body.password, function(err, user){
        if (user) {
            jwt.createToken(user, function(err, token){
                res.status(200).send({ token: token });  
@@ -63,13 +63,17 @@ exports.logIn = function(req, res){
 }
     
 exports.addUser = function(req, res) {
-    User.findOne({username: req.body.newuser.email.toUpperCase()}, function(err, user) {
-        if (user) { res.status(401).send({msg: 'Apologies - username already taken'}); return;}
-        hashPasswordAndAddUser(req.body.newuser, function(err, user){
-            res.status(200).send({msg:"user added"})
+    req.body.entity = req.user.entity;
+    entities.getEntity(req.user.entity, function(err, entity){
+        req.body.portfolios = entity.portfolios;
+        User.findOne({_id: req.body.email.toUpperCase()}, function(err, user) {
+        if (user) { res.status(401).send({msg: 'User already exists'}); return;}
+        hashPasswordAndAddUser(req.body, function(err, user){
+            res.status(200).send({msg:"User added"})
             });
        })
-   }
+    })
+  }
 
 exports.updatePassword = function(req, res){
      var id = req.user._id;
@@ -122,11 +126,6 @@ exports.resetPassword = function(req, res){
     })
 }
 
-exports.logout = function(req, res){
-    req.user = false;
-    res.status(200).send();
-}
-
 exports.addPortfolioToUser = function(id, portfolio, fn){
     User.findOneAndUpdate({ _id: id}, { $addToSet: { portfolios: portfolio}}, function(err, user){
         if (err) { return fn(err)}
@@ -149,7 +148,7 @@ exports.createAccount = function(req, res) {
    }
 
 function authenticate(name, pass, fn) {
-   User.findOne({_id: name}, function(err, user) {
+   User.findOne({_id: name.toLowerCase()}, function(err, user) {
        if (err || !user) {  return fn(err)}; 
        bcrypt.compare(pass, user.hash, function(err, res){
          if (err || !res) { return fn(err) }
@@ -179,8 +178,7 @@ function hashPasswordAndUpdateUser(id, nnew, fn){
 }
     
 function saveUser(obj, hash, fn){
-    new User({_id: obj.email,
-            username: obj.email.toUpperCase(),
+    new User({_id: obj.email.toLowerCase(),
             email: obj.email,
             hash: hash,
             isAdmin: obj.checked,

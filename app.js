@@ -136,7 +136,6 @@ app.post('/server/login', user.logIn);
 app.get('/api/isAdmin', user.isAdmin);
 app.get('/api/isUser', user.isUser);
 app.get('/api/getUser', user.getUser);
-app.get('/api/logout', user.logout);
 
 app.post('/api/updateUser', user.updateUser);
 

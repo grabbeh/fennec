@@ -80,7 +80,6 @@ exports.worldForCountry = function(req, res){
 	      async.apply(helper.marksForCountry, entity, portfolio, country)
 	      ],
 	      function(err, results){
-        	   if (err) { console.log(err)}
 	      	   helper.convertPortfolioAndAddToGeoJSON(results[0], results[1], function(err, gj){
 	      	   	 res.json(gj);
 	      	   });

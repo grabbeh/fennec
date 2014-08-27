@@ -29,7 +29,7 @@ exports.uploadImage = function(req, res){
             }
        );
        } else {
-          console.log("Wrong file type")
+          
        }
 
        req.on('response', function(resp){

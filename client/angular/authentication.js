@@ -59,8 +59,8 @@ angular.module('app')
 
         }])
     
-    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userService', 'pathService', '$http', '$location', 'trademarkService',
-        function($scope, $window, $rootScope, userService, pathService, $http, $location, trademarkService){
+    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userService', 'pathService', '$location', 'trademarkService',
+        function($scope, $window, $rootScope, userService, pathService, $location, trademarkService){
             var $ = $scope;
             
             $.canSubmitLogin = function(){
@@ -68,8 +68,10 @@ angular.module('app')
             }
             
             $.login = function(){
-                $http.post('/server/login', { password: $.password, username: $.username })
-                    .success(function(res){
+
+                userService.logIn({ password: $.password, email: $.email })
+                
+                    .then(function(res){
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
                         if (pathService.returnPath() === undefined){
@@ -78,8 +80,8 @@ angular.module('app')
                         else {
                             $location.path(pathService.returnPath());
                         }
-                    })
-                    .error(function(err){
+                    }, 
+                    function(err){
                         $.message = err.message;
                     });
                 }

@@ -83,16 +83,16 @@ angular.module('app')
  		}
  	}])
 
-     .controller('landingPageCtrl', ['$scope', '$window', '$http', 'userService', '$location', '$rootScope', function($scope, $window, $http, userService, $location, $rootScope){
+     .controller('landingPageCtrl', ['$scope', '$window',  'userService', '$location', '$rootScope', function($scope, $window, userService, $location, $rootScope){
        var $ = $scope;
        $.loadDemo = function(){
-            $http.post('/server/login', { password: "demo", username: "demo@demo.com" })
-                .success(function(res){
+            userService.logIn({ password: "demo", email: "demo@demo.com" })
+                .then(function(res){
                     $window.sessionStorage.token = res.token;
                     $rootScope.user = true;
                     $location.path('/home/ACME INC');
-                })
-                .error(function(err){
+                }, 
+                function(err){
                     $.message = err.message;
                 });
             }
@@ -109,7 +109,7 @@ angular.module('app')
          }
     }])
     
-    .controller('portfolioHomeCtrl', ['$scope', '$window', '$filter','$routeParams', 'countries', 'marks', '$location', function($scope, $window, $filter, $routeParams, countries, marks, $location){
+    .controller('portfolioHomeCtrl', ['$scope', '$window', '$rootScope', '$filter','$routeParams', 'countries', 'marks', '$location', function($scope, $window, $rootScope, $filter, $routeParams, countries, marks, $location){
            var $ = $scope;
            $.portfolio = $routeParams.portfolio;
           
@@ -124,10 +124,12 @@ angular.module('app')
                 $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
             }
             
-            $.getJSON = function(){
-               var token = $window.sessionStorage.token;
-               $window.open('/download/downloadTrademarks?portfolio=' + $routeParams.portfolio + '&token=' + token)
-         };
+            $.logout = function(){
+     
+                $rootScope.user = false;
+                delete $window.sessionStorage.token;
+                $location.path('/');
+            }
        
     }])
     .controller('adminCtrl', 
@@ -570,16 +572,17 @@ angular.module('app')
             }
         }])
 
-    .controller('createUserCtrl', ['$scope', '$http', '$location',
-        function($scope, $http, $location){
+    .controller('createUserCtrl', ['$scope', '$http',
+        function($scope, $http){
             var $ = $scope;
             $.createUser = function(){
+                console.log($.newUser);
                 $http.post('/api/addUser', $.newUser)
-                    .success(function(){
-                        $location.path('/')
+                    .success(function(data){
+                        $.message = data.msg;
                     })
                     .error(function(data){
-                        $.message = data.message;
+                        $.message = data.msg;
                     })
             }
 

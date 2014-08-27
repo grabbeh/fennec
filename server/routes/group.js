@@ -1,40 +1,45 @@
-var helper = require('./helper.js')
+var helper = require('./helper')
 , _ = require('underscore')
 , Trademark = require('../models/trademarkSchema')
 , async = require('async');
 
-
 exports.favourites = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    var favIds = req.user.favourites;	
-    helper.getTrademarks(entity, portfolio, function(err, trademarks){
-    	console.log(trademarks.length);
-    	var favourites = [];
-    	favIds.forEach(function(fav){
-    	     trademarks.forEach(function(tm){
-    	     	  if (tm._id.equals(fav)){
-     	    		tm.favourite = true;
-     	    		favourites.push(tm);
-     		 }
-    	     })
-    	})
-    	res.json(favourites);
+    helper.findUser(req.user._id, function(err, user){
+    	var favIds = user.favourites;
+        helper.getTrademarks(entity, portfolio, function(err, trademarks){
+            var favourites = [];
+            favIds.forEach(function(fav){
+                 trademarks.forEach(function(tm){
+                      if (tm._id.equals(fav)){
+                        tm.favourite = true;
+                        favourites.push(tm);
+                 }
+                 })
+            })
+            res.json(favourites);
+        })
+        
+        
     })
+    
 }
 
 exports.groupOfMarks = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    var favourites = req.user.favourites;
-    var group = req.params.group.replace(/%20/g, " ");
-    helper.getTrademarks(entity, portfolio,  function(err, trademarks){
-      var tms = addFavouriteProperty(trademarks, favourites);
-    	if (group != "ALL MARKS"){
-            var tms = addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
-        }
-        res.json(tms);
-    });
+    helper.findUser(req.user._id, function(err, user){
+        var favourites = user.favourites;
+        var group = req.params.group.replace(/%20/g, " ");
+        helper.getTrademarks(entity, portfolio,  function(err, trademarks){
+          var tms = addFavouriteProperty(trademarks, favourites);
+            if (group != "ALL MARKS"){
+                var tms = addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
+            }
+            res.json(tms);
+        });
+    }) 
 }
 
 function addFavouriteProperty(trademarks, favourites){

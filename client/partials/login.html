@@ -2,7 +2,7 @@
      <div class="form-container">
           <div class="form-title">Login</div>
            <form novalidate name="loginForm" ng-submit="login()">
-              <div><input required type=email class="form-input" ng-model="username" name="username" placeholder="Email" ></div>
+              <div><input required type=email class="form-input" ng-model="email" name="email" placeholder="Email" ></div>
               <div><input required class="form-input" ng-model="password" type=password name="password" placeholder="Password" ></div>
               <div><input class="add-button" type=submit ng-disabled="!canSubmitLogin()" value="Submit"></div>
             </form>
