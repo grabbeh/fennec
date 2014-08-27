@@ -63,12 +63,10 @@ exports.logIn = function(req, res){
 }
     
 exports.addUser = function(req, res) {
-    User.findOne({username: req.body.username.toUpperCase()}, function(err, user) {
-        if (user) { res.status(401).send({message: 'Apologies - username already taken'}); return;}
-        hashPasswordAndAddUser(req.body, function(err, user){
-                 jwt.createToken(user, function(err, token){
-                 res.status(200).json(token);  
-                 })
+    User.findOne({username: req.body.newuser.email.toUpperCase()}, function(err, user) {
+        if (user) { res.status(401).send({msg: 'Apologies - username already taken'}); return;}
+        hashPasswordAndAddUser(req.body.newuser, function(err, user){
+            res.status(200).send({msg:"user added"})
             });
        })
    }
