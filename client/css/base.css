@@ -554,6 +554,10 @@ input::-webkit-inner-spin-button {
     letter-spacing: 5px;
 }
 
+.portfolio-home-title {
+	font-size: 40px;
+}
+
 .home-demo-link {
     color: white;
     font-weight: bold;
