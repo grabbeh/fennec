@@ -123,6 +123,11 @@ angular.module('app')
             $.goToCountry = function(country){
                 $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
             }
+            
+            $.getJSON = function(){
+               var token = $window.sessionStorage.token;
+               $window.open('/download/downloadTrademarks?portfolio=' + $routeParams.portfolio + '&token=' + token)
+         };
        
     }])
     .controller('adminCtrl', 
