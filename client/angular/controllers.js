@@ -109,8 +109,16 @@ angular.module('app')
          }
     }])
     
-    .controller('portfolioHomeCtrl', ['$scope', '$routeParams', function($scope, $routeParams){
+    .controller('portfolioHomeCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
            $scope.portfolio = $routeParams.portfolio;
+           
+           $.goToGroup = function(country){
+            	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
+            }
+            
+            $.goToCountry = function(country){
+                $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
+            }
        
     }])
     .controller('adminCtrl', 
