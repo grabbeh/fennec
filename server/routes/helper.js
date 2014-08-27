@@ -1,4 +1,5 @@
 var Trademark = require('../models/trademarkSchema'),
+    User = require('../models/userSchema'),
     mongoose = require('mongoose'),
     geoj = require('../models/geoJSONSchema'),
     _ = require('underscore'),
@@ -274,4 +275,10 @@ function deepCopy(obj) {
         return out;
     }
     return obj;
+}
+
+exports.findUser(id, fn){
+     User.findOne({ _id: id}, function(err, user){
+            fn(null, user);
+        })	
 }
