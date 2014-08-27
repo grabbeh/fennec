@@ -18,6 +18,10 @@ select:focus, textarea:focus, input:focus{
     outline: 0;
 }
 
+.center {
+	margin: 0 auto;
+}
+
 a.fill-div {
     display: block;
     height: 100%;
