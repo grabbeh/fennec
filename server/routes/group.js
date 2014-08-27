@@ -5,6 +5,9 @@ var helper = require('./helper.js')
 
 
 exports.favourites = function(req, res){
+    console.log(req.user.entity);
+    console.log(req.params);
+    console.log(req.query);
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var favIds = req.user.favourites;	
