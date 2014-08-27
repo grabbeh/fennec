@@ -110,7 +110,8 @@ angular.module('app')
     }])
     
     .controller('portfolioHomeCtrl', ['$scope', '$routeParams', '$http', 'trademarkService', '$location', function($scope, $routeParams, $http, trademarkService, $location){
-           $scope.portfolio = $routeParams.portfolio;
+           var $ = $scope;
+           $.portfolio = $routeParams.portfolio;
           
            $http.get('/api/countryData?portfolio=' + $routeParams.portfolio)
             	.success(function(countries){
