@@ -122,7 +122,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             resolve: {
                 admin: function(userService){
                     return userService.isAdmin();
-                }
+                },
+                user: function(userService){
+                   return userService.getUser();
+               }
             }
         }).
         when('/admin/group/:portfolio', {
