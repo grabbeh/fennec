@@ -17,6 +17,17 @@ angular.module('app')
         }
     }
     })
+    
+    .directive('mgMenuMover', function(){
+        return {
+        scope: {
+            trademark: '=',
+            user: '='
+        },
+        replace: true,
+        templateUrl: '/partials/trademark-container.html'
+      }
+    })
 
     .directive('mgFavouriteButton', function(){
         return {
