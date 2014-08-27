@@ -1,9 +1,8 @@
 angular.module('app')
-
-	.controller('favouritesCtrl', ['$scope', function($scope){
-       var $ = $scope;
-       
-    }])
+	    .controller('favouritesCtrl', ['$scope', 'favourites', function($scope, favourites){
+	        var $ = $scope;
+	        $.favourites = favourites;
+	    }])
 	
 
  	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkService){
