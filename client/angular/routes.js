@@ -125,6 +125,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 },
                 user: function(userService){
                    return userService.getUser();
+               },
+               trademark: function($route, trademarkService){
+                   return trademarkService.getTrademark($route.current.params.id);
                }
             }
         }).
