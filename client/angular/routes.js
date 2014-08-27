@@ -104,7 +104,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }). 
-    	when('/admin/trademark/:portfolio', {
+    	when('/add/trademark/:portfolio', {
             templateUrl: '/partials/add.html',
             controller: 'addCtrl',
             resolve: {
@@ -113,7 +113,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }).
-   		when('/admin/trademark/:id', {
+   		when('/view/trademark/:id', {
             templateUrl: '/partials/view-trademark.html',
             controller: 'trademarkViewCtrl',
             resolve: {
