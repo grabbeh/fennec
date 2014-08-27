@@ -37,6 +37,12 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             resolve: {
                 user: function(userService){
                     return userService.isUser();
+                },
+                countryData: function(geoJsonService, $route){
+                    return geoJsonService.countryData($route.current.params.portfolio);
+                },
+                marks: function(trademarkService, $route){
+                    return trademarkService.getListOfMarks($route.current.params.portfolio);
                 }
             }
             
