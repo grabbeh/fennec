@@ -18,7 +18,7 @@ angular.module('app')
     }
     })
     
-    .directive('mgMenuMover', function(){
+    .directive('mgTrademarkContainer', function(){
         return {
         scope: {
             trademark: '=',
