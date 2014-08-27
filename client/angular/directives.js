@@ -32,7 +32,7 @@ angular.module('app')
         	var $ = $scope;
             $.editTrademarkWrapper = function(trademark){
                     var func = $scope.editTrademark();
-                    func(tm);
+                    func(trademark);
             }
             $.deleteTrademarkWrapper = function(trademark){
                 	var func = $scope.deleteTrademark();
