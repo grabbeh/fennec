@@ -6,19 +6,10 @@ var helper = require('./helper.js')
 exports.marksForCountry = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.checkIfEUCountry(req.params.country, function(err, bool){
-        if (bool){
-             var EU =  "European Union";
-        }
-        Trademark.find()
-        	.and([{ entity: entity }, { portfolio: portfolio }])
-        	.or([{ 'country.alpha3': req.params.country}, { 'country.name': EU }])
-        	.lean()
-        	.exec(function(err, trademarks){
-        		res.json(trademarks);
-   		})
+    var country = req.params.country;
+    helper.marksForCountry(entity, portfolio, country, function(err, trademarks){
+        res.json(trademarks);
     })
-
 }
 
 exports.filterMarksForCountry = function(req, res){

@@ -1,4 +1,4 @@
-var trademark = require('../models/trademarkSchema'),
+var Trademark = require('../models/trademarkSchema'),
     mongoose = require('mongoose'),
     geoj = require('../models/geoJSONSchema'),
     _ = require('underscore'),
@@ -95,18 +95,17 @@ exports.getGeoJSON = function(fn){
 	})
 }
 
-
-exports.getAllTrademarks = function(fn){
-	trademark.find({ active: true })
+// Country marks
+exports.getTrademarksForCountry = function(entity, portfolio, country, fn){
+    Trademark.find({ entity: entity, portfolio: portfolio, 'country.alpha3': country, active: true})
 		.lean()
-		.sort('expiryDate.DDate')
-		.exec(function(err, trademarks){
-			fn(null, trademarks) 
-		});
-	}
+    	.exec(function(err, trademarks){
+        	fn(null, trademarks);
+    })
+}
 
 exports.getTrademarks = function(entity, portfolio, fn){
-	trademark.find({ entity: entity, portfolio: portfolio, active: true })
+	Trademark.find({ entity: entity, portfolio: portfolio, active: true })
 		.lean()
 		.sort('expiryDate.DDate')
 		.exec(function(err, trademarks){
@@ -115,7 +114,7 @@ exports.getTrademarks = function(entity, portfolio, fn){
 	}
 
 exports.getTrademark = function(id, fn){
-	trademark.findOne({ _id: id }).lean().exec(function(err, trademark){
+	Trademark.findOne({ _id: id }).lean().exec(function(err, trademark){
 		fn(null, trademark);
 	});
 }
@@ -158,11 +157,11 @@ exports.amendTrademark = function(tm, fn){
 	if (tm.expiryDate.stringDate){
 		tm.expiryDate.DDate = new Date(moment(tm.expiryDate.stringDate, 'MM-DD-YYYY')).toISOString();
 	}
-	trademark.findOneAndUpdate({_id: exposeId(tm) }, tm, fn)
+	Trademark.findOneAndUpdate({_id: exposeId(tm) }, tm, fn)
 }
 
 exports.deleteTrademark = function(id, fn){
-	trademark.findOneAndUpdate({ _id: id }, { active: false }, function(err, success){
+	Trademark.findOneAndUpdate({ _id: id }, { active: false }, function(err, success){
 		fn(null, success)
 	})
 }
@@ -199,7 +198,7 @@ function saveTrademark(tm, fn){
 		expiryDateObject.stringDate = tm.expiryDate;
 		expiryDateObject.DDate = new Date(moment(tm.expiryDate, 'MM-DD-YYYY')).toISOString();
 	
-	new trademark({
+	new Trademark({
 	    mark: tm.mark, 
 	    status: tm.status,
 	    country: tm.country,
@@ -234,34 +233,6 @@ function filterByExpiryYear(year, trademarks, obj){
     });
 }
 
-exports.getPortfolioSortedByFilingYear = function(fn){
-	var obj = {};
-    trademark.find({}).lean().exec(function(err, trademarks){
-        var currentYear = moment().year() + 1;
-        var oldestYear = 1980;
-        for (var i = oldestYear; i < currentYear; i++){
-           obj[i] = [];
-           filterForOlderThanGivenYear(i, trademarks, function(err, arr){
-           	   obj[i] = arr;
-           });
-        }
-        fn(null, obj);
-    })
-}
-
-function filterForOlderThanGivenYear(year, trademarks, fn){
-	var arr = [];
-	trademarks.forEach(function(tm){
-		if (typeof tm.filingDate.stringDate === "string") {
-			var appYear = moment(tm.filingDate.stringDate).year();
-			if (appYear <= year){
-				arr.push(tm);
-				}
-			}
-		})
-	fn(null, arr);
-}
-
 exports.checkIfEUCountry = function(country, fn){
     if ((EU.indexOf(country) > -1) ){ 
          return fn(null, true);
@@ -269,6 +240,21 @@ exports.checkIfEUCountry = function(country, fn){
     else {
         fn(null, false);
     }
+}
+
+exports.marksForCountry = function(entity, portfolio, country, fn){
+    helper.checkIfEUCountry(country, function(err, bool){
+        if (bool){
+             var EU =  "European Union";
+        }
+        Trademark.find()
+        	.and([{ entity: entity }, { portfolio: portfolio }])
+        	.or([{ 'country.alpha3': country}, { 'country.name': EU }])
+        	.lean()
+        	.exec(function(err, trademarks){
+        		fn(null, trademarks);
+   		})
+    })
 }
 
 

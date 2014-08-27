@@ -132,8 +132,8 @@ angular.module('app')
                      
             var $ = $scope;
 			
-            $.toggleMenuModal = function(){
-            	trademarkModal.deactivate();
+         $.toggleMenuModal = function(){
+         trademarkModal.deactivate();
 		if (!$rootScope.menuModal){
 			$rootScope.menuModal = true;
 			menuModal.activate({ activePortfolio: $.activePortfolio});
@@ -148,6 +148,7 @@ angular.module('app')
             $http.get('/api/countryData?portfolio=' + $routeParams.portfolio)
             	.success(function(countries){
                     $.countries = $filter('orderBy')(countries, 'name');
+                   
 	        })
 
             $.$on('country.click', function(e, l){
@@ -157,9 +158,9 @@ angular.module('app')
             })
             
             $.showGroup = function(group){
-            	
+                if (group === null){ return};
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
-
+				console.log($.trademarks);
                 geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
                     $.geojson = geojson;
                 });
@@ -169,6 +170,21 @@ angular.module('app')
                 $.marks = $filter('unTickAllExceptSelected')($.marks, group);
                 $.activeMark = group.name;
 
+            }
+            
+            $.showCountry = function(country){
+                if (country=== null){ return};
+                $.trademarks = $filter('extractMarksInCountry')($.allTrademarks, country.alpha3);
+                geoJsonService.getCountry($routeParams.portfolio, country.alpha3).then(function(geojson){
+                    $.geojson = geojson;
+                });
+                
+                chartService.barChartDataForCountry($routeParams.portfolio, 'ALL MARKS', country.alpha3).then(function(barChartData){
+                    $.chart = barChartData;
+                })
+                
+                //$.marks = $filter('unTickAllExceptSelected')($.marks, country);
+                $.activeMark = country.name;
             }
             
             $.showModal = function(trademark){
@@ -423,7 +439,6 @@ angular.module('app')
         });
              
         $.$on('country.click', function(e, l){
-            console.log(l);
             $.registered = false;
             $.nocontent = true;
             $.$apply(function(){

@@ -2,11 +2,23 @@ angular.module('app')
 
 	.filter('extractGroup', function(){
     	return function(arr, group){
-            return arr.filter(function(i){
-                return i.mark === group;
-            })
-          
+            if (group === "ALL MARKS"){
+               return arr; 
+            }
+            else {
+                return arr.filter(function(i){
+                    return i.mark === group;
+                })
+            }
         }
+	})
+	.filter('extractMarksInCountry', function(){
+    	return function(arr, country){
+            return arr.filter(function(i){
+                return i.country.alpha3 === country;
+            })
+        }
+    
 	})
 	.filter('fromNow', function(){
 		return function(input){
@@ -238,8 +250,6 @@ angular.module('app')
             return arr;
         } 
     })
-    
-    
     .filter('checkIfEU', function(){
         return function(countries){
             var arr = [];

@@ -1,5 +1,6 @@
 
 var helper = require('./helper.js')
+_ = require('underscore')
 , async = require('async')
 
 exports.expiriesForGroup = function(req, res){
@@ -10,6 +11,17 @@ exports.expiriesForGroup = function(req, res){
         if (key != "ALL MARKS"){
             var tms = _.groupBy(tms, 'mark')[key];	
         }
+        helper.sortTrademarksByExpiryYear(tms, function(err, trademarks){
+        	res.json(trademarks);
+    	})	 
+    })
+}
+
+exports.expiriesForCountry = function(req, res){
+    var entity = req.user.entity;
+    var portfolio = req.params.portfolio.replace(/%20/g, " ");
+    var country = req.params.country;
+    helper.marksForCountry(entity, portfolio, country, function(err, tms){
         helper.sortTrademarksByExpiryYear(tms, function(err, trademarks){
         	res.json(trademarks);
     	})	 

@@ -89,6 +89,10 @@ app.get('/api/world/:portfolio/:group', x, world.worldForGroup);
 
 app.post('/api/world/:portfolio', x, world.worldForListOfMarks);
 
+// world on basis of country
+
+app.get('/api/world/:portfolio', x, world.worldForCountry);
+
 // Country-limited trade marks
 
 app.get('/api/country/:portfolio/:country', x, country.marksForCountry);
@@ -118,6 +122,7 @@ app.post('/api/editMarksInCountry/:portfolio', x, country.editMarksInCountry);
 // Expiry dates
 
 app.get('/api/expirydates/:portfolio', x, expiry.expiriesForGroup);
+app.get('/api/expirydates/:portfolio/:country', x, expiry.expiriesForCountry);
 app.get('/api/expiriesForYear/:portfolio', x, expiry.expiriesForYear);
 
 // Users

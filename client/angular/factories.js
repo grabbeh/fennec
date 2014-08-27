@@ -75,10 +75,16 @@ angular.module('app')
                     return response.data;
 	        })
         },
+        getCountry: function(portfolio, country){
+            return $http.get('/api/world/' + portfolio + '?country=' + country)
+            	.then(function(response){
+                	return response.data;
+            })
+        },
         getExpiriesForYear: function(portfolio, year){
             return $http.get('/api/expiriesForYear/' + portfolio + '?year=' + year)
             }
-        }
+    }
     return geoJsonService;
   }])
 
@@ -90,7 +96,6 @@ angular.module('app')
       }
 
       var trademarkService = {
-      	
       	  getListOfMarks: function(portfolio, country){
       	       var url = '/api/listOfMarks/' + portfolio;
       	       if (country){
@@ -100,8 +105,8 @@ angular.module('app')
       	       return $http.get(url)
 	            .then(function(response){
 	                 return response.data;
-	      })
-	  },
+	      	  })
+	 	  },
           anyMarks: function(){
             return $http.get('/api/anyMarks');
           },
@@ -123,8 +128,13 @@ angular.module('app')
           editMarksInCountry: function(portfolio, country, trademark){
               return $http.post('/api/editMarksInCountry/' + portfolio + '?country=' + country, { trademark: trademark })
           },
-          getExpiryDatesForGroup: function(portfolio, group){
-              return $http.get('/api/expirydates/' + portfolio + '?group=' + group)
+          getExpiryDatesForGroup: function(portfolio, group, country){
+              var url = '/api/expirydates/' + portfolio + '?group=' + group;
+              if (country){
+                  var url = '/api/expirydates/' + portfolio + '/' + country + '?group=' + group;
+				}
+              
+              return $http.get(url)
                  .then(function(response){
                      return response.data;
 				})
@@ -193,6 +203,20 @@ angular.module('app')
                         return fullBarData;
                         })
                 
+            },
+            barChartDataForCountry: function(portfolio, group, country){
+                return trademarkService.getExpiryDatesForGroup(portfolio, group, country)
+                    .then(function(data){
+                        var barData = $filter('extractExpiryDates')(data);
+                        var fullBarData = {
+                            labels : $filter('extractYears')(barData),
+                            datasets : 
+                                [{data : $filter('extractLength')(barData), 
+                                fillColor : "rgb(57, 155, 104)"
+                                }]
+                            };
+                        return fullBarData;
+                        })
             },
             barChartOptions: function(){
                  return {
