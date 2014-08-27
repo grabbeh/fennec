@@ -2,6 +2,9 @@ angular.module('app')
 	    .controller('favouritesCtrl', ['$scope', 'favourites', function($scope, favourites){
 	        var $ = $scope;
 	        $.favourites = favourites;
+	        $.activateTrademark = function(trademark){
+	        	$.activeTrademark = trademark;
+	        }
 	    }])
 	
 
