@@ -88,7 +88,7 @@ angular.module('app')
         	return $http.get('/api/countryData?portfolio=' + portfolio)
 	            	.then(function(response){
 	                    return response.data;
-			}
+			})
         }
     }
     return geoJsonService;
