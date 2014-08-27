@@ -3,7 +3,6 @@ angular.module('app')
 	        var $ = $scope;
 	        $.favourites = favourites;
 	        $.user = user;
-	        console.log($.user);
 	        $.activateTrademark = function(trademark){
 	        	$.activeTrademark = trademark;
 	        }
