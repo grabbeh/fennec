@@ -218,6 +218,14 @@ input::-webkit-inner-spin-button {
 	overflow: hidden;
 }
 
+.trademark-container {
+	font-size: 20px;
+	max-width: 400px;
+	background: white;
+	overflow: hidden;
+}
+
+
 .view-trademark-container {
      padding: 10px 15px 15px 30px; 	
 }
@@ -1494,6 +1502,10 @@ line-height: 4em;
     
     .hide-on-mobile {
     	display: none;
+    }
+    
+    .trademark-container {
+    	width: 100%;
     }
 	
 }
