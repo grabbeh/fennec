@@ -3,6 +3,27 @@ var helper = require('./helper.js')
 , Trademark = require('../models/trademarkSchema')
 , async = require('async');
 
+
+exports.favourites = function(req, res){
+    var entity = req.user.entity;
+    var portfolio = req.params.portfolio.replace(/%20/g, " ");
+    var favIds = req.user.favourites;	
+    var group = "ALL MARKS";
+    helper.getTrademarks(entity, portfolio, function(err, trademarks){
+    	var favourites = [];
+    	favIds.forEach(function(fav){
+    	     trademarks.forEach(function(tm){
+    	     	  if (tm._id.equals(fav)){
+     	    		tm.favourite = true;
+     	    		favourites.push(tm);
+     		 }
+    	     })
+    	})
+    	console.log(favourites);
+    	res.json(favourites);
+    })
+}
+
 exports.groupOfMarks = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
