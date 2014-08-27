@@ -1,5 +1,11 @@
 angular.module('app')
 
+	.controller('favouritesCtrl', ['$scope', function($scope){
+       var $ = $scope;
+       
+    }])
+	
+
  	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkService){
  	    var $ = $scope;
  	    $http.get('/api/countryData')
