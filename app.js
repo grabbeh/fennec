@@ -113,6 +113,10 @@ app.delete('/api/trademark/:id', x, main.deleteTrademark);
 
 app.get('/api/listOfMarks/:portfolio', x, group.listOfMarks);
 
+// Retrieve favourite marks
+
+app.get('/api/favourites/:portfolio', x, group.favourites);
+
 // Edit portfolio
 
 app.post('/api/editGroup/:portfolio/:mark', x, group.editGroupOfMarks);
