@@ -8,8 +8,8 @@ angular.module('app')
 	        	$.activeTrademark = trademark;
 	        }
 	        
-	        $.openEditTrademarkModal = function(){
-	                editTrademarkModal.activate({trademark: $.activeTrademark});
+	        $.openEditTrademarkModal = function(trademark){
+	                editTrademarkModal.activate({trademark: trademark});
 	                $rootScope.modal = true;
 	            }
 	          
@@ -291,10 +291,10 @@ angular.module('app')
 	        var $ = $scope;
 	        $.trademark = trademark;
 	        $.user = user;
-	        $.openEditTrademarkModal = function(){
-	                editTrademarkModal.activate({trademark: $.activeTrademark});
+	        $.openEditTrademarkModal = function(trademark){
+	                editTrademarkModal.activate({trademark: trademark});
 	                $rootScope.modal = true;
-	            }
+	        }
 	          
 	        $.deleteTrademark = function(){
 	            trademarkService.deleteMark($.trademark)
