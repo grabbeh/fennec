@@ -3,7 +3,7 @@
   <div class="one-half-container">
       <div>
         <ul>
-          <li ng-repeat="trademark in favourites">
+          <li ng-click="activateTrademark(trademark)" ng-repeat="trademark in favourites">
               {{ trademark }}
           </li>
         </ul>
