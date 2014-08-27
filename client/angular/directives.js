@@ -22,10 +22,23 @@ angular.module('app')
         return {
         scope: {
             trademark: '=',
-            user: '='
+            user: '=',
+            editTrademark: '&',
+            deleteTrademark: '&'
         },
         replace: true,
-        templateUrl: '/partials/trademark-container.html'
+        templateUrl: '/partials/trademark-container.html',
+        controller: function($scope){
+        	var $ = $scope;
+            $.editTrademarkWrapper = function(trademark){
+                    var func = $scope.editTrademark();
+                    func(tm);
+            }
+            $.deleteTrademarkWrapper = function(trademark){
+                	var func = $scope.deleteTrademark();
+                	func(trademark);
+                }
+        }
       }
     })
 
