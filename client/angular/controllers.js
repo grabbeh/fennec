@@ -1,5 +1,5 @@
 angular.module('app')
-	    .controller('favouritesCtrl', ['$scope', 'favourites', 'user', function($scope, favourites, user){
+	    .controller('favouritesCtrl', ['$scope', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', function($scope, $rootScope, favourites, user, trademarkService, editTrademarkModal){
 	        var $ = $scope;
 	        $.favourites = favourites;
 	        $.user = user;
@@ -7,6 +7,18 @@ angular.module('app')
 	        $.activateTrademark = function(trademark){
 	        	$.activeTrademark = trademark;
 	        }
+	        
+	        $.openEditTrademarkModal = function(){
+	                editTrademarkModal.activate({trademark: $.activeTrademark});
+	                $rootScope.modal = true;
+	            }
+	          
+	        $.deleteTrademark = function(){
+	            trademarkService.deleteMark($.trademark)
+	               .success(function(data){
+	                   $scope.message = data.message;
+	               })
+	           }
 	    }])
 	
 
@@ -274,14 +286,11 @@ angular.module('app')
     }])
 
 	.controller('trademarkViewCtrl', 
-	['$scope', '$rootScope', '$routeParams', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 
-	function($scope, $rootScope, $routeParams, trademarkService, editTrademarkModal, trademarkModal){
+	['$scope', '$rootScope', '$routeParams', 'trademark', 'trademarkService', 'user', 'editTrademarkModal', 
+	function($scope, $rootScope, $routeParams, trademark, trademarkServce, user, editTrademarkModal){
 	        var $ = $scope;
-	        trademarkService.getTrademark($routeParams.id).then(function(data){
-	            $.trademark = data;
-	            $.alpha2 = data.country.alpha2.toLowerCase();
-	        });
-	        
+	        $.trademark = trademark;
+	        $.user = user;
 	        $.openEditTrademarkModal = function(){
 	                editTrademarkModal.activate({trademark: $.trademark});
 	                $rootScope.modal = true;
