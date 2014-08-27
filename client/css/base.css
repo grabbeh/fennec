@@ -218,7 +218,7 @@ input::-webkit-inner-spin-button {
 	overflow: hidden;
 }
 
-.trademark-container {
+.main-trademark-container {
 	font-size: 20px;
 	max-width: 400px;
 	background: white;
@@ -1504,7 +1504,7 @@ line-height: 4em;
     	display: none;
     }
     
-    .trademark-container {
+    .main-trademark-container {
     	width: 100%;
     }
 	
