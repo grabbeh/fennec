@@ -8,6 +8,7 @@ var admin = require('../config/sendgrid')
 , html = require('./html')
 , fs = require('fs')
 , path = require('path')
+, helper = require('./helper')
 , bcrypt = require('bcrypt');
 
 exports.getAllAdmins = function(fn){
@@ -28,7 +29,7 @@ exports.isAdmin = function(req, res){
 
 exports.getUser = function(req, res){
     if (req.user){
-        User.findOne({ _id: req.user._id}, function(err, user){
+        helper.findUser(req.user._id, function(err, user){
             res.json(user);
         })
     }
