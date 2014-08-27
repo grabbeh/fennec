@@ -1,5 +1,6 @@
 
 var helper = require('./helper.js')
+, _ = require('underscore')
 , async = require('async')
 
 exports.expiriesForGroup = function(req, res){
