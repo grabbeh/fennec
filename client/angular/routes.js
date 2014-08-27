@@ -16,6 +16,18 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }).
+        when('/favourites/:portfolio', {
+           templateUrl: '/partials/favourites.html',
+           controller: 'favouritesCtrl',
+           resolve: {
+               user: function(userService){
+                   return userService.isUser();
+               },
+               favourites: function(trademarkService){
+                   return trademarkService.favourites();
+               }
+           }
+        }).
         when('/home/:portfolio', {
             templateUrl: '/partials/portfolio-home.html',
             controller: 'portfolioHomeCtrl',
