@@ -23,8 +23,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                user: function(userService){
                    return userService.isUser();
                },
-               favourites: function(trademarkService){
-                   return trademarkService.favourites();
+               favourites: function($route, trademarkService){
+                   return trademarkService.favourites($route.current.params.portfolio);
                }
            }
         }).
