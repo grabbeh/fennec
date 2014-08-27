@@ -32,8 +32,8 @@ exports.worldForGroup = function(req, res){
 	var group = req.params.group.replace(/%20/g, " ");
 	
 	async.parallel([ 
-        async.apply(helper.getGeoJSON),
-	    async.apply(helper.getTrademarks, entity, portfolio)
+        	async.apply(helper.getGeoJSON),
+	    	async.apply(helper.getTrademarks, entity, portfolio)
 	    ],
 	    function(err, results){
            	var tms = results[1];
@@ -69,19 +69,3 @@ exports.worldForListOfMarks = function(req, res){
 	      	   });
 	      });
 	}
-
-exports.worldForCountry = function(req, res){
-	var country = req.query.country;
-    var entity = req.user.entity;
-    var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    async.parallel([ 
-      	  async.apply(helper.getGeoJSON),
-	      async.apply(helper.marksForCountry, entity, portfolio, country)
-	      ],
-	      function(err, results){
-        	   if (err) { console.log(err)}
-	      	   helper.convertPortfolioAndAddToGeoJSON(results[0], results[1], function(err, gj){
-	      	   	 res.json(gj);
-	      	   });
-	      });
-}

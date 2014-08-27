@@ -172,13 +172,17 @@ angular.module('app')
       var path = [];
       var pathService = {
            insertPath: function(url){
-                if (url != "/login"){ path[0] = url; };
+                if (url != "/login"){ path[0] = url; console.log(path) };
            },
            returnPath: function(){
+           	console.log(path)
                 return path[0];
            },
            existingPath: function(){
-                if (path.length > 1){
+           	console.log(path);
+           	console.log(path.length)
+                if (path.length > 0){
+                	console.log("Existing path in factory")
                      return true;
                 }
            }

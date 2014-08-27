@@ -1,6 +1,5 @@
 
 var helper = require('./helper.js')
-_ = require('underscore')
 , async = require('async')
 
 exports.expiriesForGroup = function(req, res){
@@ -12,6 +11,7 @@ exports.expiriesForGroup = function(req, res){
             var tms = _.groupBy(tms, 'mark')[key];	
         }
         helper.sortTrademarksByExpiryYear(tms, function(err, trademarks){
+        	console.log(trademarks.length);
         	res.json(trademarks);
     	})	 
     })

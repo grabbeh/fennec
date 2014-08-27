@@ -350,7 +350,7 @@ input::-webkit-inner-spin-button {
 
 .admin-panel-title {
     font-size: 30px;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 
 .admin-panel-holder {
@@ -418,9 +418,7 @@ input::-webkit-inner-spin-button {
 .map-container {
     padding: 20px;
     background: white;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-right: 2px;
+    margin: 30px 2px 30px 2px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15)
 }
 
@@ -586,7 +584,7 @@ input::-webkit-inner-spin-button {
     padding: 20px;
     background: white;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin: 20px 2px 2px 0;
+    margin: 20px 2px 2px 2px;
 }
 
 
@@ -606,32 +604,33 @@ input::-webkit-inner-spin-button {
     background: white;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
     margin-bottom: 2px;
+    margin-left: 2px;
 }
 
 .left-half-container {
     padding: 20px;
     background: white;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin-bottom: 2px;
+    margin: 0 2px 2px 2px;
 }
 
 .right-half-container {
     padding: 20px;
     background: white;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin-bottom: 2px;
-    margin-right: 2px;
+    margin: 0 2px 2px 0;
 }
 
 .group-mark-select {  
     height: 45px;
-    width: 100%;
+    width: 99%;
     margin: 0;
     font-family: 'Karla';
     padding-left: 10px;	
     font-size: 20px;
     /*-webkit-appearance: button;*/
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    margin: 0 2px 2px 2px;
 }
 
 @-moz-document url-prefix() {
@@ -1491,6 +1490,10 @@ line-height: 4em;
     
     .search-input {
         width:100%;
+    }
+    
+    .hide-on-mobile {
+    	display: none;
     }
 	
 }
