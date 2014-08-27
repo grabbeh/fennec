@@ -292,7 +292,7 @@ angular.module('app')
 	        $.trademark = trademark;
 	        $.user = user;
 	        $.openEditTrademarkModal = function(){
-	                editTrademarkModal.activate({trademark: $.trademark});
+	                editTrademarkModal.activate({trademark: $.activeTrademark});
 	                $rootScope.modal = true;
 	            }
 	          
