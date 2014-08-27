@@ -22,7 +22,6 @@ exports.favourites = function(req, res){
      		 }
     	     })
     	})
-    	console.log(favourites);
     	res.json(favourites);
     })
 }
