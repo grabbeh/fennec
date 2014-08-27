@@ -1,31 +1,11 @@
 <div class="fixed-container">
-  
-  <div ng-show="favourites" class="favourite-container">
-        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
-            <div class="paginator" mg-favourites-paginator show-modal="activateTrademark" favourite-marks="favourites" items-per-page="10"></div> 
-    </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   <div class="one-half-container">
-      <div>
-        <ul>
-          <li ng-click="activateTrademark(trademark)" ng-repeat="trademark in favourites">
-              {{ trademark }}
-          </li>
-        </ul>
+    <div ng-show="favourites" class="favourite-container">
+          <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
+              <div class="paginator" mg-favourites-paginator show-modal="activateTrademark" favourite-marks="favourites" items-per-page="10"></div> 
       </div>
-    
   </div>
+
   
   <div class="one-half-container last">
       <div ng-show="activeTrademark" mg-trademark-container trademark='activeTrademark' user='user'></div>
