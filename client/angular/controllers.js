@@ -109,7 +109,7 @@ angular.module('app')
          }
     }])
     
-    .controller('portfolioHomeCtrl', ['$scope', '$filter','$routeParams', 'countries', 'marks', '$location', function($scope, $filter, $routeParams, countries, marks, $location){
+    .controller('portfolioHomeCtrl', ['$scope', '$window', '$filter','$routeParams', 'countries', 'marks', '$location', function($scope, $window, $filter, $routeParams, countries, marks, $location){
            var $ = $scope;
            $.portfolio = $routeParams.portfolio;
           
