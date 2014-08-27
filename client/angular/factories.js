@@ -125,6 +125,7 @@ angular.module('app')
           favourites: function(portfolio){
            	return $http.get('/api/favourites/' + portfolio)
            	    .then(function(response){
+           	    	console.log(response);
            	    	return response.data;
            	    })
           },
