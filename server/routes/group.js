@@ -8,8 +8,8 @@ exports.favourites = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var favIds = req.user.favourites;	
-    var group = "ALL MARKS";
     helper.getTrademarks(entity, portfolio, function(err, trademarks){
+    	console.log(trademarks.length);
     	var favourites = [];
     	favIds.forEach(function(fav){
     	     trademarks.forEach(function(tm){
