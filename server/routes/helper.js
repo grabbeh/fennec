@@ -277,7 +277,7 @@ function deepCopy(obj) {
     return obj;
 }
 
-exports.findUser(id, fn){
+exports.findUser = function(id, fn){
      User.findOne({ _id: id}, function(err, user){
             fn(null, user);
         })	
