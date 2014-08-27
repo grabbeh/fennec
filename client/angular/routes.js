@@ -20,11 +20,14 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
            templateUrl: '/partials/favourites.html',
            controller: 'favouritesCtrl',
            resolve: {
-               user: function(userService){
+               isUser: function(userService){
                    return userService.isUser();
                },
                favourites: function($route, trademarkService){
                    return trademarkService.favourites($route.current.params.portfolio);
+               }, 
+               user: function(userService){
+                   return userService.getUser();
                }
            }
         }).
