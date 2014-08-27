@@ -109,9 +109,20 @@ angular.module('app')
          }
     }])
     
-    .controller('portfolioHomeCtrl', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
+    .controller('portfolioHomeCtrl', ['$scope', '$routeParams', '$http', 'trademarkService', '$location', function($scope, $routeParams, $http, trademarkService, $location){
            $scope.portfolio = $routeParams.portfolio;
-           
+          
+           $http.get('/api/countryData?portfolio=' + $routeParams.portfolio)
+            	.success(function(countries){
+                    $.countries = $filter('orderBy')(countries, 'name');
+                   
+	   })
+	   
+	   trademarkService.getListOfMarks($routeParams.portfolio)
+	         .then(function(data){
+	            $.marks = data;
+	    })
+	           
            $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
             }
