@@ -109,21 +109,13 @@ angular.module('app')
          }
     }])
     
-    .controller('portfolioHomeCtrl', ['$scope', '$filter','$routeParams', '$http', 'trademarkService', '$location', function($scope, $filter, $routeParams, $http, trademarkService, $location){
+    .controller('portfolioHomeCtrl', ['$scope', '$filter','$routeParams', 'countries', 'marks', '$location', function($scope, $filter, $routeParams, countries, marks, $location){
            var $ = $scope;
            $.portfolio = $routeParams.portfolio;
           
-           $http.get('/api/countryData?portfolio=' + $routeParams.portfolio)
-            	.success(function(countries){
-                    $.countries = $filter('orderBy')(countries, 'name');
-                   
-	   })
-	   
-	   trademarkService.getListOfMarks($routeParams.portfolio)
-	         .then(function(data){
-	            $.marks = data;
-	    })
-	           
+           $.countries = $filter('orderBy')(countries, 'name');
+           $.marks = marks;
+
            $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
             }
