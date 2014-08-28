@@ -18,6 +18,8 @@ angular.module('app')
                     .then(function(res){
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
+                        $rootScope.modal = false;
+                        loginModal.deactivate();
                         if (pathService.returnPath() === undefined){
                             $location.path('/select-portfolio');
                         }
