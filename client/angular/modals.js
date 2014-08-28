@@ -7,6 +7,10 @@ angular.module('app')
 	            loginModal.deactivate();
 	            $rootScope.modal = false;
 	        }
+	        
+	        $.canSubmitLogin = function(){
+	             return $.loginForm.$dirty && $.loginForm.$valid;
+	        }
 
                 $.login = function(){
 
