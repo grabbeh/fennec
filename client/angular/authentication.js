@@ -41,7 +41,7 @@ angular.module('app')
             }
             
             $.login = function(){
-                loginModal.activate({ user: $rootScope.user});
+                loginModal.activate();
                 $rootScope.modal = true;
             }
             
