@@ -33,12 +33,15 @@ angular.module('app')
             
             $.removeModalOverlay = function(){
                 $rootScope.modal = false;
-               
                 trademarkModal.deactivate();
                 editTrademarkModal.deactivate();
                 editCountryModal.deactivate();
                 editGroupModal.deactivate();
                 uploadImageModal.deactivate();
+            }
+            
+            $.login = function(){
+                loginModal.activate({ user: $rootScope.user})
             }
             
             $.logout = function(){
