@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','uploadImageModal', 'userService',
-        function($scope, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, uploadImageModal, userService){
+    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','mainMenuModal', 'loginModal', 'uploadImageModal', 'userService',
+        function($scope, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, mainMenuModal, loginModal, uploadImageModal, userService){
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, previous){
