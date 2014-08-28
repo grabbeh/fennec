@@ -30,6 +30,11 @@ a.fill-div {
     
 }
 
+.comments-container {
+    background: white;
+    padding: 20px;
+}
+
 .favourite {
    color: rgb(214, 214, 64);
 }

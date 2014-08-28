@@ -1,10 +1,14 @@
 <div>
-    <ul class="tm-list expiry-list">
-        <li class="tm-list-li"  ng-repeat="tm in items track by $index">
-            <div ng-click="showModalWrapper(tm)" ><span mg-bold>{{ tm.mark }} </span><span> in {{ tm.country.name }} </span></div>
+    <div ng-show="items">
+        <ul class="tm-list expiry-list">
+        <li class="tm-list-li"  ng-repeat="comment in items track by $index">
+            <div>{{ comment.text }} </div>
+            <div>{{ comment.date }} </div>
+            <div> {{ comment.author }}</div>
 
         </li>
     </ul>
+    </div>
 
     <div style="float:right; font-size: 16px">
         <div class="pagination-prev hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="prevPage(pageNumber)">Prev</div>
@@ -14,4 +18,11 @@
         <div class="pagination-next hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="nextPage(pageNumber)">Next</div>
     </div>
     
+        <div>
+        <textarea ng-model="text"></textarea>
+        <div ng-click="addComment(text)">Add comment</div>
+         <div>
+             {{ message }}
+            </div>
+    </div>
 </div>

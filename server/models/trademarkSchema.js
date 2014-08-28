@@ -20,7 +20,7 @@ var Trademark = new Schema({
     updated: { type: Date, default: Date.now },
     active: { type: Boolean, default: true },
     imageUrl: String,
-    message: Array
+    comments: Array
 });
 
 Trademark.plugin(mongoosastic);

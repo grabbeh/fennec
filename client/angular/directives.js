@@ -1,5 +1,78 @@
 angular.module('app')
 
+	.directive('mgTrademarkComments', function(){
+        return {
+            scope: {
+                trademark: '=',
+                itemsPerPage: '=',
+                user: '='
+            },
+            link: function(scope, elements, attrs){
+                 var $ = scope;
+                 $.$watch('trademark.comments', function(newVal){
+                      console.log(newVal);
+                      if (!newVal){
+                          return;
+                      }
+                      for (var i=0; i < newVal.length; i+= $.itemsPerPage) {
+                           var slice = newVal.slice(i, i+ $.itemsPerPage);
+                           $.groupOfArrays.push(slice);
+                      }
+                     
+                     $.items = $.groupOfArrays[0];
+                     $.pageNumber = 1;
+                 })
+
+                  $.$watch('pageNumber', function(newPage){
+                      $.items = $.groupOfArrays[newPage -1];
+                  })
+            },
+            replace: true,
+            templateUrl: '/partials/trademark-comments.html',
+            controller: function($scope, trademarkService){
+                var $ = $scope;
+                
+                $.addComment = function(text){
+                    var comment = {};
+                    comment.text = text;
+                    comment.date = new Date();
+                    comment.author = $.user._id;
+                    
+                 	if ($.trademark.comments === undefined){
+                        $.trademark.comments = [];
+                    }
+                    $.trademark.comments.push(comment);
+                    trademarkService.editMark($.trademark).then(function(res){
+                        $.message = "Comment added";
+                    })
+                }
+                $.groupOfArrays = [];
+                $.prevPage = function(pageNumber){
+                    $.pageNumber--;
+                };
+                $.nextPage = function(pageNumber){
+                    $.pageNumber++;
+                };
+                $.firstPage = function(){
+                    $.pageNumber = 1;
+                };
+                $.lastPage = function(){
+                    $.pageNumber = $.groupOfArrays.length;
+                };
+                $.checkIfFirst = function(pageNumber){
+                    if (pageNumber === 1){
+                      return true;
+                    }
+                };
+                $.checkIfLast = function(pageNumber){
+                   if (pageNumber === $.groupOfArrays.length){
+                      return true;
+                   }
+                };
+            }
+    	}
+    })
+	
     .directive('mgMenuMover', function(){
         return {
         scope: {
@@ -7,15 +80,15 @@ angular.module('app')
         },
         link: function(scope, element, attrs){
             scope.$watch(attrs.menuModal, function(v){
-                if (v){
-                    element.addClass('active-menu')
-                }
-                else {
-                    element.removeClass('active-menu')
-                }
-            })
-        }
-    }
+                    if (v){
+                        element.addClass('active-menu')
+                    }
+                    else {
+                        element.removeClass('active-menu')
+                    }
+            	})
+        	}
+    	}
     })
     
     .directive('mgTrademarkContainer', function(){
