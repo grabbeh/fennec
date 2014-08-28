@@ -1,5 +1,12 @@
 angular.module('app')
 
+   .factory('loginModal', ['btfModal', function(btfModal){
+   	return btfModal({
+   		controller: 'loginModalCtrl', 
+   		templateUrl: '/modals/login-modal.html'
+   	})
+   }])
+
   .factory('mainMenuModal', ['btfModal', function(btfModal){
   	return btfModal({
 	      controller: 'mainMenuModalCtrl',
