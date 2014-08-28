@@ -1,6 +1,6 @@
 angular.module('app')
 
-         .controller('loginModalCtrl', ['$scope', 'pathService', 'userService', '$location',  '$rootScope', '$routeParams','loginModal', function($scope,  pathService, userService, $location, $rootScope, $routeParams, loginModal){
+         .controller('loginModalCtrl', ['$scope', '$window', 'pathService', 'userService', '$location',  '$rootScope', '$routeParams','loginModal', function($scope, $window, pathService, userService, $location, $rootScope, $routeParams, loginModal){
 	        var $ = $scope;
 	        
 	        $.closeModal = function(){
