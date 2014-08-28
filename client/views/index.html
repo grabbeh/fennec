@@ -10,7 +10,7 @@
       <div class="header">
           <span class="header-logo"><a class="white-link" href="/">Fennec</a></span>
           <span ng-show="isUser()" class="logout"><a class="white-link" href="/select-portfolio">Account</a></span>
-          <span ng-hide="isUser()" class="logout"><a class="white-link" href="/login">Login</a></span>
+          <span ng-hide="isUser()" ng-click="login()" class="logout hover-underline">Login</span>
       </div>
       <div class="spinner" ng-show="loadingView"></div>
       <div ng-view>
