@@ -2,14 +2,14 @@
     <div class="no-trademark-container" ng-show="!favourites">
         You haven't added any favourites yet...
       </div>
-  <div class="one-half-container">
+  <div class="one-third-container">
     
     <div ng-show="favourites" class="favourite-container">
           <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
               <div class="paginator" mg-favourites-paginator show-modal="activateTrademark" favourite-marks="favourites" items-per-page="10"></div> 
       </div>
   </div>
-  <div class="one-half-container last">
+  <div class="one-third-container">
       <div edit-trademark="openEditTrademarkModal" delete-trademark="deleteTrademark" ng-show="activeTrademark" mg-trademark-container trademark='activeTrademark' user='user'></div>
   </div>
 </div>
