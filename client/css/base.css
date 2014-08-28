@@ -569,6 +569,11 @@ input::-webkit-inner-spin-button {
     font-size: 25px;
 }
 
+.portfolio-icons {
+	float: right;
+	padding: 20px;
+}
+
 .logout-button {
     float:right;
     margin-top: 20px;
