@@ -12,6 +12,7 @@ angular.module('app')
                     }
                 }
                 pathService.insertPath(originalPath);
+                $rootScope.modal = true;
                 loginModal.activate();
 
             });
