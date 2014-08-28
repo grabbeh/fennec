@@ -1,4 +1,11 @@
 angular.module('app')
+
+  .factory('mainMenuModal', ['btfModal', function(btfModal){
+  	return btfModal({
+	      controller: 'mainMenuModalCtrl',
+	      templateUrl: '/modals/main-menu-modal.html'
+	    });	
+  }])
   .factory('menuModal', ['btfModal', function(btfModal){
       return btfModal({
       controller: 'menuModalCtrl',
