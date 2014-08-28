@@ -12,7 +12,7 @@ angular.module('app')
                     }
                 }
                 pathService.insertPath(originalPath);
-                $location.path('/login');
+                loginModal.activate();
 
             });
             
