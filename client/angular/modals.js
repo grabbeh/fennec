@@ -1,8 +1,29 @@
 angular.module('app')
-
+	
+	.controller('menuModalCtrl', ['$scope', '$window', '$location', '$http', '$rootScope', '$routeParams', 'mainMenuModal', 
+	        function($scope, $window, $location, $http, $rootScope, $routeParams, $window, mainMenuModal){
+	        var $ = $scope;
+	        
+	        $.closeModal = function(){
+	            mainMenuModal.deactivate();
+	            $rootScope.modal = false;
+	        }
+  
+	        $.logout = function(){
+	            $rootScope.user = false;
+	            delete $window.sessionStorage.token;
+	            $rootScope.mainMenuModal = false;
+	            $location.path('/');
+	        }
+      
+    }])
+	
+	
+	
 	.controller('menuModalCtrl', ['$scope', '$window', '$location', '$http', '$rootScope', '$routeParams','$window', 'menuModal', 
         function($scope, $window, $location, $http, $rootScope, $routeParams, $window, menuModal){
         var $ = $scope;
+        
         $.closeModal = function(){
             menuModal.deactivate();
             $rootScope.modal = false;
