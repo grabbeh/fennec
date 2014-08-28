@@ -1,7 +1,34 @@
 angular.module('app')
+
+         .controller('loginModalCtrl', ['$scope', 'pathService', 'userService', '$location',  '$rootScope', '$routeParams','loginModal', function($scope,  pathService, userService, $location, $rootScope, $routeParams, loginModal){
+	        var $ = $scope;
+	        
+	        $.closeModal = function(){
+	            loginModal.deactivate();
+	            $rootScope.modal = false;
+	        }
+
+                $.login = function(){
+
+                userService.logIn({ password: $.password, email: $.email })
+                    .then(function(res){
+                        $window.sessionStorage.token = res.token;
+                        $rootScope.user = true;
+                        if (pathService.returnPath() === undefined){
+                            $location.path('/select-portfolio');
+                        }
+                        else {
+                            $location.path(pathService.returnPath());
+                        }
+                    }, 
+                    function(err){
+                        $.message = err.message;
+                    });
+                }
+  
+         }])
 	
-	.controller('menuModalCtrl', ['$scope', '$window', '$location', '$http', '$rootScope', '$routeParams', 'mainMenuModal', 
-	        function($scope, $window, $location, $http, $rootScope, $routeParams, $window, mainMenuModal){
+	.controller('mainMenuModalCtrl', ['$scope', '$window', '$location',  '$rootScope', '$routeParams','mainMenuModal', function($scope, $window, $location, $rootScope, $routeParams, $window, mainMenuModal){
 	        var $ = $scope;
 	        
 	        $.closeModal = function(){
@@ -15,13 +42,12 @@ angular.module('app')
 	            $rootScope.mainMenuModal = false;
 	            $location.path('/');
 	        }
-      
-    }])
+         }])
 	
 	
 	
-	.controller('menuModalCtrl', ['$scope', '$window', '$location', '$http', '$rootScope', '$routeParams','$window', 'menuModal', 
-        function($scope, $window, $location, $http, $rootScope, $routeParams, $window, menuModal){
+	.controller('menuModalCtrl', ['$scope', '$window', '$location',  '$rootScope', '$routeParams','$window', 'menuModal', 
+        function($scope, $window, $location, $rootScope, $routeParams, $window, menuModal){
         var $ = $scope;
         
         $.closeModal = function(){
