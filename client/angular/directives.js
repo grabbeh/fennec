@@ -29,7 +29,6 @@ angular.module('app')
                 $.deleteComment = function(index){
                     $.trademark.comments.splice(index, 1);
                     trademarkService.editMark($.trademark).then(function(res){
-                        $.text = "";
                     })
                 } 
                 
