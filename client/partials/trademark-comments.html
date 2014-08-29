@@ -12,8 +12,10 @@
 
     
         <div>
-        <textarea ng-model="text"></textarea>
-        <div ng-click="addComment(text)">Add comment</div>
+        <form ng-submit="addComment(text)">
+            <textarea class="comment-text-area" ng-model="text"></textarea>
+            <input type="submit" value="Add comment"/>
+            </form>
          <div>
              {{ message }}
             </div>
