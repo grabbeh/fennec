@@ -1108,6 +1108,7 @@ a {
     border-bottom-style: solid;
     border-width: 1px;
     border-color: #9a9a9a;
+    overflow: hidden;
 }
 
 
