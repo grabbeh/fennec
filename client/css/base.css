@@ -1510,7 +1510,7 @@ margin-top: 20px;
     	margin-top: 0;
     }
     
-    .row, .one-half-container, .one-third-container, .one-quarter-container, two-third-container {
+    .row, .one-half-container, .one-third-container, .one-quarter-container, .two-third-container {
         width: 100%;
         min-width: 0;
         margin-left: 0px;
