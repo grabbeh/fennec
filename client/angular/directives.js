@@ -7,48 +7,10 @@ angular.module('app')
                 itemsPerPage: '=',
                 user: '='
             },
-            link: function(scope, elements, attrs){
-                 var $ = scope;
-                 $.$watch('trademark.comments', function(newVal){
-                      console.log("link fn " + newVal);
-                      if (!newVal){
-                          return;
-                      }
-                      for (var i=0; i < newVal.length; i+= $.itemsPerPage) {
-                           var slice = newVal.slice(i, i+ $.itemsPerPage);
-                           $.groupOfArrays.push(slice);
-                      }
-                     
-                     $.items = $.groupOfArrays[0];
-                     $.pageNumber = 1;
-                 })
-
-                  $.$watch('pageNumber', function(newPage){
-                      $.items = $.groupOfArrays[newPage -1];
-                  })
-            },
             replace: true,
             templateUrl: '/partials/trademark-comments.html',
             controller: function($scope, trademarkService){
                 var $ = $scope;
-                
-                $.$watch('trademark.comments', function(newVal){
-                      console.log("ctrl fn " + newVal);
-                      if (!newVal){
-                          return;
-                      }
-                      for (var i=0; i < newVal.length; i+= $.itemsPerPage) {
-                           var slice = newVal.slice(i, i+ $.itemsPerPage);
-                           $.groupOfArrays.push(slice);
-                      }
-                     
-                     $.items = $.groupOfArrays[0];
-                     $.pageNumber = 1;
-                 })
-
-                  $.$watch('pageNumber', function(newPage){
-                      $.items = $.groupOfArrays[newPage -1];
-                  })
                   
                 $.addComment = function(text){
                     var comment = {};
@@ -67,35 +29,12 @@ angular.module('app')
                 
                 $.deleteComment = function(index){
                     $.trademark.comments.splice(index, 1);
-                    console.log($.trademark.comments);
                     trademarkService.editMark($.trademark).then(function(res){
                         $.message = "Comment deleted";
                     })
                 } 
                 
-                $.groupOfArrays = [];
-                $.prevPage = function(pageNumber){
-                    $.pageNumber--;
-                };
-                $.nextPage = function(pageNumber){
-                    $.pageNumber++;
-                };
-                $.firstPage = function(){
-                    $.pageNumber = 1;
-                };
-                $.lastPage = function(){
-                    $.pageNumber = $.groupOfArrays.length;
-                };
-                $.checkIfFirst = function(pageNumber){
-                    if (pageNumber === 1){
-                      return true;
-                    }
-                };
-                $.checkIfLast = function(pageNumber){
-                   if (pageNumber === $.groupOfArrays.length){
-                      return true;
-                   }
-                };
+               
             }
     	}
     })
