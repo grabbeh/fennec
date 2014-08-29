@@ -10,7 +10,7 @@ angular.module('app')
             link: function(scope, elements, attrs){
                  var $ = scope;
                  $.$watch('trademark.comments', function(newVal){
-                      console.log(newVal);
+                      console.log("link fn " + newVal);
                       if (!newVal){
                           return;
                       }
@@ -33,7 +33,7 @@ angular.module('app')
                 var $ = $scope;
                 
                 $.$watch('trademark.comments', function(newVal){
-                      console.log(newVal);
+                      console.log("ctrl fn " + newVal);
                       if (!newVal){
                           return;
                       }
