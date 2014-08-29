@@ -21,6 +21,13 @@ height: auto !important;
 	margin-bottom: 10px;
 }
 
+.comment-delete-button {
+	padding: 5px;
+	background: #3F3838;
+	color: white;
+	margin-top: 5px;
+}
+
 .comment-details {
 	color: grey;
 }
