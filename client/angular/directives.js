@@ -31,6 +31,25 @@ angular.module('app')
             templateUrl: '/partials/trademark-comments.html',
             controller: function($scope, trademarkService){
                 var $ = $scope;
+                
+                $.$watch('trademark.comments', function(newVal){
+                      console.log(newVal);
+                      if (!newVal){
+                          return;
+                      }
+                      for (var i=0; i < newVal.length; i+= $.itemsPerPage) {
+                           var slice = newVal.slice(i, i+ $.itemsPerPage);
+                           $.groupOfArrays.push(slice);
+                      }
+                     
+                     $.items = $.groupOfArrays[0];
+                     $.pageNumber = 1;
+                 })
+
+                  $.$watch('pageNumber', function(newPage){
+                      $.items = $.groupOfArrays[newPage -1];
+                  })
+                  
                 $.addComment = function(text){
                     var comment = {};
                     comment.text = text;
