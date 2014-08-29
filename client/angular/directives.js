@@ -21,16 +21,15 @@ angular.module('app')
                         $.trademark.comments = [];
                     }
                     $.trademark.comments.push(comment);
-                    console.log($.trademark.comments);
                     trademarkService.editMark($.trademark).then(function(res){
-                       
+                       $.text = "";
                     })
                 }
                 
                 $.deleteComment = function(index){
                     $.trademark.comments.splice(index, 1);
                     trademarkService.editMark($.trademark).then(function(res){
-                        
+                        $.text = "";
                     })
                 } 
                 
