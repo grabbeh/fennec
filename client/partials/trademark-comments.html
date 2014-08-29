@@ -4,9 +4,8 @@
         <li class="tm-list-li"  ng-repeat="comment in trademark.comments track by $index">
         
         <span>
-            <div>{{ comment.text }} </div>
-            <div>{{ comment.date }} </div>
-            <div> {{ comment.author }}</div>
+            <div class="comment-text">{{ comment.text }} </div>
+            <div class="comment-details">{{ comment.date }} by {{ comment.author }}</div>
         </span>
             <span><div ng-click="deleteComment($index)">Delete</div></span>
         </li>
