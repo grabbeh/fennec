@@ -64,10 +64,16 @@ a.fill-div {
 .comments-container {
     background: white;
     padding: 20px;
+    overflow:hidden;
 }
 
 .favourite {
    color: rgb(214, 214, 64);
+}
+
+.comment-submit-btn {
+	margin-top: 10px;
+	float: right;
 }
 
 .non-favourite {
