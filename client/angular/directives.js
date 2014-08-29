@@ -23,14 +23,14 @@ angular.module('app')
                     $.trademark.comments.push(comment);
                     console.log($.trademark.comments);
                     trademarkService.editMark($.trademark).then(function(res){
-                        $.message = "Comment added";
+                       
                     })
                 }
                 
                 $.deleteComment = function(index){
                     $.trademark.comments.splice(index, 1);
                     trademarkService.editMark($.trademark).then(function(res){
-                        $.message = "Comment deleted";
+                        
                     })
                 } 
                 
