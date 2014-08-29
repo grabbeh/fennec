@@ -40,6 +40,7 @@ angular.module('app')
                         $.trademark.comments = [];
                     }
                     $.trademark.comments.push(comment);
+                    console.log($.trademark.comments);
                     trademarkService.editMark($.trademark).then(function(res){
                         $.message = "Comment added";
                     })
@@ -47,6 +48,7 @@ angular.module('app')
                 
                 $.deleteComment = function(index){
                     $.trademark.comments.splice(index, 1);
+                    console.log($.trademark.comments);
                     trademarkService.editMark($.trademark).then(function(res){
                         $.message = "Comment deleted";
                     })
