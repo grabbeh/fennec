@@ -31,13 +31,11 @@ angular.module('app')
             templateUrl: '/partials/trademark-comments.html',
             controller: function($scope, trademarkService){
                 var $ = $scope;
-                
                 $.addComment = function(text){
                     var comment = {};
                     comment.text = text;
                     comment.date = new Date();
                     comment.author = $.user._id;
-                    
                  	if ($.trademark.comments === undefined){
                         $.trademark.comments = [];
                     }
@@ -46,6 +44,14 @@ angular.module('app')
                         $.message = "Comment added";
                     })
                 }
+                
+                $.deleteComment = function(index){
+                    $.trademark.comments.splice(index, 1);
+                    trademarkService.editMark($.trademark).then(function(res){
+                        $.message = "Comment deleted";
+                    })
+                } 
+                
                 $.groupOfArrays = [];
                 $.prevPage = function(pageNumber){
                     $.pageNumber--;

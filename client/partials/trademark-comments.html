@@ -5,7 +5,7 @@
             <div>{{ comment.text }} </div>
             <div>{{ comment.date }} </div>
             <div> {{ comment.author }}</div>
-
+            <div ng-click="deleteComment($index)">Delete</div>
         </li>
     </ul>
     </div>
@@ -24,5 +24,6 @@
          <div>
              {{ message }}
             </div>
+
     </div>
 </div>
