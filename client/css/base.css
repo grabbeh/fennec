@@ -28,6 +28,7 @@ height: auto !important;
 
 .comment-delete-button {
 	float: right;
+	margin-top: 16px;
 }
 
 .comment-details {
