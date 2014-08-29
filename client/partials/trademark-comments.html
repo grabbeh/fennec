@@ -5,9 +5,9 @@
         
         <span>
             <div class="comment-text">{{ comment.text }} </div>
-            <div class="comment-details">{{ comment.date }} by {{ comment.author }}</div>
+            <div class="comment-details">{{ comment.author }} on {{ comment.date }}</div>
         </span>
-            <span><div ng-click="deleteComment($index)">Delete</div></span>
+            <span class="comment-delete-button"><div ng-click="deleteComment($index)">Delete</div></span>
         </li>
     </ul>
     </div>
