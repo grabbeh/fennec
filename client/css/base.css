@@ -16,6 +16,12 @@ height: auto !important;
 
 /* Comment box */
 
+.comment-submit-btn {
+	margin-top: 10px;
+	float: right;
+	font-size: 16px;
+}
+
 .comment-text {
 	font-size: 16px;
 	margin-bottom: 10px;
@@ -71,10 +77,6 @@ a.fill-div {
    color: rgb(214, 214, 64);
 }
 
-.comment-submit-btn {
-	margin-top: 10px;
-	float: right;
-}
 
 .non-favourite {
               color: #cecece; 
