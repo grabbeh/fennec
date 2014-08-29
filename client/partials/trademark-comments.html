@@ -3,10 +3,10 @@
         <ul class="tm-list expiry-list">
         <li class="tm-list-li"  ng-repeat="comment in trademark.comments track by $index">
         
-        <span>
+        <div class="main-comment">
             <div class="comment-text">{{ comment.text }} </div>
             <div class="comment-details">{{ comment.author }} on {{ comment.date }}</div>
-        </span>
+        </div>
             <div class="comment-delete-button"><div ng-click="deleteComment($index)">Delete</div>
         </li>
     </ul>
