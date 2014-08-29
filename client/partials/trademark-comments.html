@@ -1,7 +1,7 @@
 <div>
-    <div ng-show="items">
+    <div ng-show="trademark.comments">
         <ul class="tm-list expiry-list">
-        <li class="tm-list-li"  ng-repeat="comment in items track by $index">
+        <li class="tm-list-li"  ng-repeat="comment in trademark.comments track by $index">
             <div>{{ comment.text }} </div>
             <div>{{ comment.date }} </div>
             <div> {{ comment.author }}</div>
@@ -10,13 +10,6 @@
     </ul>
     </div>
 
-    <div style="float:right; font-size: 16px">
-        <div class="pagination-prev hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="prevPage(pageNumber)">Prev</div>
-        <div class="pagination-first hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="firstPage()">1</div>
-        <div class="pagination-number hover-cursor"> {{ pageNumber }} </div>
-        <div class="pagination-last hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="lastPage()"> {{ groupOfArrays.length }} </div>
-        <div class="pagination-next hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="nextPage(pageNumber)">Next</div>
-    </div>
     
         <div>
         <textarea ng-model="text"></textarea>
