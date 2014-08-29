@@ -9,8 +9,10 @@
   <body mg-menu-mover menu-modal="menuModal">
       <div class="header">
           <span class="header-logo"><a class="white-link" href="/">Fennec</a></span>
-          <span ng-show="isUser()" class="logout"><a class="white-link" href="/select-portfolio">Account</a></span>
-          <span ng-hide="isUser()" ng-click="login()" class="logout hover-underline">Login</span>
+          <span ng-show="isUser()" class="hide-on-mobile logout"><a class="white-link" href="/select-portfolio">Account</a></span>
+          <span ng-hide="isUser()" ng-click="login()" class="hide-on-mobile logout hover-underline">Login</span>
+          <span class="show-on-mobile logout"><i style="color: white;" class="fa fa-bars"></i></span>
+
       </div>
       <div class="spinner" ng-show="loadingView"></div>
       <div ng-view>

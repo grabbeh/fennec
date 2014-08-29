@@ -1,8 +1,11 @@
 <div>
     <ul class="tm-list expiry-list">
-        <li class="tm-list-li" ng-click="showModalWrapper(tm)" ng-repeat="tm in items">
-              <div> <span mg-bold>{{ tm.mark }}</span> <span> in {{ tm.country.name }}</span> </div>
-              <div class="expires-in">expires {{ tm.fromNow }}</div>
+        <li class="tm-list-li" ng-repeat="tm in items">
+            <div ng-click="showModalWrapper(tm)" class="float-left">
+                  <div><span mg-bold>{{ tm.mark }}</span> <span> in {{ tm.country.name }}</span> </div>
+                  <div class="expires-in">expires {{ tm.fromNow }}</div>
+            </div>
+            <div class="view-icon"><a href="/view/trademark/{{tm._id}}"><i class="fa fa-eye"></i></a></div>
         </li>
     </ul>
 

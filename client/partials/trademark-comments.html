@@ -5,7 +5,7 @@
         
         <div class="main-comment">
             <div class="comment-text">{{ comment.text }} </div>
-            <div class="comment-details">{{ comment.author }} on {{ comment.date }}</div>
+            <div class="comment-details">{{ comment.author }} on {{ comment.date |  date: 'longDate'}}</div>
         </div>
             <div class="comment-delete-button"><div ng-click="deleteComment($index)"><i class="fa fa-times fa-lg"></i></div>
         </li>
@@ -16,11 +16,9 @@
         <div>
         <form ng-submit="addComment(text)">
             <textarea class="comment-text-area" ng-model="text"></textarea>
-            <div class="comment-submit-btn"><input type="submit" value="Add comment"/></div>
+            <div class="comment-submit-btn"><input class="comment-btn" type="submit" value="Add comment"/></div>
             </form>
-         <div>
-             {{ message }}
-            </div>
+         <div>{{ message }}</div>
 
     </div>
 </div>
