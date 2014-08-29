@@ -36,11 +36,12 @@ height: auto !important;
 }
 
 .comment-text-area {
-width: 100%;
-max-width: 100%;
+width: 98%;
+max-width: 98%;
 height: 150px;
 font-family: 'Karla';
-font-size: 16px;	
+font-size: 16px;
+padding: 5px;
 }
 
 select:focus, textarea:focus, input:focus{
