@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','mainMenuModal', 'loginModal', 'uploadImageModal', 'userService',
-        function($scope, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, mainMenuModal, loginModal, uploadImageModal, userService){
+    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','dropdownMenu', 'loginModal', 'uploadImageModal', 'userService',
+        function($scope, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, dropdownMenu, loginModal, uploadImageModal, userService){
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, previous){
@@ -27,10 +27,17 @@ angular.module('app')
               $scope.loadingView = false;
             });
             
-            $.removeMenu = function(){
-                $rootScope.menuModal = false;
-                menuModal.deactivate();
-            }
+             $.toggleDropdownMenu = function(){
+                    if (!$rootScope.dropdownMenu){
+                        $rootScope.dropdownMenu = true;
+                        dropdownMenu.activate({ user: $rootScope.user});
+                    }
+                    else {
+                        $rootScope.dropdownMenu = false;
+                        dropdownMenu.deactivate(); 
+                    }
+
+                };
             
             $.removeModalOverlay = function(){
                 $rootScope.modal = false;

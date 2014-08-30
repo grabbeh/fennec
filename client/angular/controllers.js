@@ -175,14 +175,14 @@ angular.module('app')
 			
          $.toggleMenuModal = function(){
          trademarkModal.deactivate();
-		if (!$rootScope.menuModal){
-			$rootScope.menuModal = true;
-			menuModal.activate({ activePortfolio: $.activePortfolio});
-		}
-		else {
-			$rootScope.menuModal = false;
-			menuModal.deactivate();	
-		}
+        		if (!$rootScope.menuModal){
+        			$rootScope.menuModal = true;
+        			menuModal.activate({ activePortfolio: $.activePortfolio});
+        		}
+        		else {
+        			$rootScope.menuModal = false;
+        			menuModal.deactivate();	
+        		}
 
             };
             

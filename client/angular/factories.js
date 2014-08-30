@@ -7,10 +7,10 @@ angular.module('app')
    	})
    }])
 
-  .factory('mainMenuModal', ['btfModal', function(btfModal){
+  .factory('dropdownMenu', ['btfModal', function(btfModal){
   	return btfModal({
-	      controller: 'mainMenuModalCtrl',
-	      templateUrl: '/modals/main-menu-modal.html'
+	      controller: 'dropdownMenuCtrl',
+	      templateUrl: '/modals/dropdown-menu.html'
 	    });	
   }])
   .factory('menuModal', ['btfModal', function(btfModal){

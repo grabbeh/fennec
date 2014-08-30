@@ -34,18 +34,23 @@ angular.module('app')
   
          }])
 	
-	.controller('mainMenuModalCtrl', ['$scope', '$window', '$location',  '$rootScope', '$routeParams','mainMenuModal', function($scope, $window, $location, $rootScope, $routeParams, $window, mainMenuModal){
+	.controller('dropdownMenuCtrl', ['$scope', '$window', '$location', '$rootScope', '$routeParams','dropdownMenu', 'loginModal', function($scope, $window, $location, $rootScope, $routeParams, dropdownMenu, loginModal){
 	        var $ = $scope;
 	        
-	        $.closeModal = function(){
-	            mainMenuModal.deactivate();
-	            $rootScope.modal = false;
+	        $.closeMenu = function(){
+	            dropdownMenu.deactivate();
+                $rootScope.dropdownMenu = false;
 	        }
+
+            $.login = function(){
+                loginModal.activate();
+                $rootScope.modal = true;
+            }
   
 	        $.logout = function(){
 	            $rootScope.user = false;
 	            delete $window.sessionStorage.token;
-	            $rootScope.mainMenuModal = false;
+	            $rootScope.dropdownMenu = false;
 	            $location.path('/');
 	        }
          }])

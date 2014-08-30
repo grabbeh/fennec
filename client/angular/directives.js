@@ -40,7 +40,8 @@ angular.module('app')
     .directive('mgMenuMover', function(){
         return {
         scope: {
-            menuModal: '='
+            menuModal: '=',
+            dropdownMenu: '='
         },
         link: function(scope, element, attrs){
             scope.$watch(attrs.menuModal, function(v){
@@ -51,6 +52,15 @@ angular.module('app')
                         element.removeClass('active-menu')
                     }
             	})
+
+             scope.$watch(attrs.dropdownMenu, function(v){
+                    if (v){
+                        element.addClass('active-dropdown')
+                    }
+                    else {
+                        element.removeClass('active-dropdown')
+                    }
+              })
         	}
     	}
     })
