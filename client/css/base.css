@@ -1604,15 +1604,7 @@ margin-top: 20px;
 	.menu-modal {
 	    width: 80%;
 	}
-    
-    .edit-button {
-        display: none;
-    }
-    
-    .delete-button {
-        display: none;
-    }
-    
+   
     .qs-select {
     	width: 80%;
     }
