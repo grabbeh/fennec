@@ -46,7 +46,8 @@ angular.module('app')
                 }
          }])
 	
-	.controller('dropdownMenuCtrl', ['$scope', '$window', '$location', '$rootScope', '$routeParams','dropdownMenu', 'loginModal', function($scope, $window, $location, $rootScope, $routeParams, dropdownMenu, loginModal){
+	.controller('dropdownMenuCtrl', ['$scope', 'pathService', '$window', '$location', '$rootScope', '$routeParams','dropdownMenu', 'loginModal', 
+    function($scope, pathService, $window, $location, $rootScope, $routeParams, dropdownMenu, loginModal){
 	        var $ = $scope;
 	        
 	        $.closeMenu = function(){
@@ -60,6 +61,7 @@ angular.module('app')
             }
   
 	        $.logout = function(){
+              pathService.clearPath();
 	            $rootScope.user = false;
 	            delete $window.sessionStorage.token;
 	            $rootScope.dropdownMenu = false;

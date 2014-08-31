@@ -198,7 +198,6 @@ angular.module('app')
             $.showGroup = function(group){
                 if (group === null){ return};
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
-				console.log($.trademarks);
                 geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
                     $.geojson = geojson;
                 });
@@ -481,10 +480,8 @@ angular.module('app')
                 $.countrycode = l.target.feature.alpha2.toLowerCase();
                
                 var tms = l.target.feature.properties.trademarks;
-                console.log(tms);
                 if (tms){
                     $.nocontent = false;
-                    console.log(tms.Registered)
                     if (tms.Registered)
                         $.registered = tms.Registered;
                   }
@@ -573,7 +570,6 @@ angular.module('app')
         function($scope, $http){
             var $ = $scope;
             $.createUser = function(){
-                console.log($.newUser);
                 $http.post('/api/addUser', $.newUser)
                     .success(function(data){
                         $.message = data.msg;

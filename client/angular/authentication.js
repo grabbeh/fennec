@@ -5,7 +5,9 @@ angular.module('app')
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
-                console.log("Error")
+                console.log("Error");
+                console.log(error);
+                console.log(attempted);
                 var attemptedPath = attempted.$$route.originalPath;
                 if (attempted.params){
                     for (var key in attempted.params){
@@ -66,6 +68,7 @@ angular.module('app')
             }
             
             $.logout = function(){
+                pathService.clearPath();
                 $rootScope.menuModal = false;
                 menuModal.deactivate();
                 delete $window.sessionStorage.token;
@@ -92,9 +95,7 @@ angular.module('app')
             }
             
             $.login = function(){
-
                 userService.logIn({ password: $.password, email: $.email })
-                
                     .then(function(res){
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
@@ -102,6 +103,7 @@ angular.module('app')
                             $location.path('/select-portfolio');
                         }
                         else {
+                            console.log(pathService.returnPath());
                             $location.path(pathService.returnPath());
                         }
                     }, 

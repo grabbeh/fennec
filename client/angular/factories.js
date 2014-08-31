@@ -65,7 +65,6 @@ angular.module('app')
     .factory('notificationService', ['notificationModal', function(notificationModal){
         var notificationService = {
             notify: function(msg){
-                console.log(msg);
                 notificationModal.activate({msg: msg});
             }
         }
@@ -227,6 +226,9 @@ angular.module('app')
            },
            returnPath: function(){
                 return path[0];
+           },
+           clearPath: function(){
+               path[0] = undefined;
            },
            existingPath: function(){
                 if (path.length > 0){
