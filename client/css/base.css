@@ -1381,12 +1381,12 @@ margin: 0px 10px 10px 0px;
 .header {
     width:100%;
     background: #5e81bb;
-    height: 35px;
+    height: 40px;
     padding-top: 10px;
 }
 
 .header-logo {
-    padding: 10px 0 10px 0;
+   
     margin-left:20px;
     font-size: 24px;
     width: 300px;
