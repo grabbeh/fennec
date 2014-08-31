@@ -1,6 +1,6 @@
 <div>
     <div class="trademark-comments-container" ng-show="trademark.comments">
-        <div class="comment-date-filter" ng-click="predicate = 'date'; reverse=!reverse">Oldest / Newest</div>
+        <div class="hover-underline comment-date-filter" ng-click="predicate = 'date'; reverse=!reverse">Oldest / Newest</div>
         <div mg-clear></div>
         <ul class="tm-list expiry-list">        
         <li class="tm-list-li"  ng-repeat="comment in trademark.comments | orderBy:predicate:reverse">

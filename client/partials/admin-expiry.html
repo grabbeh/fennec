@@ -1,7 +1,7 @@
 <div>
     <ul class="tm-list expiry-list">
         <li class="tm-list-li" ng-repeat="tm in items">
-            <div ng-click="showModalWrapper(tm)" class="float-left">
+            <div ng-click="showModalWrapper(tm)" class="tm-list-content">
                   <div><span mg-bold>{{ tm.mark }}</span> <span> in {{ tm.country.name }}</span> </div>
                   <div class="expires-in">expires {{ tm.fromNow }}</div>
             </div>
