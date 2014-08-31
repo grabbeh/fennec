@@ -14,19 +14,69 @@ width: 100% !important;
 height: auto !important;
 }
 
+.margin-right {
+    margin-right: 20px;
+}
+
 /* login modal */
 
-.login-modal {
+.login-modal-content {
     padding: 20px;
     color: white;
     background: #3F3838;
 }
 
+.login-modal {
+    position: fixed;
+  top: 20%;
+  height: auto;
+  z-index: 2000;
+}
+
+.remove-login-form {
+   
+    float: right;
+}
+
 .login-modal-title {
-    padding: 10px 0 10px 20px;
+    padding: 10px 15px 10px 20px;
     background: black;
     color: white;
     font-weight: bold;
+    overflow: hidden;
+}
+
+/* notification modal */
+
+.notification-modal {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    z-index: 2000;
+    left: 0;
+    color: white;
+}
+
+.errornotification {
+    background: rgb(209, 58, 58);
+}
+
+.successnotification {
+    background: green;
+}
+
+.notification-msg {
+    padding-top: 13px;
+    float: left;
+    width: 96%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.notification-remove {
+    padding: 15px;
+    float: right;
 }
 
 /* dropdown menu */
@@ -83,6 +133,11 @@ height: auto !important;
 	float: right;
 	margin-top: 16px;
 	color: grey;
+}
+
+.comment-delete-button:hover {
+    color: black;
+    cursor: pointer;
 }
 
 .comment-date-filter {
@@ -344,7 +399,7 @@ input::-webkit-inner-spin-button {
 
 
 .view-trademark-container {
-     padding: 10px 15px 15px 30px; 	
+     padding: 10px 15px 10px 30px; 	
 }
 
 
@@ -1166,11 +1221,6 @@ a {
     width: 80%;
 }
 
-
-.tm-list-li:hover {
-    cursor: pointer;
-}
-
 .trademark-name {
     font-size: 18px;
     margin-bottom: 5px;
@@ -1358,6 +1408,8 @@ margin: 0px 10px 10px 0px;
 .forgotten-password {
       font-size: 14px;
 }
+
+
 
 .login-message {
 	margin-top: 20px;

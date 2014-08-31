@@ -14,7 +14,7 @@ var admin = require('../config/sendgrid')
 
 exports.getAllAdmins = function(fn){
     User.find({ isAdmin: true }).lean().exec(function(err, admins){
-      console.log(admins)
+        if (err) { console.log(err); fn(err)};
          fn(null, admins);
     });
 }

@@ -2,18 +2,20 @@
     <div class="trademark-comments-container" ng-show="trademark.comments">
         <div class="hover-underline comment-date-filter" ng-click="predicate = 'date'; reverse=!reverse">Oldest / Newest</div>
         <div mg-clear></div>
-        <ul class="tm-list expiry-list">        
-        <li class="tm-list-li"  ng-repeat="comment in trademark.comments | orderBy:predicate:reverse">
+        <ul class="tm-list">        
+        <li class="tm-list-li" ng-repeat="comment in trademark.comments | orderBy:predicate:reverse">
         
         <div class="main-comment">
             <div class="comment-text">{{ comment.text }} </div>
-            <div class="comment-details">{{ comment.author }} on {{ comment.date |  date: 'longDate'}}</div>
+            <div title="{{comment.date}}" class="comment-details">{{ comment.author }} on {{ comment.date |  date: 'longDate'}}</div>
+
         </div>
-            <div class="comment-delete-button"><div ng-click="deleteComment($index)"><i class="fa fa-times fa-lg"></i></div>
+            <div class="comment-delete-button"><div ng-click="deleteComment(comment, $index)"><i class="fa fa-times fa-lg"></i></div>
+
         </li>
     </ul>
     </div>
-        <div>
+    <div>
         <form ng-submit="addComment(text)">
             <textarea class="comment-text-area" ng-model="text"></textarea>
             <div class="comment-submit-btn"><input class="comment-btn" type="submit" value="Add comment"/></div>

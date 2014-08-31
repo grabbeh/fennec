@@ -1,6 +1,15 @@
 angular.module('app')
 
-         .controller('loginModalCtrl', ['$scope', '$window', 'pathService', 'userService', '$location',  '$rootScope', '$routeParams','loginModal', function($scope, $window, pathService, userService, $location, $rootScope, $routeParams, loginModal){
+        .controller('notificationModalCtrl', ['$scope', 'notificationModal', function($scope, notificationModal){
+            var $ = $scope;
+            $.closeModal = function(){
+                notificationModal.deactivate();
+            }
+
+        }])
+
+         .controller('loginModalCtrl', ['$scope', 'notificationModal', '$window', 'pathService', 'userService', '$location',  '$rootScope', '$routeParams','loginModal', 
+            function($scope, notificationModal, $window, pathService, userService, $location, $rootScope, $routeParams, loginModal){
 	        var $ = $scope;
 	        
 	        $.closeModal = function(){
@@ -12,26 +21,29 @@ angular.module('app')
 	             return $.loginForm.$dirty && $.loginForm.$valid;
 	        }
 
-                $.login = function(){
+            $.login = function(){
 
                 userService.logIn({ password: $.password, email: $.email })
                     .then(function(res){
-                        $window.sessionStorage.token = res.token;
-                        $rootScope.user = true;
-                        $rootScope.modal = false;
-                        loginModal.deactivate();
-                        if (pathService.returnPath() === undefined){
-                            $location.path('/select-portfolio');
+                        if (res.status === 401){
+                            notificationModal.activate({error: res.data.message})
                         }
                         else {
-                            $location.path(pathService.returnPath());
-                        }
-                    }, 
-                    function(err){
-                        $.message = err.message;
-                    });
+                            $window.sessionStorage.token = res.data.token;
+                            $rootScope.user = true;
+                            $rootScope.modal = false;
+                            loginModal.deactivate();
+                            if (pathService.returnPath() === undefined){
+                                $location.path('/select-portfolio');
+                            }
+                            else {
+                                $location.path(pathService.returnPath());
+                            }
+
+
+                        } 
+                    })
                 }
-  
          }])
 	
 	.controller('dropdownMenuCtrl', ['$scope', '$window', '$location', '$rootScope', '$routeParams','dropdownMenu', 'loginModal', function($scope, $window, $location, $rootScope, $routeParams, dropdownMenu, loginModal){
@@ -82,8 +94,8 @@ angular.module('app')
       
     }])
     
-    .controller('trademarkModalCtrl', ['$scope', '$timeout', '$rootScope', 'userService', 'trademarkService', '$http', 'editTrademarkModal', 'trademarkModal', 
-      function ($scope, $timeout, $rootScope, userService, trademarkService, $http, editTrademarkModal, trademarkModal) {
+    .controller('trademarkModalCtrl', ['$scope', 'notificationModal', '$rootScope', 'userService', 'trademarkService', '$http', 'editTrademarkModal', 'trademarkModal', 
+      function ($scope, notificationModal, $rootScope, userService, trademarkService, $http, editTrademarkModal, trademarkModal) {
       var $ = $scope;
       $.alpha2 = $.trademark.country.alpha2.toLowerCase();
       
@@ -97,7 +109,7 @@ angular.module('app')
                 trademarkModal.deactivate();
                 editTrademarkModal.activate({trademark: trademark})
             }, function(res){
-                $.message = res.data.message;
+                notificationModal.activate({ error: res.data.message});
             })
           }
     
@@ -105,21 +117,17 @@ angular.module('app')
         userService.isAdmin().then(function(res){
             trademarkService.deleteMark(trademark)
                .success(function(data){
-                   $scope.message = data.message;
+                    notificationModal.activate({ success: data.message })
                })
             }, function(res){
-                $.message = res.data.message;
-                $timeout(function(){
-                	trademarkModal.deactivate();
-                	$rootScope.modal = false;
-                }, 1000)
+                notificationModal.activate({error: res.data.message });
             })
         }
     }])
   
     
-    .controller('editTrademarkModalCtrl', ['$scope', '$rootScope', '$http', 'trademarkService', 'editTrademarkModal',
-      function ($scope, $rootScope, $http, trademarkService, editTrademarkModal) {
+    .controller('editTrademarkModalCtrl', ['$scope', 'notificationModal', '$rootScope', '$http', 'trademarkService', 'editTrademarkModal',
+      function ($scope, notificationModal, $rootScope, $http, trademarkService, editTrademarkModal) {
           var $ = $scope;
           $.closeModal = function() {
             editTrademarkModal.deactivate();
@@ -136,7 +144,7 @@ angular.module('app')
         $.editTrademark = function(trademark){
             trademarkService.editMark(trademark)
                 .success(function(data){
-                    $.message = data.message;
+                    notificationModal.activate({ success: data.message })
                 });
             }
        

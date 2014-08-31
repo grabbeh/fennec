@@ -1,19 +1,30 @@
 angular.module('app')
 
-    .controller("authCtrl", ['$scope', '$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','dropdownMenu', 'loginModal', 'uploadImageModal', 'userService',
-        function($scope, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, dropdownMenu, loginModal, uploadImageModal, userService){
+    .controller("authCtrl", ['$scope', 'notificationModal','loginModal','$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','dropdownMenu', 'loginModal', 'uploadImageModal', 'userService',
+        function($scope, notificationModal, loginModal, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, dropdownMenu, loginModal, uploadImageModal, userService){
             var $ = $scope;
             $rootScope.menuModal = false;
-            $rootScope.$on('$routeChangeError', function(event, previous){
-                var originalPath = previous.$$route.originalPath;
-                if (previous.params){
-                    for (var key in previous.params){
-                         originalPath = originalPath.replace(":" + key, previous.params[key]);
+            $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
+                console.log("Error")
+                var attemptedPath = attempted.$$route.originalPath;
+                if (attempted.params){
+                    for (var key in attempted.params){
+                         originalPath = attemptedPath.replace(":" + key, attempted.params[key]);
                     }
                 }
-                pathService.insertPath(originalPath);
-                $rootScope.modal = true;
-                loginModal.activate();
+
+                var previousPath = previous.$$route.originalPath;
+                if (previous.params){
+                    for (var key in previous.params){
+                         previousPath = previousPath.replace(":" + key, previous.params[key]);
+                    }
+                }
+
+                pathService.insertPath(attemptedPath);
+                notificationModal.activate({ error: error.data.message})
+                //$rootScope.modal = true;
+                //loginModal.activate();
+                $location.path(previousPath);
 
             });
             
@@ -27,7 +38,7 @@ angular.module('app')
               $scope.loadingView = false;
             });
             
-             $.toggleDropdownMenu = function(){
+            $.toggleDropdownMenu = function(){
                     if (!$rootScope.dropdownMenu){
                         $rootScope.dropdownMenu = true;
                         dropdownMenu.activate({ user: $rootScope.user});
@@ -46,6 +57,7 @@ angular.module('app')
                 editCountryModal.deactivate();
                 editGroupModal.deactivate();
                 uploadImageModal.deactivate();
+                loginModal.deactivate();
             }
             
             $.login = function(){

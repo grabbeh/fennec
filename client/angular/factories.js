@@ -1,5 +1,12 @@
 angular.module('app')
 
+  .factory('notificationModal', ['btfModal', function(btfModal){
+    return btfModal({
+      controller: 'notificationModalCtrl',
+      templateUrl: '/modals/notification-modal.html'
+    })
+  }])
+
    .factory('loginModal', ['btfModal', function(btfModal){
    	return btfModal({
    		controller: 'loginModalCtrl', 
@@ -55,15 +62,25 @@ angular.module('app')
         });
     }])
 
-  .factory('userService', ['$http', function ($http) {
+    .factory('notificationService', ['notificationModal', function(notificationModal){
+        var notificationService = {
+            notify: function(msg){
+                console.log(msg);
+                notificationModal.activate({msg: msg});
+            }
+        }
+        return notificationService;
+    }])
+
+    .factory('userService', ['$http', function ($http) {
     var user = [];
     var userService = {
         logIn: function(user){
             return $http.post('/server/login', user)
             	.then(function(res){
-                 	return res.data;
+                 	return res;
                 }, function(res){
-					return res.data;
+					return res;
                 })
         },
       	anyUsers: function(){

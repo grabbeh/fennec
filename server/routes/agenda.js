@@ -27,10 +27,11 @@ exports.setUpAgenda = function(db){
       .processEvery('60 minutes');
 
     agenda.define('check for alerts', function(job, done) {
-          async.series([
+          async.parallel([
                 async.apply(user.getAllAdmins),
                 async.apply(helper.getAllTrademarks)
             ], function(err, results){
+              if (err) { console.log(err);}
                 executeJobs(results[0], results[1], function(){
                     done();
                 });

@@ -10,7 +10,7 @@ angular.module('app')
         },
         response: function (response) {
           if (response.status === 401) {
-              $location.path('/');
+              console.log("401");
               
           }
           return response || $q.when(response);

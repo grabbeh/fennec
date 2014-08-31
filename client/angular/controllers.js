@@ -88,12 +88,9 @@ angular.module('app')
        $.loadDemo = function(){
             userService.logIn({ password: "demo", email: "demo@demo.com" })
                 .then(function(res){
-                    $window.sessionStorage.token = res.token;
+                    $window.sessionStorage.token = res.data.token;
                     $rootScope.user = true;
                     $location.path('/home/ACME INC');
-                }, 
-                function(err){
-                    $.message = err.message;
                 });
             }
 
@@ -610,13 +607,10 @@ angular.module('app')
            
         }])
 
-    .controller('selectPortfolioCtrl', ['$scope', '$location', 'userService', '$rootScope',
-        function($scope, $location, userService, $rootScope){
+    .controller('selectPortfolioCtrl', ['$scope', 'user',
+        function($scope, user){
             var $ = $scope;
-            userService.getUser().then(function(user){
-                $.portfolios = user.portfolios;
-            })
-
+            $.portfolios = user.portfolios;
         }])
 
     .controller("mapCtrl", ['$scope', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',

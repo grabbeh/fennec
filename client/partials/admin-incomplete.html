@@ -1,7 +1,7 @@
 <div>
     <ul class="tm-list expiry-list">
         <li class="tm-list-li" ng-repeat="tm in items track by $index">
-            <div ng-click="showModalWrapper(tm)" class="tm-list-content">
+            <div ng-click="showModalWrapper(tm)" class="hover tm-list-content">
               <div><span mg-bold>{{ tm.mark }} </span><span> in {{ tm.country.name }} </span></div>
               <div ng-repeat="issue in tm.issues">- {{ issue }} </div>
             </div>

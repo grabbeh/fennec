@@ -9,7 +9,7 @@ angular.module('app')
             },
             replace: true,
             templateUrl: '/partials/trademark-comments.html',
-            controller: function($scope, trademarkService){
+            controller: function($scope, trademarkService, notificationModal, notificationService){
                 var $ = $scope;
                   
                 $.addComment = function(text){
@@ -26,7 +26,12 @@ angular.module('app')
                     })
                 }
                 
-                $.deleteComment = function(index){
+                $.deleteComment = function(comment, index){
+                    if (comment.author != $.user._id){
+                        notificationModal.activate({ error: "Only author can delete"})
+                        
+                        return;
+                    }
                     $.trademark.comments.splice(index, 1);
                     trademarkService.editMark($.trademark).then(function(res){
                     })

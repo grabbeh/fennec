@@ -202,6 +202,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             resolve:{
                 isUser: function(userService){
                     return userService.isUser();
+                },
+                user: function(userService){
+                    return userService.getUser();
                 }
             }
         }).
