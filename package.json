@@ -28,11 +28,12 @@
   },
   "devDependencies": {
     "watchify": "~0.1.0",
-    "catw": "~0.0.1"
+    "catw": "~0.0.1",
+    "clean-css":"2.2.14"
   },
   "scripts": {
     "build-js": "browserify client/angular/*.js | uglifyjs -c > client/production/bundle.js",
-    "build-css": "cat client/css/*.css >  client/production/bundle.css",
+    "build-css":" cat client/css/*.css | cleancss > client/production/bundle.css",
     "build": "npm run build-js && npm run build-css",
     "watch-js": "watchify client/angular/*.js -o client/production/bundle.js -dv",
     "watch-css": "catw client/css/*.css -o client/production/bundle.css -dv",
