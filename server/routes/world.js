@@ -1,4 +1,5 @@
-var helper = require('./helper.js')
+var helper = require('./helper')
+, favourites = require('./favourites')
 , _ = require('underscore')
 , countryData = require('../data/country-data.json')
 , async = require('async');
@@ -33,12 +34,13 @@ exports.worldForGroup = function(req, res){
 	
 	async.parallel([ 
         	async.apply(helper.getGeoJSON),
-	    	async.apply(helper.getTrademarks, entity, portfolio)
+	    	async.apply(helper.getTrademarks, entity, portfolio),
+	    	async.apply(helper.findUser, req.user._id)
 	    ],
 	    function(err, results){
-           	var tms = results[1];
+           	var tms = favourites.addFavouriteProperty(results[1], results[2].favourites);
 	        if (group != "ALL MARKS"){
-		        var tms = _.groupBy(results[1], 'mark')[group];	
+		        var tms = favourites.addFavouriteProperty(_.groupBy(results[1], 'mark')[group], results[2].favourites);	
 		    }
 
 	       helper.convertPortfolioAndAddToGeoJSON(results[0], tms, function(err, gj){
