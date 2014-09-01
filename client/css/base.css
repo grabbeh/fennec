@@ -1130,8 +1130,11 @@ a {
 .footer {
     height: 100px;
     clear: both;
-	background: #3F3838;
-	margin-top: 200px;
+    background: #3F3838;
+}
+
+.push {
+	height: 100px;
 }
 
 .edit-button {
