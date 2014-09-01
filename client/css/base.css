@@ -1129,6 +1129,7 @@ a {
 
 .footer {
     height: 100px;
+    clear: both;
 	background: #3F3838;
 	margin-top: 200px;
 }
