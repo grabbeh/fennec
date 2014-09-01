@@ -679,7 +679,7 @@ angular.module('app')
                     }
                 });
             }
-                      
+        console.log("Ctrl " + user);       
         $.showModal = function(trademark){
             $rootScope.modal = true;
             trademarkModal.deactivate();
