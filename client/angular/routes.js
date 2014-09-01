@@ -72,8 +72,11 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/map.html',
             controller: 'mapCtrl',
             resolve: {
-                user: function(userService){
+                isUser: function(userService){
                     return userService.isUser();
+                },
+                user: function(userService){
+                  return userService.getUser();  
                 },
                 world: function($route, geoJsonService){
                     return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
