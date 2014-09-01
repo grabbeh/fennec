@@ -23,8 +23,12 @@ exports.favourites = function(req, res){
                  	}
             })
         })
-
-        res.json(favourites);	
+        if (favourites.length > 0){
+        	 res.json(favourites);	
+        }
+        else {
+        	res.json(false);
+        }	
 
     })
 }
