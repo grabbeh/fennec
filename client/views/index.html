@@ -7,6 +7,7 @@
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
   </head>
   <body mg-menu-mover menu-modal="menuModal">
+    <div class="wrapper">
       <div class="header">
           <span class="header-logo"><a class="white-link" href="/">Fennec</a></span>
           <span ng-show="isUser()" class="hide-on-mobile account"><a title="Home" class="white-link margin-right" href="/select-portfolio"><i class="fa fa-home fa-lg"></i></a><span class="hover" title="Log out" ng-click="logout()"><i class="fa fa-sign-out fa-lg"></i></span>
@@ -18,7 +19,11 @@
       <div class="spinner" ng-show="loadingView"></div>
       <div mg-menu-mover dropdown-menu="dropdownMenu" ng-view>
       </div>
-      <div class="footer" style="clear: both"></div>
+      
+    </div>
+    <div class="footer" style="clear: both"></div>
+      
+      
       <div ng-class="{'modal-overlay': modal}" ng-show="modal" ng-click="removeModalOverlay()"></div>
       
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
