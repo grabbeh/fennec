@@ -5,7 +5,6 @@ angular.module('app')
 	        if (!favourites){
 	           $scope.favourites = false;	
 	        }
-	        }
 	        $.user = user;
 	        $.activeTrademark = favourites[0];
 	        $.activateTrademark = function(trademark){
