@@ -13,7 +13,7 @@
 	min-height: 100%;
 	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
 	height: 100%;
-	margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+	margin: 0 auto -100px; /* the bottom margin is the negative value of the footer's height */
 }
 
 canvas{
@@ -1128,6 +1128,9 @@ a {
 }
 
 .footer {
+	
+	
+	
     height: 100px;
 	background: #3F3838;
 	margin-top: 100px;
