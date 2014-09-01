@@ -7,24 +7,25 @@ var helper = require('./helper')
 exports.favourites = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.findUser(req.user._id, function(err, user){
-    	var favIds = user.favourites;
-        helper.getTrademarks(entity, portfolio, function(err, trademarks){
-            var favourites = [];
-            favIds.forEach(function(fav){
-                 trademarks.forEach(function(tm){
-                      if (tm._id.equals(fav)){
+    
+    async.parallel([ 
+    	async.apply(helper.findUser, req.user._id),
+    	async.apply(helper.getTrademarks, entity, portfolio)
+    	], function(err, results){
+    	    var favIds = results[0].favourites;
+    	    var trademarks = results[1]
+    	    var favourites = [];	
+    	    favIds.forEach(function(fav){
+                trademarks.forEach(function(tm){
+                    if (tm._id.equals(fav)){
                         tm.favourite = true;
                         favourites.push(tm);
-                 }
-                 })
+                 	}
             })
-            res.json(favourites);
         })
-        
-        
+        res.json(favourites);
+	
     })
-    
 }
 
 exports.groupOfMarks = function(req, res){
