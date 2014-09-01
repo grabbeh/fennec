@@ -231,7 +231,7 @@ angular.module('app')
             $.showModal = function(trademark){
                 $rootScope.modal = true;
                 trademarkModal.deactivate();
-                trademarkModal.activate({ trademark: trademark, user: $rootScope.user });
+                trademarkModal.activate({ trademark: trademark, user: user });
             };
             
             $.expiryFormValid = function(){
@@ -613,8 +613,8 @@ angular.module('app')
             $.portfolios = user.portfolios;
         }])
 
-    .controller("mapCtrl", ['$scope', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
-        function($scope, $routeParams, $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
+    .controller("mapCtrl", ['$scope', 'user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
+        function($scope, $routeParams, user, $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
         var $ = $scope;
 
         $.geojson = world;
@@ -683,7 +683,7 @@ angular.module('app')
         $.showModal = function(trademark){
             $rootScope.modal = true;
             trademarkModal.deactivate();
-            trademarkModal.activate({ trademark: trademark });
+            trademarkModal.activate({ trademark: trademark, user: user });
           };
 
     }]);
