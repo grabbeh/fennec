@@ -1,8 +1,18 @@
 
 <div ng-hide="loadingView" class="fixed-container">
     <div class="quick-search-container">
-        <div class="portfolio-home-title">{{ portfolio}}</div>
-        
+        <div class="one-half-container">
+            <div class="portfolio-home-title">{{ portfolio}}</div>
+        </div>
+        <div class="one-half-container last">
+            <div>
+                <form>
+                    <select class="group-mark-select" ng-change="changePortfolio(portfolio)" ng-model="portfolio" ng-options="portfolio for portfolio in portfolios">
+                        <option value="">Select portfolio</option>
+                    </select>
+                 </form>
+              </div>
+        </div>
         <div class="portfolio-subtitle">
             Tools
         </div>

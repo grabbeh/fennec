@@ -6,6 +6,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/landing-page.html',
             controller: 'landingPageCtrl'
         }).
+        when('/terms', {
+            templateUrl: '/partials/terms-of-use.html'
+        }).
         when('/quick-search/:portfolio', {
             reloadOnSearch: false,
             templateUrl: '/partials/quick-search.html',
@@ -32,11 +35,15 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
            }
         }).
         when('/home/:portfolio', {
+            reloadOnSearch: false,
             templateUrl: '/partials/portfolio-home.html',
             controller: 'portfolioHomeCtrl',
             resolve: {
-                user: function(userService){
+                isUser: function(userService){
                     return userService.isUser();
+                },
+                user: function(userService){
+                    return userService.getUser();
                 },
                 countries: function(geoJsonService, $route){
                     return geoJsonService.countryData($route.current.params.portfolio);
@@ -60,6 +67,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 world: function($route, geoJsonService){
                     return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
                 },
+                countries: function($route, geoJsonService){
+                    return geoJsonService.countryData($route.current.params.portfolio);
+                },
                 barChartData: function($route, chartService){
                     return chartService.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");
                 },
@@ -74,6 +84,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             resolve: {
                 isUser: function(userService){
                     return userService.isUser();
+                },
+                countryData: function(geoJsonService){
+                    return geoJsonService.countryData();
                 },
                 user: function(userService){
                   return userService.getUser();  
@@ -191,6 +204,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 },
                 world: function($route, geoJsonService){
                     return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
+                },
+                countries: function($route, geoJsonService){
+                    return geoJsonService.countryData($route.current.params.portfolio);
                 },
                 barChartData: function($route, chartService){
                     return chartService.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");

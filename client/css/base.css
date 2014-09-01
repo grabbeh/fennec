@@ -1411,6 +1411,10 @@ margin: 0px 10px 10px 0px;
     height:700px;
 }
 
+.map-country-selector {
+    margin: 10px 0;
+}
+
 .grey-li {
     background: #f0f0f0;
 }

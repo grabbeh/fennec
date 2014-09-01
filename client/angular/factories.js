@@ -123,7 +123,11 @@ angular.module('app')
             return $http.get('/api/expiriesForYear/' + portfolio + '?year=' + year)
         },
         countryData: function(portfolio){
-        	return $http.get('/api/countryData?portfolio=' + portfolio)
+          var url = '/api/countryData';
+          if (portfolio){
+             var url = '/api/countryData?portfolio' + portfolio;
+          }
+        	return $http.get(url)
 	            	.then(function(response){
 	                    return response.data;
 			})
@@ -141,6 +145,7 @@ angular.module('app')
 
       var trademarkService = {
       	  getListOfMarks: function(portfolio, country){
+              
       	       var url = '/api/listOfMarks/' + portfolio;
       	       if (country){
       	       	   var url = '/api/listOfMarks/' + portfolio + '?country=' + country;

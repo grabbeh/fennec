@@ -109,14 +109,23 @@ angular.module('app')
          }
     }])
     
-    .controller('portfolioHomeCtrl', ['$scope', '$window', '$rootScope', '$filter','$routeParams', 'countries', 'marks', '$location', function($scope, $window, $rootScope, $filter, $routeParams, countries, marks, $location){
+    .controller('portfolioHomeCtrl', ['$scope', 'user', '$window', '$rootScope', '$filter','$routeParams', 'countries', 'marks', '$location', 
+        function($scope, user, $window, $rootScope, $filter, $routeParams, countries, marks, $location){
            var $ = $scope;
+           $.portfolios = user.portfolios;
            $.portfolio = $routeParams.portfolio;
-          
            $.countries = $filter('orderBy')(countries, 'name');
            $.marks = marks;
 
-           $.goToGroup = function(country){
+           $.changePortfolio = function(portfolio){
+                if (portfolio === null){
+                    return;
+                }
+                $.portfolio = portfolio;
+                $location.path('/home/' + portfolio);
+            }
+
+            $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
             }
             
@@ -125,7 +134,6 @@ angular.module('app')
             }
             
             $.logout = function(){
-     
                 $rootScope.user = false;
                 delete $window.sessionStorage.token;
                 $location.path('/');
@@ -142,6 +150,7 @@ angular.module('app')
                 'trademarkService',
                 'geoJsonService',
                 'world',
+                'countries',
                 'user',
                 'userService',
                 'chartService', 
@@ -161,6 +170,7 @@ angular.module('app')
                  trademarkService,
                  geoJsonService,
                  world,
+                 countries,
                  user,
                  userService,
                  chartService, 
@@ -174,7 +184,7 @@ angular.module('app')
             var $ = $scope;
 			
          $.toggleMenuModal = function(){
-         trademarkModal.deactivate();
+            trademarkModal.deactivate();
         		if (!$rootScope.menuModal){
         			$rootScope.menuModal = true;
         			menuModal.activate({ activePortfolio: $.activePortfolio});
@@ -185,12 +195,8 @@ angular.module('app')
         		}
 
             };
-            
-            $http.get('/api/countryData?portfolio=' + $routeParams.portfolio)
-            	.success(function(countries){
-                    $.countries = $filter('orderBy')(countries, 'name');
-                   
-	        })
+
+            $.countries = $filter('orderBy')(countries, 'name'); 
 
             $.$on('country.click', function(e, l){
                 $.$apply(function(){
@@ -213,7 +219,7 @@ angular.module('app')
             }
             
             $.showCountry = function(country){
-                if (country=== null){ return};
+                if (country === null){ return};
                 $.trademarks = $filter('extractMarksInCountry')($.allTrademarks, country.alpha3);
                 geoJsonService.getCountry($routeParams.portfolio, country.alpha3).then(function(geojson){
                     $.geojson = geojson;
@@ -608,23 +614,21 @@ angular.module('app')
             $.portfolios = user.portfolios;
         }])
 
-    .controller("mapCtrl", ['$scope', 'user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
-        function($scope, user, $routeParams,  $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
+    .controller("mapCtrl", ['$scope','countryData','user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
+        function($scope, countryData, user, $routeParams,  $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
         var $ = $scope;
-	$.portfolio = $routeParams.portfolio;
+	    $.portfolio = $routeParams.portfolio;
+        $.countries = $filter('orderBy')(countryData, 'name');
         $.geojson = world;
         $.marks = $filter('groupByMarks')(trademarks);
         $.marks.unshift({ name: "ALL MARKS" });
+
         $.sendMarksToServer = function(marks){
                 $http.post('/api/world/' + $routeParams.portfolio, { marks: $filter('extractCheckedMarks')(marks) })
                      .success(function(world){
                          $.geojson = world;
                      }); 
                  }
-
-        $.canFilter = function(){
-            return $.filterTMsForm.$dirty && $.filterTMsForm.$valid;
-        }
 
         $.$on('country.click', function(e, l){
             $.registered = false;
@@ -651,13 +655,17 @@ angular.module('app')
              });
         });
 
-        $.filterPortfolio = function(){
+        $.showCountry = function(country){
+            if (!country){
+                return;
+            }
             $.registered = false;
             $.pending = false;
             $.published = false;
             $.nocontent = true;
             _.each($.geojson, function(feature){
-                if ($.searchcountry.toLowerCase() === feature.properties.name.toLowerCase()){
+                if (country.alpha3 === feature.id){
+
                     var tms = feature.properties.trademarks;
                     $.country = feature.properties.name;
                     $.countrycode = feature.alpha2.toLowerCase();
