@@ -1,6 +1,7 @@
 angular.module('app')
 	    .controller('favouritesCtrl', ['$scope', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', function($scope, $rootScope, favourites, user, trademarkService, editTrademarkModal){
 	        var $ = $scope;
+	        console.log(favourites);
           $.favourites = favourites;
           if (favourites.length === 0){
             $.favourites = false;
