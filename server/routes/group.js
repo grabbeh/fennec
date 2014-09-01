@@ -23,13 +23,7 @@ exports.favourites = function(req, res){
                  	}
             })
         })
-        if (favourites.length > 0){
-        	 res.json(favourites);	
-        }
-        else {
-        	res.json(false);
-        }	
-
+        res.json(favourites);	
     })
 }
 
