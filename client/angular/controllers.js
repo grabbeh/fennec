@@ -2,8 +2,10 @@ angular.module('app')
 	    .controller('favouritesCtrl', ['$scope', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', function($scope, $rootScope, favourites, user, trademarkService, editTrademarkModal){
 	        var $ = $scope;
 	        $.favourites = favourites;
-	        console.log(!$.favourites);
-	        
+	        console.log(favourites);
+	        if (favourites.length === 0){
+	             $.favourites = false;
+	        }
 	        $.user = user;
 	        $.activeTrademark = favourites[0];
 	        $.activateTrademark = function(trademark){
