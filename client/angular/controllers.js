@@ -405,6 +405,7 @@ angular.module('app')
 		['$scope', '$rootScope', '$location', 'user', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 
 		function($scope, $rootScope, $location, user, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal){
 	        var $ = $scope;
+	        $.portfolio = $routeParams.portfolio;
         
             trademarkService.getCountry($routeParams.portfolio, $location.search().country).then(function(trademarks){
                 $.trademarks = trademarks;
