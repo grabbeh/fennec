@@ -614,7 +614,7 @@ angular.module('app')
         }])
 
     .controller("mapCtrl", ['$scope', 'user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
-        function($scope, $routeParams, user, $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
+        function($scope, user, $routeParams,  $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
         var $ = $scope;
 
         $.geojson = world;
@@ -679,7 +679,6 @@ angular.module('app')
                     }
                 });
             }
-        console.log(user);       
         $.showModal = function(trademark){
             $rootScope.modal = true;
             trademarkModal.deactivate();
