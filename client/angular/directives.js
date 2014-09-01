@@ -104,8 +104,6 @@ angular.module('app')
 	        },
 	        controller: function($scope, userService){
 	            var $ = $scope;
-	            console.log($.trademark);
-	            console.log($.user);
 	            $.toggleFavourite = function(){
 		          	if ($.trademark.favourite){
 		              	$.trademark.favourite = false;
