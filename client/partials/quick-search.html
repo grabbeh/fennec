@@ -13,7 +13,7 @@
    
         <div>
              <select class="qs-select" ng-change="selectMark()" ng-model="mark" ng-options="mark.name for mark in marks">
-                 <option value="">Choose trade mark</option>
+                 <option value="">Trade mark</option>
             
              </select>
              <div class="qs-line" ng-class="{ qscomplete: mark, qsincomplete: !mark}" ></div>
@@ -24,7 +24,7 @@
           <div>
     	     <select 
              ng-change="quickSearch()"  class="qs-select" ng-model="country" ng-options="country.name for country in countrydata">
-    	        <option value="">Choose country </option>
+    	        <option value="">Country </option>
     	      </select>
     	       <span class="qs-question-mark">?</span>
     	       <div class="qs-line" ng-class="{ qscomplete: country, qsincomplete: !country }"></div>
