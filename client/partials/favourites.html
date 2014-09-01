@@ -13,7 +13,7 @@
       <div edit-trademark="openEditTrademarkModal" delete-trademark="deleteTrademark" ng-show="activeTrademark" mg-trademark-container trademark='activeTrademark' user='user'></div>
   </div>
   <div class="one-third-container last">
-      <div class="comments-container">
+      <div ng-show="activeTrademark" class="comments-container">
                 <div mg-bold>
                     Comments
                 </div>
