@@ -1,6 +1,7 @@
 var helper = require('./helper')
 , _ = require('underscore')
 , Trademark = require('../models/trademarkSchema')
+, favourites = require('./favourites')
 , async = require('async');
 
 exports.favourites = function(req, res){
@@ -33,25 +34,13 @@ exports.groupOfMarks = function(req, res){
         var favourites = user.favourites;
         var group = req.params.group.replace(/%20/g, " ");
         helper.getTrademarks(entity, portfolio,  function(err, trademarks){
-          var tms = addFavouriteProperty(trademarks, favourites);
+          var tms = favourites.addFavouriteProperty(trademarks, favourites);
             if (group != "ALL MARKS"){
-                var tms = addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
+                var tms = favourites.addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
             }
             res.json(tms);
         });
     }) 
-}
-
-function addFavouriteProperty(trademarks, favourites){
-     trademarks.forEach(function(tm){
-     	favourites.forEach(function(fav){
-     	    if (tm._id.equals(fav)){
-     	    	tm.favourite = true;
-     	    }
-     	})
-
-     })	
-     return trademarks;
 }
 
 // if country is provided in query, delimit list of marks by country
