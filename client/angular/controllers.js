@@ -402,8 +402,8 @@ angular.module('app')
          }])
 
 	.controller('countryViewCtrl', 
-		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 'editCountryModal', 
-		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal, editCountryModal){
+		['$scope', '$rootScope', '$location', 'user', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 'editCountryModal', 
+		function($scope, $rootScope, $location, user, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal, editCountryModal){
 	        var $ = $scope;
         
             trademarkService.getCountry($routeParams.portfolio, $location.search().country).then(function(trademarks){
@@ -449,7 +449,7 @@ angular.module('app')
 	        $.showModal = function(trademark){
 	            $rootScope.modal = true;
 	            trademarkModal.deactivate();
-	            trademarkModal.activate({ trademark: trademark });
+	            trademarkModal.activate({ trademark: trademark, user: user });
 	          };
             
             $.sendMarksToServer = function(marks){
