@@ -615,7 +615,7 @@ angular.module('app')
     .controller("mapCtrl", ['$scope', 'user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
         function($scope, user, $routeParams,  $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
         var $ = $scope;
-	$.title = $routeParams.portfolio;
+	$.portfolio = $routeParams.portfolio;
         $.geojson = world;
         $.marks = $filter('groupByMarks')(trademarks);
         $.marks.unshift({ name: "ALL MARKS" });
