@@ -323,8 +323,8 @@ angular.module('app')
          }])
          
         .controller('groupViewCtrl', 
-		['$scope', '$rootScope', '$location', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 'editGroupModal', 'uploadImageModal',
-		function($scope, $rootScope, $location, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal, editGroupModal, uploadImageModal){
+		['$scope', '$rootScope', '$location', 'user', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 'editGroupModal', 'uploadImageModal',
+		function($scope, $rootScope, $location, user, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal, editGroupModal, uploadImageModal){
 	        var $ = $scope;
 	        geoJsonService.getWorldGroup($routeParams.portfolio, $location.search().group).then(function(data){
 	            $.geojson = data;
@@ -344,7 +344,7 @@ angular.module('app')
         $.showModal = function(trademark){
             $rootScope.modal = true;
             trademarkModal.deactivate();
-            trademarkModal.activate({ trademark: trademark });
+            trademarkModal.activate({ trademark: trademark, user: user });
           };
             
             $.showEditGroupModal = function(){
