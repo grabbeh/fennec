@@ -34,7 +34,7 @@
             
             <div class="chart-container">
                 <div class="one-half-container">
-                    <div class="pie-chart-container">
+                    <div class="pie-chart-container shadow">
                         <div ng-init="activeMark= 'ALL MARKS'" class="view-group-title">{{ activeMark }} 
                         </div>
                         <div>Summary</div>
@@ -62,7 +62,7 @@
                     </div>
             </div>
             <div class="one-half-container last last-margin-top">
-                    <div ng-show="sortedByExpiry" class="right-half-container">
+                    <div ng-show="sortedByExpiry" class="right-half-container shadow">
                         <div mg-bold>Upcoming expiries<i class="opaque float-right fa fa-clock-o fa-2x"></i></div>
                         <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
                     </div>
@@ -72,7 +72,7 @@
 
         <div mg-clear></div>
         <div class="row">
-            <div class="bar-chart-container">
+            <div class="bar-chart-container shadow">
                 <div class="expiry-chart-title">Expiry dates<span class="hide-on-mobile"><i class="opaque float-right  fa fa-bar-chart-o fa-2x"></i></span>
                 </div>
                 <div class="hide-on-mobile one-half-container">
@@ -90,7 +90,7 @@
         <div mg-clear></div>
 
         <div class="row">
-            <div class="map-container">
+            <div class="map-container shadow">
                 <div mg-bold>Map<i class="opaque float-right fa fa-globe fa-2x"></i>
                 </div>
                 <div class="expiry-search-container">
@@ -121,7 +121,7 @@
         </div>
         <div class="row">
             <div class="one-half-container">
-                <div ng-show="incompleteMarks" class="left-half-container">
+                <div ng-show="incompleteMarks" class="left-half-container shadow">
                     <div mg-bold>Incomplete marks<i class="opaque float-right fa fa-ban fa-2x"></i>
                     </div>
                     <div class="paginator" mg-incomplete-paginator show-modal="showModal" incomplete-marks="incompleteMarks" items-per-page="10">
@@ -146,7 +146,7 @@
                 
                 
                 
-                <div ng-show="favouriteMarks" class="favourite-container">
+                <div ng-show="favouriteMarks" class="favourite-container shadow">
                         <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
                     </div>
                        <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
