@@ -595,10 +595,13 @@ input::-webkit-inner-spin-button {
 .search-list li {
     float: left;
     font-size: 18px;
-    padding: 20px;
     margin: 10px 20px 10px 0px;
     width: 30%;
     background: #f0f0f0;
+}
+
+.search-list li > search-content {
+	padding: 20px;
 }
 
 .search-text {
