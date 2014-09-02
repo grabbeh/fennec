@@ -32,11 +32,9 @@
         
         <div class="row">
             
-            <div class="chart-container">
-                <div class="one-half-container">
-                    <div class="pie-chart-container">
-                        <div ng-init="activeMark= 'ALL MARKS'" class="view-group-title">{{ activeMark }} 
-                        </div>
+            <div class="full-width-container">
+                <div class="pie-chart-container">
+                    <div ng-init="activeMark= 'ALL MARKS'" class="view-group-title">{{ activeMark }} </div>
                         <div>Summary</div>
                         <div class="stat-header">{{ trademarks.length }}</div>
                         <div class="stat-subtitle">Total</div>
@@ -55,13 +53,13 @@
                                     <div class="pending-key">{{ chartSubtitles[2].status }}</div>
                                 </li>
                             </ul>
-                        </div>
-                        <div mg-clear></div>
                     </div>
-            </div>
-            <div class="one-half-container last">
+                        <div mg-clear></div>
+                </div>
+                    
+                <div>
                 <canvas piechart options="pieOptions" data="pieData"></canvas>
-            </div>
+                </div>
             </div>
         </div>
         
