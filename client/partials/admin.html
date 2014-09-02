@@ -57,18 +57,33 @@
                             </ul>
                         </div>
                         <div mg-clear></div>
-
-                        <canvas piechart options="pieOptions" data="pieData" ></canvas>
                     </div>
             </div>
-            <div class="one-half-container last last-margin-top">
+            <div class="one-half-container-last">
+                <canvas piechart options="pieOptions" data="pieData"></canvas>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="one-half-container">
                     <div ng-show="sortedByExpiry" class="right-half-container">
                         <div mg-bold>Upcoming expiries<i class="float-right fa fa-clock-o fa-2x"></i></div>
                         <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
                     </div>
                 </div>
             </div>
+            <div class="one-half-container last last-margin-top">
+                    
+                <div ng-show="favouriteMarks" class="favourite-container">
+                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
+                    </div>
+                       <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
+                    </div> 
+                </div>
+            </div>
         </div>
+        
+        
 
         <div mg-clear></div>
         <div class="row">
@@ -145,13 +160,7 @@
                 </div>
                 
                 
-                
-                <div ng-show="favouriteMarks" class="favourite-container">
-                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
-                    </div>
-                       <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
-                    </div> 
-                </div>
+            
             </div>
         </div>
     </div>
