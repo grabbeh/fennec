@@ -597,8 +597,7 @@ input::-webkit-inner-spin-button {
     font-size: 18px;
     padding: 20px;
     margin: 10px 20px 10px 0px;
-    width: 300px;
-    height: 130px;
+    width: 30%;
     background: #f0f0f0;
 }
 
@@ -1153,7 +1152,7 @@ a {
 
 .search-edit-button {
     font-size: 14px;
-    padding-left: 260px;
+    float: right;
 }
 
 .search-edit-button:hover {
@@ -1703,5 +1702,9 @@ margin-top: 20px;
     .login-modal {
         width: 95%;
         left: 2%;
+    }
+    
+    .search-list li {
+    	width: 100%;
     }
 }
