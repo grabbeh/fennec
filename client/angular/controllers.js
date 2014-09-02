@@ -113,7 +113,6 @@ angular.module('app')
         function($scope, user, $window, $rootScope, $filter, $routeParams, countries, marks, $location){
            var $ = $scope;
            $.portfolios = user.portfolios;
-           $.portfolios.push("Hello World");
            $.portfolio = $routeParams.portfolio;
            $.countries = $filter('orderBy')(countries, 'name');
            $.marks = marks;
