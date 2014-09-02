@@ -12,20 +12,26 @@ angular.module('app')
                     }
                 }
 
-                var previousPath = previous.$$route.originalPath;
-                console.log(previousPath);
-                if (previous.params){
-                    for (var key in previous.params){
-                         previousPath = previousPath.replace(":" + key, previous.params[key]);
+                if (previous){
+                    var previousPath = previous.$$route.originalPath;
+                
+                    if (previous.params){
+                        for (var key in previous.params){
+                             previousPath = previousPath.replace(":" + key, previous.params[key]);
+                        }
                     }
+                    
+                    pathService.insertPath(attemptedPath);
+                    notificationModal.activate({ error: error.data.message})
+                    $location.path(previousPath);
+                }
+                
+                else {
+                    $location.path('/login');
                 }
 
-                pathService.insertPath(attemptedPath);
-                console.log(error.data);
-                notificationModal.activate({ error: error.data.message})
                 //$rootScope.modal = true;
                 //loginModal.activate();
-                $location.path(previousPath);
 
             });
             
