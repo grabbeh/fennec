@@ -8,20 +8,19 @@ angular.module('app')
                 var attemptedPath = attempted.$$route.originalPath;
                 if (attempted.params){
                     for (var key in attempted.params){
-                         originalPath = attemptedPath.replace(":" + key, attempted.params[key]);
+                         attemptedPath = attemptedPath.replace(":" + key, attempted.params[key]);
                     }
                 }
+                pathService.insertPath(attemptedPath);
 
                 if (previous){
                     var previousPath = previous.$$route.originalPath;
-                
                     if (previous.params){
                         for (var key in previous.params){
                              previousPath = previousPath.replace(":" + key, previous.params[key]);
                         }
                     }
-                    
-                    pathService.insertPath(attemptedPath);
+
                     notificationModal.activate({ error: error.data.message})
                     $location.path(previousPath);
                 }
@@ -29,10 +28,6 @@ angular.module('app')
                 else {
                     $location.path('/login');
                 }
-
-                //$rootScope.modal = true;
-                //loginModal.activate();
-
             });
             
             $.loadingView = false;
