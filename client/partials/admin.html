@@ -32,13 +32,11 @@
         
         <div class="row">
             
-            <div class="full-width-container">
-                <div class="pie-chart-container">
-                
-                    <div class="one-half-container">
-                   
-                
-                    <div ng-init="activeMark= 'ALL MARKS'" class="view-group-title">{{ activeMark }} </div>
+            <div class="chart-container">
+                <div class="one-half-container">
+                    <div class="pie-chart-container">
+                        <div ng-init="activeMark= 'ALL MARKS'" class="view-group-title">{{ activeMark }} 
+                        </div>
                         <div>Summary</div>
                         <div class="stat-header">{{ trademarks.length }}</div>
                         <div class="stat-subtitle">Total</div>
@@ -57,38 +55,20 @@
                                     <div class="pending-key">{{ chartSubtitles[2].status }}</div>
                                 </li>
                             </ul>
+                        </div>
+                        <div mg-clear></div>
+
+                        <canvas piechart options="pieOptions" data="pieData" ></canvas>
                     </div>
-                    </div>
-                    <div class="one-half-container last">
-                     <canvas piechart options="pieOptions" data="pieData"></canvas>
-                </div>
-                    
-                </div>
-                    
-                
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="one-half-container">
+            <div class="one-half-container last last-margin-top">
                     <div ng-show="sortedByExpiry" class="right-half-container">
                         <div mg-bold>Upcoming expiries<i class="float-right fa fa-clock-o fa-2x"></i></div>
                         <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
                     </div>
-            </div>
-            
-            <div class="one-half-container last last-margin-top">
-                    
-                <div ng-show="favouriteMarks" class="favourite-container">
-                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
-                    </div>
-                       <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
-                    </div> 
                 </div>
             </div>
         </div>
-        
-        
 
         <div mg-clear></div>
         <div class="row">
@@ -165,7 +145,13 @@
                 </div>
                 
                 
-            
+                
+                <div ng-show="favouriteMarks" class="favourite-container">
+                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
+                    </div>
+                       <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
+                    </div> 
+                </div>
             </div>
         </div>
     </div>
