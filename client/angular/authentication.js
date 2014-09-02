@@ -13,6 +13,7 @@ angular.module('app')
                 }
 
                 var previousPath = previous.$$route.originalPath;
+                console.log(previousPath);
                 if (previous.params){
                     for (var key in previous.params){
                          previousPath = previousPath.replace(":" + key, previous.params[key]);
