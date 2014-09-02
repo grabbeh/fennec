@@ -97,6 +97,7 @@ angular.module('app')
             $.login = function(){
                 userService.logIn({ password: $.password, email: $.email })
                     .then(function(res){
+                        console.log(res);
                         $window.sessionStorage.token = res.token;
                         $rootScope.user = true;
                         if (pathService.returnPath() === undefined){
