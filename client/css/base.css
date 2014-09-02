@@ -279,6 +279,9 @@ a.fill-div {
 
 .float-right {
     float: right;
+}
+
+.opaque {
     opacity: 0.7;
 }
 
