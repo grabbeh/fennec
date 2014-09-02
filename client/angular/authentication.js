@@ -20,6 +20,7 @@ angular.module('app')
                 }
 
                 pathService.insertPath(attemptedPath);
+                console.log(error.data);
                 notificationModal.activate({ error: error.data.message})
                 //$rootScope.modal = true;
                 //loginModal.activate();
