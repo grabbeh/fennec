@@ -16,6 +16,13 @@
 	margin: 0 auto -100px; /* the bottom margin is the negative value of the footer's height */
 }
 
+.shadow {
+      box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      margin-right: 2px;
+      margin-left: 2px;
+      margin-bottom: 2px;
+}
+
 canvas{
 width: 100% !important;
 height: auto !important;
@@ -104,7 +111,7 @@ height: auto !important;
 
 .view-icon {
     float: right;
-    margin-top: 10px;
+    margin-top: 3px;
     opacity: 0.7;
 }
 
@@ -132,7 +139,6 @@ height: auto !important;
     background: white;
     padding: 20px;
     overflow:hidden;
-    box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
 
@@ -279,6 +285,9 @@ a.fill-div {
 
 .float-right {
     float: right;
+}
+
+.opaque {
     opacity: 0.7;
 }
 
@@ -586,11 +595,13 @@ input::-webkit-inner-spin-button {
 .search-list li {
     float: left;
     font-size: 18px;
-    padding: 20px;
     margin: 10px 20px 10px 0px;
-    width: 300px;
-    height: 130px;
+    width: 30%;
     background: #f0f0f0;
+}
+
+.search-content  {
+	padding: 20px;
 }
 
 .search-text {
@@ -605,8 +616,8 @@ input::-webkit-inner-spin-button {
 .map-container {
     padding: 20px;
     background: white;
-    margin: 30px 2px 30px 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    margin-top: 30px; 
+    margin-bottom: 30px;
 }
 
 #admin-map {
@@ -789,8 +800,7 @@ input::-webkit-inner-spin-button {
 .bar-chart-container {
     padding: 20px;
     background: white;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin: 20px 2px 2px 2px;
+    margin-top: 20px;
 }
 
 
@@ -808,23 +818,17 @@ input::-webkit-inner-spin-button {
 .pie-chart-container {
     padding: 20px;
     background: white;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin-bottom: 2px;
-    margin-left: 2px;
+    overflow: hidden;
 }
 
 .left-half-container {
     padding: 20px;
     background: white;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin: 0 2px 2px 2px;
 }
 
 .right-half-container {
     padding: 20px;
     background: white;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    margin: 0 2px 2px 0;
 }
 
 .group-mark-select {  
@@ -1090,7 +1094,6 @@ input::-webkit-inner-spin-button {
     padding: 20px;
     background: white;
     margin-bottom: 20px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15)
 
 }
 
@@ -1152,7 +1155,7 @@ a {
 
 .search-edit-button {
     font-size: 14px;
-    padding-left: 260px;
+    float: right;
 }
 
 .search-edit-button:hover {
@@ -1702,5 +1705,9 @@ margin-top: 20px;
     .login-modal {
         width: 95%;
         left: 2%;
+    }
+    
+    .search-list li {
+    	width: 100%;
     }
 }

@@ -8,23 +8,26 @@ angular.module('app')
                 var attemptedPath = attempted.$$route.originalPath;
                 if (attempted.params){
                     for (var key in attempted.params){
-                         originalPath = attemptedPath.replace(":" + key, attempted.params[key]);
+                         attemptedPath = attemptedPath.replace(":" + key, attempted.params[key]);
                     }
                 }
-
-                var previousPath = previous.$$route.originalPath;
-                if (previous.params){
-                    for (var key in previous.params){
-                         previousPath = previousPath.replace(":" + key, previous.params[key]);
-                    }
-                }
-
                 pathService.insertPath(attemptedPath);
-                notificationModal.activate({ error: error.data.message})
-                //$rootScope.modal = true;
-                //loginModal.activate();
-                $location.path(previousPath);
 
+                if (previous){
+                    var previousPath = previous.$$route.originalPath;
+                    if (previous.params){
+                        for (var key in previous.params){
+                             previousPath = previousPath.replace(":" + key, previous.params[key]);
+                        }
+                    }
+
+                    notificationModal.activate({ error: error.data.message})
+                    $location.path(previousPath);
+                }
+                
+                else {
+                    $location.path('/login');
+                }
             });
             
             $.loadingView = false;
@@ -94,7 +97,7 @@ angular.module('app')
             $.login = function(){
                 userService.logIn({ password: $.password, email: $.email })
                     .then(function(res){
-                        $window.sessionStorage.token = res.token;
+                        $window.sessionStorage.token = res.data.token;
                         $rootScope.user = true;
                         if (pathService.returnPath() === undefined){
                             $location.path('/select-portfolio');
