@@ -125,7 +125,7 @@ angular.module('app')
         countryData: function(portfolio){
           var url = '/api/countryData';
           if (portfolio){
-             var url = '/api/countryData?portfolio' + portfolio;
+             var url = '/api/countryData?portfolio=' + portfolio;
           }
         	return $http.get(url)
 	            	.then(function(response){
@@ -145,7 +145,7 @@ angular.module('app')
 
       var trademarkService = {
       	  getListOfMarks: function(portfolio, country){
-              
+
       	       var url = '/api/listOfMarks/' + portfolio;
       	       if (country){
       	       	   var url = '/api/listOfMarks/' + portfolio + '?country=' + country;
@@ -169,7 +169,7 @@ angular.module('app')
               return $http.get('/api/country/' + portfolio + '/' + iso)
               	.then(function(response){
                     return response.data;
-		   })
+		            })
           },
           favourites: function(portfolio){
            	return $http.get('/api/favourites/' + portfolio)

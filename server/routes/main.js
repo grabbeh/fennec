@@ -1,10 +1,12 @@
-var helper = require('./helper.js')
+ var helper = require('./helper')
 , _ = require('underscore')
 , Trademark = require('../models/trademarkSchema')
 , async = require('async')
 , jobs = require('./jobs')
+, activity = require('./activity')
 , jwt = require('./jwt')
 , fs = require('fs')
+, objectDiff = require('objectdiff');
 
 exports.downloadTrademarks = function(req, res){
     var portfolio = req.query.portfolio.replace(/%20/g, " ");
@@ -85,16 +87,34 @@ exports.addTrademark = function(req, res){
 	helper.addTrademark(req.body.trademark, function(err, trademark){
 		jobs.sendAlertOnChange(trademark, 'added', function(err, done){
 		     res.send({message: "Trade mark added"});	
-		})
+		}); 
 	});
 }
 
 exports.amendTrademark = function(req, res){ 
-	helper.amendTrademark(req.body.trademark, function(err, trademark){
-		jobs.sendAlertOnChange(trademark, 'updated', function(err, done){
-		     res.send({message: "Trade mark updated"});	
-		})
-	});
+    var revisedTrademark = req.body.trademark;
+    async.auto({
+        getTrademark: function(cb, results){
+            var id = helper.exposeId(revisedTrademark);
+            helper.getTrademark(id, cb);
+        },
+        detectDifferences: ['getTrademark', function(cb, results){
+            var diff = objectDiff.diff(results.getTrademark, revisedTrademark);
+            cb(null, diff);
+        }],
+        updateStream: ['detectDifferences', 'getTrademark', function(cb, results){
+            activity.addActivity(results.getTrademark, results.detectDifferences, 'updated trade mark', req.user._id, cb);
+        }],
+        saveTrademark: function(cb, results){
+            helper.amendTrademark(revisedTrademark, cb);
+        },
+        sendAlertOnChange: ['saveTrademark', function(cb, results){
+            jobs.sendAlertOnChange(revisedTrademark, 'updated', cb)
+        }]
+    }, function(err, results){
+            if (err) { console.log(err); }
+            res.send({message: "Trade mark updated"})
+    });
 }
 
 exports.deleteTrademark = function(req, res){

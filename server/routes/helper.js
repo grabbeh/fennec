@@ -168,9 +168,14 @@ exports.deleteTrademark = function(id, fn){
 }
 
 function exposeId(tm){
-	var id = mongoose.Types.ObjectId(tm._id);
+	var id = mongoose.Types.ObjectId(tm._id.toString());
 	delete tm._id;
 	return id;
+}
+
+exports.exposeId = function(tm){
+	tm._id = mongoose.Types.ObjectId(tm._id);
+	return tm._id;
 }
 
 function stringifyId(tm){
