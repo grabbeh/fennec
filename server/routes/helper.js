@@ -287,3 +287,14 @@ exports.findUser = function(id, fn){
             fn(null, user);
         })	
 }
+
+exports.filterDiff = function(diff){
+	var newO = {}
+	for (var key in diff){
+		var changed = diff[key].changed;
+		if (changed != 'equal'){
+			newO[key] = diff[key]
+		}
+	}
+	return newO;
+}
