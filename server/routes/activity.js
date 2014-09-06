@@ -8,9 +8,7 @@ exports.addActivity = function(trademark, changes, type, user, fn){
 		changes: changes,
 		type: type,
 		trademark: trademark._id
-	}).save(function(err, act){
-		fn(null, true)
-	})
+	}).save(fn)
 }
 
 exports.findActivites = function(entity, portfolio, fn){

@@ -103,7 +103,7 @@ exports.amendTrademark = function(req, res){
             var filteredRevisedTrademark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
             var diff = objectDiff.diff(filteredOldMark, filteredRevisedTrademark);
             var filteredDiff = helper.filterDiff(diff.value);
-            cb(null, filteredDiff);
+            cb(null, filteredDiff); 
         }],
         updateStream: ['detectDifferences', 'getTrademark', function(cb, results){
             activity.addActivity(results.getTrademark, results.detectDifferences, 'updated trade mark', req.user._id, cb);

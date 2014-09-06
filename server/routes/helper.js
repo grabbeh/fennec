@@ -105,6 +105,12 @@ exports.getTrademarksForCountry = function(entity, portfolio, country, fn){
     })
 }
 
+exports.getAllTrademarks = function(fn){
+	Trademark.find({}, function(err, trademarks){
+		fn(null, trademarks);
+	})
+}
+
 exports.getTrademarks = function(entity, portfolio, fn){
 	Trademark.find({ entity: entity, portfolio: portfolio, active: true })
 		.lean()

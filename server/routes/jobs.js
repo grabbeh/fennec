@@ -5,6 +5,7 @@ var email = require('./email')
     fs = require('fs'),
     path = require('path'),
     helper = require('./helper'),
+    notification = require('./notification')
     async = require('async'),
     user = require('./users')
 
@@ -17,12 +18,20 @@ module.exports = {
                         revised = expiry.subtract(f.type, f.number),
                         now = moment();
                     if (revised.diff(now, 'days') === 0 && admin.entity === tm.entity) {
-                        var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html')
-                        html.returnHtml(tm, fileLocation, function(err, html) {
-                            email.sendEmail(admin.email, "Trade mark portfolio alert", html, function() {
-                                //callback();
-                            })
-                        })
+                        async.auto({
+                            sendEmail: function(cb, results){
+                                var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
+                                html.returnHtml(tm, fileLocation, function(err, html) {
+                                    email.sendEmail(admin.email, "Trade mark portfolio alert", html, cb)
+                                })
+                            },
+                            addNotification: function(cb, results){
+                                notification.addNotification(tm, { expiryDate: expiry, type: 'Trademark due to expire' }, cb)
+                             }
+                           }, function(err, results){
+                             if (err) { console.log(err) }
+
+                        })  
                     }
                     callback();
                 }, function(err) {

@@ -8,6 +8,7 @@ exports.sendEmail = function(addressee, subject, html, fn) {
         subject: subject,
         html: html
     }, function(err, json) {
+    		if (err) { console.log(err) }
            fn(null, json);
     })
 }

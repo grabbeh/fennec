@@ -4,28 +4,22 @@ var mongoose = require('mongoose')
     , agenda = new Agenda()
     , helper = require('./helper')
     , user = require('./users')
+    , html = require('./html')
+    , email = require('./email')
     , async = require('async')
-    , admin = require('../config/sendgrid')
-    , sendgrid = require('sendgrid')(admin.username, admin.password)
     , jobs = require('./jobs');
 
 // Test dependencies
 
-var moment = require("moment"),
-    fs = require('fs'),
-    mustache = require('mustache')
+var moment = require("moment")
+    notification = require('./notification')
     path = require("path")
-
-/*
-mongoose.connect(database, function(err){
-    if (err) {throw new Error(err.stack);}
-  });*/
 
 exports.setUpAgenda = function(db){
     agenda
       .database(db)
       .processEvery('60 minutes');
-
+    
     agenda.define('check for alerts', function(job, done) {
           async.parallel([
                 async.apply(user.getAllAdmins),
@@ -37,29 +31,23 @@ exports.setUpAgenda = function(db){
                 });
             });
         });
+    
 
     agenda.define('email me', function(job, done){
         sendEmail("mbg@outlook.com", "<p>Hello! 24 hour job</p>", function(){
             done();
         });
     })
-    /*
-    agenda.define('console', function(job, done){
-       console.log("Hello world");
-       done();
-    })*/
-
-
-    /*
+/*
     agenda.define('test', function(job, done){
-        testTwoJob(admins, trademarks[0], 'updated', function(){
+        testJob(admins, trademarks, function(){
             console.log("job completed");
             done();
         });
     })
-
-    agenda.now('test');
-    agenda.start();*/
+*/
+    //agenda.now('test');
+    //agenda.start();
 
     agenda.every('1440 minutes', ['check for alerts', 'email me']);
     //agenda.every('10 seconds', 'console');
@@ -90,16 +78,27 @@ function testJob(admins, trademarks, fn) {
                 var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
                     revised = expiry.subtract(f.type, f.number),
                     now = moment();
-                console.log("Trademark loop")
+                    console.log(revised.diff(now, 'days'))
+                    console.log("Trademark loop")
                 if (revised.diff(now, 'days') === 0) {
-                    var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html')
-                    returnHtml(tm, fileLocation, function (err, html) {
-                        sendEmail(admin.email, html, function () {
-                            console.log("email func called")
-                            callback();
-                        })
-                    })
-                }
+                        console.log("Expiry alert")
+                        async.auto({
+                            sendEmail: function(cb, results){
+                                var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
+                                html.returnHtml(tm, fileLocation, function(err, html) {
+                                    console.log("Alert triggered")
+                                    email.sendEmail(admin.email, "Trade mark portfolio alert", html, cb);
+                                })
+                            },
+                            addNotification: function(cb, results){
+                                console.log("Notification triggered")
+                                notification.addNotification(tm, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
+                             }
+                           }, function(err, results){
+                             if (err) { console.log(err) }
+
+                        })  
+                    }
             }, function (err) {
                 console.log("Trademark loop completed")
                 callback();
@@ -122,8 +121,8 @@ function testTwoJob(admins, trademark, event, fn) {
                     console.log("Job triggered");
                     trademark.event = event;
                     var fileLocation = path.resolve(__dirname, '../email-templates/updated-trademark.html');
-                    returnHtml(trademark, fileLocation, function(err, html){
-                        sendEmail(admin.email, html, function () {
+                    html.returnHtml(trademark, fileLocation, function(err, html){
+                        email.sendEmail(admin.email, html, function () {
                             //callback();
                          });
                     });
@@ -139,32 +138,13 @@ function testTwoJob(admins, trademark, event, fn) {
         });
     }
 
-function sendEmail(addressee, html, fn) {
-    sendgrid.send({
-        to: addressee,
-        from: 'mbg@outlook.com',
-        subject: 'Trademark portfolio alert',
-        html: html
-    }, function(err, json){
-         fn()
-    });
-}
-
-function returnHtml(tm, path, fn) {
-    fs.readFile(path, function (err, contents) {
-        if (err) { console.log(err) }
-        var compiled = mustache.render(contents.toString(), tm);
-        fn(null, compiled);
-    });
-}
-
 var admins = [{
   __v: 0,
   _id: "michael.goulbourn@guinnessworldrecords.com",
   alertFrequency: [
     {
-      number: 6,
-      type: "months"
+      number: 1,
+      type: "days"
     },
     {
       number: 2,
@@ -199,6 +179,9 @@ var admins = [{
 
 var trademarks = [
      {
+  entity: "GWR",
+  portfolio: "GWR",
+  _id: "FIRST ID",
   mark: "GUINNESS WORLD RECORDS",
   status: "Registered",
   country: {
@@ -214,7 +197,7 @@ var trademarks = [
     stringDate: "3/22/2013"
   },
   expiryDate: {
-    stringDate: "6/9/2014"
+    stringDate: "9/7/2014"
   },
   applicationNumber: "3060238",
   registrationNumber: "2559727",
@@ -223,8 +206,11 @@ var trademarks = [
     16
   ],
   __v: 0
-},
+}/*,
 {
+  entity: "GWR",
+  portfolio: "GWR",
+  _id: "SECOND_ID",
   mark: "GUINNESS WORLD RECORDS",
   status: "Registered",
   country: {
@@ -240,7 +226,7 @@ var trademarks = [
     stringDate: "3/22/2013"
   },
   expiryDate: {
-    stringDate: "6/7/2014"
+    stringDate: "9/7/2014"
   },
   applicationNumber: "3060238",
   registrationNumber: "2559727",
@@ -249,6 +235,6 @@ var trademarks = [
     16
   ],
   __v: 0
-}
+}*/
 
 ];

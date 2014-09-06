@@ -8,7 +8,8 @@ var formatTrademarks = require('../utils/convert-trademark-json')
 , path = require('path')
 , user = require('../routes/users')
 , entities = require('../routes/entities')
-, Entity = require('../models/entitySchema');
+, Entity = require('../models/entitySchema')
+, async = require('async');
 
 exports.processExcel = function(req, res){
     var opts = {};
@@ -21,20 +22,28 @@ exports.processExcel = function(req, res){
             return;
         }
         else {
-            entities.updatePortfolio(opts.entity, opts.portfolio, function(err, entity){
-                user.addPortfolioToUser(req.user._id, opts.portfolio, function(err, user){
-                	createJson(req.files.spreadsheet.path, function(err, json){
-			    if (err){
-			         res.json({err: "File must be .xlxs"});
-			         return;
-			     }
-			     processTrademarks(json, countryData, opts, function(err, msg){
-			           res.send({ msg: "Spreadsheet uploaded"});
-			           });
-			    });
-	                })
-	            })
-	        }
+            async.auto({ 
+                addPortfolioToEntity: function(cb, results){
+                    entities.updatePortfolio(opts.entity, opts.portfolio, cb);
+                },
+                addPortfolioToUser: function(cb, results){
+                    user.addPortfolioToUser(req.user._id, opts.portfolio, cb);
+                },
+                createJson: function(cb, results){
+                    createJson(req.files.spreadsheet.path, cb);
+                },
+                processTrademarks: ['createJson', function(cb, results){
+                    processTrademarks(results.processJson, countryData, opts, cb);
+                }]
+
+            }, function(err, results){
+                if (err){ res.json({ err: "File must be .xlxs"})}
+                else {
+                    res.send({msg: "Spreadsheet uploaded"})
+                }
+            })
+
+	    }
 	        
 	})
 }
