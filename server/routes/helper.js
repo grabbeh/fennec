@@ -173,6 +173,11 @@ exports.deleteTrademark = function(id, fn){
 	})
 }
 
+exports.removeId = function(obj){
+   delete obj._id;
+   return obj;
+}
+
 function exposeId(tm){
 	var id = mongoose.Types.ObjectId(tm._id.toString());
 	delete tm._id;
@@ -182,11 +187,6 @@ function exposeId(tm){
 exports.exposeId = function(tm){
 	tm._id = mongoose.Types.ObjectId(tm._id);
 	return tm._id;
-}
-
-function stringifyId(tm){
-	tm._id = String(tm._id);
-	return tm;
 }
 
 function saveTrademark(tm, fn){
@@ -295,11 +295,22 @@ exports.findUser = function(id, fn){
 }
 
 exports.filterDiff = function(diff){
-	var newO = {}
+	var newO = [];
 	for (var key in diff){
 		var changed = diff[key].changed;
 		if (changed != 'equal'){
-			newO[key] = diff[key]
+			if (diff[key]['value']){
+				for (var x in diff[key]['value']){
+
+					diff[key]['value'][x]['attr'] = key;
+					newO.push(diff[key]['value'][x])
+				}
+			}
+			else {
+				diff[key]['attr'] = key;
+				newO.push(diff[key])
+			}
+			
 		}
 	}
 	return newO;

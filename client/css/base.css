@@ -62,6 +62,20 @@ height: auto !important;
     overflow: hidden;
 }
 
+/* activity container */
+
+.tm-addition {
+    background: rgb(141, 228, 114);
+}
+
+.tm-deletion {
+    background: rgb(252, 94, 94);
+}
+
+.updated-tm-content {
+    margin: 10px 0;
+}
+
 /* notification modal */
 
 .notification-modal {

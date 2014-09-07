@@ -23,6 +23,8 @@ var express = require('express')
 , image = require('./server/routes/images')
 , expiry = require('./server/routes/expiry')
 , job = require('./server/routes/agenda')
+, activity = require('./server/routes/activity')
+, notification = require('./server/routes/notification')
 , spreadsheet = require('./server/routes/excel-process')
 , contact = require('./server/routes/contact')
 
@@ -128,6 +130,14 @@ app.post('/api/editMarksInCountry/:portfolio', x, country.editMarksInCountry);
 app.get('/api/expirydates/:portfolio', x, expiry.expiriesForGroup);
 app.get('/api/expirydates/:portfolio/:country', x, expiry.expiriesForCountry);
 app.get('/api/expiriesForYear/:portfolio', x, expiry.expiriesForYear);
+
+// Notifications
+
+app.get('/api/notifications/:portfolio', notification.unreadNotifications)
+
+// Activities
+
+app.get('/api/activities/:portfolio', activity.findActivities);
 
 // Users
 

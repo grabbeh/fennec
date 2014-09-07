@@ -8,7 +8,7 @@ var Activity = new Schema({
 	user: { type: String, ref: 'User' },
     trademark:  { type: Schema.Types.ObjectId, ref: 'Trademark' },
     type: String,
-    changes: Object,
+    changes: Array,
     created: { type: Date, default: Date.now }
 });
 

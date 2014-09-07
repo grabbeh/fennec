@@ -146,6 +146,7 @@ angular.module('app')
                 '$filter',
                 '$rootScope',
                 '$location',
+                'activities',
                 'trademarks', 
                 'trademarkService',
                 'geoJsonService',
@@ -166,6 +167,7 @@ angular.module('app')
                  $filter,
                  $rootScope, 
                  $location,
+                 activities,
                  trademarks,
                  trademarkService,
                  geoJsonService,
@@ -182,7 +184,19 @@ angular.module('app')
                  $http){
                      
             var $ = $scope;
-			
+            $.activePortfolio = $routeParams.portfolio;
+            $.geojson = world;
+            $.trademarks = trademarks;
+            $.allTrademarks = trademarks;
+            $.favouriteMarks = $filter('extractFavourites')(trademarks);
+            $.user = user;
+            $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
+            $.marks.unshift({ name: "ALL MARKS" })
+            $.chart = barChartData;
+            $.options = barChartOptions;
+            $.activities = activities;
+            console.log(activities);
+   
          $.toggleMenuModal = function(){
             trademarkModal.deactivate();
         		if (!$rootScope.menuModal){
@@ -193,7 +207,6 @@ angular.module('app')
         			$rootScope.menuModal = false;
         			menuModal.deactivate();	
         		}
-
             };
 
             $.countries = $filter('orderBy')(countries, 'name'); 
@@ -242,17 +255,6 @@ angular.module('app')
             $.expiryFormValid = function(){
                  return $.expiryForm.$dirty && $.expiryForm.$valid;
             };
-        
-            $.activePortfolio = $routeParams.portfolio;
-            $.geojson = world;
-            $.trademarks = trademarks;
-            $.allTrademarks = trademarks;
-            $.favouriteMarks = $filter('extractFavourites')(trademarks);
-            $.user = user;
-            $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
-            $.marks.unshift({ name: "ALL MARKS" })
-            $.chart = barChartData;
-            $.options = barChartOptions;
             
             $.sendMarksToServer = function(marks){
                 $http.post('/api/world/' + $routeParams.portfolio, { marks: $filter('extractCheckedMarks')(marks) })

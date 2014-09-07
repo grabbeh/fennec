@@ -40,13 +40,8 @@ exports.getUser = function(req, res){
     }
 }
 
-function removeId(obj){
-   delete obj._id;
-   return obj;
-}
-
 exports.updateUser = function(req, res){
-    User.findOneAndUpdate({_id: req.user._id}, removeId(req.body), function(err, user){
+    User.findOneAndUpdate({_id: req.user._id}, helper.removeId(req.body), function(err, user){
          req.user = user;
          res.json(user);
     })

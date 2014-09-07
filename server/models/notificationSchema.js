@@ -6,8 +6,8 @@ var Notification = new Schema({
     incident: Object,
     entity: String,
     portfolio: String,
-    // trademark:  { type: Schema.Types.ObjectId, ref: 'Trademark' },
-    trademark: String,
+    trademark:  { type: Schema.Types.ObjectId, ref: 'Trademark' },
+   //trademark: String,
     readBy: [{ type: String, ref: 'User' }],
 });
 

@@ -62,10 +62,25 @@ angular.module('app')
         });
     }])
 
-    .factory('notificationService', ['notificationModal', function(notificationModal){
+    .factory('activityService', ['$http', function($http){
+        var activityService = {
+            activities: function(portfolio){
+                return $http.get('/api/activities/' + portfolio)
+                    .then(function(response){
+                        return response.data;
+                    });
+            }
+        }
+        return activityService;
+    }])
+
+    .factory('notificationService', ['$http', function($http){
         var notificationService = {
-            notify: function(msg){
-                notificationModal.activate({msg: msg});
+            activeNotifications: function(portfolio){
+                return $http.get('/api/notifications/' + portfolio)
+                    .then(function(response){
+                        return response.data;
+                    });
             }
         }
         return notificationService;

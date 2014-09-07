@@ -54,30 +54,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
             
         }).
-    	when('/demo/:portfolio', {
-            templateUrl: '/partials/admin.html',
-            controller: 'adminCtrl',
-            resolve: {
-                user: function(userService){
-                    return userService.getUser();
-                },
-                trademarks: function($route, trademarkService){
-                    return trademarkService.getGroup($route.current.params.portfolio, "ALL MARKS");
-                },
-                world: function($route, geoJsonService){
-                    return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
-                },
-                countries: function($route, geoJsonService){
-                    return geoJsonService.countryData($route.current.params.portfolio);
-                },
-                barChartData: function($route, chartService){
-                    return chartService.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");
-                },
-                barChartOptions: function(chartService){
-                    return chartService.barChartOptions();
-                }
-            }
-        }).
         when('/map/:portfolio', {
             templateUrl: '/partials/map.html',
             controller: 'mapCtrl',
@@ -195,6 +171,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             resolve: {
                 admin: function(userService){
                     return userService.isAdmin();
+                },
+                activities: function($route, activityService){
+                    return activityService.activities($route.current.params.portfolio);
                 },
                 user: function(userService){
                     return userService.getUser();
