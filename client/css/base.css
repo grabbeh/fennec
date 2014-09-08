@@ -73,8 +73,22 @@ height: auto !important;
 
 /* notification container */
 
+.notification-list-li {
+     font-size: 14px;
+    padding: 8px 12px 8px 12px;
+    overflow: hidden;
+}
+
+.notification-link {
+    background:#E7E7E7;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
 .notification-symbol {
-	background: red;
+	background: #FF3F3F;
 	padding: 10px;
 	margin-top: -20px;
 	margin-right: -20px;
@@ -85,6 +99,7 @@ height: auto !important;
 .notification-content {
 	float: left; 
 	width: 80%;
+    margin-left: 20px;
 }
 
 .notification-delete-button {
@@ -97,6 +112,10 @@ height: auto !important;
 .hover-black:hover {
     color: black;
     cursor: pointer;
+}
+
+.hover-black a:hover {
+    color: black;
 }
 
 /* activity container */
