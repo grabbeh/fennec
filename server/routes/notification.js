@@ -26,6 +26,8 @@ function compare(notifications, user, fn){
 	unreadNotifications = [];
 	notifications.forEach(function(notification){
 		notification.readBy.forEach(function(id){
+			console.log(id);
+			console.log(user);
 			if (id != user){
 				unreadNotifications.push(notification);
 			}
