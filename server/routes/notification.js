@@ -23,14 +23,16 @@ function retrieveNotificationsForEntity(entity, fn){
 }
 
 function compare(notifications, user, fn){
-	console.log(user);
-	unreadNotifications = [];
+	var unreadNotifications = [];
 	notifications.forEach(function(notification){
-		notification.readBy.forEach(function(id){
-			
-		     unreadNotifications.push(notification);
-			
-		})
+		if (notification.readBy.length === 0){
+			unreadNotifications.push(notification);
+		}
+		else {
+		   notification.readBy.forEach(function(id){
+		        unreadNotifications.push(notification);
+	           })	
+		}
 	})
 	fn(null, unreadNotifications);
 }
