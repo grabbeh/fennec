@@ -610,11 +610,16 @@ angular.module('app')
            
         }])
 
-    .controller('selectPortfolioCtrl', ['$scope', 'user', 'notifications',
-        function($scope, user, notifications){
+    .controller('selectPortfolioCtrl', ['$scope', 'user', 'notifications', 'trademarkModal',
+        function($scope, user, notifications, trademarkModal){
             var $ = $scope;
             $.portfolios = user.portfolios;
             $.notifications = notifications;
+            $.showModal = function(trademark){
+	            $rootScope.modal = true;
+	            trademarkModal.deactivate();
+	            trademarkModal.activate({ trademark: trademark, user: user });
+	    };
         }])
 
     .controller("mapCtrl", ['$scope','countryData','user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
