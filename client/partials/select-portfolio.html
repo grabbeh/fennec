@@ -2,7 +2,7 @@
    <div class="row">
  	<div class="one-half-container">
      <div class="standard-container shadow">
-           <div mg-bold>Select portfolio</div>
+           <div mg-bold>Select portfolio</div><div class="float-right">{{ notifications.length }}</div>
           <ul class="tm-list">
              <li class="tm-list-li hover-underline"  ng-repeat="portfolio in portfolios">
                 <b><a href="/home/{{ portfolio }}">{{ portfolio}} </a></b>
