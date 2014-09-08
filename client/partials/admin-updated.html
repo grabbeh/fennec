@@ -6,8 +6,8 @@
               <div> <span>{{ activity.user }} </span> on <span> {{ activity.created | date: 'longDate' }} </div>
               <div class="updated-tm-content" ng-repeat="change in activity.changes">
                     <div mg-bold>{{ change.attr }}</div>
-                    <div><span class="tm-addition"> {{ change.added }}</span></div>
-                    <div><span class="tm-deletion"> {{ change.removed }}</span> </div>
+                    <div class="tm-addition"> {{ change.added }}</div>
+                    <div class="tm-deletion"> {{ change.removed }} </div>
                   
             </div>
         </div>
