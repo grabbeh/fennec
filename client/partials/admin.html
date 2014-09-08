@@ -124,7 +124,7 @@
         </div>
         <div class="row">
             <div class="one-half-container">
-                <div ng-show="incompleteMarks" class="left-half-container shadow">
+                <div ng-show="incompleteMarks" class="standard-container shadow">
                     <div mg-bold>Incomplete marks<i class="opaque float-right fa fa-ban fa-2x"></i>
                     </div>
                     <div class="paginator" mg-incomplete-paginator show-modal="showModal" incomplete-marks="incompleteMarks" items-per-page="10">
@@ -132,7 +132,7 @@
                 </div>
              </div>
             <div class="one-half-container last last-margin-top">
-                 <div ng-show="sortedByExpiry" class="right-half-container shadow">
+                 <div ng-show="sortedByExpiry" class="standard-container shadow">
                         <div mg-bold>Upcoming expiries<i class="opaque float-right fa fa-clock-o fa-2x"></i></div>
                         <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
                     </div>
