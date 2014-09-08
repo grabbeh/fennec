@@ -71,6 +71,13 @@ height: auto !important;
     overflow: hidden;
 }
 
+/* notification container */
+
+.notification-content {
+	float: left; 
+	width: 80%;
+}
+
 /* activity container */
 
 .tm-addition {
