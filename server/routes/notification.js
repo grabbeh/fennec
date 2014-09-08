@@ -30,7 +30,11 @@ function compare(notifications, user, fn){
 		}
 		else {
 		   notification.readBy.forEach(function(id){
-		        unreadNotifications.push(notification);
+		   	if (id != user){
+		   	    console.log("User not in readBy array");
+		   	    unreadNotifications.push(notification);	
+		   	}
+		        
 	           })	
 		}
 	})
