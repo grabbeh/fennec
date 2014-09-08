@@ -54,6 +54,7 @@ exports.unreadNotifications = function(req, res){
 }
 
 exports.updateNotification = function(req, res){
+	console.log(req.body);
 	var id = helper.exposeId(req.body.notification);
 	Notification.findOneAndUpdate({ _id: id }, helper.removeId(req.body.notification), function(err, not){
 		console.log("Notification updated")
