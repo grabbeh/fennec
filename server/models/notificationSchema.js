@@ -7,6 +7,7 @@ var Notification = new Schema({
     entity: String,
     portfolio: String,
     trademark:  { type: Schema.Types.ObjectId, ref: 'Trademark' },
+    created: { type: Date, default: Date.now },
     readBy: [{ type: String, ref: 'User' }],
 });
 
