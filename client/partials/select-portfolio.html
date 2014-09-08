@@ -2,7 +2,7 @@
    <div class="row">
  	<div class="one-half-container">
      <div class="standard-container shadow">
-           <div mg-bold>Select portfolio</div><div class="float-right">{{ notifications.length }}</div>
+           <div mg-bold>Select portfolio</div>
           <ul class="tm-list">
              <li class="tm-list-li hover-underline"  ng-repeat="portfolio in portfolios">
                 <b><a href="/home/{{ portfolio }}">{{ portfolio}} </a></b>
@@ -12,7 +12,7 @@
     </div>
     <div class="one-half-container last">
     <div class="standard-container shadow">
-    	<div mg-bold>Unread notifications</div>	
+    	<div mg-bold>Unread notifications</div><div class="float-right">{{ notifications.length }}</div>
         <ul class="tm-list">
            <li class="tm-list-li" ng-repeat="notification in notifications">
               <div class="notification-content hover" ng-click="showModal(notification.trademark)">
