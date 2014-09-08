@@ -200,7 +200,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             controller: 'createAccountCtrl'
             }
         ).
-        when('/select-portfolio', {
+        when('/home', {
             templateUrl:'/partials/select-portfolio.html',
             controller: 'selectPortfolioCtrl',
             resolve:{
