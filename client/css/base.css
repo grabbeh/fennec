@@ -73,6 +73,14 @@ height: auto !important;
 
 /* notification container */
 
+.notification-symbol {
+	background: red;
+	padding: 10px;
+	border-radius: 50%;
+	color: white;
+	font-weight: bold;
+	float: right;
+}
 .notification-content {
 	float: left; 
 	width: 80%;
