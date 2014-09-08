@@ -38,13 +38,13 @@ exports.setUpAgenda = function(db){
             done();
         });
     })
-
+/*
     agenda.define('test', function(job, done){
         testJob(admins, trademarks, function(){
             console.log("job completed");
             done();
         });
-    })
+    })*/
 
     //agenda.now('test');
     agenda.every('1440 minutes', ['check for alerts', 'email me']);
