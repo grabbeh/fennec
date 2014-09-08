@@ -100,7 +100,7 @@ angular.module('app')
                         $window.sessionStorage.token = res.data.token;
                         $rootScope.user = true;
                         if (pathService.returnPath() === undefined){
-                            $location.path('/select-portfolio');
+                            $location.path('/home');
                         }
                         else {
                             $location.path(pathService.returnPath());
