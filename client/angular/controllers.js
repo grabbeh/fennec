@@ -622,10 +622,8 @@ angular.module('app')
 	    };
 	    
 	     $.deleteNotification = function(notification, index){
-	     	       console.log(notification);
                        $.notifications.splice(index, 1);
                        notification.readBy.push(user._id);
-                       console.log(notification);
                        notificationService.updateNotification(notification).then(function(res){
                     	
                     })
