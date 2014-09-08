@@ -62,10 +62,13 @@
                     </div>
             </div>
             <div class="one-half-container last last-margin-top">
-                    <div ng-show="sortedByExpiry" class="right-half-container shadow">
-                        <div mg-bold>Upcoming expiries<i class="opaque float-right fa fa-clock-o fa-2x"></i></div>
-                        <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
+                    <div ng-show="favouriteMarks" class="favourite-container shadow">
+                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
                     </div>
+                       <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
+                    </div> 
+                </div>
+                   
                 </div>
             </div>
         </div>
@@ -129,6 +132,24 @@
                 </div>
              </div>
             <div class="one-half-container last last-margin-top">
+                 <div ng-show="sortedByExpiry" class="right-half-container shadow">
+                        <div mg-bold>Upcoming expiries<i class="opaque float-right fa fa-clock-o fa-2x"></i></div>
+                        <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
+                    </div>
+
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="one-half-container">
+                <div ng-show="activities" class="favourite-container shadow">
+                        <div mg-bold>Recent activity
+                    </div>
+                       <div class="paginator" mg-activities-paginator show-modal="showModal" activities="activities" items-per-page="10">
+                    </div> 
+                </div>
+            </div>
+            <div class="one-half-container last">
                 <div class="user-container">
                     <div class="user-email">{{ user.email }}</div>
                     <div tabs>
@@ -143,25 +164,12 @@
                         </div>
                     </div>
                 </div>
-
-                <div ng-show="favouriteMarks" class="favourite-container shadow">
-                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
-                    </div>
-                       <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
-                    </div> 
-                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="one-half-container">
-                <div ng-show="activities" class="favourite-container shadow">
-                        <div mg-bold>Recent activity
-                    </div>
-                       <div class="paginator" mg-activities-paginator show-modal="showModal" activities="activities" items-per-page="10">
-                    </div> 
-                </div>
-            </div>
-        </div>
+        
+            
+            
+         
     </div>
 </div>
 
