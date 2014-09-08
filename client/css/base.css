@@ -85,6 +85,11 @@ height: auto !important;
 	color: grey;
 }
 
+.hover-black:hover {
+    color: black;
+    cursor: pointer;
+}
+
 /* activity container */
 
 .tm-addition {
