@@ -13,7 +13,12 @@
     <div class="one-half-container last">
     <div class="standard-container shadow">
     	<div>Unread notifications</div>	
-
+        <ul class="tm-list">
+           <li class="tm-list-li" ng-repeat="notification in notifications">
+              {{ notification }}
+           </li>
+         
+        </ul>
     </div>
       
     </div>
