@@ -78,6 +78,13 @@ height: auto !important;
 	width: 80%;
 }
 
+.notification-delete-button {
+	float: right;
+	margin-top: 3px;
+	margin-left: 10px;
+	color: grey;
+}
+
 /* activity container */
 
 .tm-addition {
