@@ -107,7 +107,6 @@ exports.amendTrademark = function(req, res){
             }
             else {
                 var filteredDiff = helper.filterDiff(diff.value);
-                console.log(filteredDiff)
                 cb(null, filteredDiff); 
             }
             

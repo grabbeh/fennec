@@ -614,7 +614,12 @@ angular.module('app')
         function($scope, $rootScope, user, notifications, notificationService, trademarkModal){
             var $ = $scope;
             $.portfolios = user.portfolios;
-            $.notifications = notifications;
+            if (notifications.length === 0){
+                $.notifications = false;
+            }
+            else {
+                $.notifications = notifications;
+            }
             $.showModal = function(trademark){
 	            $rootScope.modal = true;
 	            trademarkModal.deactivate();

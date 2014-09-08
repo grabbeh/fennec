@@ -29,12 +29,9 @@ function compare(notifications, user, fn){
 			unreadNotifications.push(notification);
 		}
 		else {
-		   notification.readBy.forEach(function(id){
-		   	if (id != user){
-		   	    unreadNotifications.push(notification);	
-		   	}
-		        
-	           })	
+			if (notification.readBy.indexOf(user) === -1){
+			unreadNotifications.push(notification);
+			}
 		}
 	})
 	fn(null, unreadNotifications);
@@ -57,12 +54,15 @@ exports.unreadNotifications = function(req, res){
 }
 
 exports.updateNotification = function(req, res){
-	var id = helper.exposeId(req.body);
-	var tmId = req.body.trademark._id;
-	req.body.trademark = tmId;
-	Notification.findOneAndUpdate({ _id: id }, helper.removeId(req.body), function(err, not){
+	var notification = req.body;
+	var id = helper.exposeId(notification);
+	var tmId = notification.trademark._id;
+	notification.trademark = tmId;
+	Notification.findOneAndUpdate({ _id: id }, helper.removeId(notification), function(err, not){
 		if (err) { console.log(err); }
-		
+		else {
+			console.log("Notification updated")
+		}
 	})
 }
 

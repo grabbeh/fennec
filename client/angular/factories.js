@@ -84,7 +84,6 @@ angular.module('app')
                     });
             },
             updateNotification: function(notification){
-            	console.log(notification);
                 return $http.post('/api/notifications', notification)
                     .then(function(res){
                         return res;

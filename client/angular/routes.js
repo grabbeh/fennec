@@ -201,7 +201,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         ).
         when('/home', {
-            templateUrl:'/partials/select-portfolio.html',
+            templateUrl:'/partials/home.html',
             controller: 'selectPortfolioCtrl',
             resolve:{
                 isUser: function(userService){
