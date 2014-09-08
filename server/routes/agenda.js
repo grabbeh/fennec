@@ -179,8 +179,8 @@ var admins = [{
 
 var trademarks = [
      {
-  entity: "GWR",
-  portfolio: "GWR",
+  entity: "ACME INC",
+  portfolio: "ACME INC",
   _id: "FIRST ID",
   mark: "GUINNESS WORLD RECORDS",
   status: "Registered",
@@ -206,10 +206,10 @@ var trademarks = [
     16
   ],
   __v: 0
-}/*,
+},
 {
-  entity: "GWR",
-  portfolio: "GWR",
+  entity: "ACME INC",
+  portfolio: "ACME INC",
   _id: "SECOND_ID",
   mark: "GUINNESS WORLD RECORDS",
   status: "Registered",
@@ -235,6 +235,6 @@ var trademarks = [
     16
   ],
   __v: 0
-}*/
+}
 
 ];

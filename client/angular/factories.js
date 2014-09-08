@@ -76,13 +76,20 @@ angular.module('app')
 
     .factory('notificationService', ['$http', function($http){
         var notificationService = {
-            activeNotifications: function(portfolio){
-                return $http.get('/api/notifications/' + portfolio)
+            allNotifications: function(){
+                return $http.get('/api/notifications')
                     .then(function(response){
+                        console.log(response);
                         return response.data;
                     });
+            },
+            updateNotification: function(notification){
+                return $http.post('/api/notifications', notification)
+                    .then(function(res){
+                        return res;
+                    });
+                }
             }
-        }
         return notificationService;
     }])
 

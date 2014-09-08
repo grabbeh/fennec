@@ -133,7 +133,8 @@ app.get('/api/expiriesForYear/:portfolio', x, expiry.expiriesForYear);
 
 // Notifications
 
-app.get('/api/notifications/:portfolio', notification.unreadNotifications)
+app.get('/api/notifications', notification.unreadNotifications);
+app.post('/api/notifications', notification.updateNotification);
 
 // Activities
 

@@ -13,18 +13,16 @@ exports.addNotification = function(tm, incident, fn){
 	});
 }
 
-function retrieveNotifications(entity, portfolio, fn){
-    if (limit){
-    	var limit = limit;
-    }
-	Notification.find({ entity: entity, portfolio: portfolio})
+function retrieveNotificationsForEntity(entity, fn){
+	Notification.find({ entity: entity })
 		.populate('trademark')
 		.exec(function(err, notifications){
-			fn(null, notificatications);
+			if (err) { console.log(err) }
+			fn(null, notifications);
 		})
 }
 
-function compare(notifications, user){
+function compare(notifications, user, fn){
 	unreadNotifications = [];
 	notifications.forEach(function(notification){
 		notification.readBy.forEach(function(id){
@@ -33,7 +31,7 @@ function compare(notifications, user){
 			}
 		})
 	})
-	return unreadNotifications;
+	fn(null, unreadNotifications);
 }
 
 exports.unreadNotifications = function(req, res){
@@ -42,12 +40,11 @@ exports.unreadNotifications = function(req, res){
 			helper.findUser(req.user._id, cb);
 		},
 		notifications: ['user', function(cb, results){
-			retrieveNotifications(results.getUser.entity, req.params.portfolio, cb);
+			retrieveNotificationsForEntity(results.user.entity, cb);
 		}],
 		unreadNotifications: ['user', 'notifications', function(cb, results){
-			compare(results.notifications, results.user._id);
+			compare(results.notifications, results.user._id, cb);
 		}]
-		
 	}, function(err, results){
 		res.json(results.unreadNotifications);
 	})

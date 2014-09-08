@@ -209,6 +209,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 },
                 user: function(userService){
                     return userService.getUser();
+                },
+                notifications: function(notificationService){
+                    return notificationService.allNotifications();
                 }
             }
         }).

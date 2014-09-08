@@ -1,5 +1,7 @@
- <div ng-hide="loadingView" id="form-body">
-     <div class="form-container">
+ <div ng-hide="loadingView">
+   <div class="row">
+ 	<div class="one-half-container">
+     <div class="standard-container">
            <div class="form-title">Select portfolio</div>
           <ul class="tm-list">
              <li class="tm-list-li hover-underline"  ng-repeat="portfolio in portfolios">
@@ -7,4 +9,13 @@
              </li>
           </ul>
       </div> 
+    </div>
+    <div class="one-half-container last">
+    <div class="standard-container">
+    	<div>Unread notifications</div>	
+
+    </div>
+      
+    </div>
+    </div>
  </div>
