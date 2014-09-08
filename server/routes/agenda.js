@@ -178,29 +178,36 @@ var admins = [{
 
 
 var trademarks = [
-     {
+    {
   entity: "ACME INC",
   portfolio: "ACME INC",
-  _id: "FIRST ID",
-  mark: "GUINNESS WORLD RECORDS",
+  mark: "ACME",
   status: "Registered",
   country: {
+    coordinates: [
+      -34,
+      -64
+    ],
     alpha2: "AR",
     alpha3: "ARG",
     name: "Argentina"
   },
   alpha3: "ARG",
   filingDate: {
+    
     stringDate: "1/7/2011"
   },
   registrationDate: {
+   
     stringDate: "3/22/2013"
   },
   expiryDate: {
-    stringDate: "9/7/2014"
+   
+    stringDate: "3/22/2023"
   },
   applicationNumber: "3060238",
   registrationNumber: "2559727",
+  _id: "53c8e75f730766d56dd6ab9f",
   active: true,
   classes: [
     16
@@ -208,33 +215,42 @@ var trademarks = [
   __v: 0
 },
 {
-  entity: "ACME INC",
-  portfolio: "ACME INC",
-  _id: "SECOND_ID",
-  mark: "GUINNESS WORLD RECORDS",
-  status: "Registered",
-  country: {
-    alpha2: "AR",
-    alpha3: "ARG",
-    name: "Argentina"
-  },
-  alpha3: "ARG",
-  filingDate: {
-    stringDate: "1/7/2011"
-  },
-  registrationDate: {
-    stringDate: "3/22/2013"
-  },
-  expiryDate: {
-    stringDate: "9/7/2014"
-  },
-  applicationNumber: "3060238",
-  registrationNumber: "2559727",
+  __v: 0,
+  _id: "53c8e75f730766d56dd6abf4",
   active: true,
+  alpha3: "CHN",
+  applicationNumber: "2000/156802ABC",
   classes: [
-    16
+    9
   ],
-  __v: 0
+  country: {
+    coordinates: [
+      35,
+      105
+    ],
+    alpha2: "CN",
+    alpha3: "CHN",
+    name: "China"
+  },
+
+  entity: "ACME INC",
+  expiryDate: {
+    DDate: "2014-10-26T04:00:00.000Z",
+    stringDate: "10/26/2014"
+  },
+  filingDate: {
+
+    stringDate: "10/12/2000"
+  },
+  mark: "ACME IN CHINESE",
+  portfolio: "ACME INC",
+  registrationDate: {
+
+    stringDate: "10/27/2004"
+  },
+  registrationNumber: "2023542",
+  status: "Registered",
+
 }
 
 ];
