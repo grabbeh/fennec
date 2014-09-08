@@ -614,7 +614,7 @@ angular.module('app')
         function($scope, user, notifications){
             var $ = $scope;
             $.portfolios = user.portfolios;
-            $.notificatios = notifications;
+            $.notifications = notifications;
         }])
 
     .controller("mapCtrl", ['$scope','countryData','user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
