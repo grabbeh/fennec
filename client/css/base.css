@@ -71,10 +71,12 @@ height: auto !important;
 
 .tm-addition {
     background: rgb(141, 228, 114);
+    margin: 5px 0;
 }
 
 .tm-deletion {
     background: rgb(252, 94, 94);
+    margin: 5px 0;
 }
 
 .updated-tm-content {
