@@ -610,10 +610,11 @@ angular.module('app')
            
         }])
 
-    .controller('selectPortfolioCtrl', ['$scope', 'user',
-        function($scope, user){
+    .controller('selectPortfolioCtrl', ['$scope', 'user', 'notifications',
+        function($scope, user, notifications){
             var $ = $scope;
             $.portfolios = user.portfolios;
+            $.notificatios = notifications;
         }])
 
     .controller("mapCtrl", ['$scope','countryData','user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
