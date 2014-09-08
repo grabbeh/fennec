@@ -46,6 +46,7 @@ exports.unreadNotifications = function(req, res){
 			compare(results.notifications, results.user._id, cb);
 		}]
 	}, function(err, results){
+		console.log(results);
 		res.json(results.unreadNotifications);
 	})
 }
