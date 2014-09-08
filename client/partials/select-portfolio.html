@@ -15,8 +15,8 @@
     	<div mg-bold>Unread notifications</div>	
         <ul class="tm-list">
            <li class="tm-list-li" ng-repeat="notification in notifications">
-              <div class="notification-content hover" ng-click="showModal(notification.trademark)"><span mg-bold>{{ notification.trademark.mark }}</span> in <span mg-bold> {{notification.trademark.country.name }}</span> is expiring on<span mg-bold> {{ notification.trademark.expiryDate.stringDate | date: 'longDate'}}</span></div> 
-             
+              <div class="notification-content hover" ng-click="showModal(notification.trademark)"><span mg-bold>{{ notification.trademark.mark }}</span> in <span mg-bold> {{notification.trademark.country.name }}</span> is due to expire <span mg-bold> {{ notification.trademark.expiryDate.stringDate | date: 'longDate'}}</span></div> 
+              <div> <span> {{ notification.expiringIn.number }} {{ notification.expiringIn.type }}</span> from <span>{{ notification.created | date: 'longDate' }} </span></div>
              <div class="notification-delete-button hover-black"><div ng-click="deleteNotification(notification, $index)"><i class="fa fa-times fa-lg"></i></div></div>
              <div class="view-icon hover-black"><a href="/view/trademark/{{notification.trademark._id}}"><i class="fa fa-eye"></i></a></div>
            </li>
