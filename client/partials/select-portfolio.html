@@ -12,7 +12,8 @@
     </div>
     <div class="one-half-container last">
     <div class="standard-container shadow">
-    	<div mg-bold>Unread notifications</div><div class="float-right">{{ notifications.length }}</div>
+    	<div class="float-left" mg-bold>Unread notifications</div><div class="float-right">{{ notifications.length }}</div>
+        <div mg-clear></div>
         <ul class="tm-list">
            <li class="tm-list-li" ng-repeat="notification in notifications">
               <div class="notification-content hover" ng-click="showModal(notification.trademark)">
