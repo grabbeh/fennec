@@ -15,7 +15,8 @@
     	<div>Unread notifications</div>	
         <ul class="tm-list">
            <li class="tm-list-li" ng-repeat="notification in notifications">
-              {{ notification }}
+              <div>{{ notification.trademark.mark }} is expiring on {{ notification.trademark.expiryDate.stringDate}}</div>
+              <div>{{ notification.incident.expiringIn.number }} {{ notification.incident.expiringIn.type }}</div>
            </li>
          
         </ul>
