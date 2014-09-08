@@ -76,7 +76,8 @@ height: auto !important;
 .notification-symbol {
 	background: red;
 	padding: 10px;
-	border-radius: 50%;
+	margin-top: -20px;
+	margin-right: -20px;
 	color: white;
 	font-weight: bold;
 	float: right;
