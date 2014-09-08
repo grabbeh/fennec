@@ -623,7 +623,7 @@ angular.module('app')
 	    
 	     $.deleteNotification = function(notification, index){
                     
-                    $.notifications.comments.splice(index, 1);
+                    $.notifications.splice(index, 1);
                        notification.readBy.push(user._id);
                        console.log(notification);
                        notificationService.updateNotification(notification).then(function(res){
