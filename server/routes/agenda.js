@@ -38,19 +38,18 @@ exports.setUpAgenda = function(db){
             done();
         });
     })
-/*
+
     agenda.define('test', function(job, done){
         testJob(admins, trademarks, function(){
             console.log("job completed");
             done();
         });
     })
-*/
-    //agenda.now('test');
-    //agenda.start();
 
-    agenda.every('1440 minutes', ['check for alerts', 'email me']);
-    //agenda.every('10 seconds', 'console');
+    agenda.now('test');
+    agenda.start();
+
+   // agenda.every('1440 minutes', ['check for alerts', 'email me']);
     agenda.start();
 }
 
@@ -203,7 +202,7 @@ var trademarks = [
   },
   expiryDate: {
    
-    stringDate: "3/22/2023"
+    stringDate: "9/09/2023"
   },
   applicationNumber: "3060238",
   registrationNumber: "2559727",
@@ -235,8 +234,8 @@ var trademarks = [
 
   entity: "ACME INC",
   expiryDate: {
-    DDate: "2014-10-26T04:00:00.000Z",
-    stringDate: "10/26/2014"
+ 
+    stringDate: "9/10/2014"
   },
   filingDate: {
 
