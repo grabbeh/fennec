@@ -10,11 +10,11 @@
             <div title="{{comment.date}}" class="comment-details">{{ comment.author }} on {{ comment.date |  date: 'longDate'}}</div>
 
         </div>
-            <div class="comment-delete-button"><div ng-click="deleteComment(comment, $index)"><i class="fa fa-times fa-lg"></i></div>
+            <div class="comment-delete-button"><div ng-click="deleteComment(comment, $index)"><i class="fa fa-times fa-lg"></i></div></div>
 
         </li>
     </ul>
-    </div>
+    
     <div>
         <form ng-submit="addComment(text)">
             <textarea class="comment-text-area" ng-model="text"></textarea>
