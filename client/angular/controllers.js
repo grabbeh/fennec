@@ -297,7 +297,7 @@ angular.module('app')
             else {
              $.response = content.msg; 
              $timeout(function(){
-                 $location.path('/select-portfolio')
+                 $location.path('/home')
              }, 1000)
             }
          }
@@ -610,8 +610,8 @@ angular.module('app')
            
         }])
 
-    .controller('selectPortfolioCtrl', ['$scope', '$rootScope', 'user', 'notifications', 'trademarkModal',
-        function($scope, $rootScope, user, notifications, trademarkModal){
+    .controller('selectPortfolioCtrl', ['$scope', '$rootScope', 'user', 'notifications', 'notificationService', 'trademarkModal',
+        function($scope, $rootScope, user, notifications, notificationService, trademarkModal){
             var $ = $scope;
             $.portfolios = user.portfolios;
             $.notifications = notifications;
@@ -620,6 +620,16 @@ angular.module('app')
 	            trademarkModal.deactivate();
 	            trademarkModal.activate({ trademark: trademark, user: user });
 	    };
+	    
+	     $.deleteNotification = function(notification, index){
+                    
+                    $.notifications.comments.splice(index, 1);
+                       notification.readBy.push(user._id);
+                       console.log(notification);
+                       notificationService.updateNotification(notification).then(function(res){
+                    	
+                    })
+                } 
         }])
 
     .controller("mapCtrl", ['$scope','countryData','user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
