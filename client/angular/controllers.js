@@ -610,8 +610,8 @@ angular.module('app')
            
         }])
 
-    .controller('selectPortfolioCtrl', ['$scope', 'user', 'notifications', 'trademarkModal',
-        function($scope, user, notifications, trademarkModal){
+    .controller('selectPortfolioCtrl', ['$scope', '$rootScope', 'user', 'notifications', 'trademarkModal',
+        function($scope, $rootScope, user, notifications, trademarkModal){
             var $ = $scope;
             $.portfolios = user.portfolios;
             $.notifications = notifications;
