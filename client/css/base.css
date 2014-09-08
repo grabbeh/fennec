@@ -16,6 +16,10 @@
 	margin: 0 auto -100px; /* the bottom margin is the negative value of the footer's height */
 }
 
+.margin-top {
+	margin-top: 20px;
+}
+
 .standard-container {
 	background: white;
 	padding: 20px;
