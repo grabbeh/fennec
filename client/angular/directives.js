@@ -510,7 +510,7 @@ angular.module('app')
                          })
                      })
             },
-            controller: function($scope, $http) {
+            controller: function($scope, $http, notificationModal) {
                 var $ = $scope;
                     
                 $.alert = {};
@@ -539,6 +539,7 @@ angular.module('app')
                 $.updateAlerts = function(user){
                      userService.updateUser(user)
                         .then(function(data){
+                             notificationModal.activate({ success: "Alerts updated"})
                              $.alert.type = "";
                              $.alert.number = "";
                              $.user = data;
@@ -556,7 +557,7 @@ angular.module('app')
             scope: {
                 user: '='
             },
-            controller: function($scope, $http) {
+            controller: function($scope, $http, notificationModal) {
                 var $ = $scope;
                  $.updatePassword = function(old, nnew, dup){
                  if (nnew != dup){
@@ -567,9 +568,11 @@ angular.module('app')
                  $http.post('/api/updatePassword', load)
                     .success(function(data){
                         $.passwordMessage = data.message;
+                        notificationModal.activate({ success: data.message })
                     })
                     .error(function(data){
                          $.passwordMessage = data.message;
+                         notificationModal.activate({ error: data.message })
                     })
                  }
 
