@@ -1,13 +1,13 @@
 angular.module('app')
     
-    .controller('usersCtrl', ['$scope', 'users', 'userService',  function($scope, users, userService){
+    .controller('usersCtrl', ['$scope', 'users', 'notificationModal', 'userService',  function($scope, users, notificationModal, userService){
         var $ = $scope;
         $.users = users;
 
         $.updateUser = function(user){
             userService.updateUser(user)
                 .then(function(response){
-                    console.log("User updated")
+                    notificationModal.activate({ success: "User updated"})
                 })
         }
 
@@ -15,14 +15,14 @@ angular.module('app')
             $.users.splice(index, 1);
             userService.deleteUser(user._id)
                 .then(function(response){
-                    console.log(response);
+                    notificationModal.activate({success: "User removed"})
                 })
         }
 
         $.createUser = function(){
             userService.addUser($.newUser)
-                .then(function(res){
-                    $.message = res.msg;
+                .then(function(user){
+                    $.users.push(user);
                 })
         }
 
