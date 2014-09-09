@@ -12,8 +12,11 @@
 						 <div> {{ user._id }} </div>
 						 <div><span class="user-admin"> Admin</span><span><input class="checkbox" ng-model="user.isAdmin" type="checkbox" ></span> </div>
 						 </div>
+						 <div>
 						 <div ng-click="deleteUser(user, $index)" class="user-delete-button"><i class="fa fa-times fa-lg"></i></div>
 						 <div ng-click="updateUser(user)" class="user-edit-button"><i class="fa fa-pencil fa-lg"></i></div>
+						 </div>
+						 	
 						 </li>
 					</ul>
 				</div>
