@@ -23,6 +23,7 @@ angular.module('app')
             userService.addUser($.newUser)
                 .then(function(user){
                     $.users.push(user);
+                    notificationModal.activiate({success: "User added"})
                 })
         }
 
