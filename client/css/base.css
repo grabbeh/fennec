@@ -41,6 +41,22 @@ height: auto !important;
     margin-right: 20px;
 }
 
+/* user page */
+
+.user-list-li {
+    font-size: 18px;
+    padding: 12px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #9a9a9a;
+    overflow: hidden;
+}
+
+.user-list-content {
+    width: 80%;
+    float: left;
+}
+
 /* login modal */
 
 .login-modal-content {
