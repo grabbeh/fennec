@@ -58,7 +58,7 @@ height: auto !important;
  	cursor: pointer;
 }
 
-.user-edit-button: hover {
+.user-edit-button:hover {
 	color: rgb(49, 172, 78);
 	cursor: pointer;
 }
