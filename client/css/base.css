@@ -50,11 +50,11 @@ height: auto !important;
 }
 
 .user-delete-button:hover {
-	background: rgb(236, 43, 43);
+ 	color: rgb(236, 43, 43);
 }
 
 .user-edit-button: hover {
-	background: rgb(49, 172, 78);
+	color: rgb(49, 172, 78);
 }
 .user-edit-button {
 	float: right;
