@@ -43,6 +43,10 @@ height: auto !important;
 
 /* userpage */
 
+.margin-bottom {
+	margin-bottom: 20px;
+}
+
 .user-delete-button {
 	float: right;
 	margin-top: 16px;
