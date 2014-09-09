@@ -46,14 +46,25 @@ height: auto !important;
 .user-delete-button {
 	float: right;
 	margin-top: 16px;
-	color: grey;
+	color: rgb(247, 98, 98);
 }
 
+.user-delete-button:hover {
+	background: rgb(236, 43, 43);
+}
+
+.user-edit-button: hover {
+	background: rgb(49, 172, 78);
+}
 .user-edit-button {
 	float: right;
 	margin-right: 10px;
 	margin-top: 16px;
-	color: grey;
+	color: rgb(91, 201, 113);
+}
+
+.user-edit-button:hover {
+	background: ;
 }
 
 .user-list {
