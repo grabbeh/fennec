@@ -9,6 +9,22 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         when('/terms', {
             templateUrl: '/partials/terms-of-use.html'
         }).
+        when('/users', {
+            templateUrl: '/partials/users.html',
+            controller: 'usersCtrl',
+            
+            resolve: {
+                admin: function(userService){
+                    return userService.isAdmin();
+                },
+                user: function(userService){
+                    return userService.getUser();
+                },
+                users: function(userService){
+                    return userService.allUsers();
+                }
+            }
+        }).
         when('/quick-search/:portfolio', {
             reloadOnSearch: false,
             templateUrl: '/partials/quick-search.html',

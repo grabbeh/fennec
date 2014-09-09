@@ -58,14 +58,6 @@ angular.module('app')
                     }
             	})
 
-             scope.$watch(attrs.dropdownMenu, function(v){
-                    if (v){
-                        element.addClass('active-dropdown')
-                    }
-                    else {
-                        element.removeClass('active-dropdown')
-                    }
-              })
         	}
     	}
     })

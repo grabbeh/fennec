@@ -1,0 +1,41 @@
+<div ng-hide="loadingView" class="fixed-container">
+
+	<div class="row">
+		<div class="one-half-container">
+
+
+			<div class="standard-container">
+				<div mg-bold>Current users</div>
+
+				<div mg-clear></div>
+				<div>
+					<ul class="tm-list" ng-repeat="user in users">
+						<li class="tm-list-li">
+						<div class="float-left">
+						 <div> {{ user._id }} </div>
+						 <div><span> Admin</span><span><input class="checkbox" ng-model="user.isAdmin" type="checkbox" ></span> </div>
+						 </div>
+						 <div ng-click="deleteUser(user)" class="float-right hover-underline">Delete</div>
+						 <div ng-click="updateUser(user)" class="float-right hover-underline">Update</div>
+						 </li>
+					</ul>
+				</div>
+
+
+			</div>
+		</div>
+		<div class="one-half-container last">
+			<div class="standard-container">
+			<div mg-bold>Add user</div>
+
+		           <form novalidate name="createUserForm" class="loginform" ng-submit="createUser()">
+		              <div><input required class="form-input" type=email ng-model="newUser.email" name="username" placeholder="E-mail" ></div>
+		              <div><input required class="form-input" ng-model="newUser.password" type=password name="password" placeholder="Password" ></div>
+		              <div><input class="checkbox" ng-model="newUser.checked" type="checkbox"> Set as admin</div>
+		              <div><input class="add-button" type=submit ng-disabled="!canSubmitCreateUser()" value="Submit"></div>
+		            </form>
+		            <div>{{ message }}</div>
+			</div>
+		</div>
+	</div>
+</div>

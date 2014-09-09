@@ -148,7 +148,10 @@ app.get('/api/isAdmin', user.isAdmin);
 app.get('/api/isUser', user.isUser);
 app.get('/api/getUser', user.getUser);
 
-app.post('/api/updateUser', user.updateUser);
+app.put('/api/users/:id', user.updateUser);
+app.get('/api/users', user.allUsers);
+app.del('/api/users/:id', user.deleteUser);
+
 
 // Passwords
 

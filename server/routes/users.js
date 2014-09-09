@@ -12,6 +12,20 @@ var admin = require('../config/sendgrid')
 , entity = require('./entities')
 , bcrypt = require('bcrypt');
 
+exports.deleteUser = function(req, res){
+  console.log(req.params.id)
+  User.findOneAndRemove({ _id: req.params.id }, function(err, user){
+      if (err) { console.log(err)}
+      res.json("User removed");
+  })
+}
+
+exports.allUsers = function(req, res){
+  User.find({ entity: req.user.entity}).lean().exec(function(err, users){
+      res.json(users);
+  })
+}
+
 exports.getAllAdmins = function(fn){
     User.find({ isAdmin: true }).lean().exec(function(err, admins){
         if (err) { fn(err) };
@@ -41,7 +55,7 @@ exports.getUser = function(req, res){
 }
 
 exports.updateUser = function(req, res){
-    User.findOneAndUpdate({_id: req.user._id}, helper.removeId(req.body), function(err, user){
+    User.findOneAndUpdate({_id: req.params.id}, helper.removeId(req.body), function(err, user){
          req.user = user;
          res.json(user);
     })

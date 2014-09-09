@@ -79,7 +79,6 @@ angular.module('app')
             allNotifications: function(){
                 return $http.get('/api/notifications')
                     .then(function(response){
-                        console.log(response);
                         return response.data;
                     });
             },
@@ -104,9 +103,6 @@ angular.module('app')
 					return res;
                 })
         },
-      	anyUsers: function(){
-      	    return $http.get('/api/anyUsers');	
-      	}, 
         isUser: function(){
             return $http.get('/api/isUser');
         },
@@ -118,10 +114,32 @@ angular.module('app')
                 return response.data;
             });
         },
+        addUser: function(user){
+            return $http.post('/api/addUser', user)
+                    .then(function(res){
+                        return res.data;
+                    },
+                    function(res){
+                       return res.data;
+                    })
+        },
         updateUser: function(user){
-            return $http.post('/api/updateUser', user).then(function(response){
+            return $http.put('/api/users/' + user._id, user).then(function(response){
             	return response.data;
             })
+        },
+        deleteUser: function(id){
+            console.log(id);
+            return $http.delete('/api/users/' + id).then(function(response){
+                console.log()
+                return response.data;
+            })
+        },
+        allUsers: function(){
+            return $http.get('/api/users')
+                .then(function(response){
+                    return response.data;
+                })
         }
     }
     return userService;

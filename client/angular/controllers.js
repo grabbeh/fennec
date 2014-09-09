@@ -1,28 +1,63 @@
 angular.module('app')
-	    .controller('favouritesCtrl', ['$scope', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', function($scope, $rootScope, favourites, user, trademarkService, editTrademarkModal){
-	        var $ = $scope;
-	        $.favourites = favourites;
-	        if (favourites.length === 0){
-	             $.favourites = false;
-	        }
-	        $.user = user;
-	        $.activeTrademark = favourites[0];
-	        $.activateTrademark = function(trademark){
-	        	$.activeTrademark = trademark;
-	        }
-	        
-	        $.openEditTrademarkModal = function(trademark){
-	                editTrademarkModal.activate({trademark: trademark});
-	                $rootScope.modal = true;
-	            }
-	          
-	        $.deleteTrademark = function(){
-	            trademarkService.deleteMark($.trademark)
-	               .success(function(data){
-	                   $scope.message = data.message;
-	               })
-	           }
-	    }])
+    
+    .controller('usersCtrl', ['$scope', 'users', 'userService',  function($scope, users, userService){
+        var $ = $scope;
+        $.users = users;
+
+        $.updateUser = function(user){
+            userService.updateUser(user)
+                .then(function(response){
+                    console.log("User updated")
+                })
+        }
+
+        $.deleteUser = function(user, index){
+            $.users.splice(index, 1);
+            userService.deleteUser(user._id)
+                .then(function(response){
+                    console.log(response);
+                })
+        }
+
+        $.createUser = function(){
+            userService.addUser($.newUser)
+                .then(function(res){
+                    $.message = res.msg;
+                })
+        }
+
+        $.canSubmitCreateUser = function(){
+                return $.createUserForm.$dirty && $.createUserForm.$valid;
+        }
+
+
+
+    }])
+
+    .controller('favouritesCtrl', ['$scope', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', function($scope, $rootScope, favourites, user, trademarkService, editTrademarkModal){
+        var $ = $scope;
+        $.favourites = favourites;
+        if (favourites.length === 0){
+             $.favourites = false;
+        }
+        $.user = user;
+        $.activeTrademark = favourites[0];
+        $.activateTrademark = function(trademark){
+        	$.activeTrademark = trademark;
+        }
+        
+        $.openEditTrademarkModal = function(trademark){
+                editTrademarkModal.activate({trademark: trademark});
+                $rootScope.modal = true;
+            }
+          
+        $.deleteTrademark = function(){
+            trademarkService.deleteMark($.trademark)
+               .success(function(data){
+                   $scope.message = data.message;
+               })
+           }
+    }])
 	
 
  	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkService){
