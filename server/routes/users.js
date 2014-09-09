@@ -13,7 +13,6 @@ var admin = require('../config/sendgrid')
 , bcrypt = require('bcrypt');
 
 exports.deleteUser = function(req, res){
-  console.log(req.params.id)
   User.findOneAndRemove({ _id: req.params.id }, function(err, user){
       if (err) { console.log(err)}
       res.json("User removed");
@@ -79,7 +78,7 @@ exports.addUser = function(req, res) {
         User.findOne({_id: req.body.email.toUpperCase()}, function(err, user) {
         if (user) { res.status(401).send({msg: 'User already exists'}); return;}
         hashPasswordAndAddUser(req.body, function(err, user){
-            res.status(200).send({msg:"User added"})
+            res.status(200).json(user);
             });
        })
     })
