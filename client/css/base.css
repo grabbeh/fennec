@@ -43,13 +43,13 @@ height: auto !important;
 
 /* userpage */
 
-.comment-delete-button {
+.user-delete-button {
 	float: right;
 	margin-top: 16px;
 	color: grey;
 }
 
-.comment-edit-button {
+.user-edit-button {
 	float: right;
 	margin-right: 10px;
 	margin-top: 16px;
