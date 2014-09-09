@@ -209,7 +209,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         ).
         when('/home', {
             templateUrl:'/partials/home.html',
-            controller: 'selectPortfolioCtrl',
+            controller: 'homeCtrl',
             resolve:{
                 isUser: function(userService){
                     return userService.isUser();
