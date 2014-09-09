@@ -49,7 +49,7 @@
              <div class="one-third-container">
                 <div style="background: rgb(213, 96, 96)" class="home-block">
                 <i class="portfolio-icons fa fa-tachometer fa-2x"></i> 
-                    <a class="fill-div" href="/admin/{{portfolio}}">Dashboard</a>
+                    <a class="fill-div" href="/dashboard/{{portfolio}}">Dashboard</a>
                        
                 </div>
               </div>
@@ -69,8 +69,10 @@
               </div>
 
         </div>
+        <div class="row">
         <div class="portfolio-subtitle">
            Selectors
+        </div>
         </div>
          <div class="row">
             <div class="one-half-container">
@@ -80,6 +82,13 @@
                 <div class="country-list" mg-country-selector countries="countries" title="Countries" go-to-group="goToCountry"></div>
             </div>
         </div>
-        <div class="hover-underline logout-button" ng-click="logout()">Logout</div>
-       
+        <div class="row">
+          <div class="portfolio-subtitle">Search</div>
+        </div>
+        <div class="row">
+          <div mg-search-input search-results="searchResults"></div>
+          <div mg-clear></div>
+             <div mg-search-results show-modal="showModal" search-results="searchResults"></div>
+        </div>
+        </div>
     </div>

@@ -20,6 +20,10 @@
 	margin-top: 20px;
 }
 
+.margin-left {
+    margin-left: 20px;
+}
+
 .standard-container {
 	background: white;
 	padding: 20px;
@@ -43,6 +47,18 @@ height: auto !important;
 
 .margin-top {
 	margin-top: 20px;
+}
+
+/* footer */
+
+.footer-container {
+    padding: 20px;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* userpage */
@@ -1620,6 +1636,7 @@ margin: 0px 10px 10px 0px;
 	padding: 6px;
     margin-right: -5px;
     margin-top: 10px;
+    border-bottom: solid 1px black;
 }
 
 .expiry-form-input {

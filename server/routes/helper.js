@@ -301,7 +301,6 @@ exports.filterDiff = function(diff){
 		if (changed != 'equal'){
 			if (diff[key]['value']){
 				for (var x in diff[key]['value']){
-
 					diff[key]['value'][x]['attr'] = key;
 					newO.push(diff[key]['value'][x])
 				}

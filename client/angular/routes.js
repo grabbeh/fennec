@@ -7,7 +7,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             controller: 'landingPageCtrl'
         }).
         when('/terms', {
-            templateUrl: '/partials/terms-of-use.html'
+            templateUrl: '/partials/terms.html'
         }).
         when('/users', {
             templateUrl: '/partials/users.html',
@@ -171,7 +171,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                 }
             }
         }).
-        when('/admin/:portfolio', {
+        when('/dashboard/:portfolio', {
             reloadOnSearch: false,
             templateUrl: '/partials/admin.html',
             controller: 'adminCtrl',

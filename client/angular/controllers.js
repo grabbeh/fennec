@@ -144,8 +144,8 @@ angular.module('app')
          }
     }])
     
-    .controller('portfolioHomeCtrl', ['$scope', 'user', '$window', '$rootScope', '$filter','$routeParams', 'countries', 'marks', '$location', 
-        function($scope, user, $window, $rootScope, $filter, $routeParams, countries, marks, $location){
+    .controller('portfolioHomeCtrl', ['$scope', 'trademarkModal', 'user', '$window', '$rootScope', '$filter','$routeParams', 'countries', 'marks', '$location', 
+        function($scope, trademarkModal, user, $window, $rootScope, $filter, $routeParams, countries, marks, $location){
            var $ = $scope;
            $.portfolios = user.portfolios;
            $.portfolio = $routeParams.portfolio;
@@ -173,6 +173,12 @@ angular.module('app')
                 delete $window.sessionStorage.token;
                 $location.path('/');
             }
+
+             $.showModal = function(trademark){
+                $rootScope.modal = true;
+                trademarkModal.deactivate();
+                trademarkModal.activate({ trademark: trademark, user: user });
+           };
        
     }])
     .controller('adminCtrl', 
@@ -640,7 +646,7 @@ angular.module('app')
 	            $rootScope.modal = true;
 	            trademarkModal.deactivate();
 	            trademarkModal.activate({ trademark: trademark, user: user });
-	    };
+	       };
 	    
 	     $.deleteNotification = function(notification, index){
                        $.notifications.splice(index, 1);
