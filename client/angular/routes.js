@@ -103,15 +103,6 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/partials/change-password.html',
             controller: 'passwordCtrl'
         }).
-        when('/admin/user', {
-            templateUrl: '/partials/add-user.html',
-            controller: 'createUserCtrl',
-            resolve: {
-                admin: function(userService){
-                    return userService.isAdmin();
-                }
-            }
-        }).
         when('/upload', {
             templateUrl: '/partials/upload.html',
             controller: 'uploadCtrl',
