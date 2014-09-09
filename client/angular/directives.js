@@ -429,17 +429,16 @@ angular.module('app')
             scope: {
                 searchResults: '='
             },
-            controller: function($scope, $http) {
+            controller: function($scope, $http, notificationModal) {
                 var $ = $scope;
                 $.search = function(){
                     $http.post('/api/search', { query: $.query })
                         .success(function(data){
                             if (data.length === 0){
-                                $.noresults = true;
+                                notificationModal.activate({ error: "No results"})
                                 $.searchResults = false;
                             }
                             else {
-                                $.noresults = false;
                                 $.searchResults = data;
                             }
                         })

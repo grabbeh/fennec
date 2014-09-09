@@ -60,7 +60,6 @@ angular.module('app')
            }
     }])
 	
-
  	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkService){
  	    var $ = $scope;
  	    $http.get('/api/countryData')
@@ -231,8 +230,7 @@ angular.module('app')
             $.chart = barChartData;
             $.options = barChartOptions;
             $.activities = activities;
-            console.log(activities);
-   
+
          $.toggleMenuModal = function(){
             trademarkModal.deactivate();
         		if (!$rootScope.menuModal){

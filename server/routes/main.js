@@ -45,29 +45,21 @@ function queryTrademarks(entity, portfolio, country, group, status, cb){
 }
 
 exports.search = function(req, res){
-    //trademark.search( { query: req.body.query }, { hydrate: true}, function(err, results){ 
-    /*
-    var query =  {
-	    query: {
-	        query_string: {
-	            query: req.body.query
-	        },
-	        term: {
-	            entity:  req.session.userDetails.entity 
-	        }
-	  }
-    }
-    */
-    Trademark.search( { query: req.body.query }, { hydrate: true }, function(err, results){
-	console.log(req.body);
-    if (err){
-        console.log(err);
-		res.status(401).send(err);
-	}
-	else {
-         console.log(results)
-	     res.json(results.hits);	
-	}
+    
+    var query = {
+            filtered: { 
+              query: { query_string: {query:req.body.query}}, 
+              filter:{ query: {query_string:{query:req.user.entity}}}  
+            }
+        }
+
+    Trademark.search( { query: query }, { hydrate: true }, function(err, results){
+        if (err){
+    		res.status(401).send(err);
+    	}
+    	else {
+    	     res.json(results.hits);	
+    	}
     });
 }
 
