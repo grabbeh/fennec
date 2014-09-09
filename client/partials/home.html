@@ -14,7 +14,7 @@
     <div class="standard-container shadow">
     	<div class="notification-title">Notifications</div><div ng-show="notifications"class="notification-symbol">{{ notifications.length }}</div>
         <div mg-clear></div>
-        <div ng-hide="notifications">Currently no notifications</div>
+        <div ng-hide="notifications" class="margin-top">Currently no notifications</div>
         <ul ng-show="notifications" class="tm-list">
            <li class="notification-list-li" ng-repeat="notification in notifications">
            <div class="notification-link"><a href="/home/{{ notification.portfolio }}"> {{ notification.portfolio}}</a> </div>
