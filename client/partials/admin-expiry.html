@@ -1,4 +1,5 @@
 <div>
+    <div ng-hide="sortedByExpiry" class="margin-top">No trade marks due to expire for this group of trade marks</div>
     <ul class="tm-list expiry-list">
         <li class="tm-list-li" ng-repeat="tm in items">
             <div ng-click="showModalWrapper(tm)" class="hover tm-list-content">
@@ -9,7 +10,7 @@
         </li>
     </ul>
 
-    <div style="float:right; font-size: 16px">
+    <div ng-show="sortedByExpiry" style="float:right; font-size: 16px">
         <div class="pagination-prev hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="prevPage(pageNumber)">Prev</div>
         <div class="pagination-first hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="firstPage()">1</div>
         <div class="pagination-number hover"> {{ pageNumber }} </div>
