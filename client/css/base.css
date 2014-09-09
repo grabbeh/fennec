@@ -58,10 +58,13 @@ height: auto !important;
 
 .user-list {
     list-style: none;
-    margin: 10px 0 20px 0;
+    margin: 0;
     padding: 0;
 }
 
+.user-admin {
+	font-size: 14px;
+}
 .user-list-li {
     font-size: 18px;
     padding: 12px;
