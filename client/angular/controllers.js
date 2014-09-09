@@ -609,24 +609,6 @@ angular.module('app')
             }
         }])
 
-    .controller('createUserCtrl', ['$scope', '$http',
-        function($scope, $http){
-            var $ = $scope;
-            $.createUser = function(){
-                $http.post('/api/addUser', $.newUser)
-                    .success(function(data){
-                        $.message = data.msg;
-                    })
-                    .error(function(data){
-                        $.message = data.msg;
-                    })
-            }
-
-            $.canSubmitCreateUser = function(){
-                return $.createUserForm.$dirty && $.createUserForm.$valid;
-            }
-        }])
-
 	.controller('createAccountCtrl', ['$scope', '$rootScope', '$http', '$location', 'userService',
         function($scope, $rootScope, $http, $location, userService){
             var $ = $scope;
