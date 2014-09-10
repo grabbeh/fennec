@@ -1544,14 +1544,20 @@ margin: 0px 10px 10px 0px;
     padding-top: 10px;
 }
 
-.header-logo {
-   
-    margin-left:20px;
+.logo {
+    height: 22px;
+    margin-left: 20px;
+    margin-right: 10px;
+    float: left;
+    margin-top: 3px;
+}
+
+.header-title {
     font-size: 24px;
-    width: 300px;
     color: white;
     font-weight: bold;
     letter-spacing: 5px;
+    float: left;
 }
 
 #map {

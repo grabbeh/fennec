@@ -9,7 +9,7 @@
   <body mg-menu-mover menu-modal="menuModal">
     <div class="wrapper">
       <div class="header">
-          <span class="header-logo"><a class="white-link" href="/">Fennec</a></span>
+          <img class="logo" ng-src="/images/fennec.png"><div class="header-title"><a class="white-link" href="/">Fennec</a></div>
           <span ng-show="isUser()" class="hide-on-mobile account"><a title="Home" class="white-link margin-right" href="/home"><i class="fa fa-home fa-lg"></i></a><span class="hover" title="Log out" ng-click="logout()"><i class="fa fa-sign-out fa-lg"></i></span>
           </span>
           <span ng-hide="isUser()" ng-click="login()" class="hide-on-mobile account hover-underline">Login</span>
