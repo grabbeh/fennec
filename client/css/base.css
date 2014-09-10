@@ -1179,9 +1179,8 @@ input::-webkit-inner-spin-button {
 }
 
 .menu-modal {
-  position: fixed;
+  position: absolute;
   top: 50px;
-  height: 100%;
   z-index: 2000;
   background: #3F3838;
   width: 300px;
