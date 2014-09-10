@@ -1,5 +1,23 @@
 angular.module('app')
 
+    .directive('mgSwipe', function($swipe){
+        return {
+            link: function(scope, element, attrs){
+                $swipe.bind(element, {
+                    'start': function(coords){
+                        console.log(coords)
+                    },
+                    'move': function(coords){
+                        console.log(coords);
+                    },
+                    'end': function(coords){
+                        console.log(coords);
+                    }
+                })
+            }
+        }
+    })
+
 	.directive('mgTrademarkComments', function(){
         return {
             scope: {
@@ -39,6 +57,26 @@ angular.module('app')
                 
                
             }
+    	}
+    })
+	
+    .directive('mgMenuMover', function(){
+        return {
+        scope: {
+            menuModal: '=',
+            dropdownMenu: '='
+        },
+        link: function(scope, element, attrs){
+            scope.$watch(attrs.menuModal, function(v){
+                    if (v){
+                        element.addClass('active-menu')
+                    }
+                    else {
+                        element.removeClass('active-menu')
+                    }
+            	})
+
+        	}
     	}
     })
     

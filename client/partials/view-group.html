@@ -13,16 +13,16 @@
                 <div>
                     <ul class="stat-list stat-list-group">
                         <li ng-show="chartSubtitles[0]">
-                            <div class="sub-stat-header">{{ chartSubtitles[0].number }}</div>
-                            <div class="sub-stat-row registered-key">{{ chartSubtitles[0].status }}</div>
+                            <div mg-bold class="sub-stat-header">{{ chartSubtitles[0].number }}</div>
+                            <div class="sub-stat-row">{{ chartSubtitles[0].status }}</div>
                         </li>
                         <li ng-show="chartSubtitles[1]">
-                            <div class="sub-stat-header">{{ chartSubtitles[1].number }}</div>
-                            <div class="sub-stat-row published-key">{{ chartSubtitles[1].status }}</div>
+                            <div  mg-bold class="sub-stat-header">{{ chartSubtitles[1].number }}</div>
+                            <div class="sub-stat-row">{{ chartSubtitles[1].status }}</div>
                         </li>
                         <li ng-show="chartSubtitles[2]">
-                            <div class="sub-stat-header">{{ chartSubtitles[2].number }}</div>
-                            <div class="sub-stat-row pending-key">{{ chartSubtitles[2].status }}</div>
+                            <div mg-bold class="sub-stat-header">{{ chartSubtitles[2].number }}</div>
+                            <div class="sub-stat-row">{{ chartSubtitles[2].status }}</div>
                         </li>
                     </ul>
                 </div>
