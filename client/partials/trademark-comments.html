@@ -7,7 +7,7 @@
         
         <div class="main-comment">
             <div class="comment-text">{{ comment.text }} </div>
-            <div title="{{comment.date}}" class="comment-details">{{ comment.author }} on {{ comment.date }}</div>
+            <div title="{{comment.date}}" class="comment-details">{{ comment.author }} on {{ comment.date | date: 'longDate' }}</div>
 
         </div>
             <div class="comment-delete-button"><div ng-click="deleteComment(comment, $index)"><i class="fa fa-times fa-lg"></i></div></div>
