@@ -41,26 +41,6 @@ angular.module('app')
             }
     	}
     })
-	
-    .directive('mgMenuMover', function(){
-        return {
-        scope: {
-            menuModal: '=',
-            dropdownMenu: '='
-        },
-        link: function(scope, element, attrs){
-            scope.$watch(attrs.menuModal, function(v){
-                    if (v){
-                        element.addClass('active-menu')
-                    }
-                    else {
-                        element.removeClass('active-menu')
-                    }
-            	})
-
-        	}
-    	}
-    })
     
     .directive('mgTrademarkContainer', function(){
         return {
