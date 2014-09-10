@@ -360,13 +360,6 @@ a.fill-div {
 
 /* menu options */
 
-
-
-.active-menu {
-	margin-left: 300px;
-	right: 0;
-}
-
 .white-link {
     color: white;
 }
@@ -1824,10 +1817,6 @@ margin-top: 10px;
 	  background: white;
 	  width: 80%;
 	  left: 0;
-	}
-	
-	.active-menu {
-	    margin-left: 0;
 	}
 	
 	.menu-modal {
