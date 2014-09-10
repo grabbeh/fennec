@@ -34,7 +34,7 @@ exports.setUpAgenda = function(db){
     
 
     agenda.define('email me', function(job, done){
-        sendEmail("mbg@outlook.com", "<p>Hello! 24 hour job</p>", function(){
+        email.sendEmail("mbg@outlook.com", "<p>Hello! 24 hour job</p>", function(){
             done();
         });
     })
