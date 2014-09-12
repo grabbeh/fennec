@@ -1,17 +1,34 @@
 angular.module('app')
 
+    .directive('mgAdminMenu', function(){
+        return {
+            templateUrl: '/partials/admin-menu.html',
+            replace: true,
+            scope: {
+                activePortfolio: '=',
+                swipeEvent: '='
+            }
+        }
+    })
+
     .directive('mgSwipe', function($swipe){
         return {
             link: function(scope, element, attrs){
                 $swipe.bind(element, {
                     'start': function(coords){
+                        console.log("Start")
                         console.log(coords)
+                     
                     },
                     'move': function(coords){
-                        console.log(coords);
+                        //console.log("Move");
+                        //console.log(coords);
+                        element.addClass("active-swipe")
                     },
                     'end': function(coords){
+                        console.log("End");
                         console.log(coords);
+                        element.removeClass("active-swipe")
                     }
                 })
             }

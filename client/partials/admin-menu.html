@@ -1,0 +1,45 @@
+<div class="slide-menu">
+    <div class="modal-close hover" ng-click="swipeEvent=false"><i class="fa fa-times"></i></div>
+    <div class="menu-container">
+        
+    <div mg-bold>
+        Menu
+    </div>
+    <ul ng-click="closeModal()" class="menu-list">
+         <li>
+            <a class="white-link" ng-href="/home">Home</a>
+        </li>
+        <li>
+            <a class="white-link" ng-href="/home/{{activePortfolio}}">Portfolio</a>
+        </li>
+        <li>
+            <a class="white-link" ng-href="/map/{{activePortfolio}}">Map</a>
+        </li>
+        <li>
+            <a class="white-link" ng-href="/quick-search/{{activePortfolio}}">Quick search</a>
+        </li>
+        <li>
+            <a class="white-link" ng-href="/favourites/{{activePortfolio}}">Favourites</a>
+        </li>
+        <li>
+            <a class="white-link" ng-href="/add/trademark/{{activePortfolio}}">Add trademark</a>
+        </li>
+        <li>
+            <a class="white-link" ng-href="/users">Users</a> 
+        </li>
+        <li>
+            <a class="white-link" ng-href="/upload">Import trade marks</a>
+        </li>
+        <li>
+            <span class="hover-underline" ng-click="getJSON()">Download portfolio</span>
+        </li>
+
+        <li>
+            <span class="hover-underline" ng-click="logout()">Logout</span>
+        </li>
+        
+    </ul>
+    </div>
+    
+    
+</div>

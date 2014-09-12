@@ -1,7 +1,5 @@
-<div ng-hide="loadingView" class="fixed-container">
-<!--<div mg-swipe></div>
-<div ng-show="trueSwipe" ng-swipe-right="trueSwipe=true">Hello</div>
-<div ng-show="!trueSwipe" ng-swipe-left="trueSwipe=false">Swiped left</div>-->
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
+<div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
     <div class="row">
         <div class="admin-panel">
             <div class="one-half-container">
