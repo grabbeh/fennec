@@ -232,7 +232,3 @@ app.config(['$momentProvider', function($momentProvider){
       .asyncLoading(true)
       .scriptUrl('/vendor/moment.min.js');
   }]);
-
-app.run(function() {
-    FastClick.attach(document.body);
-  });

@@ -1,13 +1,13 @@
 <div class="slide-menu">
     <div class="modal-close hover" ng-click="swipeEvent=false"><i class="fa fa-times"></i></div>
-    <div class="menu-container">
-        
-    <div mg-bold>
-        Menu
-    </div>
+    <div class="menu-container">   
+    <div mg-bold>Menu</div>
     <ul class="menu-list">
          <li>
             <a class="white-link" ng-href="/home">Home</a>
+        </li>
+         <li>
+            <a class="white-link" ng-href="/dashboard/{{activePortfolio}}">Portfolio</a>
         </li>
         <li>
             <a class="white-link" ng-href="/home/{{activePortfolio}}">Portfolio</a>
@@ -27,19 +27,6 @@
         <li>
             <a class="white-link" ng-href="/users">Users</a> 
         </li>
-        <li>
-            <a class="white-link" ng-href="/upload">Import trade marks</a>
-        </li>
-        <li>
-            <span class="hover-underline" ng-click="getJSON()">Download portfolio</span>
-        </li>
-
-        <li>
-            <span class="hover-underline" ng-click="logout()">Logout</span>
-        </li>
-        
     </ul>
-    </div>
-    
-    
+    </div>  
 </div>
