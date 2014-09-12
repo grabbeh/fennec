@@ -156,9 +156,9 @@ angular.module('app')
                 if (portfolio === null){
                     return;
                 }
-                $.portfolio = portfolio;
+                $.activePortfolio = portfolio;
                 $location.path('/home/' + portfolio);
-            }
+            
 
             $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);

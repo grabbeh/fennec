@@ -2,7 +2,7 @@
 <div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
     <div class="quick-search-container">
         <div class="one-half-container">
-            <div class="portfolio-home-title">{{ activePortfolio}}</div>
+            <div class="portfolio-home-title">{{ activePortfolio }} </div>
         </div>
         <div class="one-half-container last">
             <div>
@@ -23,21 +23,21 @@
             
                 <div style="background: rgb(250, 158, 74)" class="home-block">
                         <i class="portfolio-icons fa fa-star fa-2x"></i>
-                        <a class="fill-div" href="/favourites/{{portfolio}}">Favourites</a>
+                        <a class="fill-div" href="/favourites/{{activePortfolio}}">Favourites</a>
                         
                     </div>
             </div>
               <div class="one-third-container">
                 <div style="background: rgb(167, 112, 204)" class="home-block">
                      <i class="portfolio-icons fa fa-globe fa-2x"></i>
-                    <a class="fill-div" href="/map/{{portfolio}}">Map</a>
+                    <a class="fill-div" href="/map/{{activePortfolio}}">Map</a>
                    
                 </div>
               </div>
               <div class="one-third-container last">
                 <div style="background: rgb(108, 211, 190)" class="home-block">
                     <i class="portfolio-icons fa fa-search fa-2x"></i>
-                    <a class="fill-div" href="/quick-search/{{portfolio}}">Quick search</a>    
+                    <a class="fill-div" href="/quick-search/{{activePortfolio}}">Quick search</a>    
                     </div>
               </div>
         </div>
@@ -49,7 +49,7 @@
              <div class="one-third-container">
                 <div style="background: rgb(213, 96, 96)" class="home-block">
                 <i class="portfolio-icons fa fa-tachometer fa-2x"></i> 
-                    <a class="fill-div" href="/dashboard/{{portfolio}}">Dashboard</a>
+                    <a class="fill-div" href="/dashboard/{{activePortfolio}}">Dashboard</a>
                        
                 </div>
               </div>
@@ -63,7 +63,7 @@
               <div class="one-third-container last">
                 <div style="background: rgb(74, 179, 48)" class="home-block">
                     <i class="portfolio-icons fa fa-terminal fa-2x"></i>
-                    <a class="fill-div" href="/dashboard/{{portfolio}}">API</a>
+                    <a class="fill-div" href="/dashboard/{{activePortfolio}}">API</a>
                     
                 </div>
               </div>
