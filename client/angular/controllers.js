@@ -21,9 +21,17 @@ angular.module('app')
 
         $.createUser = function(){
             userService.addUser($.newUser)
-                .then(function(user){
-                    $.users.push(user);
-                    notificationModal.activate({success: "User added"})
+                .then(function(res){
+                    if (!res.error){
+                        $.users.push(res.user);
+                        notificationModal.activate({success: "User added"})
+
+                    }
+                    else {
+                         notificationModal.activate({error: res.error})
+                    }
+                    
+           
                 })
         }
 

@@ -129,9 +129,7 @@ angular.module('app')
             })
         },
         deleteUser: function(id){
-            console.log(id);
             return $http.delete('/api/users/' + id).then(function(response){
-                console.log()
                 return response.data;
             })
         },
