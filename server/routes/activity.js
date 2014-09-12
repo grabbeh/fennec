@@ -14,6 +14,7 @@ exports.addActivity = function(trademark, changes, type, user, fn){
 
 exports.findActivities = function(req, res){
 	Activity.find({ entity: req.user.entity, portfolio: req.params.portfolio })
+		.sort('created')
 		.lean()
 		.populate('trademark')
 		.exec(function(err, activities){
