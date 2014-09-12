@@ -158,7 +158,7 @@ angular.module('app')
                 }
                 $.activePortfolio = portfolio;
                 $location.path('/home/' + portfolio);
-            
+            }
 
             $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
@@ -166,12 +166,6 @@ angular.module('app')
             
             $.goToCountry = function(country){
                 $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
-            }
-            
-            $.logout = function(){
-                $rootScope.user = false;
-                delete $window.sessionStorage.token;
-                $location.path('/');
             }
 
              $.showModal = function(trademark){
