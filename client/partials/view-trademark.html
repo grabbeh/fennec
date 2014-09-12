@@ -1,4 +1,5 @@
-<div ng-hide="loadingView"  class="fixed-container">
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
+<div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
     <div class="row"> 
         <div class="one-third-container">
              <div edit-trademark="openEditTrademarkModal" delete-trademark="deleteTrademark" mg-trademark-container trademark='trademark' user='user'></div>

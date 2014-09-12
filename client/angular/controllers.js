@@ -30,13 +30,12 @@ angular.module('app')
         $.canSubmitCreateUser = function(){
                 return $.createUserForm.$dirty && $.createUserForm.$valid;
         }
-
-
-
     }])
 
-    .controller('favouritesCtrl', ['$scope', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', function($scope, $rootScope, favourites, user, trademarkService, editTrademarkModal){
+    .controller('favouritesCtrl', ['$scope', '$routeParams', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', 
+        function($scope, $routeParams, $rootScope, favourites, user, trademarkService, editTrademarkModal){
         var $ = $scope;
+        $.activePortfolio = $routeParams.portfolio;
         $.favourites = favourites;
         if (favourites.length === 0){
              $.favourites = false;
@@ -62,6 +61,7 @@ angular.module('app')
 	
  	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkService){
  	    var $ = $scope;
+        $.activePortfolio = $routeParams.portfolio;
  	    $http.get('/api/countryData')
             .success(function(countries){
                 $.countrydata =  $filter('orderBy')(countries, 'name');
@@ -147,8 +147,8 @@ angular.module('app')
     .controller('portfolioHomeCtrl', ['$scope', 'trademarkModal', 'user', '$window', '$rootScope', '$filter','$routeParams', 'countries', 'marks', '$location', 
         function($scope, trademarkModal, user, $window, $rootScope, $filter, $routeParams, countries, marks, $location){
            var $ = $scope;
+           $.activePortfolio = $routeParams.portfolio;
            $.portfolios = user.portfolios;
-           $.portfolio = $routeParams.portfolio;
            $.countries = $filter('orderBy')(countries, 'name');
            $.marks = marks;
 
@@ -236,18 +236,6 @@ angular.module('app')
             $.chart = barChartData;
             $.options = barChartOptions;
             $.activities = activities;
-
-         $.toggleMenuModal = function(){
-            trademarkModal.deactivate();
-        		if (!$rootScope.menuModal){
-        			$rootScope.menuModal = true;
-        			menuModal.activate({ activePortfolio: $.activePortfolio});
-        		}
-        		else {
-        			$rootScope.menuModal = false;
-        			menuModal.deactivate();	
-        		}
-            };
 
             $.countries = $filter('orderBy')(countries, 'name'); 
 
@@ -355,7 +343,8 @@ angular.module('app')
 	['$scope', '$rootScope', '$routeParams', 'trademark', 'trademarkService', 'user', 'editTrademarkModal', 
 	function($scope, $rootScope, $routeParams, trademark, trademarkServce, user, editTrademarkModal){
 	        var $ = $scope;
-	        $.trademark = trademark;
+	        $.activePortfolio = $routeParams.portfolio;
+            $.trademark = trademark;
 	        $.user = user;
 	        $.openEditTrademarkModal = function(trademark){
 	                editTrademarkModal.activate({trademark: trademark});
@@ -374,6 +363,7 @@ angular.module('app')
 		['$scope', '$rootScope', '$location', 'user', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 'editGroupModal', 'uploadImageModal',
 		function($scope, $rootScope, $location, user, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal, editGroupModal, uploadImageModal){
 	        var $ = $scope;
+            $.activePortfolio = $routeParams.portfolio;
 	        geoJsonService.getWorldGroup($routeParams.portfolio, $location.search().group).then(function(data){
 	            $.geojson = data;
 	        });
@@ -453,8 +443,8 @@ angular.module('app')
 		['$scope', '$rootScope', '$location', 'user', '$filter', '$http', '$routeParams', 'geoJsonService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 
 		function($scope, $rootScope, $location, user, $filter, $http, $routeParams, geoJsonService, trademarkService, editTrademarkModal, trademarkModal){
 	        var $ = $scope;
-	        $.portfolio = $routeParams.portfolio;
-        
+            $.activePortfolio = $routeParams.portfolio;
+
             trademarkService.getCountry($routeParams.portfolio, $location.search().country).then(function(trademarks){
                 $.trademarks = trademarks;
                 $.trademark = trademarks[0];
@@ -514,6 +504,7 @@ angular.module('app')
         ['$scope', '$rootScope',  '$routeParams', '$location', 'geoJsonService', 'editTrademarkModal', 'trademarkModal', 
          function($scope, $rootScope, $routeParams, $location, geoJsonService, editTrademarkModal, trademarkModal){
         var $ = $scope;
+        $.activePortfolio = $routeParams.portfolio;
         $.activeYear = $routeParams.year;
         geoJsonService.getExpiriesForYear($routeParams.portfolio, $routeParams.year).then(function(response){
               $.geojson = response.data;
@@ -597,6 +588,7 @@ angular.module('app')
     .controller('addCtrl', ['$scope', '$http', 'trademarkService', '$routeParams',
         function($scope, $http, trademarkService, $routeParams){
             var $ = $scope;
+            $.activePortfolio = $routeParams.portfolio;
             $http.get('/api/countrydata')
                 .success(function(data){
                     $.countrydata = data;
@@ -660,7 +652,7 @@ angular.module('app')
     .controller("mapCtrl", ['$scope','countryData','user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
         function($scope, countryData, user, $routeParams,  $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
         var $ = $scope;
-	    $.portfolio = $routeParams.portfolio;
+        $.activePortfolio = $routeParams.portfolio;
         $.countries = $filter('orderBy')(countryData, 'name');
         $.geojson = world;
         $.marks = $filter('groupByMarks')(trademarks);
