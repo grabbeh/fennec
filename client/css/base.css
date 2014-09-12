@@ -307,6 +307,19 @@ height: auto !important;
 	float: right;
 	margin-top: 16px;
 	color: grey;
+     margin-right: 10px;
+}
+
+.comment-edit-button {
+	float: right;
+	margin-top: 16px;
+   
+	color: grey;
+}
+
+.comment-edit-button:hover {
+    color: black;
+    cursor: pointer;
 }
 
 .comment-delete-button:hover {
