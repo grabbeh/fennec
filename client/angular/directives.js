@@ -61,14 +61,37 @@ angular.module('app')
                     })
                 }
                 
+                $.startEdit = function(comment, index){
+                    if (comment.author != $.user._id){
+                        notificationModal.activate({ error: "Only author can delete"})
+                        return;
+                    }
+                    $.comment = comment;
+                    $.index = index;
+                    $.text = comment.text;
+                    $.showEditButton = true;
+                    
+                }
+                
+                $.editComment = function(text){
+                    $.trademark.comments[$.index].text = text;
+                    $.trademark.comments[$.index].updated = new Date();
+                    trademarkService.editMark($.trademark).then(function(res){
+                        notificationModal.activate({ success: "Comment edited"});
+                        $.showEditButton = false;
+                        $.text = "";
+					});;
+                }
+                
                 $.deleteComment = function(comment, index){
                     if (comment.author != $.user._id){
                         notificationModal.activate({ error: "Only author can delete"})
-                        
                         return;
                     }
                     $.trademark.comments.splice(index, 1);
                     trademarkService.editMark($.trademark).then(function(res){
+                        notificationModal.activate({ success: "Comment deleted" });
+                        
                     })
                 } 
                 
