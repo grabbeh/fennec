@@ -300,17 +300,17 @@ exports.filterDiff = function(o){
 		var changed = o[k].changed;
 		if (changed != 'equal'){
 			if (o[k]['value']){
-				for (var x in o[k]['value']){
-					var altered = o[k]['value'][x].changed;
+				var subO = o[k]['value'];
+				for (var x in subO){
+					var altered = subO[x].changed;
 					if (altered != 'equal'){
 						var amendment = {};
 						amendment.attr = k;
 						if (altered === 'removed'){
-							amendment.removed = o[k]['value'][x].value.text;
+							amendment.removed = subO[x].value.text;
 						}
 						if (altered === 'added'){
-							console.log(o[k]['value'][x]);
-							amendment.added = o[k]['value'][x].value.text;
+							amendment.added = subO[x].value.text;
 						}
 						newO.push(amendment);
 					}

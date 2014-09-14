@@ -7,8 +7,7 @@ exports.addNotification = function(tm, incident, fn){
 		trademark: tm._id,
 		portfolio: tm.portfolio,
 		entity: tm.entity,
-		incident: incident,
-		
+		incident: incident
 	}).save(function(err, n){
 		fn(null, true);
 	});
