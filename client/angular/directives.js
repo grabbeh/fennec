@@ -63,7 +63,7 @@ angular.module('app')
                 
                 $.startEdit = function(comment, index){
                     if (comment.author != $.user._id){
-                        notificationModal.activate({ error: "Only author can delete"})
+                        notificationModal.activate({ error: "Only author can edit"})
                         return;
                     }
                     $.comment = comment;
