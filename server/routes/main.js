@@ -18,7 +18,7 @@ exports.downloadTrademarks = function(req, res){
             res.download(file);
             });
         }); 
-    }) 
+    });
 }
 
 exports.searchTrademarks = function(req, res){
@@ -45,7 +45,6 @@ function queryTrademarks(entity, portfolio, country, group, status, cb){
 }
 
 exports.search = function(req, res){
-    
     var query = {
             filtered: { 
               query: { query_string: {query:req.body.query}}, 
@@ -54,12 +53,8 @@ exports.search = function(req, res){
         }
 
     Trademark.search( { query: query }, { hydrate: true }, function(err, results){
-        if (err){
-    		res.status(401).send(err);
-    	}
-    	else {
-    	     res.json(results.hits);	
-    	}
+        if (err){ res.status(401).send(err);}
+    	res.json(results.hits);	
     });
 }
 

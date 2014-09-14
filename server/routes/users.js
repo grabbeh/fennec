@@ -72,11 +72,12 @@ exports.logIn = function(req, res){
 }
     
 exports.addUser = function(req, res) {
-  console.log(req.body);
-    req.body.entity = req.user.entity;
-    entities.getEntity(req.user.entity, function(err, entity){
+    var id = req.body.email.toLowerCase();
+    var entity = req.user.entity;
+    req.body.entity = entity;
+    entities.getEntity(entity, function(err, entity){
         req.body.portfolios = entity.portfolios;
-        User.findOne({_id: req.body.email.toLowerCase()}, function(err, user) {
+        User.findOne({_id: id, entity: entity }, function(err, user) {
         if (user) { res.status(401).send({error: 'User already exists'}); return;}
         hashPasswordAndAddUser(req.body, function(err, user){
             res.status(200).json({user: user});

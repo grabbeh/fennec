@@ -238,6 +238,7 @@ angular.module('app')
             $.chart = barChartData;
             $.options = barChartOptions;
             $.activities = activities;
+            console.log(activities);
 
             $.countries = $filter('orderBy')(countries, 'name'); 
 

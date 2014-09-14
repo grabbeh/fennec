@@ -1,4 +1,5 @@
 var Notification = require('../models/notificationSchema')
+,   helper = require('./helper')
 , 	async = require('async');
 
 exports.addNotification = function(tm, incident, fn){
@@ -30,7 +31,7 @@ function compare(notifications, user, fn){
 		}
 		else {
 			if (notification.readBy.indexOf(user) === -1){
-			unreadNotifications.push(notification);
+				unreadNotifications.push(notification);
 			}
 		}
 	})

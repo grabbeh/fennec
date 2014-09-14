@@ -18,14 +18,12 @@ var moment = require("moment")
 exports.setUpAgenda = function(db){
     agenda
       .database(db)
-      .processEvery('60 minutes');
     
     agenda.define('check for alerts', function(job, done) {
           async.parallel([
                 async.apply(user.getAllAdmins),
                 async.apply(helper.getAllTrademarks)
             ], function(err, results){
-              if (err) { console.log(err);}
                 executeJobs(results[0], results[1], function(){
                     done();
                 });
@@ -34,19 +32,20 @@ exports.setUpAgenda = function(db){
     
 
     agenda.define('email me', function(job, done){
-        email.sendEmail("mbg@outlook.com", "<p>Hello! 24 hour job</p>", function(){
+        email.sendEmail("mbg@outlook.com", 'Test email', "<p>Hello! 24 hour job</p>", function(){
             done();
         });
     })
+
 /*
     agenda.define('test', function(job, done){
         testJob(admins, trademarks, function(){
             console.log("job completed");
             done();
         });
-    })*/
-
-    //agenda.now('test');
+    })
+*/
+    
     agenda.every('1440 minutes', ['check for alerts', 'email me']);
     agenda.start();
 }
@@ -70,15 +69,18 @@ function executeJobs(admins, trademarks, fn){
 
 function testJob(admins, trademarks, fn) {
     async.forEach(admins, function (admin, callback) {
+
         async.forEach(admin.alertFrequency, function (f, callback) {
             async.forEach(trademarks, function (tm, callback) {
                 var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
                     revised = expiry.subtract(f.type, f.number),
                     now = moment();
-                    console.log(revised.diff(now, 'days'))
-                    console.log("Trademark loop")
+                    console.log(revised.diff(now, 'days'));
+
                 if (revised.diff(now, 'days') === 0) {
-                        console.log("Expiry alert")
+                        console.log("Expiry alert");
+                        callback();
+                        /*
                         async.auto({
                             sendEmail: function(cb, results){
                                 var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
@@ -94,7 +96,7 @@ function testJob(admins, trademarks, fn) {
                            }, function(err, results){
                              if (err) { console.log(err) }
 
-                        })  
+                        })  */
                     }
             }, function (err) {
                 console.log("Trademark loop completed")
@@ -142,10 +144,6 @@ var admins = [{
     {
       number: 1,
       type: "days"
-    },
-    {
-      number: 2,
-      type: 'days'
     }
   ],
   alertOptions: [
@@ -173,7 +171,6 @@ var admins = [{
   username: "MICHAEL.GOULBOURN@GUINNESSWORLDRECORDS.COM"
 }];
 
-
 var trademarks = [
     {
   entity: "ACME INC",
@@ -191,16 +188,13 @@ var trademarks = [
   },
   alpha3: "ARG",
   filingDate: {
-    
     stringDate: "1/7/2011"
   },
   registrationDate: {
-   
     stringDate: "3/22/2013"
   },
   expiryDate: {
-   
-    stringDate: "9/09/2023"
+    stringDate: "9/15/2014"
   },
   applicationNumber: "3060238",
   registrationNumber: "2559727",
@@ -210,7 +204,7 @@ var trademarks = [
     16
   ],
   __v: 0
-},
+}/*,
 {
   __v: 0,
   _id: "53c8e75f730766d56dd6abf4",
@@ -233,7 +227,7 @@ var trademarks = [
   entity: "ACME INC",
   expiryDate: {
  
-    stringDate: "9/10/2014"
+    stringDate: "9/16/2014"
   },
   filingDate: {
 
@@ -248,6 +242,6 @@ var trademarks = [
   registrationNumber: "2023542",
   status: "Registered",
 
-}
+}*/
 
 ];

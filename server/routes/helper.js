@@ -294,23 +294,35 @@ exports.findUser = function(id, fn){
         })	
 }
 
-exports.filterDiff = function(diff){
+exports.filterDiff = function(o){
 	var newO = [];
-	for (var key in diff){
-		var changed = diff[key].changed;
+	for (var k in o){
+		var changed = o[k].changed;
 		if (changed != 'equal'){
-			if (diff[key]['value']){
-				for (var x in diff[key]['value']){
-					diff[key]['value'][x]['attr'] = key;
-					newO.push(diff[key]['value'][x])
+			if (o[k]['value']){
+				for (var x in o[k]['value']){
+					var altered = o[k]['value'][x].changed;
+					if (altered != 'equal'){
+						var amendment = {};
+						amendment.attr = k;
+						if (altered === 'removed'){
+							amendment.removed = o[k]['value'][x].value.text;
+						}
+						if (altered === 'added'){
+							console.log(o[k]['value'][x]);
+							amendment.added = o[k]['value'][x].value.text;
+						}
+						newO.push(amendment);
+					}
 				}
 			}
 			else {
-				diff[key]['attr'] = key;
-				newO.push(diff[key])
+				o[k]['attr'] = k;
+				newO.push(o[k]);
 			}
 			
 		}
 	}
+	console.log(newO);
 	return newO;
 }

@@ -10,7 +10,7 @@
         </li>
     </ul>
 
-    <div ng-show="incompleteMarks" style="float:right; font-size: 16px">
+    <div ng-show="incompleteMarks" class="paginator-holder">
         <div class="pagination-prev hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="prevPage(pageNumber)">Prev</div>
         <div class="pagination-first hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="firstPage()">1</div>
         <div class="pagination-number hover-cursor"> {{ pageNumber }} </div>

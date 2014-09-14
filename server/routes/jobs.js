@@ -1,13 +1,13 @@
 
 var email = require('./email')
-    moment = require('moment'),
-	html = require('./html'),
-    fs = require('fs'),
-    path = require('path'),
-    helper = require('./helper'),
-    notification = require('./notification')
-    async = require('async'),
-    user = require('./users')
+    , moment = require('moment')
+	, html = require('./html')
+    , fs = require('fs')
+    , path = require('path')
+    , helper = require('./helper')
+    , notification = require('./notification')
+    , async = require('async')
+    , user = require('./users')
 
 module.exports = {
     sendExpiryAlerts: function(admins, trademarks, fn) {
@@ -29,8 +29,7 @@ module.exports = {
                                 notification.addNotification(tm, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
                              }
                            }, function(err, results){
-                             if (err) { console.log(err) }
-
+                                if (err) { console.log(err) }
                         })  
                     }
                     callback();
@@ -55,7 +54,6 @@ module.exports = {
                     var fileLocation = path.resolve(__dirname, '../email-templates/expired-trademark.html')
                     html.returnHtml(tm, '../email-templates/expired-trademark.html', function(err, html){
                          email.sendEmail(admin.email, "Trade mark portfolio alert", html, function(err, success){
-                            //callback();
                        })
                     })
                 }
@@ -77,10 +75,8 @@ module.exports = {
                         trademark.event = event;
                         var fileLocation = path.resolve(__dirname, '../email-templates/updated-trademark.html');
                         html.returnHtml(trademark, fileLocation, function(err, html){
-                            
                             email.sendEmail(admin.email, "Trade mark portfolio alert", html, function () {
-                                //callback();
-                             })
+                            })
                         })
                     }
                     callback();

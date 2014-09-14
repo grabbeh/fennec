@@ -3,7 +3,7 @@
         <div class="alert-title">Existing expiry reminders</div>
         <ul class="reminder-list">
             <li class="tm-list-li" ng-repeat="alert in user.alertFrequency">
-                <div> <span>{{ alert.number }} {{ alert.type }} from expiry </span><span class="remove-alert" ng-click="removeAlert($index)">X</span> 
+                <div> <span>{{ alert.number }} {{ alert.type }} from expiry </span><span class="remove-alert" ng-click="removeAlert($index)"><i class="fa fa-times"></i></span> 
                 </div>
             </li>
         </ul>

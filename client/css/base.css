@@ -20,6 +20,12 @@ body {
     font-family: Arial;
 }
 
+.paginator-holder {
+    float: right; 
+    font-size: 16px;
+}
+
+
 .slide-menu {
   position: absolute;
   z-index: 2000;
