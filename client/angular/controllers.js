@@ -238,8 +238,6 @@ angular.module('app')
             $.chart = barChartData;
             $.options = barChartOptions;
             $.activities = activities;
-            console.log(activities);
-
             $.countries = $filter('orderBy')(countries, 'name'); 
 
             $.$on('country.click', function(e, l){
@@ -326,10 +324,10 @@ angular.module('app')
                 $.response = content.err;
             }
             else {
-             $.response = content.msg; 
-             $timeout(function(){
-                 $location.path('/home')
-             }, 1000)
+                $.response = content.msg; 
+                $timeout(function(){
+                     $location.path('/home')
+                }, 1000)
             }
          }
         
@@ -570,7 +568,7 @@ angular.module('app')
             }
     }])
 
-     .controller('passwordResetCtrl', ['$scope', '$http', function($scope, $http){
+     .controller('passwordResetCtrl', ['$scope', 'notificationModal', '$http', function($scope, notificationModal, $http){
         var $ = $scope;
 
         $.passwordResetFormValid = function(){
@@ -579,8 +577,8 @@ angular.module('app')
 
         $.requestPasswordReset = function(){
             $http.post('/server/requestPasswordReset', { email: $.email })
-                .success(function(){
-                    $.message = "If the above email address is in our database, you have been sent an email allowing you to change your password";
+                .success(function(res){
+                    notificationModal.activate({success: res.success})
                 })
             }
     }])

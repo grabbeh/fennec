@@ -1,6 +1,6 @@
 
-var admin = require('../config/sendgrid')
-, jwt = require('./jwt')
+var jwt = require('./jwt')
+, async = require('async')
 , User = require('../models/userSchema')
 , entities = require('./entities')
 , passwordReset = require('../models/passwordResetSchema')
@@ -13,10 +13,9 @@ var admin = require('../config/sendgrid')
 , bcrypt = require('bcrypt');
 
 exports.deleteUser = function(req, res){
-  User.findOneAndRemove({ _id: req.params.id }, function(err, user){
-      if (err) { console.log(err)}
-      res.json("User removed");
-  })
+    User.findOneAndRemove({ _id: req.params.id }, function(err, user){
+        res.json("User removed");
+    })
 }
 
 exports.allUsers = function(req, res){
@@ -27,14 +26,15 @@ exports.allUsers = function(req, res){
 
 exports.getAllAdmins = function(fn){
     User.find({ isAdmin: true }).lean().exec(function(err, admins){
-        if (err) { fn(err) };
         fn(null, admins);
     });
 }
 
 exports.isUser = function(req, res){
-      if (req.user){ res.status(200).send()}
-      else { res.status(401).send({message: "Must be signed in"}) }
+    if (req.user)
+        res.status(200).send()
+    else
+        res.status(401).send({message: "Must be signed in"}) 
     }
 
 exports.isAdmin = function(req, res){
@@ -48,9 +48,8 @@ exports.getUser = function(req, res){
             res.json(user);
         })
     }
-    else {
+    else 
         res.status(401).send();
-    }
 }
 
 exports.updateUser = function(req, res){
@@ -87,16 +86,16 @@ exports.addUser = function(req, res) {
   }
 
 exports.updatePassword = function(req, res){
-     var id = req.user._id;
-     var old = req.body.oldPW;
-     var nnew = req.body.newPW;
+     var id = req.user._id.toLowerCase()
+     , old = req.body.oldPW
+     , nnew = req.body.newPW;
      authenticate(id, old, function(err, user){
-          if (err || !user) { 
-              res.status(401).send({ message: "Current password is wrong"})}
+          if (err || !user) 
+              res.status(401).send({ message: "Current password is wrong"})
           else {
               bcrypt.compare(nnew, user.hash, function(err, response){
-                     if (response){ res.status(401).send(
-                        { message: "New password and old password can't be the same"}) } 
+                     if (response) 
+                        res.status(401).send({ message: "New password and old password can't be the same"}) 
                      else {
                         hashPasswordAndUpdateUser(id, nnew, function(err, user){
                             res.json({message: "Password updated"})
@@ -107,21 +106,33 @@ exports.updatePassword = function(req, res){
      })
 }
 
+function newPasswordReset(id, fn){
+    new passwordReset({
+        email: id
+    }).save(function(err, reset){
+        fn(null, reset);
+    });
+}
+
 exports.requestPasswordReset = function(req, res){
-    User.findOne({ _id: req.body.email }, function(err, user){
-          if (user){
-              new passwordReset({
-                  email: user._id 
-              }).save(function(err, reset){
-                  var fileLocation = path.resolve(__dirname, '../email-templates/password-reset.html');
-                  html.returnHtml(reset, fileLocation, function(err, html){
-                       email.sendEmail(reset.email, "Password reset", html, function(err, json){
-                            res.status(200).send( { message: "Password reset email sent"})
-                       })
-                  })
-              })
-          }
-     })
+    var id = req.body.email.toLowerCase();
+    async.auto({
+        existingUser: function(cb, results){
+            User.findOne({_id: id}, cb)
+        },
+        passwordReset: function(cb, results){
+            newPasswordReset(id, cb);
+        },
+        html: ['passwordReset', function(cb, results){
+            var fileLocation = path.resolve(__dirname, '../email-templates/password-reset.html');
+            html.returnHtml(results.passwordReset, fileLocation, cb);
+        }],
+        sendEmail: ['html', function(cb, results){
+            email.sendEmail(id, "Password reset", results.html, cb)
+        }]
+    }, function(err, results){
+        res.status(200).send({ success: "If the provided email is in our database, you will have been sent an email allowing you to reset your password"})
+    })
 }
 
 exports.resetPassword = function(req, res){
@@ -145,22 +156,32 @@ exports.addPortfolioToUser = function(id, portfolio, fn){
 }
 
 exports.createAccount = function(req, res) {
-    entities.saveEntity(req.body.entity, function(err, entity){
-        if (err) { res.status(401).send({ message: 'Entity name already taken'}); return;}
-        User.findOne({username: req.body.username.toUpperCase()}, function(err, user) {
-            if (user) { res.status(401).send({message: 'Apologies - username already taken'}); return;}
-            hashPasswordAndAddUser(req.body, function(err, user){
-                jwt.createToken(user, function(err, token){
-                      res.status(200).json(token);  
-                   })
-                });
-           })
-       })
-   }
+    var entity = req.body.entity
+    ,   id = req.body.username.toLowerCase();
+    async.auto({
+        addEntity: function(cb, results){
+            entities.saveEntity(entity, cb)
+        },
+        existingUser: function(cb, results){
+            User.findOne({_id: id}, cb);
+        },
+        user: function(cb, results){
+            hashPasswordAndAddUser(req.body, cb);
+        },
+        token: ['hashPassword', function(cb, results){
+            jwt.createToken(results.user, cb)
+        }]
+    }, function(err, results){
+        if (err) 
+            res.status(401).send({ message: "Entity or username already taken"});
+        else      
+            res.status(200).json(results.token);  
+    });
+}
 
-function authenticate(name, pass, fn) {
-   User.findOne({_id: name.toLowerCase()}, function(err, user) {
-       if (err || !user) {  return fn(err)}; 
+function authenticate(id, pass, fn) {
+   User.findOne({_id: id }, function(err, user) {
+       if (err || !user) { return fn(err)}; 
        bcrypt.compare(pass, user.hash, function(err, res){
          if (err || !res) { return fn(err) }
          else { return fn(null, user); }
@@ -200,8 +221,7 @@ function saveUser(obj, hash, fn){
 
 function updatePassword(id , hash, fn){
     User.findOneAndUpdate({ _id: id }, { hash: hash }, function(err, user){
-         if (err) { fn(err) }
-         fn(null, user)
+        fn(null, user)
     })
   }
 

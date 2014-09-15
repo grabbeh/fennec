@@ -9,6 +9,17 @@
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
 
+/* index.html */
+
+.about-link {
+    float: left;
+    padding-top: 8px;
+    font-size: 16px;
+    color: white;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
 .wrapper {
 	min-height: 100%;
 	height: auto !important; 

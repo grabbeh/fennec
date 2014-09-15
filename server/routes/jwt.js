@@ -11,7 +11,7 @@ exports.createToken = function(user, fn){
 }
 
 exports.verifyToken = function(token, fn){
-	jwt.verify(token, jwtSecret.secret, {}, function(err, payload){
+	jwt.verify(token, secret, {}, function(err, payload){
         return fn(null, payload);  
    });
 }

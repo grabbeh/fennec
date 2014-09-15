@@ -79,7 +79,6 @@ module.exports = function(app, x){
 	app.get('/api/activities/:portfolio', activity.findActivities);
 
 	// Users
-	
 	app.post('/server/login', user.logIn);
 
 	// Routes for querying logged in user

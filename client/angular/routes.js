@@ -9,10 +9,12 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         when('/terms', {
             templateUrl: '/partials/terms.html'
         }).
+        when('/about', {
+            templateUrl: '/partials/about.html'
+        }).
         when('/users', {
             templateUrl: '/partials/users.html',
             controller: 'usersCtrl',
-            
             resolve: {
                 admin: function(userService){
                     return userService.isAdmin();
