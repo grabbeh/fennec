@@ -10,12 +10,12 @@
             <div title="{{comment.date}}" class="comment-details">{{ comment.author }} on {{ comment.date | date: 'longDate' }}</div>
             <div class="comment-details" ng-show="comment.updated">updated {{ comment.updated | date: 'longDate' }}</div>
         </div>
-            <div class="comment-edit-button">
+            <div class="opaque margin-left-ten edit-button">
                 <div ng-click="startEdit(comment, $index)">
                     <i class="fa fa-pencil fa-lg"></i>
                 </div>
             </div>
-            <div class="comment-delete-button">
+            <div class="opaque delete-button">
                 <div ng-click="deleteComment(comment, $index)">
                     <i class="fa fa-times fa-lg"></i>
                 </div>

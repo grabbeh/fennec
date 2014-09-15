@@ -1,12 +1,12 @@
 var jwt = require('jsonwebtoken')
-, jwtSecret = require('../config/jwt-secret')
+, secret = require('../config/jwt-secret')
 
 exports.createToken = function(user, fn){
     var payload = {};
    payload._id = user._id;
    payload.entity = user.entity;
    payload.isAdmin = user.isAdmin;
-    var token = jwt.sign(payload, jwtSecret.secret);
+    var token = jwt.sign(payload, secret);
     return fn(null, token);
 }
 

@@ -34,10 +34,13 @@
 
                <div>
                     <div ng-show="trademarks[0].imageUrl"><img class="group-logo-holder" ng-src="{{ trademarks[0].imageUrl}}"></div>
-                    <div style="float: right">
-                        <div class="group-btn edit-group-btn hover-underline" ng-click="showEditGroupModal()">Edit group</div>
-                        <div mg-clear></div>
-                        <div class="group-btn upload-image-btn hover-underline" ng-click="showUploadImageModal()">Upload image</div>
+                    <div class="float-right margin-top">
+                        
+                        <span title="Edit group" ng-click="showEditGroupModal()"><i class="opaque fa fa-pencil fa-2x"></i>
+                        </span>
+                        <span>
+                        <span class="margin-left" title="Upload image" ng-click="showUploadImageModal()"><i class="opaque fa fa-camera-retro fa-2x"></i>
+                        </span>
                     </div>
                 </div>
 
@@ -48,7 +51,7 @@
       <div mg-map id="map" geojson="geojson"></div>
       
       <div ng-show="registered || pending || published || nocontent" class="trademark-container">
-        <div class="country-holder f32"> <a href="/admin/country/{{alpha3}}">{{ country }} </a> <div class="flag" ng-class="alpha2"></div></div>
+        <div class="country-holder f32"> <a href="/admin/country/{{alpha3}}">{{ country }} </a> </div>
         <span ng-show="nocontent">No trade marks for this country</span>
          <div class="one-third-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
          <div class="one-third-container" mg-published-trademark-list published="published" show-modal="showModal"></div>

@@ -7,7 +7,6 @@ var helper = require('./helper')
 exports.favourites = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    
     async.parallel([ 
     	async.apply(helper.findUser, req.user._id),
     	async.apply(helper.getTrademarks, entity, portfolio)
@@ -46,33 +45,33 @@ exports.groupOfMarks = function(req, res){
 // if country is provided in query, delimit list of marks by country
 
 exports.listOfMarks = function(req, res){
-   var entity = req.user.entity;
-   var portfolio = req.params.portfolio.replace(/%20/g, " ");
+    var entity = req.user.entity;
+    var portfolio = req.params.portfolio.replace(/%20/g, " ");
    
-   if (req.query && req.query.country){
-    var country = req.query.country;
-   	helper.checkIfEUCountry(country, function(err, bool){
-        if (bool){
-             var EU =  "European Union";
-        }
-        Trademark.find()
-        	.and([{ entity: entity }, { portfolio: portfolio }])
-        	.or([{ 'country.alpha3': country}, { 'country.name': EU }])
-        	.lean()
-        	.exec(function(err, trademarks){
-        		createList(trademarks, function(err, list){
-        			res.json(list);
-        		})
-   		})
-	 })	
+    if (req.query && req.query.country){
+        var country = req.query.country;
+       	helper.checkIfEUCountry(country, function(err, bool){
+            if (bool){
+                 var EU =  "European Union";
+            }
+            Trademark.find()
+            	.and([{ entity: entity }, { portfolio: portfolio }])
+            	.or([{ 'country.alpha3': country}, { 'country.name': EU }])
+            	.lean()
+            	.exec(function(err, trademarks){
+            		createList(trademarks, function(err, list){
+            			res.json(list);
+            		})
+       		})
+    	})	
    }
    else {
-   	helper.getTrademarks(entity, portfolio, function(err, trademarks){
-          createList(trademarks, function(err, list){
-             res.json(list);  
-	   })
-     })	
-   }
+   	    helper.getTrademarks(entity, portfolio, function(err, trademarks){
+              createList(trademarks, function(err, list){
+                 res.json(list);  
+    	   })
+        })	
+    }
  }
 
 function createList(trademarks, fn){

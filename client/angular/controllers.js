@@ -518,8 +518,6 @@ angular.module('app')
             $.nocontent = true;
             $.$apply(function(){
                 $.country = l.target.feature.properties.name;
-                $.countrycode = l.target.feature.alpha2.toLowerCase();
-               
                 var tms = l.target.feature.properties.trademarks;
                 if (tms){
                     $.nocontent = false;
@@ -674,9 +672,7 @@ angular.module('app')
             $.published = false;
             $.nocontent = true;
             $.$apply(function(){
-                $.country = l.target.feature.properties.name;
-                $.countrycode = l.target.feature.alpha2.toLowerCase();
-               
+                $.country = l.target.feature.properties.name;               
                 var tms = l.target.feature.properties.trademarks;
                 if (tms){
                     $.nocontent = false;
@@ -706,8 +702,6 @@ angular.module('app')
 
                     var tms = feature.properties.trademarks;
                     $.country = feature.properties.name;
-                    $.countrycode = feature.alpha2.toLowerCase();
-
                     if (tms){
                         $.nocontent = false;
                         if (tms.Registered)

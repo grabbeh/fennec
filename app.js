@@ -1,23 +1,19 @@
 var express = require('express')
-, bodyParser = require('body-parser')
-, cookieParser = require('cookie-parser')
-, serveStatic = require('serve-static')
-, mongoose = require('mongoose')
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
+  , serveStatic = require('serve-static')
+  , mongoose = require('mongoose')
+  , expressJwt = require('express-jwt')
+  , secret = require('./server/config/jwt-secret')
+  , https = require('https')
+  , http = require('http')
+  , fs = require('fs')
+  , multipart = require('connect-multiparty')
+  , db = require('./server/config/paid-db')
+  , job = require('./server/routes/agenda')
+  , app = express();
 
-, expressJwt = require('express-jwt')
-, jwtSecret = require('./server/config/jwt-secret')
-
-, https = require('https')
-, http = require('http')
-, fs = require('fs')
-
-, multipart = require('connect-multiparty')
-
-, db = require('./server/config/paid-db')
-, job = require('./server/routes/agenda')
-, app = express();
-
-app.use('/api', expressJwt({secret: jwtSecret.secret }));
+app.use('/api', expressJwt({secret: secret }));
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
@@ -30,20 +26,13 @@ app.use(bodyParser());
 app.use(multipart());
 app.use(serveStatic(__dirname + '/client'));
 
-var database = 'mongodb://' 
-  + db.user + ':' 
-  + db.pass + '@' 
-  + db.host + ':' 
-  + db.port + '/' 
-  + db.name
-
-mongoose.connect(database, function(err){
+mongoose.connect(db, function(err){
     if (err) { console.log(err); throw new (err.stack);}
   });
 
 // Agenda
 
-job.setUpAgenda(database);
+job.setUpAgenda(db);
 
 // middleware
 

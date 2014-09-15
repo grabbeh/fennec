@@ -59,6 +59,10 @@ body {
     margin-left: 20px;
 }
 
+.margin-left-ten {
+    margin-left: 10px   ;
+}
+
 .standard-container {
 	background: white;
 	padding: 20px;
@@ -100,28 +104,6 @@ height: auto !important;
 
 .margin-bottom {
 	margin-bottom: 20px;
-}
-
-.user-delete-button {
-	float: right;
-	margin-top: 16px;
-	color: rgb(247, 98, 98);
-}
-
-.user-delete-button:hover {
- 	color: rgb(236, 43, 43);
- 	cursor: pointer;
-}
-
-.user-edit-button:hover {
-	color: rgb(49, 172, 78);
-	cursor: pointer;
-}
-.user-edit-button {
-	float: right;
-	margin-right: 10px;
-	margin-top: 16px;
-	color: rgb(91, 201, 113);
 }
 
 .user-list {
@@ -225,6 +207,11 @@ height: auto !important;
 .hover-black:hover {
     color: black;
     cursor: pointer;
+}
+
+.hover-remove-opaque:hover {
+    cursor: pointer;
+    opacity: 1;
 }
 
 .hover-black a:hover {
@@ -334,30 +321,6 @@ height: auto !important;
 	float: left;
 }
 
-.comment-delete-button {
-	float: right;
-	margin-top: 16px;
-	color: grey;
-     margin-right: 10px;
-}
-
-.comment-edit-button {
-	float: right;
-	margin-top: 16px;
-   
-	color: grey;
-}
-
-.comment-edit-button:hover {
-    color: black;
-    cursor: pointer;
-}
-
-.comment-delete-button:hover {
-    color: black;
-    cursor: pointer;
-}
-
 .comment-date-filter {
     float: right;
 }
@@ -369,12 +332,12 @@ height: auto !important;
 
 .comment-text-area {
     margin-top: 10px;
-width: 98%;
-max-width: 98%;
-height: 150px;
-font-family: 'Karla';
-font-size: 16px;
-padding: 5px;
+    width: 98%;
+    max-width: 98%;
+    height: 150px;
+    font-family: 'Karla';
+    font-size: 16px;
+    padding: 5px;
 }
 
 select:focus, textarea:focus, input:focus{
@@ -476,6 +439,11 @@ a.fill-div {
 
 .opaque {
     opacity: 0.7;
+}
+
+.opaque:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .float-left {
@@ -622,7 +590,7 @@ input::-webkit-inner-spin-button {
 
 
 .bold {
-      font-weight: bold;
+    font-weight: bold;
 }
    
 .small-text {
@@ -1319,16 +1287,12 @@ a {
 
 .edit-button {
     color: green;
-    opacity: 0.7;
     float: right;
-    margin-left: 20px;
 }
 
 .delete-button {
-    opacity: 0.7;
     color: red;
     float: right;
-    
 }
 
 .search-edit-button {
