@@ -16,15 +16,18 @@ module.exports = function(app, x){
 	app.get('/', function(req, res){
 	  res.sendfile(__dirname + '/client/views/index.html')
 	});
-
+	
+	// Download trade marks based on query parameter "portfolio"
 	app.get('/download/downloadTrademarks', main.downloadTrademarks);
 
 	// Elasticsearch  
 	app.post('/api/search', x, main.search);
 
+	// General portfolio search function based on query parameters "portfolio", "group" and "country"
 	app.get('/api/searchTrademarks/:portfolio', x, main.searchTrademarks);
 
-	// Country data (ISO, coordinates etc)
+	// Country data (ISO, coordinates etc) - optionally accepts query parameter in which case returns
+	// country data limited to countries where there are trade marks
 	app.get('/api/countryData', x, world.countryData);
 
 	// Provide geojson for group of marks
@@ -33,11 +36,13 @@ module.exports = function(app, x){
 	// Filtered world on basis of given list of marks
 	app.post('/api/world/:portfolio', x, world.worldForListOfMarks);
 
-	// world on basis of country
+	// geojson of world for given country (ISO code)
 	app.get('/api/world/:portfolio', x, world.worldForCountry);
 
 	// Country-limited trade marks
+	// Gets a list of all trade marks for a given portfolio in a given country (ISO code)
 	app.get('/api/country/:portfolio/:country', x, country.marksForCountry);
+	// In addition to the above, accepts list of trade marks and provides only those marks in a portfolio
 	app.post('/api/country/:portfolio/:country', x, country.filterMarksForCountry);
 
 	// Get group of marks
@@ -49,7 +54,8 @@ module.exports = function(app, x){
 	app.put('/api/trademark/:id', x, main.amendTrademark);
 	app.delete('/api/trademark/:id', x, main.deleteTrademark);
 
-	// List of marks
+	// Returns basic list of marks for portfolio - accepts optional query for ISO code in
+	// which case returns list of marks for given country
 	app.get('/api/listOfMarks/:portfolio', x, group.listOfMarks);
 
 	// Retrieve favourite marks
@@ -73,24 +79,26 @@ module.exports = function(app, x){
 	app.get('/api/activities/:portfolio', activity.findActivities);
 
 	// Users
-	app.post('/api/addUser', user.addUser);
+	
 	app.post('/server/login', user.logIn);
+
+	// Routes for querying logged in user
 	app.get('/api/isAdmin', user.isAdmin);
 	app.get('/api/isUser', user.isUser);
 	app.get('/api/getUser', user.getUser);
 
+	app.post('/api/addUser', user.addUser);
+
 	app.put('/api/users/:id', user.updateUser);
 	app.get('/api/users', user.allUsers);
 	app.del('/api/users/:id', user.deleteUser);
+	
+	app.post('/api/createAccount', user.createAccount);
 
-
-	// Passwords
+	// Passwords (including reset)
 	app.post('/api/updatePassword', user.updatePassword);
 	app.post('/server/requestPasswordReset', user.requestPasswordReset);
 	app.post('/server/passwordReset/:id', user.resetPassword);
-
-	// Account creation
-	app.post('/api/createAccount', user.createAccount);
 
 	// Spreadsheet upload
 	app.post('/api/spreadsheet', x, spreadsheet.processExcel);
