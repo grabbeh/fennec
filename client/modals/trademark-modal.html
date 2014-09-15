@@ -8,7 +8,7 @@
     </div>
     <div class="view-trademark-container">
         <ul class="view-trademark-list">
-            <li><span><b>{{ trademark.status }} </b>in <b><a ng-click="closeModal()" href="/admin/country/{{trademark.country.alpha3}}">{{ trademark.country.name }}</a></b></span>
+            <li><span><b>{{ trademark.status }} </b>in<span><b>{{ trademark.country.name }}</b></span></span>
                
             </li>
             <li ng-show="trademark.imageUrl"><img class="small-logo-holder" ng-src="{{trademark.imageUrl}}"> </li>
