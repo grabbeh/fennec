@@ -1449,20 +1449,6 @@ a {
     padding-bottom: 10px;
 }
 
-.confirmation-message {
-    padding: 10px;
-    background: #41B441;
-    color: white;
-    margin-top: 15px;
-}
-
-.error-message {
-    padding: 10px;
-    background: red;
-    color: white;
-    width: 200px;
-}
-
 .input {
     position: relative;
     margin: 15px 10px 0 0;
