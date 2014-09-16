@@ -15,29 +15,29 @@ angular.module('app')
             $.users.splice(index, 1);
             userService.deleteUser(user._id)
                 .then(function(response){
-                    notificationModal.activate({success: "User removed"})
-                })
-        }
+                    notificationModal.activate({success: "User removed"});
+                });
+        };
 
         $.createUser = function(){
             userService.addUser($.newUser)
                 .then(function(res){
                     if (!res.error){
                         $.users.push(res.user);
-                        notificationModal.activate({success: "User added"})
+                        notificationModal.activate({success: "User added"});
 
                     }
                     else {
-                         notificationModal.activate({error: res.error})
+                         notificationModal.activate({error: res.error});
                     }
                     
            
-                })
-        }
+                });
+        };
 
         $.canSubmitCreateUser = function(){
                 return $.createUserForm.$dirty && $.createUserForm.$valid;
-        }
+        };
     }])
 
     .controller('favouritesCtrl', ['$scope', '$routeParams', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', 
@@ -46,48 +46,48 @@ angular.module('app')
         $.activePortfolio = $routeParams.portfolio;
         $.favourites = favourites;
         if (favourites.length === 0){
-             $.favourites = false;
+        	$.favourites = false;
         }
         $.user = user;
         $.activeTrademark = favourites[0];
         $.activateTrademark = function(trademark){
         	$.activeTrademark = trademark;
-        }
+        };
         
         $.openEditTrademarkModal = function(trademark){
                 editTrademarkModal.activate({trademark: trademark});
                 $rootScope.modal = true;
-            }
+            };
           
         $.deleteTrademark = function(){
             trademarkService.deleteMark($.trademark)
                .success(function(data){
                    $scope.message = data.message;
-               })
-           }
+               });
+           };
     }])
 	
  	.controller('quickSearchCtrl', ['$scope', '$filter', '$http', '$routeParams', '$location', 'trademarkService', function($scope, $filter, $http, $routeParams, $location, trademarkService){
- 	    var $ = $scope;
+ 	var $ = $scope;
         $.activePortfolio = $routeParams.portfolio;
  	    $http.get('/api/countryData')
             .success(function(countries){
                 $.countrydata =  $filter('orderBy')(countries, 'name');
-            })
+            });
 
         trademarkService.getListOfMarks($routeParams.portfolio)
          .then(function(data){
             $.marks = data;
-        })
+        });
        
 
         $.searchTrademarks = function(tm, country){
             return $http.get('/api/searchTrademarks/' + $routeParams.portfolio + '?group=' + tm + '&country=' + country)
                .then(function(response){
-                    $location.search({ group: tm, country: country})
+                    $location.search({ group: tm, country: country});
                     return response.data;   
             });
-        }
+        };
 
         $.selectMark = function(){
             if ($.country === undefined){
@@ -105,7 +105,7 @@ angular.module('app')
                     $.result = "Use the 'TM' symbol";
                     $.classes = "";
                 }
-            })
+            });
             
         }
  		
@@ -125,8 +125,8 @@ angular.module('app')
                     $.result = "Use the 'TM' symbol";
                     $.classes = "";
                 }
-            })
- 		}
+                });
+ 	};
  	}])
 
      .controller('landingPageCtrl', ['$scope', '$window',  'userService', '$location', '$rootScope', function($scope, $window, userService, $location, $rootScope){
@@ -148,8 +148,8 @@ angular.module('app')
              $http.post('/server/processMessage', {msg: $.msg})
              	.success(function(response){
                     $.message = response.msg;
-               })
-         }
+               });
+         };
     }])
     
     .controller('portfolioHomeCtrl', ['$scope', 'trademarkModal', 'user', '$window', '$rootScope', '$filter','$routeParams', 'countries', 'marks', '$location', 
@@ -166,7 +166,7 @@ angular.module('app')
                 }
                 $.activePortfolio = portfolio;
                 $location.path('/home/' + portfolio);
-            }
+            };
 
             $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
@@ -174,7 +174,7 @@ angular.module('app')
             
             $.goToCountry = function(country){
                 $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
-            }
+            };
 
              $.showModal = function(trademark){
                 $rootScope.modal = true;
@@ -234,7 +234,7 @@ angular.module('app')
             $.favouriteMarks = $filter('extractFavourites')(trademarks);
             $.user = user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
-            $.marks.unshift({ name: "ALL MARKS" })
+            $.marks.unshift({ name: "ALL MARKS" });
             $.chart = barChartData;
             $.options = barChartOptions;
             $.activities = activities;
@@ -243,8 +243,8 @@ angular.module('app')
             $.$on('country.click', function(e, l){
                 $.$apply(function(){
                     $location.path('/admin/country/' + $routeParams.portfolio).search('country', l.target.feature.id);
-                })
-            })
+                });
+            });
             
             $.showGroup = function(group){
                 if (group === null){ return};
