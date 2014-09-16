@@ -3,7 +3,6 @@ var world = require('./server/routes/world')
 , group = require('./server/routes/group')
 , main = require('./server/routes/main')
 , user = require('./server/routes/users')
-, helper = require('./server/routes/helper')
 , image = require('./server/routes/images')
 , expiry = require('./server/routes/expiry')
 , activity = require('./server/routes/activity')
@@ -14,7 +13,7 @@ var world = require('./server/routes/world')
 module.exports = function(app, x){
 
 	app.get('/', function(req, res){
-	  res.sendfile(__dirname + '/client/views/index.html')
+		res.sendfile(__dirname + '/client/views/index.html');
 	});
 	
 	// Download trade marks based on query parameter "portfolio"
@@ -106,10 +105,10 @@ module.exports = function(app, x){
 	app.post('/api/upload', x, image.uploadImage);
 
 	// Message sending 
-	app.post('/server/processMessage', contact.processMessage)
+	app.post('/server/processMessage', contact.processMessage);
 
 	// Serve .html file if route not matched
 	app.get('*', function(req, res){
 	  res.sendfile(__dirname + '/client/views/index.html');
 	});
-}
+};
