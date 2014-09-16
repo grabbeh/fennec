@@ -1,6 +1,5 @@
 var express = require('express')
   , bodyParser = require('body-parser')
-  , cookieParser = require('cookie-parser')
   , serveStatic = require('serve-static')
   , mongoose = require('mongoose')
   , expressJwt = require('express-jwt')
