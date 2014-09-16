@@ -501,7 +501,7 @@ angular.module('app')
             $.trademark = trademarks[0];
             $.countries = $filter('extractCountries')($.trademarks);
             if (_.every($.countries, function(c) {
-                return c === "European Union"
+                return c === "European Union";
             })) {
                 $.country = "European Union";
             } else {
@@ -531,10 +531,10 @@ angular.module('app')
 
             if ($.sortedByStatus.Registered){
                 $.registered = $.sortedByStatus.Registered;}
-            if ($.sortedByStatus.Published)
-                $.published = $.sortedByStatus.Published;
-            if ($.sortedByStatus.Pending)
-                $.pending = $.sortedByStatus.Pending;
+            if ($.sortedByStatus.Published){
+                $.published = $.sortedByStatus.Published;}
+            if ($.sortedByStatus.Pending){
+                $.pending = $.sortedByStatus.Pending;}
         });
 
         $.showModal = function(trademark) {
