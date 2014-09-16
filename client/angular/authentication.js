@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller("authCtrl", ['$scope', 'notificationModal','loginModal','$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','dropdownMenu', 'loginModal', 'uploadImageModal', 'userService',
-        function($scope, notificationModal, loginModal, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, dropdownMenu, loginModal, uploadImageModal, userService){
+    .controller("authCtrl", ['$scope', 'notificationModal','loginModal','$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','dropdownMenu', 'uploadImageModal', 'userService',
+        function($scope, notificationModal, loginModal, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, dropdownMenu, uploadImageModal, userService){
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
@@ -21,7 +21,7 @@ angular.module('app')
                         }
                     }
 
-                    notificationModal.activate({ error: error.data.message})
+                    notificationModal.activate({ error: error.data.message});
                     $location.path(previousPath);
                 }
                 
@@ -60,12 +60,12 @@ angular.module('app')
                 editGroupModal.deactivate();
                 uploadImageModal.deactivate();
                 loginModal.deactivate();
-            }
+            };
             
             $.login = function(){
                 loginModal.activate();
                 $rootScope.modal = true;
-            }
+            };
             
             $.logout = function(){
                 pathService.clearPath();
@@ -74,7 +74,7 @@ angular.module('app')
                 delete $window.sessionStorage.token;
                 $rootScope.user = false;
                 $location.path('/');
-            }
+            };
             
             userService.getUser().then(function(data){
                 $rootScope.user = data;
@@ -82,17 +82,17 @@ angular.module('app')
         
             $.isUser = function(){
                 return !!$rootScope.user;
-            }
+            };
 
         }])
     
-    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userService', 'pathService', '$location', 'trademarkService',
-        function($scope, $window, $rootScope, userService, pathService, $location, trademarkService){
+    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userService', 'pathService', '$location',
+        function($scope, $window, $rootScope, userService, pathService, $location){
             var $ = $scope;
             
             $.canSubmitLogin = function(){
                 return $.loginForm.$dirty && $.loginForm.$valid;
-            }
+            };
             
             $.login = function(){
                 userService.logIn({ password: $.password, email: $.email })
@@ -109,5 +109,5 @@ angular.module('app')
                     function(err){
                         $.message = err.message;
                     });
-                }
+                };
         }]);
