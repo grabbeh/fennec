@@ -12,12 +12,12 @@ function groupByCountry(portfolio, fn){
 }
 
 function addEUTrademarks(TMsbyCountry, fn){
-	var EUtms = TMsbyCountry['EU'];
+	var EUtms = TMsbyCountry.EU;
 	if (EUtms === undefined){
-	 	fn(null, TMsbyCountry)
+		fn(null, TMsbyCountry);
 	}
 	else {
-	    EU.forEach(function(country){
+		EU.forEach(function(country){
 	    	if (TMsbyCountry[country] === undefined){
 	    		TMsbyCountry[country] = [];
 	    	}
@@ -25,13 +25,13 @@ function addEUTrademarks(TMsbyCountry, fn){
                 TMsbyCountry[country].push(mark);
             });
 	    });
-	    fn(null, TMsbyCountry);
+		fn(null, TMsbyCountry);
 	}
 }
 
 function groupTrademarksByStatus(obj, fn){
     for (var key in obj){
-    	var groupByStatus = _.groupBy(obj[key], 'status')
+    	var groupByStatus = _.groupBy(obj[key], 'status');
     	obj[key] = groupByStatus;
     }	
     fn(null, obj);
@@ -40,38 +40,40 @@ function groupTrademarksByStatus(obj, fn){
 function addToGeoJson(gj, tms, fn){
 	var copy = deepCopy(gj);
 	copy.forEach(function(c){
-		c.properties.trademarks = tms[c.id]
+		c.properties.trademarks = tms[c.id];
 		checkStatusOfCountry(c, tms, function(err, status){
 			c.properties.status = status;
 		});
-	})
+	});
 	fn(null, copy);
 }
 
 function checkStatusOfCountry(c, tms, fn){
-	if (tms[c.id] === undefined){ return fn(null, false); }
+	if (!tms[c.id]){ return fn(null, false); }
 	
-	var re = tms[c.id].Registered, pe = tms[c.id].Pending, pu = tms[c.id].Published;
+	var re = tms[c.id].Registered 
+	,	pe = tms[c.id].Pending
+	,	pu = tms[c.id].Published;
 	
-	if (re != undefined && pe === undefined && pu === undefined){
+	if (re && !pe && !pu){
 		return fn(null, "only registered");
 	}
-	if (re === undefined && pe != undefined && pu === undefined){
+	if (!re && pe && !pu){
 		 return fn(null, "only pending");
 	}
-	if (re === undefined && pe === undefined  && pu != undefined){
+	if (!re && !pe  && pu ){
 		return fn(null, "only published");
 	}
-	if (re!= undefined && pe != undefined && pu != undefined){
+	if (re && pe && pu){
 		return fn(null, "registered pending published");
 	}
-	if (re === undefined  && pe != undefined && pu != undefined){ 
+	if (!re  && pe && pu){ 
 		return fn(null, "pending published");
 	}
-	if (re != undefined && pe != undefined && pu === undefined){
+	if (re && pe && !pu){
 		return fn(null, "registered pending");
 	}
-	if (re != undefined && pe === undefined && pu != undefined){
+	if (re && !pe && pu){
 		return fn(null, "registered published");
 	}
 }
@@ -79,15 +81,15 @@ function checkStatusOfCountry(c, tms, fn){
 function convertPortfolio(trademarks, fn){
 	async.waterfall([
 		async.apply(groupByCountry, trademarks),
-	    function(TMsGroupedByCountry, callback){
-	    	addEUTrademarks(TMsGroupedByCountry, callback)
+		function(TMsGroupedByCountry, callback){
+	    	addEUTrademarks(TMsGroupedByCountry, callback);
 	    },
 	    function(revisedGroupByCountry, callback){
 	    	groupTrademarksByStatus(revisedGroupByCountry, callback)
 
 	    }], function(err, splitByStatus){
 			fn(null, splitByStatus);
-		})
+		});
 }
 
 exports.getGeoJSON = function(fn){
@@ -116,7 +118,7 @@ exports.getTrademarks = function(entity, portfolio, fn){
 		.lean()
 		.sort('expiryDate.DDate')
 		.exec(function(err, trademarks){
-			fn(null, trademarks) 
+			fn(null, trademarks); 
 		});
 	}
 
@@ -129,7 +131,7 @@ exports.getTrademark = function(id, fn){
 exports.convertPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
 	convertPortfolio(trademarks, function(err, revisedTMs){
 		addToGeoJson(geojson, revisedTMs, function(err, gj){
-			fn(null, gj)
+			fn(null, gj);
 		});
 	});
 }
@@ -140,11 +142,11 @@ exports.convertYearPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
 		async.waterfall([
 			async.apply(convertPortfolio, trademarks[year]),
 			function(revisedTMs, callback){
-				addToGeoJson(geojson, revisedTMs, callback)
+				addToGeoJson(geojson, revisedTMs, callback);
 			}], 
 			function(err, revisedGeoJSON){
 				target[year] = revisedGeoJSON;
-				callback()
+				callback();
 			})
 	}, function(err){
 		fn(null, target);
@@ -153,7 +155,7 @@ exports.convertYearPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
 	
 exports.addTrademark = function(tm, fn){
 	saveTrademark(tm, function(err, doc){
-		fn(null, doc)
+		fn(null, doc);
 	})
 }
 
@@ -169,7 +171,7 @@ exports.amendTrademark = function(tm, fn){
 
 exports.deleteTrademark = function(id, fn){
 	Trademark.findOneAndUpdate({ _id: id }, { active: false }, function(err, success){
-		fn(null, success)
+		fn(null, success);
 	})
 }
 
