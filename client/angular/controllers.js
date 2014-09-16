@@ -7,7 +7,7 @@ angular.module('app')
 
         $.updateUser = function(user) {
             userService.updateUser(user)
-                .then(function(response) {
+                .then(function() {
                     notificationModal.activate({
                         success: "User updated"
                     });
@@ -17,7 +17,7 @@ angular.module('app')
         $.deleteUser = function(user, index) {
             $.users.splice(index, 1);
             userService.deleteUser(user._id)
-                .then(function(response) {
+                .then(function() {
                     notificationModal.activate({
                         success: "User removed"
                     });
@@ -144,8 +144,8 @@ angular.module('app')
     }
 ])
 
-.controller('landingPageCtrl', ['$scope', '$window', 'userService', '$location', '$rootScope',
-    function($scope, $window, userService, $location, $rootScope) {
+.controller('landingPageCtrl', ['$scope', '$window', '$http', 'userService', '$location', '$rootScope',
+    function($scope, $window, $http, userService, $location, $rootScope) {
         var $ = $scope;
         $.loadDemo = function() {
             userService.logIn({
@@ -275,7 +275,7 @@ angular.module('app')
 
             $.showGroup = function(group) {
                 if (group === null) {
-                    return
+                    return;
                 }
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
                 geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson) {
@@ -291,7 +291,7 @@ angular.module('app')
 
             $.showCountry = function(country) {
                 if (country === null) {
-                    return
+                    return;
                 }
                 $.trademarks = $filter('extractMarksInCountry')($.allTrademarks, country.alpha3);
                 geoJsonService.getCountry($routeParams.portfolio, country.alpha3).then(function(geojson) {
@@ -349,7 +349,7 @@ angular.module('app')
             });
 
             $.expirySearch = function(year) {
-                $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + year)
+                $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + year);
             };
 
             $.min = new Date().getFullYear();
@@ -365,7 +365,7 @@ angular.module('app')
             } else {
                 $.response = content.msg;
                 $timeout(function() {
-                    $location.path('/home')
+                    $location.path('/home');
                 }, 1000);
             }
         };
@@ -381,7 +381,7 @@ angular.module('app')
 ])
 
 .controller('trademarkViewCtrl', ['$scope', '$rootScope', '$routeParams', 'trademark', 'trademarkService', 'user', 'editTrademarkModal',
-    function($scope, $rootScope, $routeParams, trademark, trademarkServce, user, editTrademarkModal) {
+    function($scope, $rootScope, $routeParams, trademark, trademarkService, user, editTrademarkModal) {
         var $ = $scope;
         $.activePortfolio = $routeParams.portfolio;
         $.trademark = trademark;
@@ -438,7 +438,7 @@ angular.module('app')
                 mark: mark,
                 portfolio: $routeParams.portfolio
             });
-        }
+        };
 
         $.goToGroup = function(group) {
             $location.search('group', group.name);
@@ -452,7 +452,7 @@ angular.module('app')
             });
 
 
-        }
+        };
 
         $.showUploadImageModal = function() {
             $rootScope.modal = true;
@@ -475,14 +475,14 @@ angular.module('app')
                 var tms = l.target.feature.properties.trademarks;
                 if (tms) {
                     $.nocontent = false;
-                    if (tms.Registered)
-                        $.registered = tms.Registered;
+                    if (tms.Registered){
+                        $.registered = tms.Registered;}
 
-                    if (tms.Published)
-                        $.published = tms.Published;
+                    if (tms.Published){
+                        $.published = tms.Published;}
 
-                    if (tms.Pending)
-                        $.pending = tms.Pending;
+                    if (tms.Pending){
+                        $.pending = tms.Pending;}
                 }
 
             });
@@ -529,8 +529,8 @@ angular.module('app')
 
             $.nocontent = false;
 
-            if ($.sortedByStatus.Registered)
-                $.registered = $.sortedByStatus.Registered;
+            if ($.sortedByStatus.Registered){
+                $.registered = $.sortedByStatus.Registered;}
             if ($.sortedByStatus.Published)
                 $.published = $.sortedByStatus.Published;
             if ($.sortedByStatus.Pending)
@@ -575,8 +575,8 @@ angular.module('app')
                 var tms = l.target.feature.properties.trademarks;
                 if (tms) {
                     $.nocontent = false;
-                    if (tms.Registered)
-                        $.registered = tms.Registered;
+                    if (tms.Registered){
+                        $.registered = tms.Registered;}
                 }
 
             });
@@ -612,7 +612,7 @@ angular.module('app')
         };
 
         $.changePassword = function() {
-            if ($.newPassword != $.duplicatePassword) {
+            if ($.newPassword !== $.duplicatePassword) {
                 $.message = "The two passwords don't match!";
             }
             $http.post('/server/passwordReset/' + $routeParams.id, {
@@ -647,7 +647,7 @@ angular.module('app')
                 .success(function(res) {
                     notificationModal.activate({
                         success: res.success
-                    })
+                    });
                 });
         };
     }
@@ -675,13 +675,13 @@ angular.module('app')
     }
 ])
 
-.controller('createAccountCtrl', ['$scope', '$rootScope', '$http', '$location', 'userService',
-    function($scope, $rootScope, $http, $location, userService) {
+.controller('createAccountCtrl', ['$scope', '$rootScope', '$http', '$location',
+    function($scope, $rootScope, $http, $location) {
         var $ = $scope;
         $.createUser = function() {
             $http.post('/api/createAccount', $.newUser)
                 .success(function() {
-                    $location.path('/')
+                    $location.path('/');
                 })
                 .error(function(data) {
                     $.message = data.message;
@@ -716,7 +716,7 @@ angular.module('app')
         $.deleteNotification = function(notification, index) {
             $.notifications.splice(index, 1);
             notification.readBy.push(user._id);
-            notificationService.updateNotification(notification).then(function(res) {
+            notificationService.updateNotification(notification).then(function() {
 
             });
         };
@@ -781,16 +781,16 @@ angular.module('app')
                     $.country = feature.properties.name;
                     if (tms) {
                         $.nocontent = false;
-                        if (tms.Registered)
-                            $.registered = tms.Registered;
-                        if (tms.Published)
-                            $.published = tms.Published;
-                        if (tms.Pending)
-                            $.pending = tms.Pending;
+                        if (tms.Registered){
+                            $.registered = tms.Registered;}
+                        if (tms.Published){
+                            $.published = tms.Published;}
+                        if (tms.Pending){
+                            $.pending = tms.Pending;}
                     }
-                };
+                }
             });
-        }
+        };
         $.showModal = function(trademark) {
             $rootScope.modal = true;
             trademarkModal.deactivate();
