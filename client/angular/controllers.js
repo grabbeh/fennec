@@ -269,7 +269,7 @@ angular.module('app')
                 
                 chartService.barChartDataForCountry($routeParams.portfolio, 'ALL MARKS', country.alpha3).then(function(barChartData){
                     $.chart = barChartData;
-                })
+                });
                 
                 //$.marks = $filter('unTickAllExceptSelected')($.marks, country);
                 $.activeMark = country.name;
@@ -290,18 +290,18 @@ angular.module('app')
                      .success(function(world){
                          $.geojson = world;
                      }); 
-                 }
+                 };
 
             $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
-            }
+            };
             
             $.goToCountry = function(country){
                 $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
-            }
+            };
             
             $.$watch('trademarks', function(trademarks){
-                if (!trademarks){ return; }
+                if (!trademarks){ return; };
                 
                 $.incompleteMarks = $filter('incompleteMarks')(trademarks);
                 $.sortedByExpiry = $filter('fromNow')($filter('sortByExpiryDate')($filter('extractRegisteredMarks')(trademarks)));
@@ -329,11 +329,11 @@ angular.module('app')
                      $location.path('/home')
                 }, 1000)
             }
-         }
+         };
         
       $scope.loading = function() {
           console.log('loading...');
-      }
+      };
       
         $.uploadFormValid = function(){
              return $.uploadForm.$dirty && $.uploadForm.$valid;
@@ -350,14 +350,14 @@ angular.module('app')
 	        $.openEditTrademarkModal = function(trademark){
 	                editTrademarkModal.activate({trademark: trademark});
 	                $rootScope.modal = true;
-	        }
+	        };
 	          
 	        $.deleteTrademark = function(){
 	            trademarkService.deleteMark($.trademark)
 	               .success(function(data){
 	                   $scope.message = data.message;
-	               })
-	           }
+	               });
+	           };
          }])
          
         .controller('groupViewCtrl', 
@@ -378,7 +378,7 @@ angular.module('app')
            trademarkService.getListOfMarks($routeParams.portfolio)
  		     .then(function(response){
  			$.marks = response;
- 		})
+ 		});
 	        
         $.showModal = function(trademark){
             $rootScope.modal = true;
@@ -461,7 +461,7 @@ angular.module('app')
 	    trademarkService.getListOfMarks($routeParams.portfolio, $location.search().country)
 	    	.then(function(list){
 	    		$.marks = list;
-	    	})
+	    	});
          
             $.$watch('trademarks', function(data){
                 if (!data){
@@ -484,7 +484,7 @@ angular.module('app')
                      $.published = $.sortedByStatus.Published;
                 if ($.sortedByStatus.Pending)
                      $.pending = $.sortedByStatus.Pending;
-            })
+            });
 	        
 	        $.showModal = function(trademark){
 	            $rootScope.modal = true;
@@ -497,7 +497,7 @@ angular.module('app')
                      .success(function(trademarks){
                          $.trademarks = trademarks;
                      }); 
-             }
+             };
           
          }])
 
@@ -564,8 +564,8 @@ angular.module('app')
                 })
                 .error(function(){
 
-                })
-            }
+                });
+            };
     }])
 
      .controller('passwordResetCtrl', ['$scope', 'notificationModal', '$http', function($scope, notificationModal, $http){
@@ -579,8 +579,8 @@ angular.module('app')
             $http.post('/server/requestPasswordReset', { email: $.email })
                 .success(function(res){
                     notificationModal.activate({success: res.success})
-                })
-            }
+                });
+            };
     }])
 
 
@@ -591,17 +591,17 @@ angular.module('app')
             $http.get('/api/countrydata')
                 .success(function(data){
                     $.countrydata = data;
-                })
+                });
 
             $.addTrademark = function(trademark){
                 trademarkService.addMark(trademark, $routeParams.portfolio)
                     .success(function(data){
                         $.message = data.message;
-                    })
-                }
+                    });
+                };
             $.canAddTrademark = function(){
                  return $.addTrademarkForm.$dirty && $.addTrademarkForm.$valid;
-            }
+            };
         }])
 
 	.controller('createAccountCtrl', ['$scope', '$rootScope', '$http', '$location', 'userService',
@@ -614,12 +614,12 @@ angular.module('app')
                     })
                     .error(function(data){
                         $.message = data.message;
-                    })
-            }
+                    });
+            };
 
             $.canSubmitCreateUser = function(){
                 return $.createUserForm.$dirty && $.createUserForm.$valid;
-            }
+            };
            
         }])
 
@@ -644,8 +644,8 @@ angular.module('app')
                        notification.readBy.push(user._id);
                        notificationService.updateNotification(notification).then(function(res){
                     	
-                    })
-                } 
+                    });
+                };
         }])
 
     .controller("mapCtrl", ['$scope','countryData','user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
@@ -662,7 +662,7 @@ angular.module('app')
                      .success(function(world){
                          $.geojson = world;
                      }); 
-                 }
+                 };
 
         $.$on('country.click', function(e, l){
             $.registered = false;
@@ -709,7 +709,7 @@ angular.module('app')
                         if (tms.Pending)
                             $.pending = tms.Pending;
                         }
-                    }
+                    };
                 });
             }
         $.showModal = function(trademark){
