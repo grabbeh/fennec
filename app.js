@@ -26,7 +26,7 @@ app.use(multipart());
 app.use(serveStatic(__dirname + '/client'));
 
 mongoose.connect(db, function(err){
-    if (err) { console.log(err); throw new (err.stack);}
+    if (err) { console.log(err); throw new Error(err.stack);}
   });
 
 // Agenda
