@@ -7,9 +7,9 @@ angular.module('app')
         $.updateUser = function(user){
             userService.updateUser(user)
                 .then(function(response){
-                    notificationModal.activate({ success: "User updated"})
-                })
-        }
+                    notificationModal.activate({ success: "User updated"});
+                });
+        };
 
         $.deleteUser = function(user, index){
             $.users.splice(index, 1);
@@ -107,9 +107,9 @@ angular.module('app')
                 }
             });
             
-        }
- 		
- 	$scope.quickSearch = function(){
+        };
+  
+	$scope.quickSearch = function(){
             if ($.mark === undefined){
                 $.message = "Now provide a mark";
                 return;
@@ -138,11 +138,11 @@ angular.module('app')
                     $rootScope.user = true;
                     $location.path('/home/ACME INC');
                 });
-            }
+            };
 
          $.canMessage = function(){
                 return $.sendMessageForm.$dirty && $.sendMessageForm.$valid;
-         }
+         };
          
          $.sendMessage = function(){
              $http.post('/server/processMessage', {msg: $.msg})
@@ -170,7 +170,7 @@ angular.module('app')
 
             $.goToGroup = function(country){
             	$location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
-            }
+            };
             
             $.goToCountry = function(country){
                 $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
@@ -247,7 +247,7 @@ angular.module('app')
             });
             
             $.showGroup = function(group){
-                if (group === null){ return};
+                if (group === null){ return}
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
                 geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson){
                     $.geojson = geojson;
@@ -258,10 +258,10 @@ angular.module('app')
                 $.marks = $filter('unTickAllExceptSelected')($.marks, group);
                 $.activeMark = group.name;
 
-            }
+            };
             
             $.showCountry = function(country){
-                if (country === null){ return};
+                if (country === null){ return}
                 $.trademarks = $filter('extractMarksInCountry')($.allTrademarks, country.alpha3);
                 geoJsonService.getCountry($routeParams.portfolio, country.alpha3).then(function(geojson){
                     $.geojson = geojson;
@@ -273,7 +273,7 @@ angular.module('app')
                 
                 //$.marks = $filter('unTickAllExceptSelected')($.marks, country);
                 $.activeMark = country.name;
-            }
+            };
             
             $.showModal = function(trademark){
                 $rootScope.modal = true;
@@ -301,7 +301,7 @@ angular.module('app')
             };
             
             $.$watch('trademarks', function(trademarks){
-                if (!trademarks){ return; };
+                if (!trademarks){ return; }
                 
                 $.incompleteMarks = $filter('incompleteMarks')(trademarks);
                 $.sortedByExpiry = $filter('fromNow')($filter('sortByExpiryDate')($filter('extractRegisteredMarks')(trademarks)));
@@ -327,7 +327,7 @@ angular.module('app')
                 $.response = content.msg; 
                 $timeout(function(){
                      $location.path('/home')
-                }, 1000)
+                }, 1000);
             }
          };
         
@@ -346,18 +346,18 @@ angular.module('app')
 	        var $ = $scope;
 	        $.activePortfolio = $routeParams.portfolio;
             $.trademark = trademark;
-	        $.user = user;
-	        $.openEditTrademarkModal = function(trademark){
+			$.user = user;
+			$.openEditTrademarkModal = function(trademark){
 	                editTrademarkModal.activate({trademark: trademark});
-	                $rootScope.modal = true;
+					$rootScope.modal = true;
 	        };
-	          
+	        
 	        $.deleteTrademark = function(){
 	            trademarkService.deleteMark($.trademark)
 	               .success(function(data){
 	                   $scope.message = data.message;
-	               });
-	           };
+					});
+				};
          }])
          
         .controller('groupViewCtrl', 
