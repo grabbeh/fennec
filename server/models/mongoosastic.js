@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-    mongoosastic = require('mongoosastic')
+   , mongoosastic = require('mongoosastic')
    , Schema = mongoose.Schema
    , db = require('../config/paid-db')
    , ObjectId = Schema.ObjectId;
@@ -27,12 +27,7 @@ Trademark.plugin(mongoosastic);
 
 var tm = mongoose.model('Trademark', Trademark);
 
-mongoose.connect('mongodb://' 
-  + db.user + ':' 
-  + db.pass + '@' 
-  + db.host + ':' 
-  + db.port + '/' 
-  + db.name,
+mongoose.connect(db,
   function(err){
     if (err) {throw new Error(err.stack);}
   });
