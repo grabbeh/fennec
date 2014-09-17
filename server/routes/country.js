@@ -1,4 +1,4 @@
-var helper = require('./helper.js')
+var helper = require('./helper')
 , _ = require('underscore')
 , Trademark = require('../models/trademarkSchema')
 , async = require('async');
@@ -7,10 +7,27 @@ exports.marksForCountry = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var country = req.params.country;
-    helper.marksForCountry(entity, portfolio, country, function(err, trademarks){
+    marksForCountry(entity, portfolio, country, function(err, trademarks){
         res.json(trademarks);
     })
 }
+
+
+function marksForCountry(entity, portfolio, country, fn){
+    helper.checkIfEUCountry(country, function(err, bool){
+        if (bool){
+             var EU =  "European Union";
+        }
+        Trademark.find()
+            .and([{ entity: entity }, { portfolio: portfolio }])
+            .or([{ 'country.alpha3': country}, { 'country.name': EU }])
+            .lean()
+            .exec(function(err, trademarks){
+                fn(null, trademarks);
+        })
+    })
+}
+
 
 exports.filterMarksForCountry = function(req, res){
     var keys = req.body.marks;

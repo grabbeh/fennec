@@ -239,22 +239,6 @@ exports.checkIfEUCountry = function(country, fn){
     }
 }
 
-exports.marksForCountry = function(entity, portfolio, country, fn){
-    helper.checkIfEUCountry(country, function(err, bool){
-        if (bool){
-             var EU =  "European Union";
-        }
-        Trademark.find()
-        	.and([{ entity: entity }, { portfolio: portfolio }])
-        	.or([{ 'country.alpha3': country}, { 'country.name': EU }])
-        	.lean()
-        	.exec(function(err, trademarks){
-        		fn(null, trademarks);
-   		})
-    })
-}
-
-
 function deepCopy(obj) {
     if (Object.prototype.toString.call(obj) === '[object Array]') {
         var out = [], i = 0, len = obj.length;
