@@ -136,23 +136,6 @@ exports.convertPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
 	});
 }
 
-exports.convertYearPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
-	var target = {};
-	async.forEach(Object.keys(trademarks), function(year, callback){
-		async.waterfall([
-			async.apply(convertPortfolio, trademarks[year]),
-			function(revisedTMs, callback){
-				addToGeoJson(geojson, revisedTMs, callback);
-			}], 
-			function(err, revisedGeoJSON){
-				target[year] = revisedGeoJSON;
-				callback();
-			})
-	}, function(err){
-		fn(null, target);
-	});
-}
-	
 exports.addTrademark = function(tm, fn){
 	saveTrademark(tm, function(err, doc){
 		fn(null, doc);
