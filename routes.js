@@ -1,14 +1,14 @@
-var world = require('./routes/world')
-, country = require('./routes/country')
-, group = require('./routes/group')
-, main = require('./routes/main')
-, user = require('./routes/users')
-, image = require('./routes/images')
-, expiry = require('./routes/expiry')
-, activity = require('./routes/activity')
-, notification = require('./routes/notification')
-, spreadsheet = require('./routes/excel-process')
-, contact = require('./routes/contact');
+var world = require('routes/world')
+, country = require('routes/country')
+, group = require('routes/group')
+, main = require('routes/main')
+, user = require('routes/users')
+, image = require('routes/images')
+, expiry = require('routes/expiry')
+, activity = require('routes/activity')
+, notification = require('routes/notification')
+, spreadsheet = require('routes/excel-process')
+, contact = require('routes/contact');
 
 module.exports = function(app, x){
 
