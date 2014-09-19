@@ -3,13 +3,13 @@ var express = require('express')
   , serveStatic = require('serve-static')
   , mongoose = require('mongoose')
   , expressJwt = require('express-jwt')
-  , secret = require('./server/config/jwt-secret')
+  , secret = require('./config/jwt-secret')
   , https = require('https')
   , http = require('http')
   , fs = require('fs')
   , multipart = require('connect-multiparty')
-  , db = require('./server/config/paid-db')
-  , job = require('./server/routes/agenda')
+  , db = require('./config/paid-db')
+  , job = require('./routes/agenda')
   , app = express();
 
 app.use('/api', expressJwt({secret: secret }));
@@ -46,9 +46,9 @@ require('./routes')(app, x);
 
 /*
 var options = {
-  key: fs.readFileSync('./server/config/domain.pem'),
-  cert: fs.readFileSync('./server/config/main.pem'),
-  ca: [fs.readFileSync('./server/config/intermediate.pem')]
+  key: fs.readFileSync('./config/domain.pem'),
+  cert: fs.readFileSync('./config/main.pem'),
+  ca: [fs.readFileSync('./config/intermediate.pem')]
 };*/
 
 // Development port
