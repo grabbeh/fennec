@@ -3,13 +3,13 @@ var express = require('express')
   , serveStatic = require('serve-static')
   , mongoose = require('mongoose')
   , expressJwt = require('express-jwt')
-  , secret = require('./config/jwt-secret')
   , https = require('https')
   , http = require('http')
   , fs = require('fs')
   , multipart = require('connect-multiparty')
-  , db = require('./config/paid-db')
-  , job = require('./routes/agenda')
+  , secret = require('config/jwt-secret')
+  , db = require('config/paid-db')
+  , job = require('routes/agenda')
   , app = express();
 
 app.use('/api', expressJwt({secret: secret }));
