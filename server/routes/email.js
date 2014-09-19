@@ -1,5 +1,5 @@
-var admin = require('../config/sendgrid');
-	sendgrid = require('sendgrid')(admin.username, admin.password);
+var admin = require('../config/sendgrid')
+, sendgrid = require('sendgrid')(admin.username, admin.password);
 
 exports.sendEmail = function(addressee, subject, html, fn) {
     sendgrid.send({
