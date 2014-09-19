@@ -32,7 +32,7 @@ exports.setUpAgenda = function(db){
                 async.apply(helper.getAllTrademarks)
             ], function(err, results){
                 executeJobs(results[0], results[1], function(){
-
+                    done();
                 });
             });
         });
