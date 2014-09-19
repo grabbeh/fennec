@@ -46,9 +46,9 @@ require('./routes')(app, x);
 
 /*
 var options = {
-  key: fs.readFileSync('./config/domain.pem'),
-  cert: fs.readFileSync('./config/main.pem'),
-  ca: [fs.readFileSync('./config/intermediate.pem')]
+  key: fs.readFileSync('config/domain.pem'),
+  cert: fs.readFileSync('config/main.pem'),
+  ca: [fs.readFileSync('config/intermediate.pem')]
 };*/
 
 // Development port
