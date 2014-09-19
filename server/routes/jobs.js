@@ -10,39 +10,35 @@ var email = require('./email')
     , user = require('./users')
 
 module.exports = {
-    sendExpiryAlerts: function(admins, trademarks, fn) {
-        async.forEach(admins, function(admin, callback) {
-            async.forEach(admin.alertFrequency, function(f, callback) {
-                async.forEach(trademarks, function(tm, callback) {
-                    var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
-                        revised = expiry.subtract(f.type, f.number),
-                        now = moment();
-                    if (revised.diff(now, 'days') === 0 && admin.entity === tm.entity) {
-                        async.auto({
-                            sendEmail: function(cb, results){
-                                var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
-                                html.returnHtml(tm, fileLocation, function(err, html) {
-                                    email.sendEmail(admin.email, "Trade mark portfolio alert", html, cb)
-                                })
-                            },
-                            addNotification: function(cb, results){
-                                notification.addNotification(tm, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
-                             }
-                           }, function(err, results){
-                                if (err) { console.log(err) }
-                        })  
-                    }
-                    callback();
-                }, function(err) {
-                    callback();
-                })
-
+    sendExpiryAlerts: function(admin, trademarks, fn) {
+        async.forEach(admin.alertFrequency, function(f, callback) {
+            async.forEach(trademarks, function(tm, callback) {
+                var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
+                    revised = expiry.subtract(f.type, f.number),
+                    now = moment();
+                if (revised.diff(now, 'days') === 0 && admin.entity === tm.entity) {
+                    async.auto({
+                        sendEmail: function(cb, results){
+                            var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
+                            html.returnHtml(tm, fileLocation, function(err, html) {
+                                email.sendEmail(admin.email, "Trade mark portfolio alert", html, cb)
+                            })
+                        },
+                        addNotification: function(cb, results){
+                            notification.addNotification(tm, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
+                         }
+                       }, function(err, results){
+                            if (err) { console.log(err) }
+                    })  
+                }
+                callback();
             }, function(err) {
                 callback();
             })
+
         }, function(err) {
-            fn();
-        });
+            fn()
+        })
     },
 
     sendExpiredAlerts: function(admins, trademarks, fn){

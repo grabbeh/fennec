@@ -12,8 +12,15 @@ var mongoose = require('mongoose')
 // Test dependencies
 
 var moment = require("moment")
-    notification = require('./notification')
-    path = require("path")
+    , notification = require('./notification')
+    , path = require("path")
+    , mongoose = require('mongoose')
+    , db = require('../config/paid-db')
+
+mongoose.connect(db, function(err){
+    if (err) { console.log(err); throw new Error(err.stack);}
+  });
+
 
 exports.setUpAgenda = function(db){
     agenda
@@ -25,7 +32,7 @@ exports.setUpAgenda = function(db){
                 async.apply(helper.getAllTrademarks)
             ], function(err, results){
                 executeJobs(results[0], results[1], function(){
-                    done();
+
                 });
             });
         });
@@ -36,25 +43,31 @@ exports.setUpAgenda = function(db){
             done();
         });
     })
-
-/*
-    agenda.define('test', function(job, done){
-        testJob(admins, trademarks, function(){
-            console.log("job completed");
-            done();
-        });
-    })
-*/
     
     agenda.every('1440 minutes', ['check for alerts', 'email me']);
     agenda.start();
 }
 
+function testAgenda(){
+    agenda
+    .database(db)
+    agenda.define('test', function(job, done){
+        executeJobs(admins, trademarks, function(){
+            console.log("job completed");
+            done();
+        });
+    })
+    agenda.now('test')
+    agenda.start();
+}
+
+testAgenda();
+
 function executeJobs(admins, trademarks, fn){
     async.forEach(admins, function(admin, callback){
     	async.forEach(admin.alertOptions, function(job, callback){
             if (job.checked && job.type === "recurring"){
-              	jobs[job.functionName](admins, trademarks, function(){
+              	jobs[job.functionName](admin, trademarks, function(){
                     
                 })
             }
@@ -67,77 +80,41 @@ function executeJobs(admins, trademarks, fn){
     })
 }
 
-function testJob(admins, trademarks, fn) {
-    async.forEach(admins, function (admin, callback) {
-
-        async.forEach(admin.alertFrequency, function (f, callback) {
-            async.forEach(trademarks, function (tm, callback) {
-                var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
-                    revised = expiry.subtract(f.type, f.number),
-                    now = moment();
-                    console.log(revised.diff(now, 'days'));
-
-                if (revised.diff(now, 'days') === 0) {
-                        console.log("Expiry alert");
-                        callback();
-                        /*
-                        async.auto({
-                            sendEmail: function(cb, results){
-                                var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
-                                html.returnHtml(tm, fileLocation, function(err, html) {
-                                    console.log("Alert triggered")
-                                    email.sendEmail(admin.email, "Trade mark portfolio alert", html, cb);
-                                })
-                            },
-                            addNotification: function(cb, results){
-                                console.log("Notification triggered")
-                                notification.addNotification(tm, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
-                             }
-                           }, function(err, results){
-                             if (err) { console.log(err) }
-
-                        })  */
-                    }
-            }, function (err) {
-                console.log("Trademark loop completed")
-                callback();
-            })
-
-        }, function (err) {
-            console.log("alert Frequency loop completed")
-            callback();
-        })
-    }, function (err) {
-        console.log("admins loop completed")
-        fn();
-    });
-}
-
-function testTwoJob(admins, trademark, event, fn) {
-        async.forEach(admins, function (admin, callback) {
-            async.forEach(admin.alertOptions, function (job, callback) {
-                if (job.functionName === "sendAlertOnChange" && job.checked) {
-                    console.log("Job triggered");
-                    trademark.event = event;
-                    var fileLocation = path.resolve(__dirname, '../email-templates/updated-trademark.html');
-                    html.returnHtml(trademark, fileLocation, function(err, html){
-                        email.sendEmail(admin.email, html, function () {
-                            //callback();
-                         });
-                    });
-                }
-                callback();
-            }, function(err){
-                console.log("Loop through options completed")
-                callback();
-            });
-        }, function(err){
-            console.log("Loop through admins completed")
-            fn();
-        });
-    }
-
 var admins = [{
+    entity: "ACME INC",
+  __v: 0,
+  _id: "mbg@outlook.com",
+  alertFrequency: [
+    {
+      number: 1,
+      type: "days"
+    }
+  ],
+  alertOptions: [
+    {
+      checked: true,
+      name: "Send alert when trade mark expires",
+      functionName: "sendExpiredAlerts",
+      type: "one-off"
+    },
+    {
+      checked: true,
+      name: "Send reminders for expiry",
+      functionName: "sendExpiryAlerts",
+      type: "recurring"
+    },
+    {
+      checked: true,
+      name: "Send alert when trade mark altered (edited, deleted, added)",
+      functionName: "sendAlertOnChange",
+      type: "one-off"
+    }
+  ],
+  email: "mbg@outlook.com",
+  isAdmin: true,
+  username: "MBG@OUTLOOK.COM"
+},{
+    entity: "ACME INC",
   __v: 0,
   _id: "michael.goulbourn@guinnessworldrecords.com",
   alertFrequency: [
@@ -157,16 +134,16 @@ var admins = [{
       checked: true,
       name: "Send reminders for expiry",
       functionName: "sendExpiryAlerts",
-      type: "one-off"
+      type: "recurring"
     },
     {
       checked: true,
       name: "Send alert when trade mark altered (edited, deleted, added)",
       functionName: "sendAlertOnChange",
-      type: "recurring"
+      type: "one-off"
     }
   ],
-  email: "mbg@outlook.com",
+  email: "michael.goulbourn@guinnessworldrecords.com",
   isAdmin: true,
   username: "MICHAEL.GOULBOURN@GUINNESSWORLDRECORDS.COM"
 }];
@@ -194,7 +171,7 @@ var trademarks = [
     stringDate: "3/22/2013"
   },
   expiryDate: {
-    stringDate: "9/15/2014"
+    stringDate: "9/20/2014"
   },
   applicationNumber: "3060238",
   registrationNumber: "2559727",
@@ -204,44 +181,6 @@ var trademarks = [
     16
   ],
   __v: 0
-}/*,
-{
-  __v: 0,
-  _id: "53c8e75f730766d56dd6abf4",
-  active: true,
-  alpha3: "CHN",
-  applicationNumber: "2000/156802ABC",
-  classes: [
-    9
-  ],
-  country: {
-    coordinates: [
-      35,
-      105
-    ],
-    alpha2: "CN",
-    alpha3: "CHN",
-    name: "China"
-  },
-
-  entity: "ACME INC",
-  expiryDate: {
- 
-    stringDate: "9/16/2014"
-  },
-  filingDate: {
-
-    stringDate: "10/12/2000"
-  },
-  mark: "ACME IN CHINESE",
-  portfolio: "ACME INC",
-  registrationDate: {
-
-    stringDate: "10/27/2004"
-  },
-  registrationNumber: "2023542",
-  status: "Registered",
-
-}*/
+}
 
 ];
