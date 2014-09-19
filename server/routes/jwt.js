@@ -15,7 +15,3 @@ exports.verifyToken = function(token, fn){
         return fn(null, payload);  
    });
 }
-
-
-
-    
