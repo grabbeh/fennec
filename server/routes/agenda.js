@@ -37,7 +37,6 @@ exports.setUpAgenda = function(db){
             });
         });
     
-
     agenda.define('email me', function(job, done){
         email.sendEmail("mbg@outlook.com", 'Test email', "<p>Hello! 24 hour job</p>", function(){
             done();
@@ -60,8 +59,6 @@ function testAgenda(){
     agenda.now('test')
     agenda.start();
 }
-
-testAgenda();
 
 function executeJobs(admins, trademarks, fn){
     async.forEach(admins, function(admin, callback){
