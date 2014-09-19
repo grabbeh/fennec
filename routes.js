@@ -1,14 +1,14 @@
-var world = require('./server/routes/world')
-, country = require('./server/routes/country')
-, group = require('./server/routes/group')
-, main = require('./server/routes/main')
-, user = require('./server/routes/users')
-, image = require('./server/routes/images')
-, expiry = require('./server/routes/expiry')
-, activity = require('./server/routes/activity')
-, notification = require('./server/routes/notification')
-, spreadsheet = require('./server/routes/excel-process')
-, contact = require('./server/routes/contact');
+var world = require('./routes/world')
+, country = require('./routes/country')
+, group = require('./routes/group')
+, main = require('./routes/main')
+, user = require('./routes/users')
+, image = require('./routes/images')
+, expiry = require('./routes/expiry')
+, activity = require('./routes/activity')
+, notification = require('./routes/notification')
+, spreadsheet = require('./routes/excel-process')
+, contact = require('./routes/contact');
 
 module.exports = function(app, x){
 
@@ -109,6 +109,6 @@ module.exports = function(app, x){
 
 	// Serve .html file if route not matched
 	app.get('*', function(req, res){
-	  res.sendfile(__dirname + '/client/views/index.html');
+	  res.sendfile(__dirname + '../client/views/index.html');
 	});
 };
