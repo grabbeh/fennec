@@ -274,19 +274,18 @@ angular.module('app')
             });
 
             $.showGroup = function(group) {
-                if (group === null) {
+                if (group === null) 
                     return;
-                }
+                $.activeMark = group.name;
+
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
                 geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson) {
                     $.geojson = geojson;
                 });
-                chartService.barChartDataForGroup($routeParams.portfolio, group.name).then(function(barChartData) {
+                chartService.barChartData($routeParams.portfolio, group.name).then(function(barChartData) {
                     $.chart = barChartData;
                 });
-                $.marks = $filter('unTickAllExceptSelected')($.marks, group);
-                $.activeMark = group.name;
-
+                $.marks = $filter('unTickAllExceptSelected')($.marks, group.name);
             };
 
             $.showCountry = function(country) {
@@ -294,11 +293,11 @@ angular.module('app')
                     return;
                 }
                 $.trademarks = $filter('extractMarksInCountry')($.allTrademarks, country.alpha3);
-                geoJsonService.getCountry($routeParams.portfolio, country.alpha3).then(function(geojson) {
+                geoJsonService.getWorldGroup($routeParams.portfolio, null, country.alpha3).then(function(geojson) {
                     $.geojson = geojson;
                 });
 
-                chartService.barChartDataForCountry($routeParams.portfolio, 'ALL MARKS', country.alpha3).then(function(barChartData) {
+                chartService.barChartData($routeParams.portfolio, null, country.alpha3).then(function(barChartData) {
                     $.chart = barChartData;
                 });
 
@@ -328,8 +327,8 @@ angular.module('app')
                     });
             };
 
-            $.goToGroup = function(country) {
-                $location.path('/admin/group/' + $routeParams.portfolio).search('group', country.name);
+            $.goToGroup = function(group) {
+                $location.path('/admin/group/' + $routeParams.portfolio).search('group', group.name);
             };
 
             $.goToCountry = function(country) {
@@ -649,9 +648,9 @@ angular.module('app')
                         success: res.success
                     });
                 });
-        };
-    }
-])
+            };
+        }
+    ])
 
 
 .controller('addCtrl', ['$scope', '$http', 'trademarkService', '$routeParams',

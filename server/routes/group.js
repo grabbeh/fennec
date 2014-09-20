@@ -1,7 +1,7 @@
 var helper = require('./helper')
 , _ = require('underscore')
 , Trademark = require('../models/trademarkSchema')
-, favHelper = require('./favourites')
+, checkFavourites = require('./favourites')
 , async = require('async');
 
 exports.favourites = function(req, res){
@@ -29,18 +29,23 @@ exports.favourites = function(req, res){
 exports.groupOfMarks = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
-    helper.findUser(req.user._id, function(err, user){
-        var favourites = user.favourites;
-        if (req.query && req.query.group)
+
+    async.auto({
+        user: function(cb, results){
+            helper.findUser(req.user._id, cb);
+        },
+        trademarks: ['user', function(cb, results){
+            helper.getTrademarks(entity, portfolio, cb);
+        }]
+    }, function(err, results){
+        var favourites = results.user.favourites;
+        var tms = checkFavourites(results.trademarks, favourites);
+        if (req.query && req.query.group){
             var group = req.query.group.replace(/%20/g, " ");
-        helper.getTrademarks(entity, portfolio,  function(err, trademarks){
-            var tms = favHelper.addFavouriteProperty(trademarks, favourites);
-            if (group){
-                var tms = favHelper.addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
-            }
-            res.json(tms);
-        });
-    }) 
+            var tms = checkFavourites(_.groupBy(results.trademarks, 'mark')[group], favourites); 
+        }
+        res.json(tms);
+    });
 }
 
 // if country is provided in query, delimit list of marks by country

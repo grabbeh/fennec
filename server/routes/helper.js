@@ -99,7 +99,7 @@ exports.getGeoJSON = function(fn){
 }
 
 // Country marks
-exports.getTrademarksForCountry = function(entity, portfolio, country, fn){
+exports.marksForCountry = function(entity, portfolio, country, fn){
     Trademark.find({ entity: entity, portfolio: portfolio, 'country.alpha3': country, active: true})
 		.lean()
     	.exec(function(err, trademarks){
@@ -223,7 +223,7 @@ exports.sortTrademarksByExpiryYear = function(trademarks, fn){
 
 
 function filterByExpiryYear(year, trademarks, obj){
-        trademarks.forEach(function(tm){
+    trademarks.forEach(function(tm){
         if (moment(tm.expiryDate.stringDate, 'MM/DD/YYYY').year() === year){
             obj[year].push(tm);
         }

@@ -36,9 +36,6 @@ module.exports = function(app, x){
 	// Filtered world on basis of given list of marks
 	app.post('/api/world/:portfolio', x, world.worldForListOfMarks);
 
-	// geojson of world for given country (ISO code)
-	app.get('/api/world/:portfolio', x, world.worldForCountry);
-
 	// Country-limited trade marks
 	// Gets a list of all trade marks for a given portfolio in a given country (ISO code)
 	app.get('/api/country/:portfolio/:country', x, country.marksForCountry);
@@ -56,7 +53,7 @@ module.exports = function(app, x){
 
 	// Returns basic list of marks for portfolio - accepts optional query for ISO code in
 	// which case returns list of marks for given country
-	app.get('/api/listOfMarks/:portfolio', x, group.listOfMarks);
+	app.get('/api/list/:portfolio', x, group.listOfMarks);
 
 	// Retrieve favourite marks
 	app.get('/api/favourites/:portfolio', x, group.favourites);
@@ -67,6 +64,7 @@ module.exports = function(app, x){
 	app.post('/api/editMarksInCountry/:portfolio', x, country.editMarksInCountry);
 
 	// Expiry dates
+	// accepts query for group in addition to portfolio
 	app.get('/api/expirydates/:portfolio', x, expiry.expiriesForGroup);
 	app.get('/api/expirydates/:portfolio/:country', x, expiry.expiriesForCountry);
 	app.get('/api/expiriesForYear/:portfolio', x, expiry.expiriesForYear);
@@ -84,9 +82,9 @@ module.exports = function(app, x){
 	// Routes for querying logged in user
 	app.get('/api/isAdmin', user.isAdmin);
 	app.get('/api/isUser', user.isUser);
-	app.get('/api/getUser', user.getUser);
+	app.get('/api/user', user.getUser);
 
-	app.post('/api/addUser', user.addUser);
+	app.post('/api/user', user.addUser);
 
 	app.put('/api/users/:id', user.updateUser);
 	app.get('/api/users', user.allUsers);

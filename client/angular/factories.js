@@ -1,52 +1,52 @@
-angular.module('app')
+    angular.module('app')
 
-  .factory('notificationModal', ['btfModal', function(btfModal){
+    .factory('notificationModal', ['btfModal', function(btfModal){
     return btfModal({
       controller: 'notificationModalCtrl',
       templateUrl: '/modals/notification-modal.html'
     })
-  }])
+    }])
 
-   .factory('loginModal', ['btfModal', function(btfModal){
-   	return btfModal({
-   		controller: 'loginModalCtrl', 
-   		templateUrl: '/modals/login-modal.html'
-   	})
-   }])
+    .factory('loginModal', ['btfModal', function(btfModal){
+    	return btfModal({
+    		controller: 'loginModalCtrl', 
+    		templateUrl: '/modals/login-modal.html'
+    	})
+    }])
 
-  .factory('dropdownMenu', ['btfModal', function(btfModal){
-  	return btfModal({
-	      controller: 'dropdownMenuCtrl',
-	      templateUrl: '/modals/dropdown-menu.html'
-	    });	
-  }])
-  .factory('menuModal', ['btfModal', function(btfModal){
+    .factory('dropdownMenu', ['btfModal', function(btfModal){
+    	return btfModal({
+          controller: 'dropdownMenuCtrl',
+          templateUrl: '/modals/dropdown-menu.html'
+        });	
+    }])
+    .factory('menuModal', ['btfModal', function(btfModal){
       return btfModal({
       controller: 'menuModalCtrl',
       templateUrl: '/modals/menu-modal.html'
     });
       
-  }])
-  .factory('trademarkModal', ['btfModal', function (btfModal) {
-    return btfModal({
-      controller: 'trademarkModalCtrl',
-      templateUrl: '/modals/trademark-modal.html'
-    });
-  }])
+    }])
+    .factory('trademarkModal', ['btfModal', function (btfModal) {
+        return btfModal({
+          controller: 'trademarkModalCtrl',
+          templateUrl: '/modals/trademark-modal.html'
+        });
+    }])
 
-  .factory('editTrademarkModal', ['btfModal', function (btfModal) {
-    return btfModal({
-      controller: 'editTrademarkModalCtrl',
-      templateUrl: '/modals/edit-trademark-modal.html'
-    });
-  }])
+    .factory('editTrademarkModal', ['btfModal', function (btfModal) {
+        return btfModal({
+          controller: 'editTrademarkModalCtrl',
+          templateUrl: '/modals/edit-trademark-modal.html'
+        });
+    }])
 
-  .factory('editGroupModal', ['btfModal', function (btfModal) {
-    return btfModal({
-      controller: 'editGroupCtrl',
-      templateUrl: '/modals/edit-group-modal.html'
-    });
-  }])
+    .factory('editGroupModal', ['btfModal', function (btfModal) {
+        return btfModal({
+          controller: 'editGroupCtrl',
+          templateUrl: '/modals/edit-group-modal.html'
+        });
+    }])
 
     .factory('editCountryModal', ['btfModal', function (btfModal) {
         return btfModal({
@@ -55,7 +55,7 @@ angular.module('app')
         });
       }])
 
-	.factory('uploadImageModal', ['btfModal', function(btfModal){
+    .factory('uploadImageModal', ['btfModal', function(btfModal){
         return btfModal({     
             controller: 'uploadImageCtrl',
             templateUrl: '/modals/upload-image-modal.html'
@@ -100,7 +100,7 @@ angular.module('app')
             	.then(function(res){
                  	return res;
                 }, function(res){
-					return res;
+    				return res;
                 })
         },
         isUser: function(){
@@ -110,12 +110,12 @@ angular.module('app')
             return $http.get('/api/isAdmin');
         },
         getUser: function(){
-            return $http.get('/api/getUser').then(function(response){
+            return $http.get('/api/user').then(function(response){
                 return response.data;
             });
         },
         addUser: function(user){
-            return $http.post('/api/addUser', user)
+            return $http.post('/api/user', user)
                     .then(function(res){
                         return res.data;
                     },
@@ -141,109 +141,108 @@ angular.module('app')
         }
     }
     return userService;
-  }])
+    }])
 
-  .factory('geoJsonService', ['$http', function($http){
+    .factory('geoJsonService', ['$http', function($http){
     var geoJsonService = {
-        getWorldGroup: function(portfolio, group){
-            var url = '/api/world/' + portfolio;
-            if (group)
-                var url = url + '?group=' + group;
+        getWorldGroup: function(portfolio, group, country){
+            if (group === "ALL MARKS" || !group)
+                var url = '/api/world/' + portfolio;   
+            else 
+                var url = '/api/world/' + portfolio + '?group=' + group;
+            if (country){
+                var url = '/api/world/' + portfolio + '?country=' + country;
+            }
             return $http.get(url)
             	.then(function(response){
                     return response.data;
-	        })
-        },
-        getCountry: function(portfolio, country){
-            return $http.get('/api/world/' + portfolio + '?country=' + country)
-            	.then(function(response){
-                	return response.data;
             })
         },
         getExpiriesForYear: function(portfolio, year){
             return $http.get('/api/expiriesForYear/' + portfolio + '?year=' + year)
         },
         countryData: function(portfolio){
-          var url = '/api/countryData';
-          if (portfolio){
-             var url = '/api/countryData?portfolio=' + portfolio;
-          }
-        	return $http.get(url)
-	            	.then(function(response){
-	                    return response.data;
-			})
+            var url = '/api/countryData';
+            if (portfolio)
+                var url = '/api/countryData?portfolio=' + portfolio;
+              
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+        		})
         }
     }
     return geoJsonService;
-  }])
+    }])
 
-  .factory('trademarkService', ['$http', '$rootScope', function($http, $rootScope){
+    .factory('trademarkService', ['$http', '$rootScope', function($http, $rootScope){
     function curry(fun){
         return function(arg){
             return fun(arg);
         }   
       }
 
-      var trademarkService = {
-      	  getListOfMarks: function(portfolio, country){
-      	       var url = '/api/listOfMarks/' + portfolio;
+    var trademarkService = {
+      	getListOfMarks: function(portfolio, country){
+      	       var url = '/api/list/' + portfolio;
       	       if (country)
       	       	   var url = url + '?country=' + country;
       	       return $http.get(url)
-	            .then(function(response){
-	                 return response.data;
-	      	  })
-	 	  },
-          anyMarks: function(){
-            return $http.get('/api/anyMarks');
-          },
-          getGroup: function(portfolio, group){
-            var url = '/api/trademarks/' + portfolio;
-            if (group)
-                var url = url + '?group=' + group;
+                .then(function(response){
+                     return response.data;
+          	})
+     	},
+        getGroup: function(portfolio, group){
+            if (group === "ALL MARKS" || !group){
+                var url = '/api/trademarks/' + portfolio;
+            }
+            else
+                var url = '/api/trademarks/' + portfolio + '?group=' + group;
             return $http.get(url)
                 .then(function(response){
                     return response.data;
-                });
-          },
-          getCountry: function(portfolio, iso){
-              return $http.get('/api/country/' + portfolio + '/' + iso)
+            });
+        },
+        getCountry: function(portfolio, country){
+              return $http.get('/api/country/' + portfolio + '/' + country)
               	.then(function(response){
                     return response.data;
-		            })
+    	        })
           },
-          favourites: function(portfolio){
+        favourites: function(portfolio){
            	return $http.get('/api/favourites/' + portfolio)
            	    .then(function(response){
            	    	return response.data;
            	    })
           },
-          editGroup: function(portfolio, mark, trademark){
+        editGroup: function(portfolio, mark, trademark){
               return $http.post('/api/editGroup/' + portfolio + '/' + mark, { trademark: trademark })
           },
-          editMarksInCountry: function(portfolio, country, trademark){
+        editMarksInCountry: function(portfolio, country, trademark){
               return $http.post('/api/editMarksInCountry/' + portfolio + '?country=' + country, { trademark: trademark })
           },
-          getExpiryDatesForGroup: function(portfolio, group, country){
-              var url = '/api/expirydates/' + portfolio + '?group=' + group;
-              if (country){
-                  var url = '/api/expirydates/' + portfolio + '/' + country + '?group=' + group;
-				}
-              
-              return $http.get(url)
-                 .then(function(response){
-                     return response.data;
-				})
+        getExpiryDatesForGroup: function(portfolio, group, country){
+            if (group === "ALL MARKS" || !group)
+                var url = '/api/expirydates/' + portfolio;
+            else
+                var url = '/api/expirydates/' + portfolio + '?group=' + group;
+            if (country){
+                var url = url + '/' + country;
+            }
+            return $http.get(url)
+                .then(function(response){
+                    return response.data;
+            })
           },
-          getTrademark: function(id){
-              return $http.get('/api/trademark/' + id)
-              		.then(function(response){
-                        return response.data;
-                    })
-          },
-          deleteMark: function(trademark){
-              return $http.delete('/api/trademark/' + trademark._id);
-          },
+        getTrademark: function(id){
+            return $http.get('/api/trademark/' + id)
+              	.then(function(response){
+                    return response.data;
+                })
+        },
+        deleteMark: function(trademark){
+            return $http.delete('/api/trademark/' + trademark._id);
+        },
           addMark: function(trademark, portfolio){
                 trademark.classes = _.map(trademark.classes.split(","), curry(parseInt));
                 trademark.portfolio = portfolio;
@@ -261,9 +260,9 @@ angular.module('app')
            }
        	}
       return trademarkService;
-  }])
+    }])
 
-  .factory('pathService', ['trademarkService', 'userService', function(trademarkService, userService){
+    .factory('pathService', ['trademarkService', 'userService', function(trademarkService, userService){
       
       var path = [];
       var pathService = {
@@ -284,26 +283,11 @@ angular.module('app')
 
       }
       return pathService;
-  }])
-  
-  .factory('chartService', ['$filter', '$http', 'trademarkService', function($filter, $http, trademarkService){
+    }])
+
+    .factory('chartService', ['$filter', '$http', 'trademarkService', function($filter, $http, trademarkService){
         var chartService = {
-            barChartDataForGroup: function(portfolio, group){
-                return trademarkService.getExpiryDatesForGroup(portfolio, group)
-                    .then(function(data){
-                        var barData = $filter('extractExpiryDates')(data);
-                        var fullBarData = {
-                            labels : $filter('extractYears')(barData),
-                            datasets : 
-                                [{data : $filter('extractLength')(barData), 
-                                fillColor : "rgb(57, 155, 104)"
-                                }]
-                            };
-                        return fullBarData;
-                        })
-                
-            },
-            barChartDataForCountry: function(portfolio, group, country){
+            barChartData: function(portfolio, group, country){
                 return trademarkService.getExpiryDatesForGroup(portfolio, group, country)
                     .then(function(data){
                         var barData = $filter('extractExpiryDates')(data);
@@ -367,5 +351,5 @@ angular.module('app')
                }
         }
         return chartService;
-  }])
+    }])
 

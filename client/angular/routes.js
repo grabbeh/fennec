@@ -197,7 +197,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                     return geoJsonService.countryData($route.current.params.portfolio);
                 },
                 barChartData: function($route, chartService){
-                    return chartService.barChartDataForGroup($route.current.params.portfolio, "ALL MARKS");
+                    return chartService.barChartData($route.current.params.portfolio);
                 },
                 barChartOptions: function(chartService){
                     return chartService.barChartOptions();

@@ -2,6 +2,7 @@ angular.module('app')
 
 	.filter('extractGroup', function(){
     	return function(arr, group){
+
             if (group === "ALL MARKS"){
                return arr; 
             }
@@ -183,7 +184,7 @@ angular.module('app')
 		return function(ar, item){
 			var arr = [];
 			ar.forEach(function(a){
-				if (item.name === a.name){
+				if (item === a.name){
 					a.checked = true;
 					arr.push(a);
 				}

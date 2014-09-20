@@ -1,16 +1,17 @@
 
-var helper = require('./helper.js')
+var helper = require('./helper')
 , _ = require('underscore')
-, async = require('async')
+, async = require('async');
 
 exports.expiriesForGroup = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
+    if (req.query && req.query.group)
+        var group = req.query.group.replace(/%20/g, " ");
+
     helper.getTrademarks(entity, portfolio, function(err, tms){
-        var key = req.query.group.replace(/%20/g, " ");
-        if (key != "ALL MARKS"){
-            var tms = _.groupBy(tms, 'mark')[key];	
-        }
+        if (group)
+            var tms = _.groupBy(tms, 'mark')[group];	
         helper.sortTrademarksByExpiryYear(tms, function(err, trademarks){
         	res.json(trademarks);
     	})	 
