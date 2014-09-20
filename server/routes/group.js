@@ -31,10 +31,11 @@ exports.groupOfMarks = function(req, res){
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     helper.findUser(req.user._id, function(err, user){
         var favourites = user.favourites;
-        var group = req.params.group.replace(/%20/g, " ");
+        if (req.query && req.query.group)
+            var group = req.query.group.replace(/%20/g, " ");
         helper.getTrademarks(entity, portfolio,  function(err, trademarks){
-          var tms = favHelper.addFavouriteProperty(trademarks, favourites);
-            if (group != "ALL MARKS"){
+            var tms = favHelper.addFavouriteProperty(trademarks, favourites);
+            if (group){
                 var tms = favHelper.addFavouriteProperty(_.groupBy(trademarks, 'mark')[group], favourites);	
             }
             res.json(tms);

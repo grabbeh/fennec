@@ -86,10 +86,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                   return userService.getUser();  
                 },
                 world: function($route, geoJsonService){
-                    return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
+                    return geoJsonService.getWorldGroup($route.current.params.portfolio);
                 },
                 trademarks: function($route, trademarkService){
-                    return trademarkService.getGroup($route.current.params.portfolio, "ALL MARKS");
+                    return trademarkService.getGroup($route.current.params.portfolio);
                 }
             }
         }).
@@ -188,10 +188,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
                     return userService.getUser();
                 },
                 trademarks: function($route, trademarkService){
-                    return trademarkService.getGroup($route.current.params.portfolio, "ALL MARKS");
+                    return trademarkService.getGroup($route.current.params.portfolio);
                 },
                 world: function($route, geoJsonService){
-                    return geoJsonService.getWorldGroup($route.current.params.portfolio, "ALL MARKS");
+                    return geoJsonService.getWorldGroup($route.current.params.portfolio);
                 },
                 countries: function($route, geoJsonService){
                     return geoJsonService.countryData($route.current.params.portfolio);

@@ -146,7 +146,10 @@ angular.module('app')
   .factory('geoJsonService', ['$http', function($http){
     var geoJsonService = {
         getWorldGroup: function(portfolio, group){
-            return $http.get('/api/world/' +  portfolio + '/' + group)
+            var url = '/api/world/' + portfolio;
+            if (group)
+                var url = url + '?group=' + group;
+            return $http.get(url)
             	.then(function(response){
                     return response.data;
 	        })
@@ -183,12 +186,9 @@ angular.module('app')
 
       var trademarkService = {
       	  getListOfMarks: function(portfolio, country){
-
       	       var url = '/api/listOfMarks/' + portfolio;
-      	       if (country){
-      	       	   var url = '/api/listOfMarks/' + portfolio + '?country=' + country;
-      	       }	
-      	  	
+      	       if (country)
+      	       	   var url = url + '?country=' + country;
       	       return $http.get(url)
 	            .then(function(response){
 	                 return response.data;
@@ -198,7 +198,10 @@ angular.module('app')
             return $http.get('/api/anyMarks');
           },
           getGroup: function(portfolio, group){
-            return $http.get('/api/trademarks/' + portfolio + '/' + group)
+            var url = '/api/trademarks/' + portfolio;
+            if (group)
+                var url = url + '?group=' + group;
+            return $http.get(url)
                 .then(function(response){
                     return response.data;
                 });

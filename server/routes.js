@@ -31,7 +31,7 @@ module.exports = function(app, x){
 	app.get('/api/countryData', x, world.countryData);
 
 	// Provide geojson for group of marks
-	app.get('/api/world/:portfolio/:group', x, world.worldForGroup);
+	app.get('/api/world/:portfolio', x, world.worldForGroup);
 
 	// Filtered world on basis of given list of marks
 	app.post('/api/world/:portfolio', x, world.worldForListOfMarks);
@@ -46,7 +46,7 @@ module.exports = function(app, x){
 	app.post('/api/country/:portfolio/:country', x, country.filterMarksForCountry);
 
 	// Get group of marks
-	app.get('/api/trademarks/:portfolio/:group', x, group.groupOfMarks);
+	app.get('/api/trademarks/:portfolio', x, group.groupOfMarks);
 
 	// Edit individual trade marks
 	app.get('/api/trademark/:id', x, main.getTrademark);

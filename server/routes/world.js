@@ -1,8 +1,8 @@
 var helper = require('./helper')
-, favourites = require('./favourites')
-, _ = require('underscore')
-, countryData = require('../data/country-data.json')
-, async = require('async');
+	, favourites = require('./favourites')
+	, _ = require('underscore')
+	, countryData = require('../data/country-data.json')
+	, async = require('async');
 
 exports.countryData = function(req, res){
 	if (req.query && req.query.portfolio){
@@ -22,16 +22,15 @@ exports.countryData = function(req, res){
 	    })	
 	}
 	else {
-	     res.json(countryData);	
+	    res.json(countryData);	
 	}
 }
-
 
 exports.worldForGroup = function(req, res){
 	var entity = req.user.entity;
 	var portfolio = req.params.portfolio.replace(/%20/g, " ");
-	var group = req.params.group.replace(/%20/g, " ");
-	
+	if (req.query && req.query.group)
+		var group = req.query.group.replace(/%20/g, " ");
 	async.parallel([ 
         	async.apply(helper.getGeoJSON),
 	    	async.apply(helper.getTrademarks, entity, portfolio),
@@ -39,18 +38,15 @@ exports.worldForGroup = function(req, res){
 	    ],
 	    function(err, results){
            	var tms = favourites.addFavouriteProperty(results[1], results[2].favourites);
-	        if (group != "ALL MARKS"){
+	        if (group){
 		        var tms = favourites.addFavouriteProperty(_.groupBy(results[1], 'mark')[group], results[2].favourites);	
 		    }
-
-	       helper.convertPortfolioAndAddToGeoJSON(results[0], tms, function(err, gj){
+	        helper.convertPortfolioAndAddToGeoJSON(results[0], tms, function(err, gj){
 	      	   	 res.json(gj);
 	      	 });
 	    });
 	}
 
-// Provides geojson file with trademarks filtered on basis of given array
-// 
 exports.worldForListOfMarks = function(req, res){
       var entity = req.user.entity;
       var portfolio = req.params.portfolio.replace(/%20/g, " ");
@@ -60,16 +56,15 @@ exports.worldForListOfMarks = function(req, res){
 	      async.apply(helper.getTrademarks, entity, portfolio)
 	      ],
 	      function(err, results){
-	      	   if (keys.indexOf("ALL MARKS") > -1) { 
-	      	   	var trademarks = results[1]; 
-	      	   }
-               else { keys.unshift(_.groupBy(results[1], 'mark'));
-                   var trademarks = _.flatten(_.values(_.pick.apply(null, keys))); 
+	      	   	if (keys.indexOf("ALL MARKS") > -1)  
+	      	   		var trademarks = results[1]; 
+               	else { keys.unshift(_.groupBy(results[1], 'mark'));
+                    var trademarks = _.flatten(_.values(_.pick.apply(null, keys))); 
                }
 	      	   helper.convertPortfolioAndAddToGeoJSON(results[0], trademarks, function(err, gj){
 	      	   	 res.json(gj);
-	      	   });
-	      });
+	      	});
+	    });
 	}
 
 
@@ -78,12 +73,12 @@ exports.worldForCountry = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     async.parallel([ 
-      	  async.apply(helper.getGeoJSON),
-	      async.apply(helper.marksForCountry, entity, portfolio, country)
-	      ],
-	      function(err, results){
-	      	   helper.convertPortfolioAndAddToGeoJSON(results[0], results[1], function(err, gj){
-	      	   	 res.json(gj);
-	      	   });
-	      });
-}
+		async.apply(helper.getGeoJSON),
+		async.apply(helper.marksForCountry, entity, portfolio, country)
+		],
+		function(err, results){
+		helper.convertPortfolioAndAddToGeoJSON(results[0], results[1], function(err, gj){
+			res.json(gj);
+			});
+		});
+	}
