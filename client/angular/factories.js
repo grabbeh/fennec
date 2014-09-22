@@ -3,62 +3,55 @@
     .factory('notificationModal', ['btfModal', function(btfModal){
     return btfModal({
       controller: 'notificationModalCtrl',
-      templateUrl: '/modals/notification-modal.html'
+      templateUrl: '/modals/notification-model/notification-modal.html'
     })
     }])
 
     .factory('loginModal', ['btfModal', function(btfModal){
     	return btfModal({
     		controller: 'loginModalCtrl', 
-    		templateUrl: '/modals/login-modal.html'
+    		templateUrl: '/modals/login-modal/login-modal.html'
     	})
     }])
 
     .factory('dropdownMenu', ['btfModal', function(btfModal){
     	return btfModal({
           controller: 'dropdownMenuCtrl',
-          templateUrl: '/modals/dropdown-menu.html'
+          templateUrl: '/modals/dropdown-menu/dropdown-menu.html'
         });	
     }])
     .factory('menuModal', ['btfModal', function(btfModal){
       return btfModal({
       controller: 'menuModalCtrl',
-      templateUrl: '/modals/menu-modal.html'
+      templateUrl: '/modals/menu-modal/menu-modal.html'
     });
       
     }])
     .factory('trademarkModal', ['btfModal', function (btfModal) {
         return btfModal({
           controller: 'trademarkModalCtrl',
-          templateUrl: '/modals/trademark-modal.html'
+          templateUrl: '/modals/trademark-modal/trademark-modal.html'
         });
     }])
 
     .factory('editTrademarkModal', ['btfModal', function (btfModal) {
         return btfModal({
           controller: 'editTrademarkModalCtrl',
-          templateUrl: '/modals/edit-trademark-modal.html'
+          templateUrl: '/modals/edit-trademark-modal/edit-trademark-modal.html'
         });
     }])
 
     .factory('editGroupModal', ['btfModal', function (btfModal) {
         return btfModal({
           controller: 'editGroupCtrl',
-          templateUrl: '/modals/edit-group-modal.html'
+          templateUrl: '/modals/edit-group-modal/edit-group-modal.html'
         });
     }])
-
-    .factory('editCountryModal', ['btfModal', function (btfModal) {
-        return btfModal({
-          controller: 'editCountryCtrl',
-          templateUrl: '/modals/edit-country-modal.html'
-        });
-      }])
 
     .factory('uploadImageModal', ['btfModal', function(btfModal){
         return btfModal({     
             controller: 'uploadImageCtrl',
-            templateUrl: '/modals/upload-image-modal.html'
+            templateUrl: '/modals/upload-image-modal/upload-image-modal.html'
         });
     }])
 
@@ -217,9 +210,6 @@
           },
         editGroup: function(portfolio, mark, trademark){
               return $http.post('/api/editGroup/' + portfolio + '/' + mark, { trademark: trademark })
-          },
-        editMarksInCountry: function(portfolio, country, trademark){
-              return $http.post('/api/editMarksInCountry/' + portfolio + '?country=' + country, { trademark: trademark })
           },
         getExpiryDatesForGroup: function(portfolio, group, country){
             if (group === "ALL MARKS" || !group)

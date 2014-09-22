@@ -1,0 +1,5 @@
+<div ng-class="{ successnotification: success, errornotification: error}" class="notification-modal">
+	<div ng-show="success" class="notification-msg">{{ success }}</div>
+	<div ng-show="error" class="notification-msg">{{ error }}</div>
+	<div class="hover notification-remove" ng-click="closeModal()"><i class="fa fa-times"></i></div>
+</div>

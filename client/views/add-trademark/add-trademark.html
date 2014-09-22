@@ -1,0 +1,25 @@
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
+<div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="form-body">
+     <div class="form-container">
+          <div class="form-title">Add trade mark</div>
+           <form novalidate name="addTrademarkForm" class="basic-form" ng-submit="addTrademark(trademark)">
+            
+              <div><input required class="form-input" ng-model="trademark.mark" placeholder="Mark"></div>
+               <div class="radio"><input required type="radio" ng-model="trademark.status" value="Registered">Registered</div>
+               <div class="radio"><input required type="radio" ng-model="trademark.status" value="Published">Published</div>
+              <div class="radio"><input required type="radio" ng-model="trademark.status" value="Pending">Pending</div>
+              <select class="form-select" ng-model="trademark.country" ng-options="country.name for country in countrydata">
+                <option value="">Select country</option>
+              </select>
+              <div><input required class="form-input" ng-model="trademark.classes" placeholder="Classes"></div>
+              <div><input required class="form-input" ng-model="trademark.filingDate" placeholder="Filing date"></div>
+              <div><input class="form-input" ng-model="trademark.registrationDate" placeholder="Reg. date"></div>
+              <div><input class="form-input" ng-model="trademark.expiryDate" placeholder="Expiry date"></div>
+              <div><input required class="form-input" ng-model="trademark.applicationNumber" placeholder="App. no."></div>
+              <div><input class="form-input" ng-model="trademark.registrationNumber" placeholder="Reg. no."></div>
+
+              <div><input ng-disabled="!canAddTrademark()" class="add-button" type=submit value="Submit"></div>
+            </form>
+            <div ng-show="message" class="confirmation-message">{{ message }}</div>
+      </div> 
+ </div>

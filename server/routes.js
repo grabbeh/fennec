@@ -14,7 +14,7 @@ var world = require('./routes/world')
 module.exports = function(app, x){
 
 	app.get('/', function(req, res){
-		res.sendfile('./client/views/index.html');
+		res.sendfile('./client/index.html');
 	});
 	
 	// Download trade marks based on query parameter "portfolio"
@@ -108,6 +108,6 @@ module.exports = function(app, x){
 
 	// Serve .html file if route not matched
 	app.get('*', function(req, res){
-		res.sendfile('./client/views/index.html');
+		res.sendfile('./client/index.html');
 	});
 };

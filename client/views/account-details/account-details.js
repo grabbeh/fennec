@@ -1,0 +1,37 @@
+angular.module('app')
+.directive('mgAccountDetailsWidget', function() {
+    return {
+        replace: true,
+        templateUrl: '/views/account-details/account-details.html',
+        scope: {
+            user: '='
+        },
+        controller: function($scope, $http, notificationModal) {
+            var $ = $scope;
+            $.updatePassword = function(old, nnew, dup) {
+                if (nnew != dup) {
+                    $.passwordMessage = "New password and duplicate don't match";
+                    return;
+                }
+                var load = {
+                    oldPW: old,
+                    newPW: nnew
+                };
+                $http.post('/api/updatePassword', load)
+                    .success(function(data) {
+                        $.passwordMessage = data.message;
+                        notificationModal.activate({
+                            success: data.message
+                        })
+                    })
+                    .error(function(data) {
+                        $.passwordMessage = data.message;
+                        notificationModal.activate({
+                            error: data.message
+                        })
+                    })
+            }
+
+        }
+    }
+})

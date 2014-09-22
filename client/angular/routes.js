@@ -3,17 +3,17 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
     $locationProvider.html5Mode(true);
     $routeProvider.
         when('/', {
-            templateUrl: '/partials/landing-page.html',
+            templateUrl: '/views/landing-page/landing-page.html',
             controller: 'landingPageCtrl'
         }).
         when('/terms', {
-            templateUrl: '/partials/terms.html'
+            templateUrl: '/views/terms/terms.html'
         }).
         when('/about', {
-            templateUrl: '/partials/about.html'
+            templateUrl: '/views/about/about.html'
         }).
         when('/users', {
-            templateUrl: '/partials/users.html',
+            templateUrl: '/views/users/users.html',
             controller: 'usersCtrl',
             resolve: {
                 admin: function(userService){
@@ -29,7 +29,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         }).
         when('/quick-search/:portfolio', {
             reloadOnSearch: false,
-            templateUrl: '/partials/quick-search.html',
+            templateUrl: '/views/quick-search/quick-search.html',
             controller: 'quickSearchCtrl',
             resolve: {
                 user: function(userService){
@@ -38,7 +38,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
         when('/favourites/:portfolio', {
-           templateUrl: '/partials/favourites.html',
+           templateUrl: '/views/favourites/favourites.html',
            controller: 'favouritesCtrl',
            resolve: {
                isUser: function(userService){
@@ -54,7 +54,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         }).
         when('/home/:portfolio', {
             reloadOnSearch: false,
-            templateUrl: '/partials/portfolio-home.html',
+            templateUrl: '/views/portfolio-home/portfolio-home.html',
             controller: 'portfolioHomeCtrl',
             resolve: {
                 isUser: function(userService){
@@ -73,7 +73,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             
         }).
         when('/map/:portfolio', {
-            templateUrl: '/partials/map.html',
+            templateUrl: '/views/map/map.html',
             controller: 'mapCtrl',
             resolve: {
                 isUser: function(userService){
@@ -94,19 +94,19 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
         when('/login', {
-            templateUrl: '/partials/login.html',
+            templateUrl: '/views/login/login.html',
             controller: 'loginCtrl'
         }).
         when('/reset-password', {
-            templateUrl: '/partials/password-reset-request.html',
+            templateUrl: '/views/password-reset-request/password-reset-request.html',
             controller: 'passwordResetCtrl'
         }).
         when('/password/:id', {
-            templateUrl: '/partials/change-password.html',
+            templateUrl: '/views/change-password/change-password.html',
             controller: 'passwordCtrl'
         }).
         when('/upload', {
-            templateUrl: '/partials/upload.html',
+            templateUrl: '/views/upload/upload.html',
             controller: 'uploadCtrl',
             resolve: {
                 admin: function(userService){
@@ -115,8 +115,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }). 
     	when('/add/trademark/:portfolio', {
-            templateUrl: '/partials/add.html',
-            controller: 'addCtrl',
+            templateUrl: '/views/add-trademark/add-trademark.html',
+            controller: 'addTrademarkCtrl',
             resolve: {
                 admin: function(userService){
                     return userService.isAdmin();
@@ -124,7 +124,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
    		when('/view/trademark/:id', {
-            templateUrl: '/partials/view-trademark.html',
+            templateUrl: '/views/view-trademark/view-trademark.html',
             controller: 'trademarkViewCtrl',
             resolve: {
                 admin: function(userService){
@@ -140,7 +140,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         }).
         when('/admin/group/:portfolio', {
             reloadOnSearch: false,
-            templateUrl: '/partials/view-group.html',
+            templateUrl: '/views/view-group/view-group.html',
             controller: 'groupViewCtrl',
             resolve: {
                 admin: function(userService){
@@ -153,7 +153,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         }).
         when('/admin/country/:portfolio', {
             reloadOnSearch: false,
-            templateUrl: '/partials/view-country.html',
+            templateUrl: '/views/view-country/view-country.html',
             controller: 'countryViewCtrl',
             resolve: {
                 admin: function(userService){
@@ -165,7 +165,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
     	when('/admin/expiring/:portfolio/:year', {
-            templateUrl: '/partials/expiry-map.html',
+            templateUrl: '/views/expiry-map/expiry-map.html',
             controller: 'expiryCtrl',
             resolve: {
                 admin: function(userService){
@@ -175,7 +175,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         }).
         when('/dashboard/:portfolio', {
             reloadOnSearch: false,
-            templateUrl: '/partials/admin.html',
+            templateUrl: '/views/admin/admin.html',
             controller: 'adminCtrl',
             resolve: {
                 admin: function(userService){
@@ -205,12 +205,12 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             }
         }).
         when('/create-account', {
-            templateUrl: '/partials/create-account.html', 
+            templateUrl: '/views/create-account/create-account.html', 
             controller: 'createAccountCtrl'
             }
         ).
         when('/home', {
-            templateUrl:'/partials/home.html',
+            templateUrl:'/views/home/home.html',
             controller: 'homeCtrl',
             resolve:{
                 isUser: function(userService){

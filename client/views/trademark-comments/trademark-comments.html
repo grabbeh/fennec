@@ -1,0 +1,43 @@
+<div>
+    <div class="trademark-comments-container" ng-show="trademark.comments">
+        <div class="hover-underline comment-date-filter" ng-click="predicate = 'date'; reverse=!reverse">Oldest / Newest</div>
+        <div mg-clear></div>
+        <ul class="tm-list">        
+        <li class="tm-list-li" ng-repeat="comment in trademark.comments | orderBy:predicate:reverse">
+        
+        <div class="main-comment">
+            <div class="comment-text">{{ comment.text }} </div>
+            <div title="{{comment.date}}" class="comment-details">{{ comment.author }} on {{ comment.date | date: 'longDate' }}</div>
+            <div class="comment-details" ng-show="comment.updated">updated {{ comment.updated | date: 'longDate' }}</div>
+        </div>
+            <div class="opaque margin-left-ten edit-button">
+                <div ng-click="startEdit(comment, $index)">
+                    <i class="fa fa-pencil fa-lg"></i>
+                </div>
+            </div>
+            <div class="opaque delete-button">
+                <div ng-click="deleteComment(comment, $index)">
+                    <i class="fa fa-times fa-lg"></i>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </div>
+    
+    <div>
+        <div ng-hide="showEditButton">
+            <form  ng-submit="addComment(text)">
+                <textarea class="comment-text-area" ng-model="text"></textarea>
+                <div ng-hide="showEditButton" class="comment-submit-btn"><input class="comment-btn" type="submit" value="Add comment"/></div>
+             </form>
+        </div>
+        <div ng-show="showEditButton">
+
+             <form  ng-submit="editComment(text)">
+                <textarea class="comment-text-area" ng-model="text"></textarea>
+                <div class="comment-submit-btn"><input class="comment-btn" type="submit" value="Edit comment"/></div>
+             </form>
+        </div>
+
+    </div>
+</div>

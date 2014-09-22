@@ -1,0 +1,41 @@
+<div ng-show="user">
+    <div ng-show="user.alertFrequency.length">
+        <div class="alert-title">Existing expiry reminders</div>
+        <ul class="reminder-list">
+            <li class="tm-list-li" ng-repeat="alert in user.alertFrequency">
+                <div> <span>{{ alert.number }} {{ alert.type }} from expiry </span><span class="remove-alert" ng-click="removeAlert($index)"><i class="fa fa-times"></i></span> 
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <div class="alert-title">Add expiry reminder</div>
+        <div class="alert-subtitle">Receive email alerts when a trade mark is close to expiry</div>
+        
+        <div class="alert-form">
+            <form novalidate>
+            <div class="row">
+                <div class="one-half-container">
+                    <span><input required class="alert-number-input" type=number ng-model="alert.number" name="number" placeholder="Provide number" ></span>
+                </div>
+                <div class="one-half-container last">
+                    <span><select class="alert-type-select" ng-change="addAlert(alert)" ng-model="alert.type" ng-options="type for type in types"><option value=""> Choose period from expiry</option></select></span>
+                </div> 
+            </div>
+            </form>
+            <div class="alert-subtitle">{{ message }}</div>
+        </div>
+        
+    </div>
+    
+    <div class="alert-list-container">
+        <div class="alert-title">Edit alerts</div>
+          <ul class="alert-list">
+            <li ng-repeat="alert in user.alertOptions"><input class="checkbox" ng-model="alert.checked" type="checkbox" name="alert">
+           	      {{ alert.name }}
+           	</li>
+          </ul>
+        <div><input ng-click="updateAlerts(user)" class="small-button" type=submit  value="Update"></div>
+    </div>
+</div>

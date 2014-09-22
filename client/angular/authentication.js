@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller("authCtrl", ['$scope', 'notificationModal','loginModal','$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'editCountryModal', 'menuModal','dropdownMenu', 'uploadImageModal', 'userService',
-        function($scope, notificationModal, loginModal, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, editCountryModal, menuModal, dropdownMenu, uploadImageModal, userService){
+    .controller("authCtrl", ['$scope', 'notificationModal','loginModal','$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'menuModal','dropdownMenu', 'uploadImageModal', 'userService',
+        function($scope, notificationModal, loginModal, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, menuModal, dropdownMenu, uploadImageModal, userService){
             var $ = $scope;
             $rootScope.menuModal = false;
             $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
@@ -56,7 +56,6 @@ angular.module('app')
                 $rootScope.modal = false;
                 trademarkModal.deactivate();
                 editTrademarkModal.deactivate();
-                editCountryModal.deactivate();
                 editGroupModal.deactivate();
                 uploadImageModal.deactivate();
                 loginModal.deactivate();
@@ -86,28 +85,3 @@ angular.module('app')
 
         }])
     
-    .controller("loginCtrl", ['$scope', '$window', '$rootScope', 'userService', 'pathService', '$location',
-        function($scope, $window, $rootScope, userService, pathService, $location){
-            var $ = $scope;
-            
-            $.canSubmitLogin = function(){
-                return $.loginForm.$dirty && $.loginForm.$valid;
-            };
-            
-            $.login = function(){
-                userService.logIn({ password: $.password, email: $.email })
-                    .then(function(res){
-                        $window.sessionStorage.token = res.data.token;
-                        $rootScope.user = true;
-                        if (pathService.returnPath() === undefined){
-                            $location.path('/home');
-                        }
-                        else {
-                            $location.path(pathService.returnPath());
-                        }
-                    }, 
-                    function(err){
-                        $.message = err.message;
-                    });
-                };
-        }]);

@@ -1,0 +1,20 @@
+<div>
+    <div ng-hide="incompleteMarks" class="margin-top">No incomplete marks for this group of trade marks</div>
+    <ul class="tm-list expiry-list">
+        <li class="tm-list-li" ng-repeat="tm in items track by $index">
+            <div ng-click="showModalWrapper(tm)" class="hover tm-list-content">
+              <div><span mg-bold>{{ tm.mark }} </span><span> in {{ tm.country.name }} </span></div>
+              <div ng-repeat="issue in tm.issues">- {{ issue }} </div>
+            </div>
+            <div class="view-icon"><a href="/view/trademark/{{tm._id}}"><i class="fa fa-eye"></i></a></div>
+        </li>
+    </ul>
+
+    <div ng-show="incompleteMarks" class="paginator-holder">
+        <div class="pagination-prev hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="prevPage(pageNumber)">Prev</div>
+        <div class="pagination-first hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="firstPage()">1</div>
+        <div class="pagination-number hover-cursor"> {{ pageNumber }} </div>
+        <div class="pagination-last hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="lastPage()"> {{ groupOfArrays.length }} </div>
+        <div class="pagination-next hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="nextPage(pageNumber)">Next</div>
+    </div>
+</div>

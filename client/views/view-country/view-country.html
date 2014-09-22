@@ -1,0 +1,58 @@
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
+<div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
+    <div class="view-group-panel-container">
+     <div class="row">
+         <div class="one-half-container">
+             
+        <div class="portfolio-home-title">{{ activePortfolio }}</div>
+        <div class="view-group-title">{{ country }}</div>
+        </div>
+
+    </div>
+        
+        <div class="view-country-map" ng-show="trademark.country.coordinates">
+           <img class="country-img" ng-src="//api.tiles.mapbox.com/v3/grabbeh.gch0omlb/{{trademark.country.coordinates[1]}},{{trademark.country.coordinates[0]}},3/900x300.png">
+        </div>
+        <div class="row">
+            
+            <div class="one-half-container">
+            <div mg-bold>Summary</div>
+            <div class="stat-header">{{ trademarks.length }}</div>
+            <div class="stat-subtitle">Total</div>
+            <div>
+                <ul class="stat-list stat-list-group">
+                    <li ng-show="chartSubtitles[0]">
+                        <div mg-bold class="sub-stat-header">{{ chartSubtitles[0].number }}</div>
+                        <div class="sub-stat-row">{{ chartSubtitles[0].status }}</div>
+                    </li>
+                    <li ng-show="chartSubtitles[1]">
+                        <div mg-bold class="sub-stat-header">{{ chartSubtitles[1].number }}</div>
+                        <div class="sub-stat-row">{{ chartSubtitles[1].status }}</div>
+                    </li>
+                    <li ng-show="chartSubtitles[2]">
+                        <div mg-bold class="sub-stat-header">{{ chartSubtitles[2].number }}</div>
+                        <div class="sub-stat-row">{{ chartSubtitles[2].status }}</div>
+                    </li>
+                </ul>
+            </div>
+           
+    <div class="view-country-line"></div>   
+    <div class="hover" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks</div>
+
+    <div ng-show="showMarkList" mg-mark-list-displayer send-marks-to-server="sendMarksToServer" marks="marks"></div>
+    </div>
+        
+    </div>
+</div>
+      <!-- map -->
+      
+      <div ng-show="registered || pending || published || nocontent" class="trademark-container">
+        
+        <span ng-show="nocontent">No trade marks for this country</span>
+          <div class="one-third-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
+         <div class="one-third-container" mg-published-trademark-list published="published" show-modal="showModal"></div>
+         <div class="one-third-container last" mg-pending-trademark-list pending="pending" show-modal="showModal"></div>
+      </div>
+      <br></br>
+   
+</div>

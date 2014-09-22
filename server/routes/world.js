@@ -36,7 +36,7 @@ exports.worldForGroup = function(req, res){
 		async.apply(helper.findUser, req.user._id)
 	    ],
 	    function(err, results){
-           	var tms = favourites.addFavouriteProperty(results[1], results[2].favourites);
+           	var tms = checkFavourites(results[1], results[2].favourites);
 	        if (q && q.group){
 	        	var group = q.group.replace(/%20/g, " ");
 		        var tms = checkFavourites(_.groupBy(results[1], 'mark')[group], results[2].favourites);	

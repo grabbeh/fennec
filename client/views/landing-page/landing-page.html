@@ -1,0 +1,54 @@
+<div ng-hide="loadingView">
+    <div class="landing-page-container">
+        <div class="left-home-column">
+            <div class="title-container">
+                 <div class="home-title">
+                    Fennec
+                </div>
+                <div class="home-subtitle">
+                    trade mark portfolio analysis and visualisation tool
+                </div>
+            </div>
+            <div class="features-container">
+                 <div>
+                    <div ng-click="loadDemo()" class="demo-button">
+                        <span class="home-demo-link">View demo</span>
+                    </div>
+                </div>
+                <div class="features-title">
+                    Features
+                </div>
+                 
+                <ul class="features">
+                    <li>Admin panel</li>
+                    <li>Quick check for marketing & PR teams</li>
+                    <li>Email reminders</li>
+                    <li>Full text search</li>
+                    <li>Map view</li>
+                    <li>Find incomplete records</li>
+                    <li>Access data via an API</li>
+                </ul>
+                <div class="landing-page-trial">
+                     Sound good? Drop us a line below and we'll get in touch..
+                </div>
+                <div class="home-form-container">
+                  <div class="contact-form-title">
+                    Contact form</div>
+                   <form novalidate name="sendMessageForm" ng-submit="sendMessage()">
+                      <div><input required class="form-input" ng-model="msg.name" type=text name="password" placeholder="Name" ></div>
+                      <div><input required class="form-input" type=email ng-model="msg.email" name="email" placeholder="E-mail" ></div>
+
+                      <div><input class="add-button" type=submit ng-disabled="!canMessage()" value="Submit"></div>
+                 </form>
+                    <div>{{ message }}</div>
+              </div> 
+              
+            </div>
+        </div>
+        
+        
+         <div class="landing-page-right-column">
+              <img class="screenshot" ng-src="/images/screenshot.png">
+         </div>
+    </div>
+</div>
