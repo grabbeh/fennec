@@ -2,7 +2,7 @@ angular.module('app')
 .directive('mgRegisteredTrademarkList', function() {
     return {
         replace: true,
-        templateUrl: '/partials/registered-list.html',
+        templateUrl: '/views/registered-list/registered-list.html',
         scope: {
             registered: '=',
             showModal: '&'
