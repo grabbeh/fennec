@@ -2,7 +2,7 @@ angular.module('app')
 .directive('mgPendingTrademarkList', function() {
     return {
         replace: true,
-        templateUrl: '/partials/pending-list.html',
+        templateUrl: '/views/pending-list/pending-list.html',
         scope: {
             pending: '=',
             showModal: '&'
