@@ -3,7 +3,7 @@
     .factory('notificationModal', ['btfModal', function(btfModal){
     return btfModal({
       controller: 'notificationModalCtrl',
-      templateUrl: '/modals/notification-model/notification-modal.html'
+      templateUrl: '/modals/notification-modal/notification-modal.html'
     })
     }])
 
