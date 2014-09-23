@@ -19,7 +19,6 @@ angular.module('app')
                             })
                             $.searchResults = false;
                         } else {
-                            console.log(data);
                             $.searchResults = data;
                         }
                     })
