@@ -9,7 +9,7 @@ angular.module('app')
             deleteTrademark: '&'
         },
         replace: true,
-        templateUrl: '/partials/trademark-container.html',
+        templateUrl: '/views/trademark-container/trademark-container.html',
         controller: function($scope) {
             var $ = $scope;
             $.editTrademarkWrapper = function(trademark) {
