@@ -66,10 +66,10 @@
                     <div class="standard-container shadow">
                         <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
                     </div>
-                       <div class="paginator" mg-favourites-paginator show-modal="showModal" favourite-marks="favouriteMarks" items-per-page="10">
+                    <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="favouriteMarks" items-per-page="10">
+                         <div show-modal="outerShowModal" items="items" paginated-marks="paginatedMarks" mg-admin-favourites></div>
                     </div> 
                 </div>
-                   
                 </div>
             </div>
         </div>
@@ -128,14 +128,17 @@
                 <div class="standard-container shadow">
                     <div mg-bold>Incomplete marks<i class="opaque float-right fa fa-ban fa-2x"></i>
                     </div>
-                    <div class="paginator" mg-incomplete-paginator show-modal="showModal" incomplete-marks="incompleteMarks" items-per-page="10">
+                    <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="incompleteMarks" items-per-page="10">
+                        <div show-modal="outerShowModal" mg-admin-incomplete items="items" paginated-marks="paginatedMarks"></div>
                     </div>
                 </div>
              </div>
             <div class="one-half-container last last-margin-top">
                  <div class="standard-container shadow">
                         <div mg-bold>Upcoming expiries<i class="opaque float-right fa fa-clock-o fa-2x"></i></div>
-                        <div class="paginator" mg-paginator show-modal="showModal" sorted-by-expiry="sortedByExpiry" items-per-page="8"></div>
+                        <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="sortedByExpiry" items-per-page="10">
+                        <div show-modal="outerShowModal" mg-admin-expiry items="items" paginated-marks="paginatedMarks"></div>
+                    </div>
                     </div>
 
                 

@@ -18,9 +18,7 @@ var moment = require("moment")
     , db = require('../config/paid-db')
 
 exports.setUpAgenda = function(db){
-    agenda
-      .database(db)
-    
+    agenda.database(db)
     agenda.define('check for alerts', function(job, done) {
           async.parallel([
                 async.apply(user.getAllAdmins),
