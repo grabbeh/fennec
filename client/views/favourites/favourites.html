@@ -7,7 +7,9 @@
     
     <div ng-show="favourites" class="shadow favourite-container">
           <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
-              <div class="paginator" mg-favourites-paginator show-modal="activateTrademark" favourite-marks="favourites" items-per-page="10"></div> 
+             <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="favouriteMarks" items-per-page="10">
+                         <div show-modal="outerShowModal" items="items" paginated-marks="paginatedMarks" mg-admin-favourites></div>
+             </div> 
       </div>
   </div>
   <div class="one-third-container">
@@ -15,10 +17,8 @@
   </div>
   <div class="one-third-container last last-margin-top">
       <div ng-show="activeTrademark" class="comments-container shadow">
-                <div mg-bold>
-                    Comments
-                </div>
-                <div mg-trademark-comments user='user' trademark='activeTrademark'></div>
-            </div>
+            <div mg-bold>Comments</div>
+            <div mg-trademark-comments user='user' trademark='activeTrademark'></div>
+        </div>
   </div>
 </div>
