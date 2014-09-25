@@ -38,3 +38,7 @@ In addition to the packages listed in `package.json` use is also made of:
 
 - https://github.com/mledoze/countries for the purposes of ISO codes and country coordinates. This is licensed under http://opendatacommons.org/licenses/odbl/1.0/. 
 - Geojson for the world is from https://github.com/johan/world.geo.json.
+
+**Licence**
+
+If I thought anyone looked at this page, I'd include a licence!
