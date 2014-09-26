@@ -20,7 +20,7 @@ To get a copy of the code on your system just `git clone https://github.com/grab
 
 To actually import trade marks you should create an account, then go to `/upload` to upload an .xlxs spreadsheet. This requires the columns to be in the following order at this moment in time so you should amend your portfolio as necessary (column headers don't actually matter, only the order):
 
-    Country |	Mark	| Classes	| Filing Date	| App. No. | Reg. Date |	Reg. No. | Status |	Expires
+    Country | Mark | Classes | Filing Date | App. No. | Reg. Date | Reg. No. | Status | Expiry Date
 
 The code also assumes:
 
