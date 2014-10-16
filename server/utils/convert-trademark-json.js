@@ -14,6 +14,7 @@ function formatTrademarks(portfolio, countryData, fn){
          if (tradmark[2] === ""){
             trademark[2] = false;
          }
+         
          if (trademark[2].indexOf(",")) {
             trademark[2] = _.map(trademark[2].split(","), curry(parseInt))
          }
