@@ -149,9 +149,11 @@ angular.module('app')
 		     	  	tm.issues.push("Registered but no expiry date");
 		     	  }
                   if (tm.applicationNumber === "--"){
+                  	
                       tm.issues.push("Application number unknown")
                   }
 		     	  if (tm.classes.length === 0){
+		     	  	console.log("Class length is 0")
 		     	  	tm.issues.push("Classes are unknown");
 		     	  }
 		     	  if (moment(tm.expiryDate.stringDate, "MM/DD/YYYY").year() - moment().year() > 10 ){
