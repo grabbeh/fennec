@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('mgPendingTrademarkList', function(checkIfClassesFilter) {
+.directive('mgPendingTrademarkList', function() {
     return {
         replace: true,
         templateUrl: '/views/pending-list/pending-list.html',
