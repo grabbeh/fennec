@@ -1,8 +1,21 @@
 angular.module('app')
 
+	.filter('checkIfClasses', function(){
+	     return function(arr){
+	     	if (arr[0] === null){
+	     	       arr = false;
+	     	       return arr;
+	     	}
+	     	else {
+	     		return arr;
+	     	}
+	     	
+	     }	
+		
+	})
+
 	.filter('extractGroup', function(){
     	return function(arr, group){
-
             if (group === "ALL MARKS"){
                return arr; 
             }
