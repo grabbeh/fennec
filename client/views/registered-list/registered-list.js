@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('mgRegisteredTrademarkList', function() {
+.directive('mgRegisteredTrademarkList', function(checkIfClassesFilter) {
     return {
         replace: true,
         templateUrl: '/views/registered-list/registered-list.html',
