@@ -8,7 +8,7 @@
                 <span class="view-icon"><a href="/view/trademark/{{publishedtm._id}}"><i class="fa fa-eye"></i></a></span>
             </div>
             <div>
-                <ul ng-show="publishedtm.classes" class="class-list" ng-repeat="class in publishedtm.classes track by $index">
+                <ul ng-show="publishedtm.classes | checkIfClasses" class="class-list" ng-repeat="class in publishedtm.classes track by $index">
                     <li class="class">{{ class }}</li> 
                 </ul>
             </div>
