@@ -39,11 +39,11 @@ angular.module('app')
             $.nocontent = false;
 
             if ($.sortedByStatus.Registered){
-                $.registered = $.sortedByStatus.Registered;}
+                $.registered = $filter('orderBy')($.sortedByStatus.Registered, 'mark');}
             if ($.sortedByStatus.Published){
-                $.published = $.sortedByStatus.Published;}
+                $.published = $filter('orderBy')($.sortedByStatus.Published, 'mark');}
             if ($.sortedByStatus.Pending){
-                $.pending = $.sortedByStatus.Pending;}
+                $.pending = $filter('orderBy')($.sortedByStatus.Pending, 'mark');}
         });
 
         $.showModal = function(trademark) {
