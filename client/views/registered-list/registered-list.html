@@ -7,7 +7,7 @@
                 <span class="view-icon"><a href="/view/trademark/{{trademark._id}}"><i class="fa fa-eye"></i></a></span>
             </div>
             <div>
-                <ul ng-show="trademark.classes" class="class-list" ng-repeat="class in trademark.classes track by $index">
+                <ul ng-show="trademark.classes | checkIfClasses" class="class-list" ng-repeat="class in trademark.classes track by $index">
                     <li class="class">{{ class }}</li> 
                 </ul>
             </div>
