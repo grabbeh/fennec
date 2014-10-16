@@ -12,7 +12,7 @@ function formatTrademarks(portfolio, countryData, fn){
      portfolio.forEach(function(trademark){
          // Classes at position 2 in array (starting at 0)
          if (tradmark[2] === ""){
-            trademark[2] = false;
+            trademark[2] = [];
          }
          
          if (trademark[2].indexOf(",")) {
