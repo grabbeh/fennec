@@ -28,7 +28,6 @@ angular.module('app')
 .directive('mgMenuMover', function() {
     return {
         scope: {
-            menuModal: '=',
             dropdownMenu: '='
         },
         link: function(scope, element, attrs) {
