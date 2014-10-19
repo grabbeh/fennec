@@ -11,6 +11,9 @@
 
 /* index.html */
 
+.active-menu {
+    margin-top: 300px;
+}
 .about-link {
     float: left;
     padding-top: 8px;
