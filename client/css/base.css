@@ -1701,7 +1701,7 @@ margin: 0px 10px 10px 0px;
 
 .qs-wording {
 	margin: 20px 0 15px 0;
-	font-size: 25px;
+	font-size: 20px;
 
 }
 
@@ -1714,13 +1714,13 @@ margin: 0px 10px 10px 0px;
     margin: 0;
     width: 400px;
     font-family: 'Karla';
-    font-size: 25px;
+    font-size: 20px;
     /*-webkit-appearance: button;*/
     border: 0;
 }
 
 .qs-question-mark{
-	font-size: 25px;
+	font-size: 20px;
 	margin-left: 20px;
 	line-height: 2em;	
 }
