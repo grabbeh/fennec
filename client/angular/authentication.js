@@ -3,7 +3,7 @@ angular.module('app')
     .controller("authCtrl", ['$scope', 'notificationModal','loginModal','$window', '$rootScope', '$http', 'trademarkService', 'pathService', '$location', 'trademarkModal', 'editTrademarkModal', 'editGroupModal', 'menuModal','dropdownMenu', 'uploadImageModal', 'userService',
         function($scope, notificationModal, loginModal, $window, $rootScope, $http, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, menuModal, dropdownMenu, uploadImageModal, userService){
             var $ = $scope;
-            $rootScope.menuModal = false;
+            $rootScope.dropdownMenu = false;
             $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
                 var attemptedPath = attempted.$$route.originalPath;
                 if (attempted.params){
@@ -41,17 +41,17 @@ angular.module('app')
             });
             
             $.toggleDropdownMenu = function(){
-                    if (!$rootScope.dropdownMenu){
-                        $rootScope.dropdownMenu = true;
-                        dropdownMenu.activate({ user: $rootScope.user});
-                    }
-                    else {
-                        $rootScope.dropdownMenu = false;
-                        dropdownMenu.deactivate(); 
-                    }
+                if (!$rootScope.dropdownMenu){
+                    $rootScope.dropdownMenu = true;
+                    dropdownMenu.activate({ user: $rootScope.user});
+                }
+                else {
+                    $rootScope.dropdownMenu = false;
+                    dropdownMenu.deactivate(); 
+                }
 
-                };
-            
+            };
+        
             $.removeModalOverlay = function(){
                 $rootScope.modal = false;
                 trademarkModal.deactivate();

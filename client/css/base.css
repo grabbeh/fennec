@@ -12,7 +12,7 @@
 /* index.html */
 
 .active-menu {
-    margin-top: 300px;
+    margin-top: 225px;
 }
 .about-link {
     float: left;
@@ -1535,7 +1535,7 @@ margin: 0px 10px 10px 0px;
 
 .header {
     width:100%;
-    background: #5e81bb;
+    background: #7bacff;
     height: 40px;
     padding-top: 10px;
 }

@@ -31,7 +31,7 @@ angular.module('app')
             dropdownMenu: '='
         },
         link: function(scope, element, attrs) {
-            scope.$watch(attrs.dropdownMenu, function(v) {
+            scope.$watch('dropdownMenu', function(v) {
                 if (v) {
                     element.addClass('active-menu')
                 } else {
