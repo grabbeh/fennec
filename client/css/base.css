@@ -1682,7 +1682,6 @@ margin: 0px 10px 10px 0px;
 
 .quick-search-title {
 	font-weight: bold;
-	margin: 10px 0;
 	font-size: 25px;
 }
 
@@ -1692,7 +1691,7 @@ margin: 0px 10px 10px 0px;
 }
 
 .quick-search-result {
-     	margin: 40px 0 30px 0;
+     	margin: 30px 0;
 	font-size: 20px;
 
 }
