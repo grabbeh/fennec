@@ -9,6 +9,13 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         when('/terms', {
             templateUrl: '/views/terms/terms.html'
         }).
+        when('/settings', {
+            templateUrl: '/views/settings/settings.html',
+            controller: 'settingsCtrl', 
+            user: function(userService){
+                return userService.getUser();
+            }
+        }).
         when('/about', {
             templateUrl: '/views/about/about.html'
         }).
