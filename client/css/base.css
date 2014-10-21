@@ -562,7 +562,7 @@ input::-webkit-inner-spin-button {
 }
 
 .view-group-panel-container {
-    padding: 30px 30px 10px 30px;
+    padding: 20px;
     background: white;
     overflow: hidden;
 }
