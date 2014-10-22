@@ -296,4 +296,5 @@ exports.filterDiff = function(a){
 	}
 	console.log(newO);
 	return newO;*/
+	return a;
 }
