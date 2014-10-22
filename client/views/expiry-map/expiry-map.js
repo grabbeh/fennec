@@ -1,7 +1,7 @@
 angular.module('app')
 
-.controller('expiryCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'geoJsonService', 'editTrademarkModal', 'trademarkModal',
-    function($scope, $rootScope, $routeParams, $location, geoJsonService, editTrademarkModal, trademarkModal) {
+.controller('expiryCtrl', ['$scope', '$filter', '$rootScope', '$routeParams', '$location', 'geoJsonService', 'editTrademarkModal', 'trademarkModal',
+    function($scope, $filter, $rootScope, $routeParams, $location, geoJsonService, editTrademarkModal, trademarkModal) {
         var $ = $scope;
         $.activePortfolio = $routeParams.portfolio;
         $.activeYear = $routeParams.year;
@@ -40,7 +40,7 @@ angular.module('app')
             $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + $.year);
         };
 
-        $.min = new Date().getFullYear();
+        $.years = $filter('createTen')(new Date().getFullYear());
 
     }
 ])
