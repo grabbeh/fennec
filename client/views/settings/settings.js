@@ -1,5 +1,6 @@
 angular.module('app')
-    .controller('settingsCtrl', ['$scope', function($scope) {
+    .controller('settingsCtrl', ['$scope', 'user', function($scope, user) {
         var $ = $scope;
+        $.user = user;
         }
     ])
