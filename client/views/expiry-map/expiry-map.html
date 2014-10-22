@@ -9,11 +9,12 @@
             Trademarks expiring in {{ activeYear }}
             </div>
         <div>
-           <form name="expiryForm">
-            <input type="number" min="{{ min }}" max=" {{ min + 10 }}" placeholder="Show expiries for given year" ng-model="year" class="expiry-form-input">
-            <i ng-show="expiryFormValid()" ng-click="changeYear(year)" class="hover search-button fa fa-search"></i> 
-        </form>
-       </div>
+            <form>
+                <select class="group-mark-select" ng-change="expirySearch(year)" ng-model="year" ng-options="year for year in years">
+                    <option value="">Select year</option>
+                </select>
+             </form>
+          </div>
     </div>
         
     </div>
