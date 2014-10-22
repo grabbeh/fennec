@@ -6,7 +6,7 @@
 , activity = require('./activity')
 , jwt = require('./jwt')
 , fs = require('fs')
-, objectDiff = require('objectdiff');
+, deepDiff = require('deep-diff').diff;
 
 exports.downloadTrademarks = function(req, res){
     var portfolio = req.query.portfolio.replace(/%20/g, " ");
@@ -85,21 +85,15 @@ exports.amendTrademark = function(req, res){
             var id = helper.exposeId(revisedTrademark);
             helper.getTrademark(id, cb);
         },
-        sendAlertOnChange: ['getTrademarks', function(cb, results){
+        sendAlertOnChange: ['getTrademark', function(cb, results){
             jobs.sendAlertOnChange(revisedTrademark, 'updated', cb)
         },
         detectDifferences: ['getTrademark', function(cb, results){
             var filteredOldMark = _.omit(results.getTrademark, '_id', 'updated', 'created', '__v');
             var filteredRevisedTrademark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
-            var diff = objectDiff.diff(filteredOldMark, filteredRevisedTrademark);
-            if (diff.changed === 'equal') { 
-                cb(new Error("No change")) 
-            }
-            else {
-                var filteredDiff = helper.filterDiff(diff.value);
-                cb(null, filteredDiff); 
-            }
-            
+            var diff = deepDiff(filteredOldMark, filteredRevisedTrademark);
+            var filteredDiff = helper.filterDiff(diff);
+            cb(null, filteredDiff); 
         }],
         updateStream: ['detectDifferences', 'getTrademark', function(cb, results){
             activity.addActivity(results.getTrademark, results.detectDifferences, 'updated trade mark', req.user._id, cb);
