@@ -14,9 +14,9 @@ module.exports = {
         async.forEach(admin.alertFrequency, function(f, callback) {
             async.forEach(trademarks, function(tm, callback) {
                 var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
-                    revised = expiry.subtract(f.type, f.number),
-                    now = moment();
-                if (revised.diff(now, 'days') === 0 && admin.entity === tm.entity) {
+                    revised = expiry.subtract(f.type, f.number).format('MM/DD/YYYY'),
+                    now = moment().format("MM/DD/YYYY");
+                if (revised === now && admin.entity === tm.entity) {
                     async.auto({
                         sendEmail: function(cb, results){
                             var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
