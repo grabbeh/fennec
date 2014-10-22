@@ -12,8 +12,10 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         when('/settings', {
             templateUrl: '/views/settings/settings.html',
             controller: 'settingsCtrl', 
-            user: function(userService){
-                return userService.getUser();
+            resolve: {
+                user: function(userService){
+                    return userService.getUser();
+                }
             }
         }).
         when('/about', {
