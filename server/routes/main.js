@@ -85,6 +85,9 @@ exports.amendTrademark = function(req, res){
             var id = helper.exposeId(revisedTrademark);
             helper.getTrademark(id, cb);
         },
+        sendAlertOnChange: ['saveTrademark', function(cb, results){
+            jobs.sendAlertOnChange(revisedTrademark, 'updated', cb)
+        },
         detectDifferences: ['getTrademark', function(cb, results){
             var filteredOldMark = _.omit(results.getTrademark, '_id', 'updated', 'created', '__v');
             var filteredRevisedTrademark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
@@ -103,9 +106,6 @@ exports.amendTrademark = function(req, res){
         }],
         saveTrademark: function(cb, results){
             helper.amendTrademark(revisedTrademark, cb);
-        },
-        sendAlertOnChange: ['saveTrademark', function(cb, results){
-            jobs.sendAlertOnChange(revisedTrademark, 'updated', cb)
         }]
     }, function(err, results){
             if (err) { console.log(err); }
