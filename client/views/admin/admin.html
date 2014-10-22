@@ -76,12 +76,15 @@
             <div class="bar-chart-container shadow">
                 <div class="expiry-chart-title">Expiry dates<span class="hide-on-mobile"><i class="opaque float-right  fa fa-bar-chart-o fa-2x"></i></span>
                 </div>
-                <div class="hide-on-mobile one-half-container">
+                <div class="one-half-container">
                     <div class="expiry-chart-search">
-                        <form name="expiryForm">
-                            <input type="number" min="{{ min }}" max=" {{ min + 10 }}" placeholder="Show expiries for given year" ng-model="year" class="expiry-form-input">
-                            <i ng-show="expiryFormValid()" ng-click="expirySearch(year)" class="hover search-button fa fa-search"></i> 
-                        </form>
+                        <div>
+                            <form>
+                                <select class="group-mark-select" ng-change="expirySearch(year)" ng-model="country" ng-options="year for year in years">
+                                    <option value="">{{ year }}</option>
+                                </select>
+                             </form>
+                          </div>
                     </div>
                 </div>
                 <canvas barchart options="options" data="chart" width="1100" height="400"></canvas>
