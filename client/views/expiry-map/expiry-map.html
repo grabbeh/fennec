@@ -18,11 +18,12 @@
     <div mg-clear></div>
 
       <div mg-map id="map" geojson="geojson"></div>
-      
-      <div ng-show="registered" class="trademark-container">
-        <div class="country-holder f32"> {{ country }}  <div class="flag" ng-class="countrycode"></div></div>
-        <span ng-show="nocontent">No trade marks for this country</span>
-         <div class="full-width-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
+      <div class="one-third-container">
+          <div ng-show="registered" class="trademark-container">
+            <div class="country-holder f32"> {{ country }}  <div class="flag" ng-class="countrycode"></div></div>
+            <span ng-show="nocontent">No trade marks for this country</span>
+             <div class="full-width-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
+          </div>
       </div>
     </div>
 </div>
