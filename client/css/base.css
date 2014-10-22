@@ -515,6 +515,9 @@ input::-webkit-inner-spin-button {
     font-size: 16px;
 }
 
+.medium-plus {
+	font-size: 18px;
+}
 
 .group-btn {
     margin-top: 10px;
