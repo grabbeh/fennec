@@ -85,7 +85,7 @@ exports.amendTrademark = function(req, res){
             var id = helper.exposeId(revisedTrademark);
             helper.getTrademark(id, cb);
         },
-        sendAlertOnChange: ['saveTrademark', function(cb, results){
+        sendAlertOnChange: ['getTrademarks', function(cb, results){
             jobs.sendAlertOnChange(revisedTrademark, 'updated', cb)
         },
         detectDifferences: ['getTrademark', function(cb, results){
