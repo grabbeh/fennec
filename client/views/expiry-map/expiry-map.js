@@ -36,7 +36,7 @@ angular.module('app')
             return $.expiryForm.$dirty && $.expiryForm.$valid;
         };
 
-        $.changeYear = function(year) {
+        $.expirySearch = function(year) {
             console.log(year);
             $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + year);
         };
