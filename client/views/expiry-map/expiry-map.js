@@ -37,6 +37,7 @@ angular.module('app')
         };
 
         $.changeYear = function(year) {
+            console.log(year);
             $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + year);
         };
 
