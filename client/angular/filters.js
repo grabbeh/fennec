@@ -1,19 +1,15 @@
 angular.module('app')
 
-	.filter('checkIfClasses', function(){
-	     return function(arr){
-	     	if (arr[0] === null){
-	     	       arr = false;
-	     	       return arr;
-	     	}
-	     	else {
-	     		return arr;
-	     	}
-	     	
-	     }	
-		
+	.filter('createTen', function(){
+		return function(n){
+			var end = n + 11;
+			var arr = [];
+			for (n; n < end; n++) {
+				arr.push(n);
+			}
+			return arr;
+		}	
 	})
-
 	.filter('extractGroup', function(){
     	return function(arr, group){
             if (group === "ALL MARKS"){
