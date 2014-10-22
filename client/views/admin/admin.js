@@ -141,7 +141,7 @@ angular.module('app')
             $.expirySearch = function(year) {
                 $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + year);
             };
-
-            $.min = new Date().getFullYear();
+            $.years = $filter('createTen')(new Date().getFullYear());
+            //$.min = new Date().getFullYear();
         }
     ])
