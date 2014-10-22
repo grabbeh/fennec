@@ -263,7 +263,9 @@ exports.findUser = function(id, fn){
         })	
 }
 
-exports.filterDiff = function(o){
+exports.filterDiff = function(a){
+	console.log(a);
+	/*
 	var newO = [];
 	for (var k in o){
 		var changed = o[k].changed;
@@ -293,5 +295,5 @@ exports.filterDiff = function(o){
 		}
 	}
 	console.log(newO);
-	return newO;
+	return newO;*/
 }
