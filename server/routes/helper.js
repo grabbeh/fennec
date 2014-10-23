@@ -143,12 +143,12 @@ exports.addTrademark = function(tm, fn){
 }
 
 exports.parseDates = function(tm){
-	if (typeof tm.registrationDate === "object")
+	if (tm.registrationDate.DDate && typeof tm.registrationDate === "object")
 		tm.registrationDate.DDate = new Date(tm.registrationDate.DDate);
-	if (typeof tm.filingDate === "object")
+	if (tm.filingDate.DDate && typeof tm.filingDate === "object")
 		tm.filingDate.DDate = new Date(tm.filingDate.DDate);
-	if (typeof tm.expiryDate === "object")
-			tm.expiryDate.DDate = new Date(tm.expiryDate.DDate)
+	if (tm.expiryDate.DDate && typeof tm.expiryDate === "object")
+		tm.expiryDate.DDate = new Date(tm.expiryDate.DDate)
 	return tm;
 }
 
