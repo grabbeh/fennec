@@ -12,14 +12,13 @@ exports.marksForCountry = function(req, res){
     })
 }
 
-
 function marksForCountry(entity, portfolio, country, fn){
     helper.checkIfEUCountry(country, function(err, bool){
         if (bool){
              var EU =  "European Union";
         }
         Trademark.find()
-            .and([{ entity: entity }, { portfolio: portfolio }])
+            .and([{active: true}, { entity: entity }, { portfolio: portfolio }])
             .or([{ 'country.alpha3': country}, { 'country.name': EU }])
             .lean()
             .exec(function(err, trademarks){
@@ -27,7 +26,6 @@ function marksForCountry(entity, portfolio, country, fn){
         })
     })
 }
-
 
 exports.filterMarksForCountry = function(req, res){
     var keys = req.body.marks

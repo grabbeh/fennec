@@ -193,6 +193,7 @@
                 var url = '/api/trademarks/' + portfolio + '?group=' + group;
             return $http.get(url)
                 .then(function(response){
+                    console.log(response.data)
                     return response.data;
             });
         },
@@ -233,26 +234,27 @@
         deleteMark: function(trademark){
             return $http.delete('/api/trademark/' + trademark._id);
         },
-          addMark: function(trademark, portfolio){
+        addMark: function(trademark, portfolio){
                 trademark.classes = _.map(trademark.classes.split(","), curry(parseInt));
                 trademark.portfolio = portfolio;
                 return $http.post('/api/trademark', { trademark: trademark })
-          },
-          editMark: function(trademark){
-              if (typeof trademark.classes === 'string'){
-                      trademark.classes = _.map(trademark.classes.split(","), curry(parseInt));
-              }
-              if (typeof trademark.country.coordinates === 'string'){
-                      trademark.classes = _.map(trademark.country.coordinates.split(","), curry(parseInt));
-              }
-              trademark.updated = new Date().toISOString();
-              return $http.put('/api/trademark/' + trademark._id, { trademark: trademark })
-           }
-       	}
-      return trademarkService;
+        },
+        editMark: function(trademark){
+            console.log(trademark);
+            if (typeof trademark.classes === 'string'){
+                trademark.classes = _.map(trademark.classes.split(","), curry(parseInt));
+            }
+            if (typeof trademark.country.coordinates === 'string'){
+                trademark.classes = _.map(trademark.country.coordinates.split(","), curry(parseInt));
+            }
+            trademark.updated = new Date().toISOString();
+            return $http.put('/api/trademark/' + trademark._id, { trademark: trademark })
+            }
+        }
+        return trademarkService;
     }])
 
-    .factory('pathService', ['trademarkService', 'userService', function(trademarkService, userService){
+    .factory('pathService', [function(){
       
       var path = [];
       var pathService = {

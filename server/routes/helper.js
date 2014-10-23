@@ -116,8 +116,8 @@ exports.getAllTrademarks = function(fn){
 exports.getTrademarks = function(entity, portfolio, fn){
 	Trademark.find({ entity: entity, portfolio: portfolio, active: true })
 		.lean()
-		.sort('expiryDate.DDate')
-		.exec(function(err, trademarks){
+
+		.exec(function(err, trademarks){ 
 			fn(null, trademarks); 
 		});
 	}
@@ -142,12 +142,25 @@ exports.addTrademark = function(tm, fn){
 	})
 }
 
+exports.parseDates = function(tm){
+	if (typeof tm.registrationDate === "object")
+		tm.registrationDate.DDate = new Date(tm.registrationDate.DDate);
+	if (typeof tm.filingDate === "object")
+		tm.filingDate.DDate = new Date(tm.filingDate.DDate);
+	if (typeof tm.expiryDate === "object")
+			tm.expiryDate.DDate = new Date(tm.expiryDate.DDate)
+	return tm;
+}
+
 exports.amendTrademark = function(tm, fn){
-	if (tm.registrationDate.stringDate){
-		tm.registrationDate.DDate = new Date(moment(tm.registrationDate.stringDate, 'MM-DD-YYYY')).toISOString();
+
+	if (typeof tm.registrationDate === "string"){
+		tm.registrationDate.stringDate = tm.registrationDate;
+		tm.registrationDate.DDate = new Date(moment(tm.registrationDate, 'MM-DD-YYYY')).toISOString();
 	}
-	if (tm.expiryDate.stringDate){
-		tm.expiryDate.DDate = new Date(moment(tm.expiryDate.stringDate, 'MM-DD-YYYY')).toISOString();
+	if (typeof tm.expiryDate === "string"){
+		tm.registrationDate.stringDate = tm.expiryDate;
+		tm.expiryDate.DDate = new Date(moment(tm.expiryDate, 'MM-DD-YYYY')).toISOString();
 	}
 	Trademark.findOneAndUpdate({_id: exposeId(tm) }, tm, fn)
 }
