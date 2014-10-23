@@ -23,6 +23,7 @@ console.log(new Date(JSON.parse(j)));*/
 
 Trademark.find({entity: "ACME INC"}, function(err, trademarks){
     async.forEach(trademarks, function(tm, callback){
+        // if no date then defaults to 'false' hence the first check
         if (tm.filingDate.DDate && !(tm.filingDate.DDate instanceof Date)){
             tm.filingDate.DDate = new Date(tm.filingDate.DDate);
             tm.save();
