@@ -28,7 +28,7 @@ Trademark.find({entity: "ACME INC"}).lean().exec(function(err, trademarks){
             //console.log(tm.filingDate.DDate);
             tm.filingDate.DDate = new Date(tm.filingDate.DDate);
             //console.log(tm.filingDate.DDate);
-            Trademark.findOneAndUpdate({ _id: tm._id, helper.removeId(tm), function(err, success){
+            Trademark.findOneAndUpdate({ _id: tm._id}, helper.removeId(tm), function(err, success){
                 
             })
         }
