@@ -282,20 +282,20 @@ exports.filterDiff = function(a){
 	a.forEach(function(change){
 		var o = {};
 		if (change.kind === "E"){
-		 	o.attr = change.path;
+		 	o.attr = change.path[0];
 		 	o.added = change.rhs;
 		 	o.removed = change.lhs;
 			arr.push(o); 
 		}
 		if (change.kind === "A"){
 			if (change.item.kind === "N"){
-				o.attr = change.path;
+				o.attr = change.path[0];
 				o.added = change.item.rhs;
 				arr.push(o);
 			}
 		}
 		if (change.kind === "N"){
-			o.attr = change.path;
+			o.attr = change.path[0];
 			o.added = change.rhs[0];
 			arr.push(o);
 		}
