@@ -116,7 +116,7 @@ exports.getAllTrademarks = function(fn){
 exports.getTrademarks = function(entity, portfolio, fn){
 	Trademark.find({ entity: entity, portfolio: portfolio, active: true })
 		.lean()
-
+		.sort('expiryDate.DDate')
 		.exec(function(err, trademarks){ 
 			fn(null, trademarks); 
 		});
