@@ -278,36 +278,5 @@ exports.findUser = function(id, fn){
 
 exports.filterDiff = function(a){
 	console.log(a);
-	/*
-	var newO = [];
-	for (var k in o){
-		var changed = o[k].changed;
-		if (changed != 'equal'){
-			if (o[k]['value']){
-				var subO = o[k]['value'];
-				for (var x in subO){
-					var altered = subO[x].changed;
-					if (altered != 'equal'){
-						var amendment = {};
-						amendment.attr = k;
-						if (altered === 'removed'){
-							amendment.removed = subO[x].value.text;
-						}
-						if (altered === 'added'){
-							amendment.added = subO[x].value.text;
-						}
-						newO.push(amendment);
-					}
-				}
-			}
-			else {
-				o[k]['attr'] = k;
-				newO.push(o[k]);
-			}
-			
-		}
-	}
-	console.log(newO);
-	return newO;*/
 	return a;
 }
