@@ -295,6 +295,8 @@ exports.filterDiff = function(a){
 			}
 		}
 		if (change.kind === "N"){
+			console.log(change);
+			console.log(change.rhs[0]);
 			o.attr = change.path;
 			o.added = change.rhs;
 		}
