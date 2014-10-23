@@ -1,5 +1,6 @@
 var helper = require('./helper')
 , express = require('express')
+, Trademark = require('../models/trademarkSchema')
 , db = require('../config/paid-db.js')
 , mongoose = require('mongoose')
 , app = express()
@@ -20,24 +21,26 @@ console.log(JSON.parse(j));
 console.log("new Date + JSON parse")
 console.log(new Date(JSON.parse(j)));*/
 
-helper.getAllTrademarks(function(err, trademarks){
-    var arr = [];
-    trademarks.forEach(function(tm){
+Trademark.find({entity: "ACME INC"}, function(err, trademarks){
+    async.forEach(trademarks, function(tm, callback){
         if (tm.filingDate.DDate && !(tm.filingDate.DDate instanceof Date)){
-            console.log(tm.filingDate.DDate);
-            //console.log("Not filing date object");
-            arr.push(tm);
+            tm.filingDate.DDate = new Date(tm.filingDate.DDate);
+            tm.save();
         }
-       
         /*if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
-            console.log("Not registration date object")
+            tm.registrationDate.DDate = new Date(tm.registrationDate.DDate);
+            tm.save();
         }
         if (tm.expiryDate.DDate && !(tm.expiryDate.DDate instanceof Date)){
-            console.log("Not expiry date object")
+            tm.expiryDate.DDate = new Date(tm.expiryDate.DDate);
+            tm.save();
         }*/
+        callback()
+        }, function(err){
+            console.log("Name updated")
     })
-    console.log(arr.length);
 })
+
 /*
 app.get('/', function(req, res){
    
