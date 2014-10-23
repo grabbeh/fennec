@@ -28,7 +28,9 @@ Trademark.find({entity: "ACME INC"}, function(err, trademarks){
             console.log(tm.filingDate.DDate);
             tm.filingDate.DDate = new Date(tm.filingDate.DDate);
             console.log(tm.filingDate.DDate);
-            tm.save();
+            tm.save(function(err){
+                console.log("Saved")
+            });
         }
         /*if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
             tm.registrationDate.DDate = new Date(tm.registrationDate.DDate);
