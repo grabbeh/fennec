@@ -25,10 +25,10 @@ Trademark.find({entity: "ACME INC"}).lean().exec(function(err, trademarks){
     async.forEach(trademarks, function(tm, callback){
         // if no date then defaults to 'false' hence the first check
         if (tm.filingDate.DDate && !(tm.filingDate.DDate instanceof Date)){
-            console.log(tm.filingDate.DDate);
+            //console.log(tm.filingDate.DDate);
             tm.filingDate.DDate = new Date(tm.filingDate.DDate);
-            console.log(tm.filingDate.DDate);
-            Trademark.findOneAndUpdate({ _id: helper.exposeId(tm)}, helper.removeId(tm), function(err, success){
+            //console.log(tm.filingDate.DDate);
+            Trademark.findOneAndUpdate({ _id: tm._id, helper.removeId(tm), function(err, success){
                 
             })
         }
