@@ -32,11 +32,15 @@ Trademark.find({entity: "ACME INC"}).lean().exec(function(err, trademarks){
         }
         if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
             tm.registrationDate.DDate = new Date(tm.registrationDate.DDate);
-            tm.save();
+            Trademark.findOneAndUpdate({ _id: tm._id}, helper.removeId(tm), function(err, success){
+                
+            })
         }
         if (tm.expiryDate.DDate && !(tm.expiryDate.DDate instanceof Date)){
             tm.expiryDate.DDate = new Date(tm.expiryDate.DDate);
-            tm.save();
+            Trademark.findOneAndUpdate({ _id: tm._id}, helper.removeId(tm), function(err, success){
+                
+            })
         }
         callback()
         }, function(err){
