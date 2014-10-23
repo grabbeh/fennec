@@ -298,7 +298,7 @@ exports.filterDiff = function(a){
 			console.log(change);
 			console.log(change.rhs[0]);
 			o.attr = change.path;
-			o.added = change.rhs;
+			o.added = change.rhs[0];
 		}
 		
 	})
