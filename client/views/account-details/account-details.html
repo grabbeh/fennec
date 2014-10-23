@@ -1,10 +1,10 @@
 <div>
      <div>Change password</div>
-     <form novalidate name="changePasswordForm" ng-submit="updatePassword(oldPW, newPW, duplicatePW)">
+     <form class="margin-top" novalidate name="changePasswordForm" ng-submit="updatePassword(oldPW, newPW, duplicatePW)">
          <div><span><input required class="form-input" type=password ng-model="oldPW" placeholder="Existing password" ></span></div>
          <div><span><input required class="form-input" type=password ng-model="newPW" placeholder="New password" ></span></div>
          <div><span><input required class="form-input" type=password ng-model="duplicatePW" placeholder="Repeat new password" ></span></div>
-         <div><input class="small-button" type=submit  value="Submit"></div>
+         <div><input class="add-button" type=submit  value="Submit"></div>
       </form>
       <div> {{ passwordMessage }} </div>
 </div>
