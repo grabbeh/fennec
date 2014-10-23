@@ -193,7 +193,6 @@
                 var url = '/api/trademarks/' + portfolio + '?group=' + group;
             return $http.get(url)
                 .then(function(response){
-                    console.log(response.data)
                     return response.data;
             });
         },
