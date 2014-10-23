@@ -27,7 +27,7 @@ helper.getAllTrademarks(function(err, trademarks){
             //console.log("Not filing date object");
             arr.push(tm);
         }
-        console.log(arr.length);
+       
         /*if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
             console.log("Not registration date object")
         }
@@ -35,6 +35,7 @@ helper.getAllTrademarks(function(err, trademarks){
             console.log("Not expiry date object")
         }*/
     })
+    console.log(arr.length);
 })
 /*
 app.get('/', function(req, res){
