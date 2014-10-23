@@ -277,6 +277,7 @@ exports.findUser = function(id, fn){
 }
 
 exports.filterDiff = function(a){
+	console.log(a);
 	var arr = [];
 	a.forEach(function(change){
 		var o = {};
