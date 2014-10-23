@@ -25,21 +25,19 @@ Trademark.find({entity: "ACME INC"}).lean().exec(function(err, trademarks){
     async.forEach(trademarks, function(tm, callback){
         // if no date then defaults to 'false' hence the first check
         if (tm.filingDate.DDate && !(tm.filingDate.DDate instanceof Date)){
-            //console.log(tm.filingDate.DDate);
             tm.filingDate.DDate = new Date(tm.filingDate.DDate);
-            //console.log(tm.filingDate.DDate);
             Trademark.findOneAndUpdate({ _id: tm._id}, helper.removeId(tm), function(err, success){
                 
             })
         }
-        /*if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
+        if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
             tm.registrationDate.DDate = new Date(tm.registrationDate.DDate);
             tm.save();
         }
         if (tm.expiryDate.DDate && !(tm.expiryDate.DDate instanceof Date)){
             tm.expiryDate.DDate = new Date(tm.expiryDate.DDate);
             tm.save();
-        }*/
+        }
         callback()
         }, function(err){
             console.log("Name updated")
