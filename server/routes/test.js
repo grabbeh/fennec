@@ -21,16 +21,19 @@ console.log("new Date + JSON parse")
 console.log(new Date(JSON.parse(j)));*/
 
 helper.getAllTrademarks(function(err, trademarks){
+    var arr = [];
     trademarks.forEach(function(tm){
         if (tm.filingDate.DDate && !(tm.filingDate.DDate instanceof Date)){
-            console.log("Not filing date object")
+            //console.log("Not filing date object");
+            arr.push(tm);
         }
-        if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
+        console.log(arr.length);
+        /*if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
             console.log("Not registration date object")
         }
         if (tm.expiryDate.DDate && !(tm.expiryDate.DDate instanceof Date)){
             console.log("Not expiry date object")
-        }
+        }*/
     })
 })
 /*
