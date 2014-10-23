@@ -277,6 +277,23 @@ exports.findUser = function(id, fn){
 }
 
 exports.filterDiff = function(a){
-	console.log(a);
-	return a;
+	var arr = [];
+	a.forEach(function(change){
+		var o = {};
+		if (change.kind === "E"){
+		 	o.attr = change.path;
+		 	o.added = change.rhs;
+		 	o.removed = change.lhs;
+			arr.push(o); 
+		}
+		if (change.kind === "A"){
+			if (change.item.kind === "N"){
+				o.attr = change.path;
+				o.added = change.item.rhs;
+			}
+			arr.push(o);
+		}
+		
+	})
+	return arr;
 }
