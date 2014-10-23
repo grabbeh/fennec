@@ -24,6 +24,7 @@ helper.getAllTrademarks(function(err, trademarks){
     var arr = [];
     trademarks.forEach(function(tm){
         if (tm.filingDate.DDate && !(tm.filingDate.DDate instanceof Date)){
+            console.log(tm.filingDate.DDate);
             //console.log("Not filing date object");
             arr.push(tm);
         }
