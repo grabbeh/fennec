@@ -1,5 +1,4 @@
 var helper = require('./helper')
-, Trademark = require('../models/trademarkSchema')
 , express = require('express')
 , db = require('../config/paid-db.js')
 , mongoose = require('mongoose')
@@ -21,15 +20,15 @@ console.log(JSON.parse(j));
 console.log("new Date + JSON parse")
 console.log(new Date(JSON.parse(j)));*/
 
-Trademark.find({entity: "ACME INC"}).lean().exec(function(err, trademarks){
+helper.getAllTrademarks(function(err, trademarks){
     trademarks.forEach(function(tm){
-        if (tm.filingDate.DDate && tm.filingDate.DDate !instanceof Date){
+        if (tm.filingDate.DDate && !(tm.filingDate.DDate instanceof Date)){
             console.log("Not filing date object")
         }
-        if (tm.registrationDate.DDate && tm.registrationDate.DDate !instanceof Date){
+        if (tm.registrationDate.DDate && !(tm.registrationDate.DDate instanceof Date)){
             console.log("Not registration date object")
         }
-        if (tm.expiryDate.DDate && tm.expiryDate.DDate !instanceof Date){
+        if (tm.expiryDate.DDate && !(tm.expiryDate.DDate instanceof Date)){
             console.log("Not expiry date object")
         }
     })
