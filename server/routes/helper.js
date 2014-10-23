@@ -291,8 +291,12 @@ exports.filterDiff = function(a){
 			if (change.item.kind === "N"){
 				o.attr = change.path;
 				o.added = change.item.rhs;
+				arr.push(o);
 			}
-			arr.push(o);
+		}
+		if (change.kind === "N"){
+			o.attr = change.path;
+			o.added = change.rhs;
 		}
 		
 	})
