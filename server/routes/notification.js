@@ -7,7 +7,6 @@ exports.addNotification = function(tm, user, incident, fn){
 		trademark: tm._id,
 		portfolio: tm.portfolio,
 		user: user,
-		read: false,
 		entity: tm.entity,
 		incident: incident
 	}).save(function(err, success){
