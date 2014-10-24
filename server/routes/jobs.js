@@ -25,7 +25,7 @@ module.exports = {
                             })
                         },
                         addNotification: function(cb, results){
-                            notification.addNotification(tm, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
+                            notification.addNotification(tm, admin._id, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
                          }
                        }, function(err, results){
                             if (err) { console.log(err) }
