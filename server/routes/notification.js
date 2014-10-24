@@ -11,6 +11,7 @@ exports.addNotification = function(tm, user, incident, fn){
 		incident: incident
 	}).save(function(err, n){
 		if (err) { console.log(err) }
+		console.log("Saved")
 		fn(null, true);
 	});
 }
@@ -19,7 +20,7 @@ function retrieveNotificationsForUser(user, fn){
 	Notification.find({ user: user, read: false })
 		.populate('trademark')
 		.exec(function(err, notifications){
-			if (err) { console.log(err) }
+			if (err) { console.log(err) };
 			fn(null, notifications);
 		});
 }
