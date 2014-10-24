@@ -40,7 +40,7 @@ exports.setUpAgenda = function(db){
     agenda.start();
 }
 
-function testAgenda(){
+(function testAgenda(){
     agenda
     .database(db)
     agenda.define('test', function(job, done){
@@ -51,7 +51,7 @@ function testAgenda(){
     })
     agenda.now('test')
     agenda.start();
-}
+})();
 
 function executeJobs(admins, trademarks, fn){
     async.forEach(admins, function(admin, callback){
