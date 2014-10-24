@@ -284,11 +284,7 @@ exports.filterDiff = function(a){
 		// Item edited
 		if (change.kind === "E"){
 		 	o.attr = change.path[0];
-		 	if (change.path[0] === "comments"){
-		 		o.added = change.rhs.text;
-		 		o.removed = change.lhs.text;
-		 	}
-		 	else {
+		 	if (change.path[0] === "comments" && change.path[2] === "text"){
 		 		o.added = change.rhs;
 		 		o.removed = change.lhs;
 		 	}
