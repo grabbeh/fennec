@@ -17,6 +17,10 @@ var moment = require("moment")
     , mongoose = require('mongoose')
     , db = require('../config/paid-db')
 
+mongoose.connect(db, function(err){
+if (err) { console.log(err); throw new Error(err.stack);}
+});
+
 exports.setUpAgenda = function(db){
     agenda.database(db)
     agenda.define('check for alerts', function(job, done) {
