@@ -288,7 +288,7 @@ exports.filterDiff = function(a){
 		 		o.added = change.rhs;
 		 		o.removed = change.lhs;
 		 	}
-		 	if (change.path[0] != "comment"){
+		 	if (change.path[0] != "comments"){
 		 		o.attr = change.path[0];
 		 		o.added = change.rhs;
 		 		o.removed = change.lhs;
