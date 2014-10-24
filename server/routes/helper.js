@@ -288,6 +288,11 @@ exports.filterDiff = function(a){
 		 		o.added = change.rhs;
 		 		o.removed = change.lhs;
 		 	}
+		 	if (change.path[0] != "comment"){
+		 		o.attr = change.path[0];
+		 		o.added = change.rhs;
+		 		o.removed = change.lhs;
+		 	}
 			arr.push(o); 
 		}
 		if (change.kind === "A"){
