@@ -161,7 +161,7 @@ var trademarks = [
     stringDate: "3/22/2013"
   },
   expiryDate: {
-    stringDate: "9/20/2014"
+    stringDate: "9/25/2014"
   },
   applicationNumber: "3060238",
   registrationNumber: "2559727",
