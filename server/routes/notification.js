@@ -10,6 +10,7 @@ exports.addNotification = function(tm, user, incident, fn){
 		entity: tm.entity,
 		incident: incident
 	}).save(function(err, n){
+		if (err) { console.log(err) }
 		fn(null, true);
 	});
 }
@@ -20,7 +21,7 @@ function retrieveNotificationsForUser(user, fn){
 		.exec(function(err, notifications){
 			if (err) { console.log(err) }
 			fn(null, notifications);
-		})
+		});
 }
 
 exports.unreadNotifications = function(req, res){
