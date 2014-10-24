@@ -284,28 +284,43 @@ exports.filterDiff = function(a){
 		// Item edited
 		if (change.kind === "E"){
 		 	o.attr = change.path[0];
-		 	o.added = change.rhs;
-		 	o.removed = change.lhs;
+		 	if (change.path[0] === "comments"){
+		 		o.added = change.rhs.text;
+		 		o.removed = change.lhs.text;
+		 	}
+		 	else {
+		 		o.added = change.rhs;
+		 		o.removed = change.lhs;
+		 	}
 			arr.push(o); 
 		}
 		if (change.kind === "A"){
 			// Item added to existing array
 			if (change.item.kind === "N"){
 				o.attr = change.path[0];
-				o.added = change.item.rhs;
+				if (change.path[0] === "comments")
+						o.added = change.item.rhs.text;
+				else 
+					o.added = change.item.rhs;
 				arr.push(o);
 			}
 			// Deleted item
 			if (change.item.kind === "D"){
 				o.attr = change.path[0];
-				o.removed = change.item.lhs;
-				arr.push(o);
+				if (change.path[0] === "comments")
+					o.removed = change.item.lhs.text
+				else 
+					o.removed = change.item.lhs;
+				arr.push(o);	
 			}
 		}
 		// New item
 		if (change.kind === "N"){
 			o.attr = change.path[0];
-			o.added = change.rhs[0];
+			if (change.path[0] === "comments")
+				o.added = change.rhs[0].text;
+			else
+				o.added = change.rhs[0];
 			arr.push(o);
 		}
 		
