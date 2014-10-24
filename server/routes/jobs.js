@@ -1,13 +1,13 @@
 
 var email = require('./email')
-    , moment = require('moment')
+  , moment = require('moment')
 	, html = require('./html')
-    , fs = require('fs')
-    , path = require('path')
-    , helper = require('./helper')
-    , notification = require('./notification')
-    , async = require('async')
-    , user = require('./users')
+  , fs = require('fs')
+  , path = require('path')
+  , helper = require('./helper')
+  , notification = require('./notification')
+  , async = require('async')
+  , user = require('./users')
 
 module.exports = {
     sendExpiryAlerts: function(admin, trademarks, fn) {
@@ -25,6 +25,7 @@ module.exports = {
                             })
                         },
                         addNotification: function(cb, results){
+                        	console.log("Notification phase");
                             notification.addNotification(tm, admin._id, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
                          }
                        }, function(err, results){
