@@ -4,12 +4,12 @@ var Notification = require('../models/notificationSchema')
 
 exports.addNotification = function(tm, user, incident, fn){
 	new Notification({
-		trademark: tm._id,
-		portfolio: tm.portfolio,
-		user: user,
+		//trademark: tm._id,
+		//portfolio: tm.portfolio,
+		//user: user,
 		read: false,
-		entity: tm.entity,
-		incident: incident
+		//entity: tm.entity,
+		//incident: incident
 	}).save(function(err, success){
 		if (err) { console.log(err) }
 		fn(null, true);
