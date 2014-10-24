@@ -20,7 +20,7 @@ angular.module('app')
 
         $.deleteNotification = function(notification, index) {
             $.notifications.splice(index, 1);
-            notification.readBy.push(user._id);
+            notification.read = true;
             notificationService.updateNotification(notification).then(function() {
 
             });
