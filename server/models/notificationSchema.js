@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 
 var Notification = new Schema({
     incident: Object,
-    requestedBy: String,
+    user: String,
     read:   { type: Boolean, default: false },
     entity: String,
     portfolio: String,
