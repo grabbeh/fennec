@@ -26,7 +26,7 @@ function retrieveNotificationsForUser(user, fn){
 exports.unreadNotifications = function(req, res){
 	retrieveNotificationsForUser(req.user._id, function(err, notifications){
 		res.json(notifications);
-	}
+	})
 }
 
 exports.updateNotification = function(req, res){
