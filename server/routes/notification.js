@@ -3,6 +3,8 @@ var Notification = require('../models/notificationSchema')
 , 	async = require('async');
 
 exports.addNotification = function(tm, user, incident, fn){
+	console.log(user);
+	console.log("add Notification fn triggered");
 	new Notification({
 		trademark: tm._id,
 		portfolio: tm.portfolio,
