@@ -10,9 +10,8 @@ exports.addNotification = function(tm, user, incident, fn){
 		read: false,
 		entity: tm.entity,
 		incident: incident
-	}).save(function(err, n){
+	}).save(function(err, success){
 		if (err) { console.log(err) }
-		console.log("Saved")
 		fn(null, true);
 	});
 }
