@@ -22,21 +22,6 @@ function retrieveNotificationsForUser(user, fn){
 		})
 }
 
-function compare(notifications, user, fn){
-	var unreadNotifications = [];
-	notifications.forEach(function(notification){
-		if (notification.readBy.length === 0){
-			unreadNotifications.push(notification);
-		}
-		else {
-			if (notification.readBy.indexOf(user) === -1){
-				unreadNotifications.push(notification);
-			}
-		}
-	})
-	fn(null, unreadNotifications);
-}
-
 exports.unreadNotifications = function(req, res){
 	retrieveNotificationsForUser(req.user._id, function(err, notifications){
 		res.json(notifications);
