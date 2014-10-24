@@ -31,6 +31,7 @@ exports.unreadNotifications = function(req, res){
 }
 
 exports.updateNotification = function(req, res){
+	console.log(req.body);
 	var notification = req.body;
 	var id = helper.exposeId(notification);
 	var tmId = notification.trademark._id;
