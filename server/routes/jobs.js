@@ -25,7 +25,6 @@ module.exports = {
                             })
                         },
                         addNotification: function(cb, results){
-                        	console.log("Notification phase");
                             notification.addNotification(tm, admin._id, { expiringIn: f, expiryDate: tm.expiryDate.stringDate, type: 'Trademark due to expire' }, cb)
                          }
                        }, function(err, results){
