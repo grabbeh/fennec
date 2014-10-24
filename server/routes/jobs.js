@@ -17,7 +17,6 @@ module.exports = {
                     revised = expiry.subtract(f.type, f.number).format('MM/DD/YYYY'),
                     now = moment().format("MM/DD/YYYY");
                 if (revised === now && admin.entity === tm.entity) {
-                	console.log("Match")
                     async.auto({
                         sendEmail: function(cb, results){
                             var fileLocation = path.resolve(__dirname, '../email-templates/expiry-reminder.html');
