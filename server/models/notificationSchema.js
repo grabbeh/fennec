@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var Notification = new Schema({
     incident: Object,
     requestedBy: String,
-    read: Boolean,
+    read:   { type: Boolean, default: false },
     entity: String,
     portfolio: String,
     trademark:  { type: Schema.Types.ObjectId, ref: 'Trademark' },
