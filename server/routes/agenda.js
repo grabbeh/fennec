@@ -57,8 +57,6 @@ function testAgenda(){
     agenda.start();
 };
 
-testAgenda();
-
 function executeJobs(admins, trademarks, fn){
     async.forEach(admins, function(admin, callback){
     	async.forEach(admin.alertOptions, function(job, callback){
