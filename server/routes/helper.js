@@ -244,12 +244,11 @@ function filterByExpiryYear(year, trademarks, obj){
 }
 
 exports.checkIfEUCountry = function(country, fn){
-    if ((EU.indexOf(country) > -1) ){ 
+    if ((EU.indexOf(country) > -1) )
          return fn(null, true);
-     }
-    else {
+	else 
         fn(null, false);
-    }
+    
 }
 
 function deepCopy(obj) {
@@ -277,7 +276,6 @@ exports.findUser = function(id, fn){
 }
 
 exports.filterDiff = function(a){
-	console.log(a);
 	var arr = [];
 	a.forEach(function(change){
 		var o = {};
