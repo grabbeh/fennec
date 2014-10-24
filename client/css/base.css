@@ -482,8 +482,8 @@ input::-webkit-inner-spin-button {
 .spinner
 {
 
-    width:100px;
-    height: 100px;
+    width:72px;
+    height: 72px;
     position: fixed;
     top: 50%;
     left: 50%;

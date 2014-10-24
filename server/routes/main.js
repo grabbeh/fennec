@@ -80,8 +80,6 @@ exports.addTrademark = function(req, res){
 
 exports.amendTrademark = function(req, res){ 
     var revisedTrademark = helper.parseDates(req.body.trademark);
-    console.log("New trademark")
-    console.log(revisedTrademark.registrationDate.DDate);
     async.auto({
         getTrademark: function(cb, results){
             var id = helper.exposeId(revisedTrademark);
@@ -91,8 +89,6 @@ exports.amendTrademark = function(req, res){
             jobs.sendAlertOnChange(revisedTrademark, 'updated', cb)
         }],
         detectDifferences: ['getTrademark', function(cb, results){
-            console.log("Old trademark")
-            console.log(results.getTrademark.registrationDate.DDate);
             var filteredOldMark = _.omit(results.getTrademark, '_id', 'updated', 'created', '__v');
             var filteredRevisedTrademark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
             var diff = deepDiff(filteredOldMark, filteredRevisedTrademark);
