@@ -2,10 +2,11 @@ var Notification = require('../models/notificationSchema')
 ,   helper = require('./helper')
 , 	async = require('async');
 
-exports.addNotification = function(tm, incident, fn){
+exports.addNotification = function(tm, user, incident, fn){
 	new Notification({
 		trademark: tm._id,
 		portfolio: tm.portfolio,
+		user: user,
 		entity: tm.entity,
 		incident: incident
 	}).save(function(err, n){
