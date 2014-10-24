@@ -16,6 +16,8 @@ module.exports = {
                 var expiry = moment(tm.expiryDate.stringDate, 'MM/DD/YYYY'),
                     revised = expiry.subtract(f.type, f.number).format('MM/DD/YYYY'),
                     now = moment().format("MM/DD/YYYY");
+                    console.log(now);
+                    console.log(revised);
                 if (revised === now && admin.entity === tm.entity) {
                 	console.log("Match")
                     async.auto({
