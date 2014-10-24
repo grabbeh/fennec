@@ -13,8 +13,8 @@ exports.addNotification = function(tm, incident, fn){
 	});
 }
 
-function retrieveNotificationsForEntity(entity, fn){
-	Notification.find({ entity: entity })
+function retrieveNotificationsForUser(user, fn){
+	Notification.find({ requestedBy: user, read: false })
 		.populate('trademark')
 		.exec(function(err, notifications){
 			if (err) { console.log(err) }
@@ -38,19 +38,9 @@ function compare(notifications, user, fn){
 }
 
 exports.unreadNotifications = function(req, res){
-	async.auto({
-		user: function(cb, results){
-			helper.findUser(req.user._id, cb);
-		},
-		notifications: ['user', function(cb, results){
-			retrieveNotificationsForEntity(results.user.entity, cb);
-		}],
-		unreadNotifications: ['user', 'notifications', function(cb, results){
-			compare(results.notifications, results.user._id, cb);
-		}]
-	}, function(err, results){
-		res.json(results.unreadNotifications);
-	})
+	retrieveNotificationsForUser(req.user._id, function(err, notifications){
+		res.json(notifications);
+	}
 }
 
 exports.updateNotification = function(req, res){
