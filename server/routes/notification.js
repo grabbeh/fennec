@@ -15,7 +15,7 @@ exports.addNotification = function(tm, user, incident, fn){
 }
 
 function retrieveNotificationsForUser(user, fn){
-	Notification.find({ requestedBy: user, read: false })
+	Notification.find({ user: user, read: false })
 		.populate('trademark')
 		.exec(function(err, notifications){
 			if (err) { console.log(err) }
@@ -37,7 +37,7 @@ exports.updateNotification = function(req, res){
 	Notification.findOneAndUpdate({ _id: id }, helper.removeId(notification), function(err, not){
 		if (err) { console.log(err); }
 		else {
-			console.log("Notification updated")
+		     console.log("Notification updated")
 		}
 	})
 }
