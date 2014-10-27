@@ -32,14 +32,8 @@ mongoose.connect(db, function(err){
 // Agenda
 job.setUpAgenda(db);
 
-// middleware
-function x(req, res, next) {
-  if (req.user) { next(); } 
-  else { res.status(401).send(); }
-}
-
 // Routes
-require('./server/routes')(app, x);
+require('./server/routes')(app);
 
 // Development port
 http.createServer(app).listen(2002);
