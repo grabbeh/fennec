@@ -11,7 +11,13 @@ var world = require('./routes/world')
 , spreadsheet = require('./routes/excel-process')
 , contact = require('./routes/contact');
 
-module.exports = function(app, x){
+// middleware
+function x(req, res, next) {
+  if (req.user) { next(); } 
+  else { res.status(401).send(); }
+}
+
+module.exports = function(app){
 
 	app.get('/', function(req, res){
 		res.sendfile('./client/index.html');
