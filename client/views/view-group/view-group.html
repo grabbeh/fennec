@@ -51,7 +51,7 @@
       <div mg-map id="map" geojson="geojson"></div>
       
       <div ng-show="registered || pending || published || nocontent" class="trademark-container">
-        <div class="country-holder f32"> <a href="/admin/country/{{alpha3}}">{{ country }} </a> </div>
+        <div class="country-holder f32"> <a href="admin/country/{{alpha3}}">{{ country }} </a> </div>
         <span ng-show="nocontent">No trade marks for this country</span>
          <div class="one-third-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
          <div class="one-third-container" mg-published-trademark-list published="published" show-modal="showModal"></div>
