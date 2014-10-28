@@ -5,7 +5,7 @@
            <div mg-bold>Portfolios</div>
           <ul class="tm-list">
              <li class="tm-list-li hover-underline"  ng-repeat="portfolio in portfolios">
-                <b><a href="/home/{{ portfolio }}">{{ portfolio}} </a></b>
+                <b><a href="home/{{ portfolio }}">{{ portfolio}} </a></b>
              </li>
           </ul>
       </div> 
@@ -17,7 +17,7 @@
         <div ng-hide="notifications" class="margin-top">Currently no notifications</div>
         <ul ng-show="notifications" class="tm-list">
            <li class="notification-list-li" ng-repeat="notification in notifications">
-           <div class="notification-link"><a href="/home/{{ notification.portfolio }}"> {{ notification.portfolio}}</a> </div>
+           <div class="notification-link"><a href="home/{{ notification.portfolio }}"> {{ notification.portfolio}}</a> </div>
               <div class="notification-content hover" ng-click="showModal(notification.trademark)">
 
                  <div><span mg-bold>{{ notification.trademark.mark }}</span> in <span mg-bold> {{notification.trademark.country.name }}</span> is due to expire <span mg-bold> {{ notification.trademark.expiryDate.stringDate }}</span></div> 
@@ -26,7 +26,7 @@
              
        
              <div class="notification-delete-button hover-black"><div ng-click="deleteNotification(notification, $index)"><i class="fa fa-times fa-lg"></i></div></div>
-             <div class="view-icon hover-black"><a class="hover-black"href="/view/trademark/{{notification.trademark._id}}"><i class="fa fa-eye"></i></a></div>
+             <div class="view-icon hover-black"><a class="hover-black"href="view/trademark/{{notification.trademark._id}}"><i class="fa fa-eye"></i></a></div>
            </li>
          
         </ul>
