@@ -1,9 +1,5 @@
 <div class="main-trademark-container shadow">
-          <div class="modal-title">{{ trademark.mark }} </div>
-              
-            <div ng-show="trademark.country.coordinates">
-            <img class="country-img" ng-src="https://api.tiles.mapbox.com/v3/grabbeh.gch0omlb/{{trademark.country.coordinates[1]}},{{trademark.country.coordinates[0]}},3/400x200.png">
-            </div>
+        <div class="modal-title">{{ trademark.mark }} </div>
         <div class="view-trademark-container">
             <ul class="view-trademark-list">
                 <li><b>{{ trademark.status }} </b>in <b>{{ trademark.country.name }}</b></li>
