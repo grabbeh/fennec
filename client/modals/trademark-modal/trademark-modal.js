@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller('trademarkModalCtrl', ['$scope', '$window', 'notificationModal', '$rootScope', 'userService', 'trademarkService', '$http', 'editTrademarkModal', 'trademarkModal', 
-      function ($scope, $window, notificationModal, $rootScope, userService, trademarkService, $http, editTrademarkModal, trademarkModal) {
+    .controller('trademarkModalCtrl', ['$scope', '$window', 'notificationModal', '$rootScope', 'userService', 'trademarkService', 'editTrademarkModal', 'trademarkModal', 
+      function ($scope, $window, notificationModal, $rootScope, userService, trademarkService, editTrademarkModal, trademarkModal) {
       var $ = $scope;
       $.alpha2 = $.trademark.country.alpha2.toLowerCase();
       
