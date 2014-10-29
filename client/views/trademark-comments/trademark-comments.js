@@ -11,7 +11,6 @@ angular.module('app')
         templateUrl: '/views/trademark-comments/trademark-comments.html',
         controller: function($scope, trademarkService, notificationModal, notificationService) {
             var $ = $scope;
-
             $.addComment = function(text) {
                 var comment = {};
                 comment.text = text;
@@ -34,20 +33,19 @@ angular.module('app')
                     return;
                 }
                 $.comment = comment;
-                $.index = index;
+                $.editIndex = index;
                 $.text = comment.text;
                 $.showEditButton = true;
-
             }
 
-            $.editComment = function(text, index) {
-                $.trademark.comments[index].text = text;
-                $.trademark.comments[index].updated = new Date();
+            $.editComment = function(text) {
+                $.trademark.comments[$.editIndex].text = text;
+                $.trademark.comments[$.editIndex].updated = new Date();
                 trademarkService.editMark($.trademark).then(function(res) {
                     notificationModal.activate({ success: "Comment edited" });
                     $.showEditButton = false;
                     $.text = "";
-                });;
+                });
             }
 
             $.deleteComment = function(comment, index) {
