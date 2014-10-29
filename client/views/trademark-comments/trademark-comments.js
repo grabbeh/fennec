@@ -40,13 +40,11 @@ angular.module('app')
 
             }
 
-            $.editComment = function(text) {
-                $.trademark.comments[$.index].text = text;
-                $.trademark.comments[$.index].updated = new Date();
+            $.editComment = function(text, index) {
+                $.trademark.comments[index].text = text;
+                $.trademark.comments[index].updated = new Date();
                 trademarkService.editMark($.trademark).then(function(res) {
-                    notificationModal.activate({
-                        success: "Comment edited"
-                    });
+                    notificationModal.activate({ success: "Comment edited" });
                     $.showEditButton = false;
                     $.text = "";
                 });;
@@ -54,21 +52,14 @@ angular.module('app')
 
             $.deleteComment = function(comment, index) {
                 if (comment.author != $.user._id) {
-                    notificationModal.activate({
-                        error: "Only author can delete"
-                    })
+                    notificationModal.activate({ error: "Only author can delete" });
                     return;
                 }
                 $.trademark.comments.splice(index, 1);
                 trademarkService.editMark($.trademark).then(function(res) {
-                    notificationModal.activate({
-                        success: "Comment deleted"
-                    });
-
+                    notificationModal.activate({ success: "Comment deleted" });
                 })
             }
-
-
         }
     }
 })
