@@ -3,7 +3,7 @@
         <div class="hover-underline comment-date-filter" ng-click="predicate = 'date'; reverse=!reverse">Oldest / Newest</div>
         <div mg-clear></div>
         <ul class="tm-list">        
-        <li class="tm-list-li" ng-repeat="comment in trademark.comments | orderBy:predicate:reverse">
+        <li class="tm-list-li" ng-repeat="comment in trademark.comments">
         
         <div class="main-comment">
             <div class="comment-text">{{ comment.text }} </div>
