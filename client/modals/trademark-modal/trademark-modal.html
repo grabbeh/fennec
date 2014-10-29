@@ -2,10 +2,6 @@
 
     <div class="modal-title"><span>{{ trademark.mark}}</span><span class="hover modal-close" ng-click="closeModal()"><i class="fa fa-times"></i></span> 
     </div>
-
-    <div class="hide-on-mobile" ng-show="trademark.country.coordinates">
-        <img class="country-img" ng-src="//api.tiles.mapbox.com/v3/grabbeh.gch0omlb/{{trademark.country.coordinates[1]}},{{trademark.country.coordinates[0]}},3/400x200.png">
-    </div>
     <div class="view-trademark-container">
         <ul class="view-trademark-list">
             <li><span><b>{{ trademark.status }} </b>in <span><b>{{ trademark.country.name }}</b></span></span>
