@@ -33,12 +33,16 @@ angular.module('app')
                     return;
                 }
                 $.comment = comment;
+                console.log(index);
                 $.editIndex = index;
                 $.text = comment.text;
                 $.showEditButton = true;
             }
 
             $.editComment = function(text) {
+                console.log(text);
+                console.log($.trademark);
+                console.log($.editIndex);
                 $.trademark.comments[$.editIndex].text = text;
                 $.trademark.comments[$.editIndex].updated = new Date();
                 trademarkService.editMark($.trademark).then(function(res) {
