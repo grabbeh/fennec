@@ -5,7 +5,7 @@ angular.module('app')
             var $ = $scope;
             
             $.canSubmitLogin = function(){
-                return $.loginForm.$touched && $.loginForm.$valid;
+                return $.loginForm.$valid;
             };
             
             $.login = function(){
