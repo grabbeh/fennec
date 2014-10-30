@@ -16,7 +16,7 @@ angular.module('app')
         };
 
         $.canMessage = function() {
-            return $.sendMessageForm.$dirty && $.sendMessageForm.$valid;
+            return $.sendMessageForm.$touched && $.sendMessageForm.$valid;
         };
 
         $.sendMessage = function() {
