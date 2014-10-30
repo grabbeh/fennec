@@ -79,6 +79,7 @@ exports.addTrademark = function(req, res){
 }
 
 exports.amendTrademark = function(req, res){ 
+    console.log(req.body);
     var revisedTrademark = helper.parseDates(req.body.trademark);
     async.auto({
         getTrademark: function(cb, results){
