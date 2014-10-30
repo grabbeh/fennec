@@ -4,6 +4,7 @@
             <ul class="view-trademark-list">
                 <li><b>{{ trademark.status }} </b>in <b>{{ trademark.country.name }}</b></li>
                 <li>
+                    <div class="small-text">Classes</div>
                     <ul class="class-list" ng-repeat="class in trademark.classes track by $index">
                         <li class="class">{{ class }}</li>
                     </ul>
