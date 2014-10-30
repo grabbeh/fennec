@@ -79,7 +79,6 @@ exports.addTrademark = function(req, res){
 }
 
 exports.amendTrademark = function(req, res){ 
-    console.log(req.body);
     var revisedTrademark = helper.parseDates(req.body.trademark);
     async.auto({
         getTrademark: function(cb, results){
@@ -92,8 +91,6 @@ exports.amendTrademark = function(req, res){
         detectDifferences: ['getTrademark', function(cb, results){
             var filteredOldMark = _.omit(results.getTrademark, '_id', 'updated', 'created', '__v');
             var filteredRevisedMark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
-            console.log(filteredOldMark);
-            console.log(filteredRevisedMark);
             var diff = deepDiff(filteredOldMark, filteredRevisedMark);
             console.log(diff);
             var filteredDiff = helper.filterDiff(diff); 
