@@ -16,7 +16,7 @@ angular.module('app')
                 });
         };
         $.canAddTrademark = function() {
-            return $.addTrademarkForm.$touched && $.addTrademarkForm.$valid;
+            return $.addTrademarkForm.$valid;
         };
     }
 ])
