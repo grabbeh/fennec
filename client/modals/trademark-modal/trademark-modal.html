@@ -9,6 +9,7 @@
             </li>
             <li ng-show="trademark.imageUrl"><img class="small-logo-holder" ng-src="{{trademark.imageUrl}}"> </li>
             <li>
+            	<div class="small-text">Classes</div>
                 <ul class="class-list" ng-repeat="class in trademark.classes track by $index">
                     <li class="class">{{ class }}</li>
                 </ul>
