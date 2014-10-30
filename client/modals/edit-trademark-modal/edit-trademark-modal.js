@@ -16,6 +16,7 @@ angular.module('app')
             })
     
         $.editTrademark = function(trademark){
+            console.log(trademark);
             trademarkService.editMark(trademark)
                 .success(function(data){
                     notificationModal.activate({ success: data.message })
