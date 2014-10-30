@@ -239,7 +239,6 @@
                 return $http.post('/api/trademark', { trademark: trademark })
         },
         editMark: function(trademark){
-            console.log(trademark);
             if (typeof trademark.classes === 'string'){
                 trademark.classes = _.map(trademark.classes.split(","), curry(parseInt));
             }
