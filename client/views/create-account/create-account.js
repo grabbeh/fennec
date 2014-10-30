@@ -14,7 +14,7 @@ angular.module('app')
         };
 
         $.canSubmitCreateUser = function() {
-            return $.createUserForm.$touched && $.createUserForm.$valid;
+            return $.createUserForm.$valid;
         };
 
     }
