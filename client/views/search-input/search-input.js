@@ -28,11 +28,11 @@ angular.module('app')
             }
 
             $.canSearch = function() {
-                return $.searchForm.$dirty && $.searchForm.$valid;
+                return $.searchForm.$touched && $.searchForm.$valid;
             }
 
             $.canExpirySearch = function() {
-                return $.expiryForm.$dirty && $.searchForm.$valid;
+                return $.expiryForm.$touched && $.searchForm.$valid;
             }
 
             $.removeNoResults = function() {
