@@ -38,8 +38,6 @@ angular.module('app')
                             error: res.error
                         });
                     }
-
-
                 });
         };
 
