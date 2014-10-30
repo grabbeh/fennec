@@ -59,7 +59,7 @@ angular.module('app')
                 }
                 $.trademark.comments.splice(index, 1);
                 trademarkService.editMark($.trademark).then(function(res) {
-                    notificationModal.activate({ success: "Comment deleted" });
+                    notificationModal.activate({ success: "Comment deleted" }, 5);
                 })
             }
         }
