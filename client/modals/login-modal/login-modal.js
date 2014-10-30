@@ -10,7 +10,7 @@ angular.module('app')
         }
         
         $.canSubmitLogin = function(){
-             return $.loginForm.$touched && $.loginForm.$valid;
+             return $.loginForm.$valid;
         }
 
         $.login = function(){
