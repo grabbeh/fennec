@@ -91,9 +91,11 @@ exports.amendTrademark = function(req, res){
         detectDifferences: ['getTrademark', function(cb, results){
             var filteredOldMark = _.omit(results.getTrademark, '_id', 'updated', 'created', '__v');
             var filteredRevisedMark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
-            var difference = deepDiff(filteredOldMark, filteredRevisedMark);
-            console.log(difference);
-            var filteredDiff = helper.filterDiff(difference); 
+            var diff = deepDiff(filteredOldMark, filteredRevisedMark);
+	    if (diff === undefined)  
+	    	var filteredDiff = []; 
+	    else 
+	     	var filteredDiff = helper.filterDiff(difference); 	
             cb(null, filteredDiff); 
         }],
         updateStream: ['detectDifferences', 'getTrademark', function(cb, results){
