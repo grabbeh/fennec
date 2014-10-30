@@ -9,9 +9,9 @@ angular.module('app')
             $rootScope.modal = false;
         }
         
-        $.canSubmitLogin = function(){
-             return $.loginForm.$valid;
-        }
+       // $.canSubmitLogin = function(){
+         //    return $.loginForm.$valid;
+       // }
 
         $.login = function(){
 
