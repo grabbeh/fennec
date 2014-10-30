@@ -5,7 +5,7 @@ angular.module('app')
         var $ = $scope;
 
         $.passwordResetFormValid = function() {
-            return $.passwordResetForm.$touched && $.passwordResetForm.$valid;
+            return $.passwordResetForm.$valid;
         };
 
         $.requestPasswordReset = function() {
