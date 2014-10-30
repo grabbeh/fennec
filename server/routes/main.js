@@ -95,7 +95,7 @@ exports.amendTrademark = function(req, res){
 	    if (diff === undefined)  
 	    	var filteredDiff = []; 
 	    else 
-	     	var filteredDiff = helper.filterDiff(difference); 	
+	     	var filteredDiff = helper.filterDiff(diff); 	
             cb(null, filteredDiff); 
         }],
         updateStream: ['detectDifferences', 'getTrademark', function(cb, results){
