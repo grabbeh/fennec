@@ -19,7 +19,7 @@ angular.module('app')
         };
 
         $.uploadFormValid = function() {
-            return $.uploadForm.$dirty && $.uploadForm.$valid;
+            return $.uploadForm.$touched && $.uploadForm.$valid;
         };
     }
 ])
