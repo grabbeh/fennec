@@ -46,7 +46,7 @@ angular.module('app')
                 $.trademark.comments[$.editIndex].text = text;
                 $.trademark.comments[$.editIndex].updated = new Date();
                 trademarkService.editMark($.trademark).then(function(res) {
-                    notificationModal.activate({ success: "Comment edited" });
+                    notificationModal.activate({ success: "Comment edited" }, 5);
                     $.showEditButton = false;
                     $.text = "";
                 });
