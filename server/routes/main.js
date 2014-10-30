@@ -91,8 +91,11 @@ exports.amendTrademark = function(req, res){
         }],
         detectDifferences: ['getTrademark', function(cb, results){
             var filteredOldMark = _.omit(results.getTrademark, '_id', 'updated', 'created', '__v');
-            var filteredRevisedTrademark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
-            var diff = deepDiff(filteredOldMark, filteredRevisedTrademark);
+            var filteredRevisedMark = _.omit(revisedTrademark, 'fromNow', 'updated', '__v','created', 'favourite', 'issues');
+            console.log(filteredOldMark);
+            console.log(filteredRevisedMark);
+            var diff = deepDiff(filteredOldMark, filteredRevisedMark);
+            console.log(diff);
             var filteredDiff = helper.filterDiff(diff); 
             cb(null, filteredDiff); 
         }],
