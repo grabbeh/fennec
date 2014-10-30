@@ -14,11 +14,26 @@
                 </ul>
             </li>
             <div mg-clear></div>
-            <li ng-show="trademark.filingDate.stringDate">Filed: {{ trademark.filingDate.stringDate }}</li>
-            <li ng-show="trademark.applicationNumber">Application no.: {{ trademark.applicationNumber}}</li>
-            <li ng-show="trademark.registrationNumber">Registration no.: {{ trademark.registrationNumber}}</li>
-            <li ng-show="trademark.registrationDate.stringDate">Registration date: {{ trademark.registrationDate.stringDate }}</li>
-            <li ng-show="trademark.expiryDate.stringDate">Expiry date: {{ trademark.expiryDate.stringDate }}</li>
+             <li ng-show="trademark.filingDate.stringDate" >
+				  <div class="small-text">Filing date</div>
+				  <div>{{ trademark.filingDate.stringDate }}</div>
+			  </li>
+			  <li ng-show="trademark.applicationNumber" >
+			  	<div class="small-text">Application no.</div>
+			  	<div>{{ trademark.applicationNumber}}</div>
+			  </li>
+			  <li ng-show="trademark.registrationNumber" >
+			  	<div class="small-text">Registration no.</div>
+			  	<div> {{ trademark.registrationNumber}}</div>
+			  </li>
+			  <li ng-show="trademark.registrationDate.stringDate" >
+			  		<div class="small-text">Registration date</div>
+			  	    <div> {{ trademark.registrationDate.stringDate }}</div>	
+			  </li>
+			  <li ng-show="trademark.expiryDate.stringDate"> 
+			  	  <div class="small-text">Expiry date</div>
+			  	  <div> {{ trademark.expiryDate.stringDate }} </div>
+			  </li>
         </ul>
         <div mg-clear></div>
         
