@@ -106,7 +106,7 @@ angular.module('app')
             };
 
             $.expiryFormValid = function() {
-                return $.expiryForm.$touched && $.expiryForm.$valid;
+                return $.expiryForm.$valid;
             };
 
             $.sendMarksToServer = function(marks) {
