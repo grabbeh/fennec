@@ -4,7 +4,7 @@ angular.module('app')
         var $ = $scope;
 
         $.changePasswordFormValid = function() {
-            return $.changePasswordForm.$dirty && $.changePasswordForm.$valid;
+            return $.changePasswordForm.$touched && $.changePasswordForm.$valid;
         };
 
         $.changePassword = function() {
