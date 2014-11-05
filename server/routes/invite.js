@@ -2,6 +2,7 @@ var Invite = require('../models/inviteSchema')
 , async = require('async')
 , email = require('./email')
 , html = require('./html')
+, user = require('./user')
 
 exports.createInvite = function(req, res){
     var o = {};
@@ -31,5 +32,20 @@ function addInvite(o, fn){
       inviter: o.inviter
     }).save(function(err, invite){
         return fn(null, invite)
+    })
+}
+
+exports.getInvite = function(req, res){
+    Invite.findOne({_id: req.params.id}, function(err, invite){
+        res.json({invite: invite});
+    })
+}
+
+exports.acceptInvite = function(req, res){
+    Invite.findOne({ _id: req.params.id }).lean().exec(function(err, invite){
+        invite.password = req.body.password;
+        user.createUserFromInvite(invite, function(err, token){
+            res.status(200).json(token);  
+        })
     })
 }
