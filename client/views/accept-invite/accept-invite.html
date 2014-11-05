@@ -1,7 +1,11 @@
-<div>
-    <form novalidate name="acceptInviteForm" ng-submit="acceptInvite()">
-      <div><input required class="form-input" type=password ng-model="newUser.password" name="password" placeholder="Password" ></div>
-      <div><input required class="form-input" type=password ng-model="newUser.passwordTwo" name="password" placeholder="Repeat password" ></div>
-      <div><input class="add-button" type=submit ng-disabled="!canSubmitAcceptInvite()" value="Submit"></div>
-    </form>
+<div id="form-body">
+    <div class="form-container">
+        <div>
+            <form novalidate name="acceptInviteForm" ng-submit="acceptInvite()">
+              <div><input required class="form-input" type=password ng-model="newUser.password" name="password" placeholder="Password" ></div>
+              <div><input required class="form-input" type=password ng-model="newUser.passwordTwo" name="password" placeholder="Repeat password" ></div>
+              <div><input class="add-button" type=submit ng-disabled="!canSubmitAcceptInvite()" value="Submit"></div>
+            </form>
+        </div>
+    </div>
 </div>
