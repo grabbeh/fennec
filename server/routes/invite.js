@@ -2,7 +2,7 @@ var Invite = require('../models/inviteSchema')
 , async = require('async')
 , email = require('./email')
 , html = require('./html')
-, user = require('./user')
+, user = require('./users')
 
 exports.sendInvite = function(req, res){
     var o = {};
