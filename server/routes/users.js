@@ -76,7 +76,6 @@ exports.createAccountFromInvite = function(o, fn){
            addUser(o.entity, o.email.toLowerCase(), o, cb);
         },
         token: ['user', function(cb, results){
-            console.log(results);
             jwt.createToken(results.user, cb)
         }]
     }, function(err, results){
@@ -90,10 +89,8 @@ function addUser(entity, id, o, fn)  {
     entities.getEntity(entity, function(err, entity){
         o.portfolios = entity.portfolios;
         User.findOne({_id: id, entity: entity }, function(err, user) {
-            console.log("User check")
-        if (user) { return fn(err); console.log("User already exists"); }
+        if (user) { return fn(err); }
         hashPasswordAndAddUser(o, function(err, user){
-            console.log(user);
             if (err)
                 return fn(err);
             else 
@@ -217,6 +214,8 @@ function authenticate(id, pass, fn) {
  }
 
 function hashPasswordAndAddUser(o, fn){
+    console.log(o);
+    console.log("hash fn called")
     bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(o.password, salt, function(err, hash) {
             saveUser(o, hash, function(err, user){
