@@ -11,7 +11,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         }).
         when('/invite/:id', {
             templateUrl: '/views/accept-invite/accept-invite.html',
-            controller: acceptInviteCtrl,
+            controller: 'acceptInviteCtrl',
             resolve: {
                 invite: function(userService, $route){
                     return userService.getInvite($route.current.params.invite)
