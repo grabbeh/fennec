@@ -1,6 +1,6 @@
 angular.module('app')
-    .controller('acceptInviteCtrl', ['$scope', 'invite', 'notificationModal', 'userService', '$routeParams',
-    function($scope, invite, notificationModal, userService, $routeParams) {
+    .controller('acceptInviteCtrl', ['$scope', '$rootScope', '$location', '$window', 'invite', 'notificationModal', 'userService', '$routeParams',
+    function($scope, $rootScope, $location, $window, invite, notificationModal, userService, $routeParams) {
     var $ = $scope;
     $.invite = invite;
 
@@ -10,9 +10,13 @@ angular.module('app')
         else {
               userService.acceptInvite($.newUser, $routeParams.id)
                 .then(function(res) {
-                    console.log(res);
-                if (!res.error)
-                    notificationModal.activate({ success: res.success });
+
+                if (!res.error){
+                    notificationModal.activate({ success: "Congratulations, you've successfully created an account" });
+                    $window.sessionStorage.token = res.token;
+                    $rootScope.user = true;
+                    $location.path('/home');
+                }
                 else
                     notificationModal.activate({error: res.error});
               });
