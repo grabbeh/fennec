@@ -10,9 +10,12 @@ exports.createInvite = function(req, res){
     o.inviter = req.user._id;
     o.entity = req.user.entity;
     async.auto({
-        invite: function(cb, results){
-            addInvite(o, cb)
+        existingUser: function(cb, results){
+            user.existingUser(o.email, cb);
         },
+        invite: ['existingUser', function(cb, results){
+            addInvite(o, cb)
+        ]},
         html: ['invite', function(cb, results){
             var fileLocation = path.resolve(__dirname, '../email-templates/invite.html');
             html.returnHtml(results.invite, fileLocation, cb);
@@ -21,7 +24,10 @@ exports.createInvite = function(req, res){
             email.sendEmail(id, "Invite to Fennec", results.html, cb)
         }]
         }, function(err, results){
-            res.json("Invite sent")
+            if (err)
+                res.json({error: "User already exists"})
+            else 
+                res.json({success: "Invite sent"})
     })     
 }
 
