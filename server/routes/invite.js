@@ -4,7 +4,7 @@ var Invite = require('../models/inviteSchema')
 , html = require('./html')
 , user = require('./user')
 
-exports.createInvite = function(req, res){
+exports.sendInvite = function(req, res){
     var o = {};
     o.email = req.body.email;
     o.admin = req.body.checked;
