@@ -100,6 +100,7 @@ exports.createAccountFromInvite = function(o, fn){
 }
   
 function addUser(entity, id, o, fn)  {
+    console.log("add user fn triggered");
     entities.getEntity(entity, function(err, entity){
         o.portfolios = entity.portfolios;
         User.findOne({_id: id, entity: entity }, function(err, user) {
