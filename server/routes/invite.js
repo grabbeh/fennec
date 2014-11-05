@@ -37,7 +37,7 @@ function addInvite(o, fn){
 
 exports.getInvite = function(req, res){
     Invite.findOne({_id: req.params.id}, function(err, invite){
-        res.json({invite: invite});
+        res.json(invite);
     })
 }
 
