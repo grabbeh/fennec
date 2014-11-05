@@ -102,6 +102,12 @@ module.exports = function(app){
 	app.post('/api/updatePassword', user.updatePassword);
 	app.post('/server/requestPasswordReset', user.requestPasswordReset);
 	app.post('/server/passwordReset/:id', user.resetPassword);
+	
+	// Invite mechanism
+	
+	app.get('/api/createInvite', invite.createInvite);
+	app.get('/api/invite/:id', invite.getInvite);
+	app.post('/api/invite/:id', user.createAccount);
 
 	// Spreadsheet upload
 	app.post('/api/spreadsheet', x, spreadsheet.processExcel);
