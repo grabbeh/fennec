@@ -56,7 +56,7 @@ exports.acceptInvite = function(req, res){
         invite: function(cb, results){
             Invite.findOne({_id: req.params.id}).lean().exec(cb);
         },
-        token: ['findInvite', function(cb, results){
+        token: ['invite', function(cb, results){
             invite.password = password;
             invite.isAdmin = results.invite.isAdmin;
             user.createAccountFromInvite(invite, cb);
