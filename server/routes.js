@@ -106,8 +106,8 @@ module.exports = function(app){
 	// Invite mechanism
 	
 	app.get('/api/createInvite', invite.createInvite);
-	app.get('/api/invite/:id', invite.getInvite);
-	app.post('/api/invite/:id', invite.acceptInvite);
+	app.get('/server/invite/:id', invite.getInvite);
+	app.post('/server/invite/:id', invite.acceptInvite);
 
 	// Spreadsheet upload
 	app.post('/api/spreadsheet', x, spreadsheet.processExcel);
