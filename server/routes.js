@@ -91,8 +91,6 @@ module.exports = function(app){
 	app.get('/api/isUser', user.isUser);
 	app.get('/api/user', user.getUser);
 
-	app.post('/api/user', user.addUser);
-
 	app.put('/api/users/:id', user.updateUser);
 	app.get('/api/users', user.allUsers);
 	app.del('/api/users/:id', user.deleteUser);
