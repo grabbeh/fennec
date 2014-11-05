@@ -69,20 +69,6 @@ exports.logIn = function(req, res){
        else { res.status(401).send({message: "Incorrect username or password"})}
     })
 }
-    
-exports.addUser = function(req, res) {
-    var id = req.body.email.toLowerCase();
-    var entity = req.user.entity;
-    req.body.entity = entity;
-    addUser(entity, id, req.body, function(err, user){
-        if (err){
-            res.status(401).send({error: 'User already exists'}); return;
-        }
-        else {
-            res.status(200).json({user: user});
-        }
-     })
-  }
 
 exports.createAccountFromInvite = function(o, fn){
     async.auto({
