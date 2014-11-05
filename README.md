@@ -2,7 +2,7 @@
 Fennec
 ==================
 
-**Fennec** is a tool you can use to visualise and analyse your trade mark portfolio (on the assumption you have one!). You can also allow non-legal types (PR/design teams) to check whether you are registered in a particular country to allow them to use appropriate trade marks ('R'/'TM' etc). 
+**Fennec** is a tool you can use to visualise and analyse your trade mark portfolio (on the assumption you have one!). You can also allow non-legal types (PR/design teams) to check whether you are registered in a particular country to allow them to use appropriate trade marks ('R'/'TM' etc). A working demo is [here](https://tryfennec.com).
 
 Here's what the admin panel used to look like:
 
@@ -12,9 +12,9 @@ As a preliminary step you will also need Node.js installed. Additionally, the ap
 
 - **MongoDB** to store data, (so you'll need insert details at `/server/config/db.js`) 
 - **Sendgrid** to send reminder emails so would require those details if you want to make use of the app, (details inserted at `/server/config/admin.js`) 
-- **Elastic Search** for search functionality,
+- **Elastic Search** for search functionality
 - an **Amazon S3** bucket to store images (key and secret will go in `/server/config/s3.js`) 
-- **Mapbox** to show maps - you will need to insert your own id in the maps directive at `/client/angular/directives/directives.js`.
+- **Mapbox** to show maps - you will need to insert your own id in the maps directive at `/client/angular/directives/directives.js`
 
 To get a copy of the code on your system just `git clone https://github.com/grabbeh/fennec` and then in the home directory `npm install` to install the dependencies. Once the importing process has been completed, you can `node app` in the home directory and go to `http://localhost:2002` where you will be asked to create an account (this should be an admin account). From that point, you will be taken to `/select-portfolio` where you can surprisingly, select your portfolio for viewing.
 
