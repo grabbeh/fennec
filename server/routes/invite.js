@@ -57,7 +57,7 @@ exports.acceptInvite = function(req, res){
         invite.password = req.body.password;
         invite.isAdmin = invite.admin;
         user.createAccountFromInvite(invite, function(err, token){
-            console.log(token);
+            if (err) { res.status(401).send({error: "User already exists"});
             res.status(200).json(token);  
         })
     })
