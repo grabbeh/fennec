@@ -215,6 +215,7 @@ function authenticate(id, pass, fn) {
  }
 
 function hashPasswordAndAddUser(o, fn){
+    console.log("hash pw fn called");
     bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(o.password, salt, function(err, hash) {
             saveUser(o, hash, function(err, user){
