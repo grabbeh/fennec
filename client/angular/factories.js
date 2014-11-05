@@ -140,7 +140,7 @@
                 })
         },
         acceptInvite: function(user, invite){
-            return $http.post('/server/acceptInvite/' + invite, user)
+            return $http.post('/server/invite/' + invite, user)
                 .then(function(res){
                     return res.data;
                 }, function(res){
