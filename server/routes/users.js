@@ -109,6 +109,15 @@ function addUser(entity, id, o, fn)  {
     })
 }
 
+exports.existingUser(id, fn){
+    User.findOne({_id: id}, function(err, user){
+        if (user)
+            return fn(new Error("Existing user"))
+        else 
+            return fn(null, true);
+    })
+}
+
 exports.updatePassword = function(req, res){
      var id = req.user._id.toLowerCase()
      , old = req.body.oldPW
