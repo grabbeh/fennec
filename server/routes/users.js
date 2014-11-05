@@ -74,7 +74,7 @@ exports.addUser = function(req, res) {
     var id = req.body.email.toLowerCase();
     var entity = req.user.entity;
     req.body.entity = entity;
-    addU(entity, id, req.body, function(err, user){
+    addUser(entity, id, req.body, function(err, user){
         if (err){
             res.status(401).send({error: 'User already exists'}); return;
         }
@@ -84,13 +84,20 @@ exports.addUser = function(req, res) {
      })
   }
 
-exports.addUserFromInvite = function(o, fn){
-    addU(o.entity, o.email.toLowerCase(), o, function(err, user){
-        res.status(200).json({user: user});
+exports.createAccountFromInvite = function(o, fn){
+    async.auto({
+        addUser: function(cb, results){
+           addUser(o.entity, o.email.toLowerCase(), o, cb);
+        },
+        token: ['user', function(cb, results){
+            jwt.createToken(results.user, cb)
+        }]
+    }, function(err, results){
+        return fn(null, results.token)
     })
 }
   
-function addU(entity, id, o, fn)  {
+function addUser(entity, id, o, fn)  {
     entities.getEntity(entity, function(err, entity){
         o.portfolios = entity.portfolios;
         User.findOne({_id: id, entity: entity }, function(err, user) {
@@ -185,7 +192,7 @@ exports.createAccount = function(req, res) {
         user: function(cb, results){
             hashPasswordAndAddUser(req.body, cb);
         },
-        token: ['hashPassword', function(cb, results){
+        token: ['user', function(cb, results){
             jwt.createToken(results.user, cb)
         }]
     }, function(err, results){
