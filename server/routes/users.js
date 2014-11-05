@@ -90,6 +90,7 @@ function addUser(entity, id, o, fn)  {
     entities.getEntity(entity, function(err, entity){
         o.portfolios = entity.portfolios;
         User.findOne({_id: id, entity: entity }, function(err, user) {
+            console.log("User check")
         if (user) { return fn(err); console.log("User already exists"); }
         hashPasswordAndAddUser(o, function(err, user){
             console.log(user);
