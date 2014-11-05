@@ -60,7 +60,6 @@ exports.acceptInvite = function(req, res){
             var invite = results.invite;
             invite.password = password;
             invite.isAdmin = invite.admin;
-            console.log(invite);
             user.createAccountFromInvite(invite, cb);
         }]
     }, function(err, results){
