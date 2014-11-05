@@ -18,7 +18,7 @@ angular.module('app')
         }
     };
     
-    $.canSubmitacceptInvite = function() {
+    $.canSubmitAcceptInvite = function() {
         return $.acceptInviteForm.$valid;
     };
 }
