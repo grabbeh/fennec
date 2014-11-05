@@ -1,6 +1,6 @@
 angular.module('app')
-    .controller('acceptInviteCtrl', ['$scope', 'invite', 'notificationModal', 'userService',
-    function($scope, invite, notificationModal, userService) {
+    .controller('acceptInviteCtrl', ['$scope', 'invite', 'notificationModal', 'userService', '$routeParams',
+    function($scope, invite, notificationModal, userService, $routeParams) {
     var $ = $scope;
     $.invite = invite;
 
@@ -8,7 +8,7 @@ angular.module('app')
         if ($.newUser.password != $.newUser.passwordTwo)
             notificationModal.activate({ error: "Two passwords don't match"})
         else {
-              userService.acceptInvite($.newUser)
+              userService.acceptInvite($.newUser, $routeParams.id)
                 .then(function(res) {
                 if (!res.error)
                     notificationModal.activate({ success: res.success });
