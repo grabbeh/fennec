@@ -105,7 +105,7 @@ module.exports = function(app){
 	
 	// Invite mechanism
 	
-	app.get('/api/createInvite', invite.createInvite);
+	app.post('/api/createInvite', invite.createInvite);
 	app.get('/server/invite/:id', invite.getInvite);
 	app.post('/server/invite/:id', invite.acceptInvite);
 
