@@ -9,6 +9,7 @@ var world = require('./routes/world')
 , activity = require('./routes/activity')
 , notification = require('./routes/notification')
 , spreadsheet = require('./routes/excel-process')
+, invite = require('./routes/invite')
 , contact = require('./routes/contact');
 
 // middleware
