@@ -7,6 +7,7 @@ var Invite = require('../models/inviteSchema')
 exports.createInvite = function(req, res){
     var o = {};
     o.email = req.body.email;
+    o.admin = req.body.checked;
     o.inviter = req.user._id;
     o.entity = req.user.entity;
     async.auto({
@@ -35,7 +36,8 @@ function addInvite(o, fn){
     new Invite({
       email: o.email,
       entity: o.entity,
-      inviter: o.inviter
+      inviter: o.inviter,
+      admin: o.admin
     }).save(function(err, invite){
         return fn(null, invite)
     })
