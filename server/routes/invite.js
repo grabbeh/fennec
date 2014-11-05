@@ -1,4 +1,5 @@
-var Invite = require('../models/inviteSchema')
+var path = require('path')
+, Invite = require('../models/inviteSchema')
 , async = require('async')
 , email = require('./email')
 , html = require('./html')
