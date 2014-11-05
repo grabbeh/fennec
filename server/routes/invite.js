@@ -16,7 +16,7 @@ exports.sendInvite = function(req, res){
         },
         invite: ['existingUser', function(cb, results){
             addInvite(o, cb)
-        ]},
+        }],
         html: ['invite', function(cb, results){
             var fileLocation = path.resolve(__dirname, '../email-templates/invite.html');
             html.returnHtml(results.invite, fileLocation, cb);
