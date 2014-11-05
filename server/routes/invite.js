@@ -51,6 +51,7 @@ exports.getInvite = function(req, res){
 }
 
 exports.acceptInvite = function(req, res){
+    console.log("Fn triggered")
     Invite.findOne({ _id: req.params.id }).lean().exec(function(err, invite){
         invite.password = req.body.password;
         invite.isAdmin = invite.admin;
