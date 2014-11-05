@@ -23,7 +23,7 @@ exports.sendInvite = function(req, res){
             html.returnHtml(results.invite, fileLocation, cb);
         }],
         sendEmail: ['html', function(cb, results){
-            email.sendEmail(id, "Invite to Fennec", results.html, cb)
+            email.sendEmail(o.email, "Invite to Fennec", results.html, cb)
         }]
         }, function(err, results){
             if (err)
