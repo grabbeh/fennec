@@ -79,13 +79,13 @@ exports.createAccountFromInvite = function(o, fn){
             jwt.createToken(results.user, cb)
         }]
     }, function(err, results){
-        if (err) { console.log(err); console.log("Error");}
-        return fn(null, results.token)
+        if (err) return fn(err);
+        else
+            return fn(null, results.token)
     })
 }
   
 function addUser(entity, id, o, fn)  {
-    console.log("add user fn triggered");
     entities.getEntity(entity, function(err, entity){
         o.portfolios = entity.portfolios;
         User.findOne({_id: id, entity: entity }, function(err, user) {
@@ -214,8 +214,6 @@ function authenticate(id, pass, fn) {
  }
 
 function hashPasswordAndAddUser(o, fn){
-    console.log(o);
-    console.log("hash fn called")
     bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(o.password, salt, function(err, hash) {
             saveUser(o, hash, function(err, user){
