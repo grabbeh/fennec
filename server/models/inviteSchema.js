@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 
 var invite = new Schema({
   active: { type: Boolean, default: true },
+  admin: { type: Boolean, default: false },
   entity: String,
   inviter: String,
   email: String
