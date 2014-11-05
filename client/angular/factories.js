@@ -130,6 +130,22 @@
                 }, function(res){
                     return res.data;
                 })
+        },
+        getInvite: function(invite){
+            return $http.get('/server/getInvite' + invite)
+                .then(function(res){
+                    return res.data;
+                }, function(res){
+                    return res.data;
+                })
+        }
+        acceptInvite: function(user, invite){
+            return $http.post('/server/acceptInvite/' + invite, user)
+                .then(function(res){
+                    return res.data;
+                }, function(res){
+                    return res.data;
+                })
         }
     }
     return userService;
