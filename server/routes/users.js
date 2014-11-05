@@ -74,16 +74,33 @@ exports.addUser = function(req, res) {
     var id = req.body.email.toLowerCase();
     var entity = req.user.entity;
     req.body.entity = entity;
-    entities.getEntity(entity, function(err, entity){
-        req.body.portfolios = entity.portfolios;
-        User.findOne({_id: id, entity: entity }, function(err, user) {
-        if (user) { res.status(401).send({error: 'User already exists'}); return;}
-        hashPasswordAndAddUser(req.body, function(err, user){
+    addU(entity, id, req.body, function(err, user){
+        if (err){
+            res.status(401).send({error: 'User already exists'}); return;
+        }
+        else {
             res.status(200).json({user: user});
+        }
+     })
+  }
+
+exports.addUserFromInvite = function(o, fn){
+    addU(o.entity, o.email.toLowerCase(), o, function(err, user){
+        res.status(200).json({user: user});
+    })
+}
+  
+function addU(entity, id, o, fn)  {
+    entities.getEntity(entity, function(err, entity){
+        o.portfolios = entity.portfolios;
+        User.findOne({_id: id, entity: entity }, function(err, user) {
+        if (user) { return fn(err) }
+        hashPasswordAndAddUser(o, function(err, user){
+            return fn(null, user);
             });
        })
     })
-  }
+}
 
 exports.updatePassword = function(req, res){
      var id = req.user._id.toLowerCase()
@@ -189,10 +206,10 @@ function authenticate(id, pass, fn) {
     })
  }
 
-function hashPasswordAndAddUser(body, fn){
+function hashPasswordAndAddUser(o, fn){
     bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(body.password, salt, function(err, hash) {
-            saveUser(body, hash, function(err, user){
+        bcrypt.hash(o.password, salt, function(err, hash) {
+            saveUser(o, hash, function(err, user){
                 fn(null, user)
             });
         });
