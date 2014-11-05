@@ -109,7 +109,7 @@ function addUser(entity, id, o, fn)  {
     })
 }
 
-exports.existingUser(id, fn){
+exports.existingUser = function(id, fn){
     User.findOne({_id: id}, function(err, user){
         if (user)
             return fn(new Error("Existing user"))
