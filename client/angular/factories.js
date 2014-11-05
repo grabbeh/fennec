@@ -107,15 +107,6 @@
                 return response.data;
             });
         },
-        addUser: function(user){
-            return $http.post('/api/user', user)
-                    .then(function(res){
-                        return res.data;
-                    },
-                    function(res){
-                       return res.data;
-                    })
-        },
         updateUser: function(user){
             return $http.put('/api/users/' + user._id, user).then(function(response){
             	return response.data;
@@ -130,6 +121,14 @@
             return $http.get('/api/users')
                 .then(function(response){
                     return response.data;
+                })
+        },
+        sendInvite: function(user){
+            return $http.post('/api/sendInvite', user)
+                .then(function(res){
+                    return res.data;
+                }, function(res){
+                    return res.data;
                 })
         }
     }
