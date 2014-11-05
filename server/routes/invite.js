@@ -4,10 +4,13 @@ var Invite = require('../models/inviteSchema')
 , html = require('./html')
 
 exports.createInvite = function(req, res){
-    var email = req.body.email;
+    var o = {};
+    o.email = req.body.email;
+    o.inviter = req.user._id;
+    o.entity = req.user.entity;
     async.auto({
         invite: function(cb, results){
-            addInvite(email, cb)
+            addInvite(o, cb)
         },
         html: ['invite', function(cb, results){
             var fileLocation = path.resolve(__dirname, '../email-templates/invite.html');
@@ -21,9 +24,11 @@ exports.createInvite = function(req, res){
     })     
 }
 
-function addInvite(email, fn){
+function addInvite(o, fn){
     new Invite({
-      email: email
+      email: o.email,
+      entity: o.entity,
+      inviter: o.inviter
     }).save(function(err, invite){
         return fn(null, invite)
     })
