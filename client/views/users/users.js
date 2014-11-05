@@ -25,24 +25,17 @@ angular.module('app')
         };
 
         $.createUser = function() {
-            userService.addUser($.newUser)
+            userService.sendInvite($.newUser)
                 .then(function(res) {
-                    if (!res.error) {
-                        $.users.push(res.user);
-                        notificationModal.activate({
-                            success: "User added"
-                        });
-
-                    } else {
-                        notificationModal.activate({
-                            error: res.error
-                        });
-                    }
+                    if (!res.error) 
+                        notificationModal.activate({ success: res.success });
+                    else 
+                        notificationModal.activate({error: res.error});
                 });
         };
 
-        $.canSubmitCreateUser = function() {
-            return $.createUserForm.$valid;
+        $.canSubmitSendInvite = function() {
+            return $.sendInviteForm.$valid;
         };
     }
 ])
