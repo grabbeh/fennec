@@ -28,11 +28,10 @@
 			<div class="standard-container shadow">
 			<div mg-bold class="margin-bottom">Add user</div>
 
-		           <form novalidate name="createUserForm" ng-submit="createUser()">
+		           <form novalidate name="sendInviteForm" ng-submit="sendInvite()">
 		              <div><input required class="form-input" type=email ng-model="newUser.email" name="username" placeholder="E-mail" ></div>
-		              <div><input required class="form-input" ng-model="newUser.password" type=password name="password" placeholder="Password" ></div>
 		              <div><input class="checkbox" ng-model="newUser.checked" type="checkbox"> Admin</div>
-		              <div><input class="add-button" type=submit ng-disabled="!canSubmitCreateUser()" value="Submit"></div>
+		              <div><input class="add-button" type=submit ng-disabled="!canSubmitSendInvite()" value="Submit"></div>
 		            </form>
 		            <div>{{ message }}</div>
 			</div>
