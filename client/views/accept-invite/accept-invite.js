@@ -1,36 +1,25 @@
 angular.module('app')
-.controller('acceptInviteCtrl', ['$scope', 'users', 'notificationModal', 'userService',
-function($scope, users, notificationModal, userService) {
-var $ = $scope;
-$.users = users;
-$.updateUser = function(user) {
-userService.updateUser(user)
-.then(function() {
-notificationModal.activate({
-success: "User updated"
-});
-});
-};
-$.deleteUser = function(user, index) {
-$.users.splice(index, 1);
-userService.deleteUser(user._id)
-.then(function() {
-notificationModal.activate({
-success: "User removed"
-});
-});
-};
-$.sendInvite = function() {
-userService.sendInvite($.newUser)
-.then(function(res) {
-if (!res.error)
-notificationModal.activate({ success: res.success });
-else
-notificationModal.activate({error: res.error});
-});
-};
-$.canSubmitSendInvite = function() {
-return $.sendInviteForm.$valid;
-};
+    .controller('acceptInviteCtrl', ['$scope', 'invite', 'notificationModal', 'userService',
+    function($scope, invite, notificationModal, userService) {
+    var $ = $scope;
+    $.invite = invite;
+
+    $.acceptInvite = function() {
+        if ($.newUser.password != $.newUser.passwordTwo)
+            notificationModal.activiate({ error: "Two passwords don't match"})
+        else {
+              userService.acceptInvite($.newUser)
+                .then(function(res) {
+                if (!res.error)
+                    notificationModal.activate({ success: res.success });
+                else
+                    notificationModal.activate({error: res.error});
+              });
+        }
+    };
+    
+    $.canSubmitacceptInvite = function() {
+        return $.acceptInviteForm.$valid;
+    };
 }
 ])
