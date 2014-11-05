@@ -85,14 +85,16 @@ exports.addUser = function(req, res) {
   }
 
 exports.createAccountFromInvite = function(o, fn){
+    console.log(o);
     async.auto({
-        addUser: function(cb, results){
+        user: function(cb, results){
            addUser(o.entity, o.email.toLowerCase(), o, cb);
         },
         token: ['user', function(cb, results){
             jwt.createToken(results.user, cb)
         }]
     }, function(err, results){
+        if (err) { console.log(err); console.log("Error");}
         return fn(null, results.token)
     })
 }
