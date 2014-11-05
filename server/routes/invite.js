@@ -51,16 +51,20 @@ exports.getInvite = function(req, res){
 }
 
 exports.acceptInvite = function(req, res){
-    console.log("Fn triggered")
-    Invite.findOne({ _id: req.params.id }).lean().exec(function(err, invite){
-        console.log(invite);
-        invite.password = req.body.password;
-        invite.isAdmin = invite.admin;
-        user.createAccountFromInvite(invite, function(err, token){
-            if (err)  
-                res.status(401).send({error: "User already exists"});
-            else 
-                res.status(200).json({token: token});  
-        })
+    var password = req.body.password;
+    async.auto({
+        invite: function(cb, results){
+            Invite.findOne({_id: req.params.id}).lean().exec(cb);
+        },
+        token: ['findInvite', function(cb, results){
+            invite.password = password;
+            invite.isAdmin = results.invite.isAdmin;
+            user.createAccountFromInvite(invite, cb);
+        }]
+    }, function(err, results){
+        if (err)  
+            res.status(401).send({error: "User already exists"});
+        else 
+            res.status(200).json({ token: results.token }); 
     })
 }
