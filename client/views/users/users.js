@@ -24,7 +24,7 @@ angular.module('app')
                 });
         };
 
-        $.createUser = function() {
+        $.sendInvite = function() {
             userService.sendInvite($.newUser)
                 .then(function(res) {
                     if (!res.error) 
