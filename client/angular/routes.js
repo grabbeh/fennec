@@ -13,7 +13,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/views/accept-invite/accept-invite.html',
             controller: acceptInviteCtrl,
             resolve: {
-                invite: function(userService. $route){
+                invite: function(userService, $route){
                     return userService.getInvite($route.current.params.invite)
                 }
             }
