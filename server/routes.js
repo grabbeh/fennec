@@ -106,6 +106,7 @@ module.exports = function(app){
 	// Invite mechanism
 	
 	app.post('/api/sendInvite', invite.sendInvite);
+	app.get('/server/invite/:id', invite.getInvite);
 	app.post('/server/invite/:id', invite.acceptInvite);
 
 	// Spreadsheet upload
