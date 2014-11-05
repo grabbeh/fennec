@@ -89,6 +89,8 @@ function addUser(entity, id, o, fn)  {
     entities.getEntity(entity, function(err, entity){
         o.portfolios = entity.portfolios;
         User.findOne({_id: id, entity: entity }, function(err, user) {
+            console.log(user);
+            console.log(err);
         if (user) { return fn(err); }
         hashPasswordAndAddUser(o, function(err, user){
             if (err)
