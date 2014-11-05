@@ -234,10 +234,11 @@ function hashPasswordAndUpdateUser(id, nnew, fn){
 }
     
 function saveUser(obj, hash, fn){
+    var isAdmin = obj.isAdmin || obj.checked;
     new User({_id: obj.email.toLowerCase(),
             email: obj.email,
             hash: hash,
-            isAdmin: obj.checked,
+            isAdmin: isAdmin,
             portfolios: obj.portfolios,
             entity: obj.entity
         }).save(fn);
