@@ -10,6 +10,7 @@ angular.module('app')
         else {
               userService.acceptInvite($.newUser, $routeParams.id)
                 .then(function(res) {
+                    console.log(res);
                 if (!res.error)
                     notificationModal.activate({ success: res.success });
                 else
