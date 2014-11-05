@@ -105,7 +105,10 @@ function addUser(entity, id, o, fn)  {
         User.findOne({_id: id, entity: entity }, function(err, user) {
         if (user) { return fn(err) }
         hashPasswordAndAddUser(o, function(err, user){
-            return fn(null, user);
+            if (err)
+                return fn(err);
+            else 
+                return fn(null, user);
             });
        })
     })
