@@ -6,7 +6,7 @@ angular.module('app')
 
     $.acceptInvite = function() {
         if ($.newUser.password != $.newUser.passwordTwo)
-            notificationModal.activiate({ error: "Two passwords don't match"})
+            notificationModal.activate({ error: "Two passwords don't match"})
         else {
               userService.acceptInvite($.newUser)
                 .then(function(res) {
