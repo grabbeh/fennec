@@ -13,6 +13,7 @@ angular.module('app')
             trademarkService.addMark(trademark, $routeParams.portfolio)
                 .success(function(data) { $.message = data.message; });
         };
+        
         $.canAddTrademark = function() {
             return $.addTrademarkForm.$valid;
         };
