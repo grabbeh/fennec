@@ -8,9 +8,7 @@ angular.module('app')
         $.updateUser = function(user) {
             userService.updateUser(user)
                 .then(function() {
-                    notificationModal.activate({
-                        success: "User updated"
-                    });
+                    notificationModal.activate({ success: "User updated" });
                 });
         };
 
@@ -18,9 +16,7 @@ angular.module('app')
             $.users.splice(index, 1);
             userService.deleteUser(user._id)
                 .then(function() {
-                    notificationModal.activate({
-                        success: "User removed"
-                    });
+                    notificationModal.activate({ success: "User removed" });
                 });
         };
 
