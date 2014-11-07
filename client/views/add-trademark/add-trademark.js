@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('addCtrl', ['$scope', '$http', 'trademarkService', '$routeParams',
+.controller('addTrademarkCtrl', ['$scope', '$http', 'trademarkService', '$routeParams',
     function($scope, $http, trademarkService, $routeParams) {
         var $ = $scope;
         $.activePortfolio = $routeParams.portfolio;
