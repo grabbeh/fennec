@@ -11,7 +11,9 @@ angular.module('app')
 
         $.addTrademark = function(trademark) {
             trademarkService.addMark(trademark, $routeParams.portfolio)
-                .success(function(data) { notificationModal.activate({ success: data.message });};
+                .success(function(data) { 
+                    notificationModal.activate({ success: data.message });
+                };
         };
         
         $.canAddTrademark = function() {
