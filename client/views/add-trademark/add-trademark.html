@@ -1,7 +1,7 @@
 <div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
 <div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="form-body">
      <div class="form-container">
-          <div class="form-title">Add trade mark</div>
+          <div class="form-title" mg-bold>Add trade mark</div>
            <form novalidate name="addTrademarkForm" class="basic-form" ng-submit="addTrademark(trademark)">
             
               <div><input required class="form-input" ng-model="trademark.mark" placeholder="Mark"></div>
