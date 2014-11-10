@@ -1236,7 +1236,13 @@ input::-webkit-inner-spin-button {
    background:	#3F3838;
    color: white;
    font-weight: bold;
-   padding: 10px 20px 10px 10px;
+   padding: 10px 20px 10px 30px;
+}
+
+.modal-subtitle {
+	font-size: 18px;
+	margin-top: 5px;
+	color: rgb(202, 184, 184);
 }
 
 .modal-reg-no {
