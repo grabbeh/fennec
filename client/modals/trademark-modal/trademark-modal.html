@@ -1,12 +1,13 @@
 <div class="btf-modal basic-modal">
 
-    <div class="modal-title"><span>{{ trademark.mark}}</span><span class="hover modal-close" ng-click="closeModal()"><i class="fa fa-times"></i></span> 
+    <div class="modal-title">
+    	<span>{{ trademark.mark}}</span>
+    	<span class="hover modal-close" ng-click="closeModal()"><i class="fa fa-times"></i></span> 
+    	<div class="modal-subtitle"><b>{{ trademark.status }} </b>in <span><b>{{ trademark.country.name }}</b></span></div>
     </div>
     <div class="view-trademark-container">
         <ul class="view-trademark-list">
-            <li><span><b>{{ trademark.status }} </b>in <span><b>{{ trademark.country.name }}</b></span></span>
-               
-            </li>
+            
             <li ng-show="trademark.imageUrl"><img class="small-logo-holder" ng-src="{{trademark.imageUrl}}"> </li>
             <li>
             	<div class="small-text">Classes</div>
