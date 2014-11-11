@@ -1,8 +1,11 @@
 <div class="main-trademark-container shadow">
-        <div class="modal-title">{{ trademark.mark }} </div>
+   <div class="modal-title">
+    	<span>{{ trademark.mark}}</span>
+    	<span class="hover modal-close" ng-click="closeModal()"><i class="fa fa-times"></i></span> 
+    	<div class="modal-subtitle"><b>{{ trademark.status }} </b>in <span><b>{{ trademark.country.name }}</b></span></div>
+    </div>
         <div class="view-trademark-container">
             <ul class="view-trademark-list">
-                <li><b>{{ trademark.status }} </b>in <b>{{ trademark.country.name }}</b></li>
                 <li>
                     <div class="small-text">Classes</div>
                     <ul class="class-list" ng-repeat="class in trademark.classes track by $index">
