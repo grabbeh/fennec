@@ -1417,19 +1417,19 @@ a {
 
 .registered-title {
     color: white;
-    padding: 15px;
+    padding: 10px;
     background: #41B441;
 }
 
 .pending-title {
     color: white;
-    padding: 15px;
+    padding: 10px;
     background: #ff3333;
 }
 
 .published-title {
     color: white;
-    padding: 15px;
+    padding: 10px;
     background: #e66000;
 }
 
