@@ -16,9 +16,10 @@ angular.module('app')
                     var slice = newVal.slice(i, i + $.itemsPerPage);
                     $.groupOfArrays.push(slice);
                 }
-                $.items = $.groupOfArrays[0];
-                console.log($.groupOfArrays);
-                console.log($.items);
+                if ($.groupOfArrays.length === 0)
+                    $.items = false;
+                else 
+                    $.items = $.groupOfArrays[0];
                 $.pageNumber = 1;
             })
 
