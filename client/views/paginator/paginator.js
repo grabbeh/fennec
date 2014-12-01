@@ -17,6 +17,8 @@ angular.module('app')
                     $.groupOfArrays.push(slice);
                 }
                 $.items = $.groupOfArrays[0];
+                console.log($.groupOfArrays);
+                console.log($.items);
                 $.pageNumber = 1;
             })
 
