@@ -12,7 +12,7 @@ As a preliminary step you will also need Node.js installed. Additionally, the ap
 
 - **MongoDB** to store data, (so you'll need insert details at `/server/config/db.js`) 
 - **Sendgrid** to send reminder emails so would require those details if you want to make use of the app, (details inserted at `/server/config/admin.js`) 
-- **Elastic Search** for search functionality
+- **Elasticsearch** for search functionality
 - an **Amazon S3** bucket to store images (key and secret will go in `/server/config/s3.js`) 
 - **Mapbox** to show maps - you will need to insert your own id in the maps directive at `/client/angular/directives/directives.js`
 
