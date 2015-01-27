@@ -496,7 +496,7 @@ input::-webkit-inner-spin-button {
     position: fixed;
     top: 50%;
     left: 50%;
-    background:url('/css/spinner.gif') no-repeat center #d7e6f7;
+    background:url('/css/spinner.gif') no-repeat center #B1D3FA;
     text-align:center;
     padding:10px;
     margin-left: -50px;
