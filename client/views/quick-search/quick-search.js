@@ -11,7 +11,7 @@ angular.module('app')
 
         trademarkService.getListOfMarks($routeParams.portfolio)
             .then(function(data) {
-                $.marks = data;
+                $.marks = $filter('orderBy')(data, 'name');
             });
 
 
