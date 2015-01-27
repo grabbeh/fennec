@@ -9,6 +9,9 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         when('/terms', {
             templateUrl: '/views/terms/terms.html'
         }).
+        when('/api', {
+           templateUrl:'/views/api'
+        }).
         when('/invite/:id', {
             templateUrl: '/views/accept-invite/accept-invite.html',
             controller: 'acceptInviteCtrl',
