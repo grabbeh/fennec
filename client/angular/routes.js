@@ -10,7 +10,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
             templateUrl: '/views/terms/terms.html'
         }).
         when('/api', {
-           templateUrl:'/views/api'
+           templateUrl:'/views/api/api.html'
         }).
         when('/invite/:id', {
             templateUrl: '/views/accept-invite/accept-invite.html',
