@@ -1,5 +1,47 @@
 <div class="fixed-container">
 <div class="quick-search-container">
   <div>API madness coming soon...</div>
+<ul>
+  // General portfolio search function based on query parameters "portfolio", "group" and "country"
+'/api/searchTrademarks/:portfolio'
+// Country data (ISO, coordinates etc) - optionally accepts query parameter in which case returns
+// country data limited to countries where there are trade marks
+'/api/countryData'
+// Provide geojson for group of marks
+'/api/world/:portfolio'
+// Filtered world on basis of given list of marks
+'/api/world/:portfolio'
+// Country-limited trade marks
+// Gets a list of all trade marks for a given portfolio in a given country (ISO code)
+'/api/country/:portfolio/:country'
+// In addition to the above, accepts list of trade marks and provides only those marks in a portfolio
+'/api/country/:portfolio/:country'
+// Get group of marks
+'/api/trademarks/:portfolio'
+// Edit individual trade marks
+app.get('/api/trademark/:id'
+app.post('/api/trademark'
+app.put('/api/trademark/:id'
+app.delete('/api/trademark/:id'
+// Returns basic list of marks for portfolio - accepts optional query for ISO code in
+// which case returns list of marks for given country
+'/api/list/:portfolio'
+// Retrieve favourite marks
+'/api/favourites/:portfolio'
+// Edit portfolio
+'/api/editGroup/:portfolio/:mark'
+'/api/addLogoToGroup/:portfolio/:mark'
+'/api/editMarksInCountry/:portfolio'
+// Expiry dates
+// accepts query for group in addition to portfolio
+'/api/expirydates/:portfolio'
+'/api/expirydates/:portfolio/:country'
+'/api/expiriesForYear/:portfolio'
+// Notifications
+app.get('/api/notifications'
+app.post('/api/notifications'
+// Activities
+'/api/activities/:portfolio'
+</ul>
 </div>
 </div>
