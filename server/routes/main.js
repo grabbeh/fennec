@@ -71,7 +71,7 @@ exports.getTrademark = function(req, res){
 }
 
 exports.addTrademark = function(req, res){
-	helper.addTrademark(req.body.trademark, function(err, trademark){
+	helper.addTrademark(req.body.trademark, req.user.entity, function(err, trademark){
 		jobs.sendAlertOnChange(trademark, 'added', function(err, done){
 		     res.send({message: "Trade mark added"});	
 		}); 
