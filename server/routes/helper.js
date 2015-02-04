@@ -137,7 +137,7 @@ exports.convertPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
 }
 
 exports.addTrademark = function(tm, fn){
-	saveTrademark(tm, function(err, doc){
+	saveTrademark(tm, entity, function(err, doc){
 		fn(null, doc);
 	})
 }
@@ -187,7 +187,7 @@ exports.exposeId = function(tm){
 	return tm._id;
 }
 
-function saveTrademark(tm, fn){
+function saveTrademark(tm, entity, fn){
 	
 	var filingDateObject = {}
 	, registrationDateObject = {}
@@ -209,6 +209,8 @@ function saveTrademark(tm, fn){
 		expiryDateObject.DDate = new Date(moment(tm.expiryDate, 'MM-DD-YYYY')).toISOString();
 	
 	new Trademark({
+	    entity: entity,
+	    portfolio: tm.portfolio,
 	    mark: tm.mark, 
 	    status: tm.status,
 	    country: tm.country,
