@@ -10,7 +10,6 @@ exports.countryData = function(req, res){
 		var portfolio = req.query.portfolio.replace(/%20/g, " ");
 		helper.getTrademarks(entity, portfolio, function(err, tms){
 		var arr = [];
-		var countries = _.groupBy(tms, 'country');
 		tms.forEach(function(tm){
 		    countryData.forEach(function(c){
 		        if (tm.country.alpha3 === c.alpha3){
