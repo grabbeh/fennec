@@ -3,67 +3,69 @@
   <div>API madness coming soon...</div>
 <ul>
 <li>
-    <div>// General portfolio search function based on query parameters "portfolio", "group" and "country"</div>
-   <div>'/api/searchTrademarks/:portfolio'</div>
+    <div>// General portfolio search function based on query parameters "group" and "country"</div>
+   <div>GET '/api/searchTrademarks/:portfolio'</div>
+   <div>e.g. '/api/searchTrademarks/ACME INC?group=ACME INC&country=USA'</div>
 </li>
 <li>
-   <div> // Country data (ISO, coordinates etc) - optionally accepts query parameter in which case returns
-// country data limited to countries where there are trade marks</div>
-<div>'/api/countryData'</div>
+   <div> // Country data (ISO, coordinates etc) - optionally accepts query parameter 'portfolio' in which case returns
+// country data limited to countries where there are trade marks in that portfolio</div>
+<div>GET '/api/countryData'</div>
+<div>e.g. '/api/countryData?portfolio=ACME INC'</div>
   
 </li>
 <li>
   <div>// Provide geojson for group of marks</div>
-<div>'/api/world/:portfolio'</div>
+<div>GET '/api/world/:portfolio'</div>
 
 </li>
 <li>
-  <div>// Filtered world on basis of given list of marks</div>
-<div>'/api/world/:portfolio'</div>
+  <div>// Filtered world on basis of given array of marks</div>
+<div>POST '/api/world/:portfolio'</div>
 
 </li>
 <li>
   <div>// Country-limited trade marks<div>
 <div>// Gets a list of all trade marks for a given portfolio in a given country (ISO code)</div>
-<div>'/api/country/:portfolio/:country'</div>
+<div>GET '/api/country/:portfolio/:country'</div>
 </li>
 <li>
-  <div>// In addition to the above, accepts list of trade marks and provides only those marks in a portfolio</div>
-<div>'/api/country/:portfolio/:country'</div>
+  <div>// In addition to the above, accepts array of trade marks and provides only those marks in a portfolio</div>
+<div>POST '/api/country/:portfolio/:country'</div>
 </li>
 <li>
   <div>// Get group of marks</div>
-<div>'/api/trademarks/:portfolio'</div>
+<div>GET '/api/trademarks/:portfolio'</div>
 </li>
 <li>
   <div>// Edit individual trade marks</div>
-<div>app.get('/api/trademark/:id</div>
-<div>app.post('/api/trademark'</div>
-<div>app.put('/api/trademark/:id'</div>
-<div>app.delete('/api/trademark/:id'</div>
+<div>GET '/api/trademark/:id'</div>
+<div>POST '/api/trademark'</div>
+<div>PUT '/api/trademark/:id'</div>
+<div>DELETE '/api/trademark/:id'</div>
 </li>
 <li>
  <div> // Returns basic list of marks for portfolio - accepts optional query for ISO code in
 // which case returns list of marks for given country</div>
-<div>'/api/list/:portfolio'</div>
+<div>GET '/api/list/:portfolio'</div>
 </li>
 <li>
   <div>// Edit group<div>
-<div>'/api/editGroup/:portfolio/:mark'</div>
-<div>'/api/addLogoToGroup/:portfolio/:mark'</div>
-<div>'/api/editMarksInCountry/:portfolio'</div>
+<div>POST '/api/editGroup/:portfolio/:mark'</div>
+<div>POST '/api/addLogoToGroup/:portfolio/:mark'</div>
+<div>POST '/api/editMarksInCountry/:portfolio'</div>
 </li>
 <li>
  <div> // Expiry dates</div>
 <div>// accepts query for group in addition to portfolio</div>
-<div>'/api/expirydates/:portfolio'</div>
-<div>'/api/expirydates/:portfolio/:country'</div>
-<div>'/api/expiriesForYear/:portfolio'</div>
+<div>GET '/api/expirydates/:portfolio'</div>
+<div>GET '/api/expirydates/:portfolio/:country'</div>
+<div>GET '/api/expiriesForYear/:portfolio'</div>
 </li>
 <li>
   
 <div>// Activities</div>
-<div>'/api/activities/:portfolio'</div>
+<div>GET '/api/activities/:portfolio'</div>
 </li>
 
 </ul>
