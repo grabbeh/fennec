@@ -9,7 +9,7 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
         when('/terms', {
             templateUrl: '/views/terms/terms.html'
         }).
-        when('/api', {
+        when('/data', {
            templateUrl:'/views/api/api.html',
            resolve: {
                 user: function(userService){
