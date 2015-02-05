@@ -136,7 +136,7 @@ exports.convertPortfolioAndAddToGeoJSON = function(geojson, trademarks, fn){
 	});
 }
 
-exports.addTrademark = function(tm, fn){
+exports.addTrademark = function(tm, entity, fn){
 	saveTrademark(tm, entity, function(err, doc){
 		fn(null, doc);
 	})
