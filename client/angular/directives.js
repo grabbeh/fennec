@@ -24,7 +24,7 @@ angular.module('app')
     }
 })
 
-
+/*
 .directive('mgMenuMover', function() {
     return {
         scope: {
@@ -41,7 +41,7 @@ angular.module('app')
 
         }
     }
-})
+})*/
 
 
 .directive('mgClear', function() {

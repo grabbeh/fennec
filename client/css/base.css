@@ -14,9 +14,12 @@
 .underline {
    border-bottom: 1px rgb(224, 183, 183) solid;
 }
+
+/*
 .active-menu {
     margin-top: 225px;
-}
+}*/
+
 .about-link {
     float: left;
     padding-top: 8px;
