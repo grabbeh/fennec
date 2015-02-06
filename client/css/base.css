@@ -1239,7 +1239,6 @@ input::-webkit-inner-spin-button {
   left: 25%;
   right: 25%;
   position: absolute;
-  top: 10%;
   height: auto;
   z-index: 2000;
 }
