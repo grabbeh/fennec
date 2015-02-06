@@ -57,8 +57,7 @@ angular.module('app')
         $.sendMarksToServer = function(marks) {
             $http.post('/api/country/' + $routeParams.portfolio + "/" + $location.search().country, {
                     marks: $filter('extractCheckedMarks')(marks)
-                })
-                .success(function(trademarks) {
+                }).success(function(trademarks) {
                     $.trademarks = trademarks;
                 });
         };
