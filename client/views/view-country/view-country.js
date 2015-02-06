@@ -7,8 +7,8 @@ angular.module('app')
 
         trademarkService.getCountry($routeParams.portfolio, $location.search().country).then(function(trademarks) {
             $.trademarks = trademarks;
-            console.log(trademarks);
             $.trademark = trademarks[0];
+            console.log($.trademark);
             $.countries = $filter('extractCountries')($.trademarks);
             if (_.every($.countries, function(c) {
                 return c === "European Union";
