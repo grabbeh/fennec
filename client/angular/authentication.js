@@ -42,11 +42,11 @@ angular.module('app')
             
             $.toggleDropdownMenu = function(){
                 if (!$rootScope.dropdownMenu){
-                    //$rootScope.dropdownMenu = true;
+                    $rootScope.dropdownMenu = true;
                     dropdownMenu.activate({ user: $rootScope.user});
                 }
                 else {
-                    //$rootScope.dropdownMenu = false;
+                    $rootScope.dropdownMenu = false;
                     dropdownMenu.deactivate(); 
                 }
 
