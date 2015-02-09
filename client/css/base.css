@@ -46,7 +46,8 @@
 }
 
 .query-list {
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+	font-weight: bold;
 }
 
 .api-example {
