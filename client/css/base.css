@@ -17,6 +17,11 @@
     padding: 0;
 }
 
+.api-url {
+	border: solid 1px black;
+	padding: 8px;
+}
+
 .api-list-li {
     padding: 10px;
     border-bottom: black 1px solid;
