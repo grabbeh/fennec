@@ -26,7 +26,7 @@ angular.module('app')
         $.datePickerOptions = {
             format: 'mm-dd-yyyy', // ISO formatted date
             onClose: function(e) {
-                alert(e);
+                console.log(e);
           }
         }
        
