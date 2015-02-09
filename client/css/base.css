@@ -9,6 +9,66 @@
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
 
+/* api.html */
+
+.api-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.api-list-li {
+    padding: 10px;
+    border-bottom: black 1px solid;
+}
+
+.api-query-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.api-query-list li {
+
+}
+
+.api-query {
+    margin-top: 10px;
+    padding: 10px;
+    background: black;
+    color: white;
+}
+
+.api-query-subtitle {
+    font-size: 16px;
+}
+
+.api-example {
+
+}
+
+.api-results {
+    margin-bottom: 20px;
+}
+
+.api-usage {
+    margin: 20px 0;
+}
+
+.api-example {
+    margin: 20px 0;
+}
+
+.http-verb {
+    padding: 10px;
+    margin-right: 10px;
+    color: white;
+}
+
+.http-verb.get {
+    background: green;
+}
+
 /* index.html */
 
 .underline {
