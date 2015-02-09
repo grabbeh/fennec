@@ -56,7 +56,8 @@
 }
 
 .api-example {
-      background: grey;
+      background: #FAFAFA;
+      padding: 10px;
 }
 
 .api-results {
