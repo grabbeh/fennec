@@ -16,62 +16,61 @@
 <li class="api-list-li">
    <div class="api-description">Country data (ISO, coordinates etc) - optionally accepts query parameter 'portfolio' in which case returns country data limited to countries where there are trade marks in that portfolio</div>
 <div class="api-usage"><span class="http-verb get">GET</span><span> '/api/countryData'</span></div>
-<div>e.g. '/api/countryData?portfolio=ACME INC'</div>
+<div class="api-example">e.g. '/api/countryData?portfolio=ACME INC'</div>
   
 </li>
-<li>
-  <div>// Provide geojson for group of marks.</div>
-<div>GET '/api/world/:portfolio'</div>
+<li class="api-list-li">
+  <div class="api-description">Provide geojson for group of marks.</div>
+<div><span class="http-very get">GET</span><span class="api-url"> '/api/world/:portfolio'</span></div>
 
 </li>
-<li>
-  <div>// Filtered world on basis of given array of marks</div>
-<div>POST '/api/world/:portfolio'</div>
+<li class="api-list-li">
+  <div class="api-description">Filtered world on basis of given array of marks</div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url">'/api/world/:portfolio'</span></div>
 
 </li>
-<li>
-  <div>// Country-limited trade marks<div>
-<div>// Gets a list of all trade marks for a given portfolio in a given country (ISO code)</div>
-<div>GET '/api/country/:portfolio/:country'</div>
+<li class="api-list-li">
+  <div class="api-description">Country-limited trade marks<div>
+<div>Gets a list of all trade marks for a given portfolio in a given country (ISO code)</div>
+<div class="api-usage"><span class="http-very get">GET</span><span class="api-url">'/api/country/:portfolio/:country'</span></div>
 </li>
-<li>
-  <div>// In addition to the above, accepts array of trade marks and provides only those marks in a portfolio</div>
-<div>POST '/api/country/:portfolio/:country'</div>
+<li class="api-list-li">
+  <div class="api-description">In addition to the above, accepts array of trade marks and provides only those marks in a portfolio</div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/country/:portfolio/:country'</span></div>
 </li>
-<li>
-  <div>// Get trade marks in portfolio. Optional query parameter for a group of marks will return just those marks.</div>
-<div>GET '/api/trademarks/:portfolio'</div>
+<li class="api-list-li">
+  <div class="api-description">Get trade marks in portfolio. Optional query parameter for a group of marks will return just those marks.</div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">'/api/trademarks/:portfolio'</span></div>
 <div>e.g. '/api/trademarks/ACME INC?group=ACME INC'</div>
 </li>
-<li>
-  <div>// Edit individual trade marks</div>
-<div>GET '/api/trademark/:id'</div>
-<div>POST '/api/trademark'</div>
-<div>PUT '/api/trademark/:id'</div>
-<div>DELETE '/api/trademark/:id'</div>
+<li class="api-list-li">
+  <div class="api-description">Edit individual trade marks</div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">'/api/trademark/:id'</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span> <span class="api-url">'/api/trademark'</span></div>
+<div class="api-usage"><span class="http-verb put">PUT</span><span class="api-url"> '/api/trademark/:id'</span></div>
+<div class="api-usage"><span class="http-verb delete">DELETE</span><span class="api-url">'/api/trademark/:id'</span></div>
 </li>
-<li>
- <div> // Returns basic list of marks for portfolio - accepts optional query for ISO code in
-// which case returns list of marks for given country</div>
-<div>GET '/api/list/:portfolio'</div>
+<li class="api-list-li">
+ <div class="api-description">Returns basic list of marks for portfolio - accepts optional query for ISO code in which case returns list of marks for given country</div>
+<div class="api-usage"><span class="http-verb get">GET '/api/list/:portfolio'</span></div>
 </li>
-<li>
-  <div>// Edit group<div>
-<div>POST '/api/editGroup/:portfolio/:mark'</div>
-<div>POST '/api/addLogoToGroup/:portfolio/:mark'</div>
-<div>POST '/api/editMarksInCountry/:portfolio'</div>
+<li class="api-list-li">
+  <div class="api-description">Edit group<div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/editGroup/:portfolio/:mark'</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/addLogoToGroup/:portfolio/:mark'</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/editMarksInCountry/:portfolio'</span></div>
 </li>
-<li>
- <div> // Expiry dates</div>
-<div>// accepts query for group in addition to portfolio</div>
-<div>GET '/api/expirydates/:portfolio'</div>
-<div>GET '/api/expirydates/:portfolio/:country'</div>
-<div>GET '/api/expiriesForYear/:portfolio'</div>
+<li class="api-list-li">
+ <div class="api-description">Expiry dates</div>
+<div class="api-description">accepts query for group in addition to portfolio</div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/expirydates/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/expirydates/:portfolio/:country'</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/expiriesForYear/:portfolio'</span></div>
 </li>
-<li>
+<li class="api-list-li">
   
-<div>// Activities</div>
-<div>GET '/api/activities/:portfolio'</div>
+<div class="api-description">Activities</div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/activities/:portfolio'</span></div>
 </li>
 
 </ul>
