@@ -29,8 +29,8 @@
 }
 
 .api-url {
-	border: solid 1px #E8DEDE;
-	padding: 8px;
+	background: #E8DEDE;
+	padding: 10px;
 }
 
 .api-list-li {
