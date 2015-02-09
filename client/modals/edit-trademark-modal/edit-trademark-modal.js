@@ -22,5 +22,12 @@ angular.module('app')
                     notificationModal.activate({ success: data.message })
                 });
             }
+            
+        $.datePickerOptions = {
+            format: 'mm-dd-yyyy', // ISO formatted date
+            onClose: function(e) {
+                alert(e);
+          }
+        }
        
     }])
