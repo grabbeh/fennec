@@ -41,6 +41,12 @@
 
 .api-query-subtitle {
     font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.query-list {
+	margin-bottom: 20px;
 }
 
 .api-example {
