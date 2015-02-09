@@ -47,6 +47,7 @@
     padding: 10px;
     background: black;
     color: white;
+    display: inline-block;
 }
 
 .api-query-subtitle {
