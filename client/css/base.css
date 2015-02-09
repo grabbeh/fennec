@@ -63,6 +63,7 @@
 .api-example {
       background: #FAFAFA;
       padding: 10px;
+      display: inline-block;
 }
 
 .api-results {
@@ -80,6 +81,7 @@
 .http-verb {
     padding: 10px;
     color: white;
+    display: inline-block;
 }
 
 .http-verb.get {
