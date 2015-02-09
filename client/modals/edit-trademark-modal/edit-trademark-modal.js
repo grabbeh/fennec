@@ -27,7 +27,9 @@ angular.module('app')
             format: 'mm-dd-yyyy', // ISO formatted date
             onClose: function(e) {
                 console.log(e);
+                $.trademark.expiryDate.stringDate = e;
           }
         }
+        console.log($.datePickerOptions);
        
     }])
