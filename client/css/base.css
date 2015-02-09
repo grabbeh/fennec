@@ -82,7 +82,7 @@
 }
 
 .http-verb.get {
-    background: green;
+    background: rgb(66, 179, 158);
 }
 
 .http-verb.post {
