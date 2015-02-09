@@ -29,13 +29,13 @@
 }
 
 .api-url {
-	border: solid 1px #C5BABA;
+	border: solid 1px #E8DEDE;
 	padding: 8px;
 }
 
 .api-list-li {
     padding: 10px;
-    border-bottom: #C5BABA 1px solid;
+    border-bottom: #E8DEDE 1px solid;
 }
 
 .api-query-list {
@@ -50,7 +50,7 @@
 
 .api-query {
     padding: 10px;
-    background: #C5BABA;
+    background: #E8DEDE;
     display: inline-block;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .api-example {
-      background: #FAFAFA;
+      background: #E8DEDE;
       padding: 10px;
       display: inline-block;
 }
