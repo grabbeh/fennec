@@ -80,6 +80,18 @@
     background: green;
 }
 
+.http-verb.post {
+	background: orange;
+}
+
+.http-verb.delete {
+	background: red;
+}
+
+.http-verb-put {
+	background: blue;
+}
+
 /* index.html */
 
 .underline {
