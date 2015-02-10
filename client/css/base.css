@@ -90,7 +90,7 @@
 }
 
 .http-verb.delete {
-	background: red;
+	background: rgb(228, 68, 68);
 }
 
 .http-verb.put {
