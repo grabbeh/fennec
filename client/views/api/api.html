@@ -26,7 +26,7 @@
    
    <ul class="api-query-list"><li><div><span class="api-query">group</span></div><div class="api-query-subtitle">optional, String</div></li></ul></div>
  <div class="api-title">Example usage</div>
-<div class="api-example">GET '/api/countryData?portfolio=ACME INC'</div>
+<div class="api-example">GET /api/countryData?portfolio=ACME INC</div>
  <div class="api-title">Response</div>
   
 </li>
@@ -34,15 +34,15 @@
    <div class="api-title">GEOJSON</div>
   <div class="api-description">Provide geojson for the whole portfolio.</div>
   <div class="api-title">Format</div>
-<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/world/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> /api/world/:portfolio</span></div>
 
   <div class="api-description margin-top">Provide geojson for limited portfolio based on array of groups of marks provided.</div>
   <div class="api-title">Format</div>
-<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url">'/api/world/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url">/api/world/:portfolio</span></div>
  <div class="api-title">Example usage</div>
-<div class="api-example">GET '/api/world/ACME INC'</div>
+<div class="api-example">GET /api/world/ACME INC</div>
 <div mg-clear></div>
-<div class="api-example">POST '/api/world/ACME INC' + ["ACME INC", OFFICIALLY ACME"]</div>
+<div class="api-example">POST /api/world/ACME INC + ["ACME INC", OFFICIALLY ACME"]</div>
  <div class="api-title">Response</div>
 </li>
 <li class="api-list-li">
@@ -55,7 +55,7 @@
 
   <div class="api-description margin-top">In addition to the above, accepts array of trade marks and provides only those marks in a portfolio</div>
    <div class="api-title">Format</div>
-<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/country/:portfolio/:country'</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> /api/country/:portfolio/:country</span></div>
  <div class="api-title">Response</div>
   
 </li>
