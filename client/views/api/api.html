@@ -63,7 +63,7 @@
   <div class="api-title">TRADE MARKS</div>
   <div class="api-description">Get trade marks in portfolio.</div>
  <div><div class="api-title">Format</div>
-<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">'/api/trademarks/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">/api/trademarks/:portfolio</span></div>
  <div><div class="api-title">Query parameters</div>
  <div class="api-results"> Optional query parameter for a group of marks will return marks for the given group.</div>
  <ul class="api-query-list"><li><div><span class="api-query">group</span></div><div class="api-query-subtitle">optional, String</div></li></ul>
@@ -73,32 +73,32 @@
 </li>
 <li class="api-list-li">
   <div class="api-description">Edit individual trade marks</div>
-<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">'/api/trademark/:id'</span></div>
-<div class="api-usage"><span class="http-verb post">POST</span> <span class="api-url">'/api/trademark'</span></div>
-<div class="api-usage"><span class="http-verb put">PUT</span><span class="api-url"> '/api/trademark/:id'</span></div>
-<div class="api-usage"><span class="http-verb delete">DELETE</span><span class="api-url">'/api/trademark/:id'</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">/api/trademark/:id</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span> <span class="api-url">/api/trademark</span></div>
+<div class="api-usage"><span class="http-verb put">PUT</span><span class="api-url"> /api/trademark/:id</span></div>
+<div class="api-usage"><span class="http-verb delete">DELETE</span><span class="api-url">/api/trademark/:id</span></div>
 </li>
 <li class="api-list-li">
  <div class="api-description">Returns basic list of marks for portfolio - accepts optional query for ISO code in which case returns list of marks for given country</div>
-<div class="api-usage"><span class="http-verb get">GET </span><span class="api-url">'/api/list/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb get">GET </span><span class="api-url">/api/list/:portfolio</span></div>
 </li>
 <li class="api-list-li">
   <div class="api-description">Edit group<div>
-<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/editGroup/:portfolio/:mark'</span></div>
-<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/addLogoToGroup/:portfolio/:mark'</span></div>
-<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url"> '/api/editMarksInCountry/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url">/api/editGroup/:portfolio/:mark</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url">/api/addLogoToGroup/:portfolio/:mark</span></div>
+<div class="api-usage"><span class="http-verb post">POST</span><span class="api-url">/api/editMarksInCountry/:portfolio</span></div>
 </li>
 <li class="api-list-li">
  <div class="api-description">Expiry dates</div>
 <div class="api-description">accepts query for group in addition to portfolio</div>
-<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/expirydates/:portfolio'</span></div>
-<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/expirydates/:portfolio/:country'</span></div>
-<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/expiriesForYear/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">/api/expirydates/:portfolio</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">/api/expirydates/:portfolio/:country</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">/api/expiriesForYear/:portfolio</span></div>
 </li>
 <li class="api-list-li">
   
 <div class="api-description">Activities</div>
-<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/activities/:portfolio'</span></div>
+<div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">/api/activities/:portfolio</span></div>
 </li>
 
 </ul>
