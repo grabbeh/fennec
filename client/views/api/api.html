@@ -60,9 +60,15 @@
   
 </li>
 <li class="api-list-li">
+  <div class="api-title">TRADE MARKS</div>
   <div class="api-description">Get trade marks in portfolio. Optional query parameter for a group of marks will return just those marks.</div>
+ <div><div class="api-title">Format</div>
 <div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">'/api/trademarks/:portfolio'</span></div>
-<div>e.g. '/api/trademarks/ACME INC?group=ACME INC'</div>
+ <div><div class="api-title">Query parameters</div>
+ <ul class="api-query-list"><li><div><span class="api-query">group</span></div><div class="api-query-subtitle">optional, String</div></li></ul>
+ <div class="api-title">Example usage</div>
+<div>GET /api/trademarks/ACME INC?group=ACME INC</div>
+ <div class="api-title">Response</div>
 </li>
 <li class="api-list-li">
   <div class="api-description">Edit individual trade marks</div>
