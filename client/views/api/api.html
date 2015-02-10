@@ -3,7 +3,7 @@
   <div mg-bold>API</div>
 <ul class="api-list">
 <li class="api-list-li">
-<div class="api-title">General search</div>
+<div class="api-title">GENERAL SEARCH</div>
     <div class="api-description">General portfolio search function based on query parameters "group" and/or "country"</div>
    <div class="api-title">Format</div>
    <div class="api-usage"><span class="http-verb get">GET</span><span class="api-url">/api/searchTrademarks/:portfolio</span></div>
@@ -16,7 +16,7 @@
     <div class="api-title">Response</div>
 </li>
 <li class="api-list-li">
-   <div class="api-title">Country data</div>
+   <div class="api-title">COUNTRY DATA</div>
    <div class="api-description">Country data (ISO, coordinates etc) for use in conjunction with portfolio data (for example by filtering by particular country).  optionally accepts query parameter 'portfolio' in which case returns country data limited to countries where there are trade marks in that portfolio</div>
  
  <div class="api-title">Format</div>
@@ -31,14 +31,15 @@
   
 </li>
 <li class="api-list-li">
-  <div class="api-description">Provide geojson for group of marks.</div>
+   <div class="api-title">GEOJSON</div>
+  <div class="api-description">Provide geojson for the whole portfolio.</div>
 <div class="api-usage"><span class="http-verb get">GET</span><span class="api-url"> '/api/world/:portfolio'</span></div>
-
-</li>
-<li class="api-list-li">
-  <div class="api-description">Filtered world on basis of given array of marks</div>
+  <div class="api-description">Provide geojson for limited portfolio based on array of groups of marks provided.</div>
 <div class="api-usage"><span class="http-verb post">POST</span><span class="api-url">'/api/world/:portfolio'</span></div>
-
+ <div class="api-title">Example usage</div>
+<div class="api-example">GET '/api/world/ACME INC'</div>
+<div class="api-example">POST '/api/world/ACME INC' + ["ACME INC", OFFICIALLY ACME"]</div>
+ <div class="api-title">Response</div>
 </li>
 <li class="api-list-li">
   <div class="api-description">Country-limited trade marks<div>
