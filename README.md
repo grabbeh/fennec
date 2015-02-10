@@ -14,7 +14,7 @@ As a preliminary step you will also need Node.js installed. Additionally, the ap
 - **Sendgrid** to send reminder emails so would require those details if you want to make use of the app, (details inserted at `/server/config/admin.js`) 
 - **Elasticsearch** for search functionality
 - an **Amazon S3** bucket to store images (key and secret will go in `/server/config/s3.js`) 
-- **Mapbox** to show maps - you will need to insert your own id in the maps directive at `/client/angular/directives/directives.js`
+- **Mapbox** to show maps - you will need to insert your own id in the maps directive at `/client/views/map/map-directive.js`
 
 To get a copy of the code on your system just `git clone https://github.com/grabbeh/fennec` and then in the home directory `npm install` to install the dependencies. Once the importing process has been completed, you can `node app` in the home directory and go to `http://localhost:2002` where you will be asked to create an account (this should be an admin account). From that point, you will be taken to `/select-portfolio` where you can surprisingly, select your portfolio for viewing.
 
