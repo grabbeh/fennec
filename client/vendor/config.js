@@ -1,2 +1,2 @@
-var app = angular.module('app',['ngRoute', 'ngTouch', 'btford.modal', 'angles', 'ngUpload','angular-momentjs', 'pickadate']);
+var app = angular.module('app',['ngRoute', 'ngTouch', 'btford.modal', 'angles', 'ngUpload','angular-momentjs']);
 
