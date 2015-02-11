@@ -4,7 +4,7 @@ angular.module('app')
     return function($scope, element, attrs)
     {
         // ngTouch prevents links from executing when an ng-click is present, so we need to trigger the link in those instances
-        if(Modernizr.touch && typeof attrs.ngClick !== 'undefined')
+        if(Modernizr.touch)
         {
             element.on('touchend', function(){
  
