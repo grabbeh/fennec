@@ -1,22 +1,29 @@
 angular.module('app')
 
+.directive("link", function (){
+    return function($scope, element, attrs)
+    {
+        // ngTouch prevents links from executing when an ng-click is present, so we need to trigger the link in those instances
+        if(Modernizr.touch && typeof attrs.ngClick !== 'undefined')
+        {
+            element.on('touchend', function(){
+ 
+                element[0].click();
+ 
+            });
+        }
+    }
+})
+
+
 .directive('mgSwipe', function($swipe) {
     return {
         link: function(scope, element, attrs) {
             $swipe.bind(element, {
-                'start': function(coords) {
-                    console.log("Start")
-                    console.log(coords)
-
-                },
                 'move': function(coords) {
-                    //console.log("Move");
-                    //console.log(coords);
                     element.addClass("active-swipe")
                 },
                 'end': function(coords) {
-                    console.log("End");
-                    console.log(coords);
                     element.removeClass("active-swipe")
                 }
             })
