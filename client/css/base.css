@@ -1505,20 +1505,36 @@ a {
     overflow: hidden;
 }
 
-/* you can also define the transition style
-   on the base class as well (.repeat-item) */
-.tm-list-li.ng-enter,
-.tm-list-li.ng-leave {
-  -webkit-transition:0.5s linear all;
-  transition:0.5s linear all;
+.tm-list-li.ng-enter, 
+.tm-list-li.ng-leave, 
+.tm-list-li.ng-move {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+  position:relative;
 }
 
-.tm-list-li.ng-enter,
-.tm-list-li.ng-leave.ng-leave-active {
+.tm-list-li.ng-enter {
+  left:-10px;
   opacity:0;
 }
-.tm-list-li.ng-leave,
 .tm-list-li.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.tm-list-li.ng-leave {
+  left:0;
+  opacity:1;
+}
+.tm-list-li.ng-leave.ng-leave-active {
+  left:-10px;
+  opacity:0;
+}
+
+.tm-list-li.ng-move {
+  opacity:0.5;
+}
+.tm-list-li.ng-move.ng-move-active {
   opacity:1;
 }
 
