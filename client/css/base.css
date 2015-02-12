@@ -1505,6 +1505,23 @@ a {
     overflow: hidden;
 }
 
+/* you can also define the transition style
+   on the base class as well (.repeat-item) */
+.tm-list-li.ng-enter,
+.tm-list-li.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+.tm-list-li.ng-enter,
+.tm-list-li.ng-leave.ng-leave-active {
+  opacity:0;
+}
+.tm-list-li.ng-leave,
+.tm-list-li.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
 .tm-list-content {
     float: left;
     width: 80%;
