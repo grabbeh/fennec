@@ -34,7 +34,7 @@
           <span ng-hide="isUser()" ng-click="login()" class="hide-on-mobile account hover-underline">Login</span>
           <span class="show-on-mobile hover account"><i ng-click="toggleDropdownMenu()" style="color: white;" class="fa fa-bars"></i></span>
       </div>
-      <div class="spinner" ng-show="loadingView"></div>
+      <div class="loading-box" ng-show="loadingView">Loading...</div>
       <div mg-menu-mover dropdown-menu="dropdownMenu" ng-view>
       </div>
       <div mg-clear></div>
