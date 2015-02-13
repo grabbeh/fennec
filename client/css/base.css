@@ -601,9 +601,19 @@ input::-webkit-inner-spin-button {
 }
 
 .loading-box {
-	padding: 25px;
+	padding: 30px;
 	background: white;
 	font-weight: bold;
+	width:72px;
+	    height: 72px;
+	    position: fixed;
+	    top: 50%;
+	    left: 50%;
+	    text-align:center;
+	    margin-left: -50px;
+	    margin-top: -50px;
+	    z-index:2;
+	    overflow: auto;
 }
 
 .white-link {
