@@ -12,9 +12,9 @@
 }
 
 
-.tm-list-li.ng-enter, 
-.tm-list-li.ng-leave, 
-.tm-list-li.ng-move {
+.modal.ng-enter, 
+.modal.ng-leave, 
+.modal.ng-move {
   -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all;
   position:relative;
