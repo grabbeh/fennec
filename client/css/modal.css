@@ -12,6 +12,40 @@
 }
 
 
+.tm-list-li.ng-enter, 
+.tm-list-li.ng-leave, 
+.tm-list-li.ng-move {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+  position:relative;
+}
+
+.modal.ng-enter {
+  top:-500px;
+  opacity:0;
+}
+.modal.ng-enter.ng-enter-active {
+  top:0;
+  opacity:1;
+}
+
+.modal.ng-leave {
+  top: 0;
+  opacity:1;
+}
+.modal.ng-leave.ng-leave-active {
+  top:-500px;
+  opacity:0;
+}
+
+.modal.ng-move {
+  opacity:0.5;
+}
+.modal.ng-move.ng-move-active {
+  opacity:1;
+}
+
+
 @media handheld, only screen and (max-width: 700px) {
     .btf-modal {
 		top: 0;
