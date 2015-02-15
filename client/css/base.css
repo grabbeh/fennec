@@ -734,7 +734,8 @@ input::-webkit-inner-spin-button {
 }
    
 .small-text {
-	font-size: 14px;
+    font-size: 14px;
+    color: #4C4747;
 }
 
 .hover-underline:hover {
