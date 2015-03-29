@@ -23,33 +23,33 @@
 .anim-modal.ng-enter {
   /*- margin */
   top: -500px;
-  opacity:0;
 }
 .anim-modal.ng-enter.ng-enter-active {
   top:10%;
-  opacity:1;
 }
 
 .anim-modal.ng-leave {
 top: 10%;
-  opacity:1;
 }
 .anim-modal.ng-leave.ng-leave-active {
   /* -margin */
 top:-500px;
-  opacity:0;
 }
 
-.anim-modal.ng-move {
+/*.anim-modal.ng-move {
   opacity:0.5;
 }
 .anim-modal.ng-move.ng-move-active {
   opacity:1;
-}
+}*/
 
 
 @media handheld, only screen and (max-width: 700px) {
     .btf-modal {
 		top: 0;
 	}
+	
+    .anim-modal.ng-leave {
+         top: 0;
+      }
 }
