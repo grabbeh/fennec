@@ -1977,8 +1977,9 @@ margin-top: 10px;
 
 	.edit-modal {
 	  background: white;
-	  width: 80%;
+	  width: 94%;
 	  left: 0;
+	  margin: 0 3%;
 	}
 	
 	.menu-modal {
