@@ -48,6 +48,9 @@ top:-500px;
     .btf-modal {
 		top: 0;
 	}
+    .anim-modal.ng-enter.ng-enter-active {
+  top:0;
+}
 	
     .anim-modal.ng-leave {
          top: 0;
