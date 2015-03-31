@@ -12,6 +12,7 @@ angular.module('app')
         link: function(scope, element, attrs, mgPaginatorCtrl){
             var $ = scope;
             $.innerShowModal = function(tm){
+                console.log(tm);
                 console.log(mgPaginatorCtrl);
                 var func = mgPaginatorCtrl.outerShowModal();
                 func(tm);
