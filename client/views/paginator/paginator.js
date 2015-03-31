@@ -65,7 +65,7 @@ angular.module('app')
                     return true;
                 }
             };
-            $.outerShowModal = function(tm) {
+            this.outerShowModal = function(tm) {
                 var func = $scope.showModal();
                 func(tm);
             }
