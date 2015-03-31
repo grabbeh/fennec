@@ -15,6 +15,7 @@ angular.module('app')
                 console.log(tm);
                 console.log(mgPaginatorCtrl);
                 var func = mgPaginatorCtrl.outerShowModal();
+                console.log(func);
                 func(tm);
             }
             
