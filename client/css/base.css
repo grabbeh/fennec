@@ -677,8 +677,7 @@ input::-webkit-inner-spin-button {
 
 .view-country-line {
     border-bottom: 1px solid #9a9a9a;
-	padding-top: 20px;
-	margin-bottom: 20px;	
+	margin-bottom: 10px;	
 }
 
 .view-group-panel-container {
@@ -947,9 +946,9 @@ input::-webkit-inner-spin-button {
 }
 
 .stat-subtitle {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     border-bottom: 1px solid #9a9a9a;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
 }
 
 .sub-stat-header {
