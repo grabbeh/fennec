@@ -65,10 +65,15 @@ angular.module('app')
                     return true;
                 }
             };
-            this.outerShowModal = function(tm) {
+            $.outerShowModal = function(tm){
                 var func = $scope.showModal();
                 func(tm);
             }
+            /*
+            this.outerShowModal = function(tm) {
+                var func = $scope.showModal();
+                func(tm);
+            }*/
         }
     }
 })
