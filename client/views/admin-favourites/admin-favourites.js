@@ -6,7 +6,7 @@ angular.module('app')
         replace: true,
         scope: {
             paginatedMarks: '=',
-            items: '=',
+            items: '='//,
             //showModal: '&'
         },
         link: function(scope, element, attrs, mgPaginatorCtrl){
