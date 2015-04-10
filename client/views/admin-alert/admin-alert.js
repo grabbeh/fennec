@@ -14,11 +14,11 @@ angular.module('app')
                 }
                 $.user.alertOptions.forEach(function(option, i) {
                     if (option.functionName === "sendExpiryAlerts") {
-                        if (frequency.length > 0) {
+                        if (frequency.length > 0) 
                             $.user.alertOptions[i].checked = true;
-                        } else {
+                        else 
                             $.user.alertOptions[i].checked = false;
-                        }
+                        
                     }
                 })
             })
