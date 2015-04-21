@@ -1106,7 +1106,7 @@ input::-webkit-inner-spin-button {
 }
 
 .chart-container {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .pie-chart-container {
@@ -1144,7 +1144,7 @@ input::-webkit-inner-spin-button {
 }
 
 .group-mark-list {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .map-mark-list {
@@ -1917,7 +1917,7 @@ margin-top: 10px;
 @media handheld, only screen and (max-width: 700px) {
     
     .last-margin-top {
-        margin-top: 20px;
+        margin-top: 15px;
     }
     
     .landing-page-container {
