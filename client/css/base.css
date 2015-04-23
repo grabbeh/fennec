@@ -1517,9 +1517,7 @@ a {
     overflow: hidden;
 }
 
-.tm-list-li.ng-enter, 
-.tm-list-li.ng-leave, 
-.tm-list-li.ng-move {
+.tm-list-li.ng-enter {
   -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all;
   position:relative;
@@ -1531,22 +1529,6 @@ a {
 }
 .tm-list-li.ng-enter.ng-enter-active {
   left:0;
-  opacity:1;
-}
-
-.tm-list-li.ng-leave {
-  left:0;
-  opacity:1;
-}
-.tm-list-li.ng-leave.ng-leave-active {
-  left:-10px;
-  opacity:0;
-}
-
-.tm-list-li.ng-move {
-  opacity:0.5;
-}
-.tm-list-li.ng-move.ng-move-active {
   opacity:1;
 }
 
