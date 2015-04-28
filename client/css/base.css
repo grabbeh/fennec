@@ -827,6 +827,7 @@ input::-webkit-inner-spin-button {
 
 .admin-panel {
     margin-top: 20px;
+    background: white;
     padding: 15px;
     overflow: hidden;
 }
