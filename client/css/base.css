@@ -826,10 +826,8 @@ input::-webkit-inner-spin-button {
 }
 
 .admin-panel {
-    background: #3F3838;
     margin-top: 20px;
     padding: 15px;
-    color: white;
     overflow: hidden;
 }
 
