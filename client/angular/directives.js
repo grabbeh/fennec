@@ -7,10 +7,35 @@ angular.module('app')
         if(Modernizr.touch)
         {
             element.on('touchend', function(){
- 
                 element[0].click();
  
             });
+        }
+    }
+})
+
+.directive('romeDatepicker', function(){ 
+    return {
+        require: 'ngModel',
+        link: function(scope, elem, attrs, ngModel) {  
+               var options = {
+                  "inputFormat": "MM/DD/YYYY",
+                  "time": false
+            }
+            scope.$watch(function(){
+                return ngModel.$modelValue;}, function(value){
+                    console.log(value);
+                if (value != undefined)
+                    options.initialValue = value;
+
+            })
+            //console.log(ngModel['$viewValue']);
+            rome(elem[0], options)
+                .on('data', function(date) {
+                    scope.$apply(function(){ 
+                        ngModel.$setViewValue(date);
+                    });
+                });
         }
     }
 })
