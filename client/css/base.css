@@ -371,6 +371,7 @@ height: auto !important;
     width: 90%;
     text-align: center;
     font-weight: bold;
+    z-index: 2001;
 }
 
 .notification-remove {
@@ -1341,7 +1342,8 @@ input::-webkit-inner-spin-button {
   right: 25%;
   position: absolute;
   height: auto;
-  z-index: 2000;
+  z-index: 1900;
+  top: 0;
 }
 
 .modal-form {

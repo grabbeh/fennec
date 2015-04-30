@@ -20,10 +20,19 @@
  
 }
 
+.anim-top-modal.ng-enter, 
+.anim-top-modal.ng-leave, 
+.anim-top-modal.ng-move {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+ 
+}
+
 .anim-modal.ng-enter {
   /*- margin */
   top: -500px;
 }
+
 .anim-modal.ng-enter.ng-enter-active {
   top:10%;
 }
@@ -31,10 +40,30 @@
 .anim-modal.ng-leave {
 top: 10%;
 }
+
 .anim-modal.ng-leave.ng-leave-active {
   /* -margin */
 top:-500px;
 }
+
+.anim-top-modal.ng-enter {
+  /*- margin */
+  top: -500px;
+}
+
+.anim-top-modal.ng-enter.ng-enter-active {
+  top:0;
+}
+
+.anim-top-modal.ng-leave {
+top: 0;
+}
+
+.anim-top-modal.ng-leave.ng-leave-active {
+  /* -margin */
+top:-500px;
+}
+
 
 /*.anim-modal.ng-move {
   opacity:0.5;

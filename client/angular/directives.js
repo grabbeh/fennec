@@ -24,18 +24,22 @@ angular.module('app')
             }
             scope.$watch(function(){
                 return ngModel.$modelValue;}, function(value){
-                    console.log(value);
-                if (value != undefined)
+                
+                if (value){
                     options.initialValue = value;
-
-            })
-            //console.log(ngModel['$viewValue']);
-            rome(elem[0], options)
-                .on('data', function(date) {
+                    rome(elem[0], options).on('data', function(date) {
                     scope.$apply(function(){ 
                         ngModel.$setViewValue(date);
                     });
                 });
+                }
+                else 
+                    rome(elem[0], options).on('data', function(date) {
+                    scope.$apply(function(){ 
+                        ngModel.$setViewValue(date);
+                    });
+                });
+            })
         }
     }
 })

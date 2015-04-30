@@ -16,10 +16,10 @@ angular.module('app')
             })
     
         $.editTrademark = function(trademark){
-            console.log(trademark);
             trademarkService.editMark(trademark)
                 .success(function(data){
-                    notificationModal.activate({ success: data.message })
+                    notificationModal.activate({ success: data.message });
+                    editTrademarkModal.deactivate();
                 });
             }
     }])
