@@ -826,10 +826,9 @@ input::-webkit-inner-spin-button {
 }
 
 .admin-panel {
-    background: #3F3838;
     margin-top: 20px;
+    background: white;
     padding: 15px;
-    color: white;
     overflow: hidden;
 }
 
@@ -1106,7 +1105,7 @@ input::-webkit-inner-spin-button {
 }
 
 .chart-container {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .pie-chart-container {
@@ -1135,6 +1134,7 @@ input::-webkit-inner-spin-button {
     /*-webkit-appearance: button;*/
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
     margin: 0 2px 2px 2px;
+    border: 0;
 }
 
 @-moz-document url-prefix() {
@@ -1144,7 +1144,7 @@ input::-webkit-inner-spin-button {
 }
 
 .group-mark-list {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .map-mark-list {
@@ -1152,7 +1152,7 @@ input::-webkit-inner-spin-button {
 }
 
 .country-list{
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .mark-list {
@@ -1517,9 +1517,7 @@ a {
     overflow: hidden;
 }
 
-.tm-list-li.ng-enter, 
-.tm-list-li.ng-leave, 
-.tm-list-li.ng-move {
+.tm-list-li.ng-enter {
   -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all;
   position:relative;
@@ -1531,22 +1529,6 @@ a {
 }
 .tm-list-li.ng-enter.ng-enter-active {
   left:0;
-  opacity:1;
-}
-
-.tm-list-li.ng-leave {
-  left:0;
-  opacity:1;
-}
-.tm-list-li.ng-leave.ng-leave-active {
-  left:-10px;
-  opacity:0;
-}
-
-.tm-list-li.ng-move {
-  opacity:0.5;
-}
-.tm-list-li.ng-move.ng-move-active {
   opacity:1;
 }
 
@@ -1624,7 +1606,7 @@ body {
     margin: 0; 
     padding:0; 
     font-family:  'Karla', Arial;
-    background: #B1D3FA;
+    background: #e4eff6;
     font-size: 20px;
 }
 
@@ -1699,7 +1681,7 @@ margin: 0px 10px 10px 0px;
 
 .header {
     width:100%;
-    background: #407ADB;
+    background: #6982AD;
     height: 40px;
     padding-top: 10px;
 }
@@ -1917,7 +1899,7 @@ margin-top: 10px;
 @media handheld, only screen and (max-width: 700px) {
     
     .last-margin-top {
-        margin-top: 20px;
+        margin-top: 15px;
     }
     
     .landing-page-container {
