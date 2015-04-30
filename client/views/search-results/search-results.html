@@ -2,7 +2,7 @@
     <div class="remove-results" ng-click="removeResults()"><i class="fa fa-times"></i></div>
         <ul class="search-list">
            <li ng-repeat="trademark in searchResults">
-                <div class="search-content">
+                <div class="search-content shadow">
                   <div class="search-text-mark">{{ trademark.mark }}</div>
                   <div class="search-text"> {{ trademark.country.name }} </div>
                   <div class="search-text" ng-show="trademark.registrationNumber">Reg. no: {{ trademark.registrationNumber }} </div>
