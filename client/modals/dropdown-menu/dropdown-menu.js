@@ -10,6 +10,8 @@ angular.module('app')
 	        }
 
             $.login = function(){
+            	dropdownMenu.deactivate();
+                $rootScope.dropdownMenu = false;
                 loginModal.activate();
                 $rootScope.modal = true;
             }
@@ -18,6 +20,7 @@ angular.module('app')
               pathService.clearPath();
 	            $rootScope.user = false;
 	            delete $window.sessionStorage.token;
+	            dropdownMenu.deactivate();
 	            $rootScope.dropdownMenu = false;
 	            $location.path('/');
 	        }
