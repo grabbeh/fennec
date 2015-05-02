@@ -3,9 +3,9 @@
 	<div class="modal-title">Image upload</div>
     <div class="modal-container">
       <div class="form-title">{{ id }}</div>
-           <form ng-upload="uploadComplete(content)" method="post" action="/api/upload">
-              <div><input class="form-upload" type="file" name="image" /></div>
-              <div><input class="add-button" type=submit value="Submit" ng-disabled="$isLoading" ></div>
+           <form >
+              <div><input ngf-select class="form-upload" ng-model="files" type="file" name="image"/></div>
+              <div><input ng-click="upload($files)" class="add-button" type=submit value="Submit" ></div>
             </form>
             <div ng-click="saveLogo(id, url)" ng-show="url">Save logo</div>
             <div ng-show="url"><img class="logo-holder" ng-src="{{ url }}"></div>

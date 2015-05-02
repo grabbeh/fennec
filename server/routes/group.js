@@ -111,7 +111,7 @@ exports.addLogoToGroup = function(req, res){
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
     var mark = req.params.mark.replace(/%20/g, " ");
-    trademark.find({ entity: entity, portfolio: portfolio, mark: mark }).exec(function(err, trademarks){
+    Trademark.find({ entity: entity, portfolio: portfolio, mark: mark }).exec(function(err, trademarks){
         async.forEach(trademarks, function(tm, callback){
              tm.imageUrl = req.body.url;
              tm.save();

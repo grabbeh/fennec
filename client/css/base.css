@@ -251,7 +251,7 @@ height: auto !important;
 
 .login-modal {
   position: fixed;
-  top: 20%;
+  top: 10%;
   height: auto;
   z-index: 2000;
   left: 35%;
@@ -608,10 +608,11 @@ input::-webkit-inner-spin-button {
 	    position: fixed;
 	    left: 50%;
 	    top: 50%;
-	    margin-left: -5%;
+	    margin-left: -50px;
+        margin-top: -50px;
 	    text-align:center;
-	    
 	    z-index:2;
+        overflow: auto;
 }
 
 .white-link {

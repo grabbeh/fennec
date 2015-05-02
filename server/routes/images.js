@@ -9,7 +9,7 @@ var knox = require('knox')
 });
 
 exports.uploadImage = function(req, res){
-    var file = req.files.image;
+    var file = req.files.file;
     var stream = fs.createReadStream(file.path)
     var mimetype = mime.lookup(file.path);
     var req;
@@ -34,7 +34,6 @@ exports.uploadImage = function(req, res){
 
        req.on('response', function(resp){
            if (resp.statusCode == 200) {
-               console.log(req.url);
                res.json({ url: req.url })
            } else {
                console.log("Error")
