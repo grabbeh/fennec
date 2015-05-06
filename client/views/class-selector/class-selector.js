@@ -5,13 +5,20 @@ angular.module('app')
         data: '=classInfo'
       },
       link: function(scope, element, attrs, ctrl, transclude) {
-
+            
         var $ = scope
         , active = false
-        , allClasses = [{cl: 1},{cl: 2}, {cl:3},{cl: 4}, {cl: 5},{cl: 6}, {cl: 7}, {cl: 8}, {cl: 9}, { cl: 10}];
+        , allClasses = [];
+        
+        for (var i = 1; i < 42; i++) {
+            var o = {};
+            o.cl = i;
+            allClasses.push(o);
+        })
+
         $.fullClasses = $filter('highlightClasses')($.data, allClasses);
         
-        html = $http.get('template.html', {
+        html = $http.get('/views/class-selector/class-selector.html', {
           cache: $templateCache
         }).then(function (response) {
           return response.data;
