@@ -3,6 +3,7 @@ angular.module('app')
 .controller('addTrademarkCtrl', ['$scope', '$http', 'trademarkService', '$routeParams', 'notificationModal',
     function($scope, $http, trademarkService, $routeParams, notificationModal) {
         var $ = $scope;
+        $.trademark.classes = [];
         $.activePortfolio = $routeParams.portfolio;
         $http.get('/api/countrydata')
             .success(function(data) {
