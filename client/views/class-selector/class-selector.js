@@ -10,7 +10,7 @@ angular.module('app')
         , active = false
         , allClasses = [];
         
-        for (var i = 1; i < 42; i++) {
+        for (var i = 1; i < 43; i++) {
             var o = {};
             o.cl = i;
             allClasses.push(o);
