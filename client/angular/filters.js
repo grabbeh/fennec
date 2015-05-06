@@ -57,6 +57,30 @@ angular.module('app')
 		
 	})
 	
+	.filter('extracttmClasses', function(){
+    return function(arr){
+      var revised = [];
+      arr.forEach(function(a){
+         if (a.checked){
+           revised.push(a.cl);
+         }
+      })
+      return revised;
+    }
+  })
+  .filter('highlightClasses', function(){
+    return function(classes, allClasses){
+    classes.forEach(function(c){
+           allClasses.forEach(function(d){
+              if (c === d.cl){
+                d.checked = true;
+              }
+           })
+        })
+        return allClasses;
+    }
+  })
+	
 	.filter('extractFavourites', function(){
     	return function(arr){
             return arr.filter(function(i){
