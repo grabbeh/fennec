@@ -40,7 +40,7 @@ angular.module('app')
                         c.checked = !c.checked;
                     }
                 })
-                $.data = $filter('extractClasses')($.fullClasses);
+                $.data = $filter('extracttmClasses')($.fullClasses);
             }
         
       }
