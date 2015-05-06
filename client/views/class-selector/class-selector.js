@@ -24,13 +24,17 @@ angular.module('app')
           return response.data;
         });
         
-        var addContent = function() {
+        var addContent = function(ev) {
+          ev.stopPropagation();
           if (!active) {
             html.then(function(html){
                 ht = angular.element(html);
                 content = $compile(ht)(scope)
                 element.append(content);
                 active = true;
+                ht.on('click', function(ev){
+                  ev.stopPropagation();
+                })
             })
           }
           else {
@@ -65,6 +69,12 @@ angular.module('app')
           
           $.data = [];
         }
+        
+        angular.element($window).on('click', function(){
+           if (active){
+             ht.remove();
+           }
+        })
 
       }
     }
