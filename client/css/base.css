@@ -8,7 +8,43 @@
 	font-weight:bold;
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
+/* class selector */
 
+.class-selector-container {
+  border: solid black 1px;
+  overflow: hidden;
+  padding: 0px;
+  width: 200px;
+  position: absolute;
+  font-size: 14px;
+  z-index: 2000;
+  background: white;
+}
+
+.class-selector-list {
+  margin: 0;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.class-selector-list > li {
+
+  list-style: none;
+  float: left;
+  padding: 10px;
+  margin: 3px;
+  width: 17px;
+  text-align: center;
+
+}
+.currentclass {
+  background: black;
+  color: white;
+}
+
+.noncurrentclass {
+  background: white;
+}
 /* api.html */
 
 .api-container {
