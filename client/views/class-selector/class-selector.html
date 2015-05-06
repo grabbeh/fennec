@@ -1,6 +1,6 @@
 <div class='class-selector-container'>
   <div ng-model='fullClasses'>
-    <ul>
+    <ul class="class-selector-list">
       <li ng-click='toggleClass($index)' class='hover' ng-class='{  currentclass: d.checked, noncurrentclass: !d.checked }' ng-repeat='d in fullClasses'>{{ d.cl }}
       <span>
         <input style='display:none'  class='checkbox' ng-model='d.checked' type='checkbox' value='0'>
