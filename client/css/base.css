@@ -10,6 +10,13 @@
 }
 /* class selector */
 
+.select-all-classes {
+	
+}
+
+.remove-all-classes {
+	float: right;
+}
 .class-selector-container {
   border: solid black 1px;
   overflow: hidden;
