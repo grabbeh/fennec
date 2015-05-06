@@ -14,9 +14,9 @@
   border: solid black 1px;
   overflow: hidden;
   padding: 0px;
-  width: 200px;
+  width: 350px;
   position: absolute;
-  font-size: 10px;
+  font-size: 16px;
   z-index: 2000;
   background: white;
 }
@@ -38,7 +38,7 @@
 
 }
 .currentclass {
-  background: black;
+  background: #3F3838;
   color: white;
 }
 
