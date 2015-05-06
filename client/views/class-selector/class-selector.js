@@ -2,7 +2,7 @@ angular.module('app')
 .directive('classSelector', function($compile, $http, $q, $rootScope, $window, $filter, $templateCache) {
     return {
       scope: {
-        data: '='
+        data: '=classInfo'
       },
       link: function(scope, element, attrs, ctrl, transclude) {
 
