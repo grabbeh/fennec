@@ -14,7 +14,7 @@ angular.module('app')
             var o = {};
             o.cl = i;
             allClasses.push(o);
-        })
+        }
 
         $.fullClasses = $filter('highlightClasses')($.data, allClasses);
         
