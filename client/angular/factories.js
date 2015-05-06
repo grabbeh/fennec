@@ -249,9 +249,10 @@
             return $http.delete('/api/trademark/' + trademark._id);
         },
         addMark: function(trademark, portfolio){
+            if (typeof trademark.classes === 'string')
                 trademark.classes = _.map(trademark.classes.split(","), curry(parseInt));
-                trademark.portfolio = portfolio;
-                return $http.post('/api/trademark', { trademark: trademark })
+            trademark.portfolio = portfolio;
+            return $http.post('/api/trademark', { trademark: trademark })
         },
         editMark: function(trademark){
             if (typeof trademark.classes === 'string'){
