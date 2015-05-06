@@ -50,6 +50,22 @@ angular.module('app')
                 $.data = $filter('extracttmClasses')($.fullClasses);
             }
         
+         $.selectAll = function(){
+          $.fullClasses.forEach(function(a){
+             a.checked = true
+          })
+          
+          $.data = $filter('extracttmClasses')($.fullClasses);
+        }
+        
+        $.removeAll = function(){
+          $.fullClasses.forEach(function(a){
+            a.checked = false
+          })
+          
+          $.data = [];
+        }
+
       }
     }
   })
