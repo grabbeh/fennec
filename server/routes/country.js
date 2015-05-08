@@ -8,10 +8,7 @@ exports.marksForCountry = function(req, res){
     , portfolio = req.params.portfolio.replace(/%20/g, " ")
     , country = req.params.country;
     marksForCountry(entity, portfolio, country, function(err, trademarks){
-    	if (trademarks.length === 0)
-        	res.status(401).send();
-        else 
-        	res.json(trademarks);
+	res.json(trademarks);
     })
 }
 
