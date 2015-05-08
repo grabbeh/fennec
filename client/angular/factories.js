@@ -191,6 +191,12 @@
       }
 
     var trademarkService = {
+        checkIfMarksInCountry: function(country){
+            return $http.get(country)
+                .then(function(response){
+                    return response.data;
+                })
+        },
       	getListOfMarks: function(portfolio, country){
       	       var url = '/api/list/' + portfolio;
       	       if (country)
