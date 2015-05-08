@@ -211,6 +211,10 @@
     margin-top: 10px;
 }
 
+.margin-top-twenty {
+	margin-top: 20px;
+}
+
 .no-margin-bottom {
      margin-bottom: 0 !important;
 }
