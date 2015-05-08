@@ -1,5 +1,13 @@
 angular.module('app')
 
+	.filter('unknown', function(){
+		return function(i){
+			if (!i){
+			    return "Unknown";
+			}
+		}
+	})
+	
 	.filter('createTen', function(){
 		return function(n){
 			var end = n + 11;
