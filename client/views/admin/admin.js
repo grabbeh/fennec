@@ -66,7 +66,7 @@ angular.module('app')
                         }, function(){
                             notificationModal.activate({ error: "No trade marks in this country"})
                         })
-                }
+                })
                 
             });
 
