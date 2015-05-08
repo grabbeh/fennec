@@ -6,7 +6,7 @@ angular.module('app')
 		   for (var key in obj){
 		   	console.log(obj.key);
 		       if (!obj.key) {
-		       	 console.log("value is false")
+		       	 console.log("value is false" + " " + obj.key)
 		       	  obj.key = "Unknown";
 		       }
 		   }	
