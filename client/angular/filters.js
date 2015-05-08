@@ -5,10 +5,10 @@ angular.module('app')
 			
 		   for (var key in obj){
 		   	console.log(key + " " + obj.key)
-		       if (!obj.key) {
+		       /*if (!obj.key) {
 		       	 console.log("value is false" + " " + key)
 		       	  obj.key = "Unknown";
-		       }
+		       }*/
 		   }	
 		   return obj;
 		}
