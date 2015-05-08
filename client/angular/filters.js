@@ -2,12 +2,12 @@ angular.module('app')
 
 	.filter('unknown', function(){
 		return function(obj){
-			
+			console.log(obj)
 		   for (var key in obj){
-		   	console.log(key + " " + obj.key)
-		       /*if (!obj.key) {
-		       	 console.log("value is false" + " " + key)
-		       	  obj.key = "Unknown";
+		   	console.log(key + " " + obj[key])
+		       /*if (!obj[key]) {
+
+		       	  obj[key] = "Unknown";
 		       }*/
 		   }	
 		   return obj;
