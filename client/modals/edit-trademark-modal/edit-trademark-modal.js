@@ -1,7 +1,7 @@
 angular.module('app')
 
-    .controller('editTrademarkModalCtrl', ['$scope', 'notificationModal', '$rootScope', '$http', 'trademarkService', 'editTrademarkModal',
-      function ($scope, notificationModal, $rootScope, $http, trademarkService, editTrademarkModal) {
+    .controller('editTrademarkModalCtrl', ['$scope', '$filter', 'notificationModal', '$rootScope', '$http', 'trademarkService', 'editTrademarkModal',
+      function ($scope, $filter, notificationModal, $rootScope, $http, trademarkService, editTrademarkModal) {
           var $ = $scope;
           $.closeModal = function() {
             editTrademarkModal.deactivate();
