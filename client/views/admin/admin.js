@@ -18,7 +18,7 @@ angular.module('app')
         'barChartOptions',
         '$moment',
         'trademarkModal',
-        'menuModal',
+        'notificationModal',
         '$http',
 
         function($scope,
@@ -39,7 +39,7 @@ angular.module('app')
             barChartOptions,
             $moment,
             trademarkModal,
-            menuModal,
+            notificationModal,
             $http) {
 
             var $ = $scope;
@@ -123,7 +123,14 @@ angular.module('app')
             };
 
             $.goToCountry = function(country) {
-                $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
+                    trademarkService.getCountry($routeParams.portfolio, country)
+                        .then(function(res){
+                            console.log(res);
+                            $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
+                        }, function(){
+                            console.log("No marks")
+                            notificationModal.activate({ error: "No trade marks in this country"})
+                        })
             };
 
             $.$watch('trademarks', function(trademarks) {
