@@ -60,17 +60,14 @@ angular.module('app')
 
             $.$on('country.click', function(e, l) {
                 console.log(l.target.feature);
-                $.$apply(function(){
-                console.log(l.target.feature);
+                //$.$apply(function(){
                 trademarkService.getCountry($routeParams.portfolio, l.target.feature.id)
                         .then(function(res){
-                                console.log("Marks")
                             $location.path('/admin/country/' + $routeParams.portfolio).search('country', l.target.feature.id);
                         }, function(){
-                                console.log("No marks");
                             notificationModal.activate({ error: "No trade marks in this country"})
                         })
-                })
+                //})
                 
             });
 
