@@ -59,12 +59,12 @@ angular.module('app')
             $.countries = $filter('orderBy')(countries, 'name');
 
             $.$on('country.click', function(e, l) {
-                console.log(l.target.feature);
+                var c = l.target.feature.id;
                 //$.$apply(function(){
                 trademarkService.getCountry($routeParams.portfolio, l.target.feature.id)
                         .then(function(res){
-                                console.log(l.target.feature);
-                            $location.path('/admin/country/' + $routeParams.portfolio).search('country', l.target.feature.id);
+                                console.log(c);
+                            $location.path('/admin/country/' + $routeParams.portfolio).search('country', c);
                         }, function(){
                             notificationModal.activate({ error: "No trade marks in this country"})
                         })
