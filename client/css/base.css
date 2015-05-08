@@ -898,6 +898,7 @@ input::-webkit-inner-spin-button {
 .admin-panel-title {
     font-size: 30px;
     margin-top: 8px;
+    font-weight: bold;
 }
 
 .admin-panel-holder {
