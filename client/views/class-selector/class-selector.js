@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('classSelector', function($compile, $http, $q, $rootScope, $window, $filter, $templateCache) {
+.directive('classSelector', function($compile, $http, $window, $filter, $templateCache) {
     return {
       scope: {
         data: '=classInfo'
