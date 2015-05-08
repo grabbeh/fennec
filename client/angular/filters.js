@@ -2,8 +2,10 @@ angular.module('app')
 
 	.filter('unknown', function(){
 		return function(i){
+			console.log(i);
 		   for (var key in i){
 		       if (!i) {
+		       	console.log("value is false")
 		       	  i[key] = "Unknown";
 		       }
 		   }	
