@@ -59,6 +59,7 @@ angular.module('app')
             $.countries = $filter('orderBy')(countries, 'name');
 
             $.$on('country.click', function(e, l) {
+                    console.log(l.target.feature);
                 $.$apply(function(){
                 trademarkService.getCountry($routeParams.portfolio, l.target.feature.id)
                         .then(function(res){
