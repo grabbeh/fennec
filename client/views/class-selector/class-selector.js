@@ -73,6 +73,7 @@ angular.module('app')
         angular.element($window).on('click', function(){
            if (active){
              ht.remove();
+             active = false;
            }
         })
 
