@@ -212,7 +212,7 @@
 }
 
 .margin-top-twenty {
-	margin-top: 20px;
+	margin-top: 20px !important;
 }
 
 .no-margin-bottom {
