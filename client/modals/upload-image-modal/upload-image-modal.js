@@ -8,9 +8,7 @@ angular.module('app')
                 $rootScope.modal = false;
       		};
 
-         	
             $.upload = function(){
-
                 if ($.files && $.files.length) {
                     for (var i = 0; i < $.files.length; i++) {
                         var file = $.files[i];
@@ -19,19 +17,13 @@ angular.module('app')
                             file: file
                         }).success(function (r) {
                             console.log(r);
-                               
                                  $.message = "Image uploaded";
                                  $.url = r.url;
                         });
                     }
                 }
             };
-/*
-                  
-*/
-
             
-
             $.saveLogo = function(mark, url){
                 $http.post('/api/addLogoToGroup/' + $routeParams.portfolio + "/" + mark, { url: url})
                     .success(function(data){
