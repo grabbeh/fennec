@@ -66,7 +66,7 @@ angular.module('app')
                                 console.log(c);
                             $location.path('/admin/country/' + $routeParams.portfolio).search('country', c);
                         }, function(){
-                            notificationModal.activate({ error: "No trade marks in this country"})
+                            notificationModal.activate({ error: "No trade marks in this country"}, 2)
                         })
                 //})
                 
