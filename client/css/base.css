@@ -208,11 +208,11 @@
 }
 
 .margin-top-ten {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
-.no-bottom-margin {
-	margin-bottom: 0;
+.no-margin-bottom {
+     margin-bottom: 0;
 }
 
 .margin-left {
