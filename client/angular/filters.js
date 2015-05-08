@@ -4,7 +4,8 @@ angular.module('app')
 		return function(i){
 			console.log(i);
 		   for (var key in i){
-		       if (!i) {
+		   	console.log(i['key']);
+		       if (i['key']) {
 		       	console.log("value is false")
 		       	  i[key] = "Unknown";
 		       }
