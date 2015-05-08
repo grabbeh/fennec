@@ -4,7 +4,6 @@ angular.module('app')
 		return function(obj){
 			console.log(obj);
 		   for (var key in obj){
-		   	console.log(key);
 		   	console.log(obj.key);
 		       if (!obj.key) {
 		       	 console.log("value is false")
