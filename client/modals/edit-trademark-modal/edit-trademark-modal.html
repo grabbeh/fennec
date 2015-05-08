@@ -14,13 +14,13 @@
       </div>
       <div class="row">
           <div class="one-half-container">
-    	        <div class="small-text">Status</div>
-    	      	<select class="form-select margin-top-ten" ng-model="trademark.status" ng-options="status for status in statuses"><option value=""> {{ trademark.status }} </option>
+    	        <div class="small-text margin-top-ten">Status</div>
+    	      	<select class="form-select" ng-model="trademark.status" ng-options="status for status in statuses"><option value=""> {{ trademark.status }} </option>
     	      	</select>
           </div>
           
           <div class="one-half-container last">
-    	      <div class="small-text">Country</div>
+    	      <div class="small-text margin-top-ten">Country</div>
     	      <select class="form-select" ng-model="trademark.country" ng-options="country.name for country in countrydata">
     	        <option value=""> {{ trademark.country.name }} </option>
     	      </select>
