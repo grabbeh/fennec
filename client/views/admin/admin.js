@@ -78,6 +78,7 @@ angular.module('app')
                 $.activeMark = group.name;
 
                 $.trademarks = $filter('extractGroup')($.allTrademarks, group.name);
+                $.favouriteMarks = $filter('extractFavourites')($.trademarks);
                 geoJsonService.getWorldGroup($routeParams.portfolio, group.name).then(function(geojson) {
                     $.geojson = geojson;
                 });
@@ -92,6 +93,7 @@ angular.module('app')
                     return;
                 }
                 $.trademarks = $filter('extractMarksInCountry')($.allTrademarks, country.alpha3);
+                $.favouriteMarks = $filter('extractFavourites')($.trademarks);
                 geoJsonService.getWorldGroup($routeParams.portfolio, null, country.alpha3).then(function(geojson) {
                     $.geojson = geojson;
                 });
