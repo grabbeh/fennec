@@ -2,9 +2,12 @@ angular.module('app')
 
 	.filter('unknown', function(){
 		return function(i){
-			if (!i){
-			    return "Unknown";
-			}
+		   for (var key in i){
+		       if (!i) {
+		       	  i[key] = "Unknown";
+		       }
+		   }	
+		   return i;
 		}
 	})
 	
