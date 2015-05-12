@@ -912,6 +912,7 @@ input::-webkit-inner-spin-button {
 
 .remove-results {
     float: right;
+    margin-left: 10px;
 }
 
 .remove-results:hover {
