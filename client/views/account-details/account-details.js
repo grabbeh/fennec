@@ -10,7 +10,7 @@ angular.module('app')
             var $ = $scope;
             $.updatePassword = function(old, nnew, dup) {
                 if (nnew != dup) {
-                    $.passwordMessage = "New password and duplicate don't match";
+                    notificationModal.activate({error: "New password and duplicate don't match"})
                     return;
                 }
                 var load = {
@@ -19,16 +19,10 @@ angular.module('app')
                 };
                 $http.post('/api/updatePassword', load)
                     .success(function(data) {
-                        $.passwordMessage = data.message;
-                        notificationModal.activate({
-                            success: data.message
-                        })
+                        notificationModal.activate({ success: data.message })
                     })
                     .error(function(data) {
-                        $.passwordMessage = data.message;
-                        notificationModal.activate({
-                            error: data.message
-                        })
+                        notificationModal.activate({ error: data.message })
                     })
             }
 
