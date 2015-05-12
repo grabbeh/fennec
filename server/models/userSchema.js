@@ -10,6 +10,15 @@ var User = new Schema({
 	hash: String,
 	email: String,
 	alertFrequency: Array,
+	displayOptions: { type: Array, default: [
+		showFavourites: true,
+		showIncomplete: true,
+		showExpiring: true,
+		showActivity: true,
+		showMap: true,
+		showChart: true,
+		showSummary: true
+	]},
 	alertOptions: { type: Array, default:  [
 	    {
 	      checked: false,
