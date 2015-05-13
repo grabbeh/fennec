@@ -53,9 +53,7 @@ exports.getUser = function(req, res){
 }
 
 exports.updateUser = function(req, res){
-    console.log(req.body);
     User.findOneAndUpdate({_id: req.params.id}, helper.removeId(req.body), function(err, user){
-        console.log(user);
          req.user = user;
          res.json(user);
     })
