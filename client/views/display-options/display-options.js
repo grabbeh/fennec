@@ -13,7 +13,6 @@ angular.module('app')
             var $ = $scope;
 
             $.updateUser = function(user) {
-                console.log(user);
                 userService.updateUser(user)
                     .then(function(data) {
                         notificationModal.activate({
