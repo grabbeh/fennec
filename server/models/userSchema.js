@@ -11,14 +11,50 @@ var User = new Schema({
 	email: String,
 	alertFrequency: Array,
 	displayOptions: { type: Object, default: {
-		showFavourites: true,
-		showIncomplete: true,
-		showExpiring: true,
-		showActivity: true,
-		showMap: true,
-		showChart: true,
-		showSummary: true
-		}
+    showFavourites:
+    {
+       showFavourites: true,
+       name: "Favourites",
+       checked: true
+    },
+    showIncomplete:
+    {
+      showIncomplete: true,
+      name: "Incomplete marks",
+      checked: true
+    },
+    showExpiring: 
+    {
+      	showExpiring: true,
+      	name: "Expiring marks",
+      	checked: true
+    },
+    showActivity:
+    {
+      	showActivity: true,    
+      	name: "Activities",
+      	checked: true
+    },
+    showMap:
+    {
+      showMap: true,
+      name: "Map",
+          checked: true
+    },
+    showChart:
+    {
+      	showChart: true,
+      	name: "Expiry chart",
+      	    checked: true
+    }, 
+    showSummary:
+    {
+      	showSummary: true,
+      	name: "Summary",
+      	checked: true
+    }
+
+		};
 	},
 	alertOptions: { type: Array, default:  [
 	    {
