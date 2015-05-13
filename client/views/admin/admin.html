@@ -30,7 +30,7 @@
         </div>
         <div mg-clear></div>
         <div class="row">
-            <div class="chart-container">
+            
                 <div ng-show="user.displayOptions.showSummary.checked" class="one-half-container">
                     <div class="standard-container shadow">
                         
@@ -60,16 +60,16 @@
                         <canvas piechart options="pieOptions" data="pieData" ></canvas>
                     </div>
             </div>
+            
             <div class="one-half-container last last-margin-top">
                     <div ng-show="user.displayOptions.showFavourites.checked" class="standard-container shadow">
-                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i>
-                    </div>
+                        <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
                     <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="favouriteMarks" items-per-page="10">
                          <div show-modal="outerShowModal" items="items" paginated-marks="paginatedMarks" mg-admin-favourites></div>
                     </div> 
                 </div>
                 </div>
-            </div>
+            
         </div>
 
         <div mg-clear></div>
