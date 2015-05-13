@@ -18,7 +18,7 @@ angular.module('app')
                     .then(function(data) {
                         notificationModal.activate({
                             success: "Display options updated"
-                        })
+                        }, 2)
                     })
             }
 
