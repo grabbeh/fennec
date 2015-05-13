@@ -2,7 +2,7 @@ angular.module('app')
 .directive('mgDisplayOptions', function(userService) {
     return {
         replace: true,
-        templateUrl: '/views/admin-alert/display-options.html',
+        templateUrl: '/views/display-options/display-options.html',
         scope: {
             user: '='
         },
