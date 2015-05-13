@@ -971,8 +971,7 @@ input::-webkit-inner-spin-button {
 .map-container {
     padding: 20px;
     background: white;
-    margin-top: 30px; 
-    margin-bottom: 30px;
+    margin-top: 20px; 
 }
 
 #admin-map {
