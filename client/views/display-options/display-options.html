@@ -1,0 +1,13 @@
+<div ng-show="user">
+
+        <div class="alert-title">Display options</div>
+        <ul class="reminder-list">
+            <li class="tm-list-li" ng-repeat="alert in user.alertFrequency">
+                  <div ng-repeat="(key, value) in data"><input ng-model="value.checked" type="checkbox"> {{ value.name }} </div>
+            </li>
+        </ul>
+
+
+        <div><input ng-click="updateAlerts(user)" class="small-button" type=submit  value="Update"></div>
+
+</div>
