@@ -45,10 +45,10 @@ angular.module('app')
             var $ = $scope;
             $.activePortfolio = $routeParams.portfolio;
             $.geojson = world;
-            //$.trademarks = trademarks;
+            $.trademarks = trademarks;
             $.allTrademarks = trademarks;
             $.favouriteMarks = $filter('extractFavourites')(trademarks);
-            //$.user = user;
+            $.user = user;
             $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.marks.unshift({
                 name: "ALL MARKS"
