@@ -665,7 +665,7 @@ input::-webkit-inner-spin-button {
 	    position: fixed;
 	    left: 50%;
 	    top: 50%;
-	    margin-left: -50px;
+	    margin-left: -70px;
         margin-top: -50px;
 	    text-align:center;
 	    z-index:2;
