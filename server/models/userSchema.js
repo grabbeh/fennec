@@ -14,37 +14,37 @@ var User = new Schema({
         type: Object,
         default: {
             showFavourites: {
-                showFavourites: true,
+
                 name: "Favourites",
                 checked: true
             },
             showIncomplete: {
-                showIncomplete: true,
+
                 name: "Incomplete marks",
                 checked: true
             },
             showExpiring: {
-                showExpiring: true,
+ 
                 name: "Expiring marks",
                 checked: true
             },
             showActivity: {
-                showActivity: true,
+  
                 name: "Activities",
                 checked: true
             },
             showMap: {
-                showMap: true,
+    
                 name: "Map",
                 checked: true
             },
             showChart: {
-                showChart: true,
+      
                 name: "Expiry chart",
                 checked: true
             },
             showSummary: {
-                showSummary: true,
+         
                 name: "Summary",
                 checked: true
             }
