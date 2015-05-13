@@ -16,7 +16,6 @@ angular.module('app')
                             url: 'api/upload',
                             file: file
                         }).success(function (r) {
-                            console.log(r);
                                  $.message = "Image uploaded";
                                  $.url = r.url;
                         });
