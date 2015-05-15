@@ -178,7 +178,9 @@
 
 
 .slide-menu {
-  position: absolute;
+  top: 0;
+  position: fixed;
+  height: 100%;
   z-index: 2000;
   background: #3F3838;
   width: 300px;
