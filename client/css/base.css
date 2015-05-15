@@ -1519,6 +1519,7 @@ a {
 
 .radio {
     margin: 10px 0;
+    font-size: 18px;
 }
 
 .showDetails {
@@ -1880,7 +1881,7 @@ margin: 0px 10px 10px 0px;
 
 .add-button {
     height: 40px;
-    font-size: 20px;
+    font-size: 18px;
     margin: 10px 0 10px 0;
     padding: 0 10px 0 10px;
     -webkit-appearance:button;
