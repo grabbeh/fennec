@@ -5,7 +5,7 @@
         <li class="tm-list-li" ng-repeat="comment in trademark.comments">
         
         <div class="main-comment">
-            <div class="comment-text">{{ comment.text }} </div>
+            <div btf-markdown="comment.text" class="comment-text"> </div>
             <div title="{{comment.date}}" class="comment-details">{{ comment.author }} on {{ comment.date | date: 'longDate' }}</div>
             <div class="comment-details" ng-show="comment.updated">updated {{ comment.updated | date: 'longDate' }}</div>
         </div>
