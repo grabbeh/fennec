@@ -41,12 +41,10 @@ angular.module('app')
             });
 
             $.$on('modal.activate', function(){
-                console.log("Activate");
                 $rootScope.modal = true;
             });
             
             $.$on('modal.deactivate', function(){
-                console.log("Deactivate");
                 $rootScope.modal = false;
             });
             
