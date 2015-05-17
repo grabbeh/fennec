@@ -5,12 +5,7 @@ angular.module('app')
             templateUrl: '/views/search-panel/search-panel.html',
             scope: {
                 activePortfolio: '=',
-                showModal:"&",
                 swipeEvent: '='
-            },
-            controller: function($scope) {
-                var $ = $scope;
-                this.showModal = $scope.showModal;
-          }
+            }
       }
 })
