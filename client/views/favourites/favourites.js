@@ -14,6 +14,14 @@ angular.module('app')
             $.activeTrademark = trademark;
         };
 
+$.showModal = function(trademark) {
+                $rootScope.modal = true;
+                trademarkModal.deactivate();
+                trademarkModal.activate({
+                    trademark: trademark,
+                    user: user
+                });
+            };
         $.openEditTrademarkModal = function(trademark) {
             editTrademarkModal.activate({
                 trademark: trademark
