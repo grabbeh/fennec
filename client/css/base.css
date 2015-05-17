@@ -1980,8 +1980,8 @@ margin-top: 20px;
     }
     
     .fixed-container {
-        margin: 95% auto;
-        width: 100%;
+        margin: 0 auto;
+        width: 97%;
     }
 
 .standards container {
