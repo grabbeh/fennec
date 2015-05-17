@@ -45,6 +45,7 @@ angular.module('app')
             });
             
             $.$on('modal.deactivate', function(){
+                console.log("Deactivate");
                 $rootScope.modal = false;
             });
             
