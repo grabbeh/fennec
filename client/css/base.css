@@ -1980,9 +1980,13 @@ margin-top: 20px;
     }
     
     .fixed-container {
-        margin: 0 UTO;
+        margin: 95% auto;
         width: 100%;
     }
+
+.standards container {
+    padding: 10px;
+}
     
     .country-list {
         margin-top: 0;
