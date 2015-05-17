@@ -1,7 +1,7 @@
 angular.module('app')
 
-.controller('favouritesCtrl', ['$scope', '$routeParams', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal',
-    function($scope, $routeParams, $rootScope, favourites, user, trademarkService, editTrademarkModal) {
+.controller('favouritesCtrl', ['$scope', '$routeParams', '$rootScope', 'favourites', 'user', 'trademarkService', 'editTrademarkModal', 'trademarkModal',
+    function($scope, $routeParams, $rootScope, favourites, user, trademarkService, editTrademarkModal, trademarkModal) {
         var $ = $scope;
         $.activePortfolio = $routeParams.portfolio;
         $.favourites = favourites;
@@ -14,6 +14,14 @@ angular.module('app')
             $.activeTrademark = trademark;
         };
 
+$.showModal = function(trademark) {
+                $rootScope.modal = true;
+                trademarkModal.deactivate();
+                trademarkModal.activate({
+                    trademark: trademark,
+                    user: user
+                });
+            };
         $.openEditTrademarkModal = function(trademark) {
             editTrademarkModal.activate({
                 trademark: trademark

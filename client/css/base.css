@@ -1899,6 +1899,7 @@ margin: 0px 10px 10px 0px;
 .quick-search-container {
 	padding: 25px 25px 50px 25px;
 	background: white;
+	margin-top: 20px;
 }
 
 .quick-search-title {
@@ -1979,9 +1980,13 @@ margin-top: 20px;
     }
     
     .fixed-container {
-        margin: 0 UTO;
-        width: 95%;
+        margin: 0 auto;
+        width: 97%;
     }
+
+.standard-container {
+    padding: 10px;
+}
     
     .country-list {
         margin-top: 0;
