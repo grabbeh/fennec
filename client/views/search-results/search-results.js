@@ -11,7 +11,7 @@ angular.module('app')
                     $scope.searchResults = false;
                 }
                 
-                $.showModal = function(trademark) {
+                $scope.showModal = function(trademark) {
                     trademarkModal.deactivate();
                     trademarkModal.activate({ trademark: trademark })
                 }
