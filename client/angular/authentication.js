@@ -41,6 +41,7 @@ angular.module('app')
             });
 
             $.$on('modal.activate', function(){
+                console.log("Activate");
                 $rootScope.modal = true;
             });
             
