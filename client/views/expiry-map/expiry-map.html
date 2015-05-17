@@ -1,5 +1,11 @@
-<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent"></div>
 <div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
+    <div class="row">
+        <div mg-search-panel swipe-event="swipeEvent" show-modal="showModal" active-portfolio="activePortfolio">
+        </div>
+    </div>
+
+    <div class="row margin-top-twenty">
     <div class="view-group-panel-container">
     <div class="row">
         <div class="one-half-container">
@@ -21,5 +27,6 @@
              <div class="full-width-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
           </div>
       </div>
+    </div>
     </div>
 </div>

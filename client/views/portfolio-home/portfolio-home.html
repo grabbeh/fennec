@@ -1,19 +1,17 @@
-<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent"></div>
 <div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
+     <div class="row">
+            <div mg-search-panel swipe-event="swipeEvent" show-modal="showModal" active-portfolio="activePortfolio">
+            </div>
+        </div>
+
+
     <div class="quick-search-container">
-        <div class="one-half-container">
-            <div class="portfolio-home-title">{{ activePortfolio }} </div>
-        </div>
-        <div class="one-half-container last">
-            <div>
-                <form>
-                    <select class="group-mark-select" ng-change="changePortfolio(portfolio)" ng-model="portfolio" ng-options="portfolio for portfolio in portfolios"><option value="">Select portfolio</option>
-                    </select>
-                 </form>
-              </div>
-        </div>
-        <div class="row">
-        </div>
+        
+        
+
+
+       
         <div class="row">
               <div class="one-third-container">
             
@@ -72,13 +70,16 @@
                 <div class="margin-top-ten" mg-country-selector countries="countries" title="Countries" go-to-group="goToCountry"></div>
             </div>
         </div>
+
         <div class="row">
-          <div class="portfolio-subtitle">Search</div>
-        </div>
-        <div class="row">
-          <div mg-search-input search-results="searchResults"></div>
-          <div mg-clear></div>
-             <div mg-search-results show-modal="showModal" search-results="searchResults"></div>
+            <div class="one-half-container last">
+              <div>
+                  <form>
+                      <select class="group-mark-select" ng-change="changePortfolio(portfolio)" ng-model="portfolio" ng-options="portfolio for portfolio in portfolios"><option value="">Select portfolio</option>
+                      </select>
+                   </form>
+                </div>
+          </div>
         </div>
         </div>
     </div>

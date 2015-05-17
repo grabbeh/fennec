@@ -1,8 +1,13 @@
-<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
-<div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container margin-top-twenty">
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent"></div>
+<div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
     <div class="no-trademark-container" ng-show="!favourites">
         You haven't added any favourites yet...
       </div>
+       <div class="row">
+            <div mg-search-panel swipe-event="swipeEvent" show-modal="showModal" active-portfolio="activePortfolio">
+            </div>
+        </div>
+    <div class="row margin-top-twenty">
   <div class="one-third-container">
     
     <div ng-show="favourites" class="shadow favourite-container">
@@ -20,5 +25,6 @@
             <div mg-bold>Comments</div>
             <div mg-trademark-comments user='user' trademark='activeTrademark'></div>
         </div>
+  </div>
   </div>
 </div>

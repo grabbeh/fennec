@@ -1,9 +1,14 @@
-<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent" ng-class="{moveright: swipeEvent, moveleft: !swipeEvent }"></div>
+<div mg-admin-menu active-portfolio="activePortfolio" swipe-event="swipeEvent"></div>
 <div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="fixed-container">
+    <div class="row">
+        <div mg-search-panel swipe-event="swipeEvent" show-modal="showModal" active-portfolio="activePortfolio">
+        </div>
+    </div>
+
+
+    <div class="row margin-top-twenty">
     <div class="view-group-panel-container">
-          <div class="portfolio-home-title">{{ activePortfolio }}</div>
-          <div class="small-text">Search by country or click the map below</div>
-          
+
             <div class="one-half-container">
               <div class="map-country-selector">
                   <div mg-country-selector countries="countries" title="Go to country" go-to-group="showCountry">
@@ -28,6 +33,7 @@
          <div class="one-third-container last" mg-pending-trademark-list pending="pending" show-modal="showModal"></div>
          
       </div>
-      <br></br>
-   
+
+</div>
+</div>
 </div>

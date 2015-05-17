@@ -1,18 +1,18 @@
 angular.module('app')
 
-	.filter('unknown', function(){
+	/*.filter('unknown', function(){
 		return function(obj){
-			console.log(obj)
-		   for (var key in obj){
-		   	console.log(key + " " + obj[key])
-		       /*if (!obj[key]) {
+			var copy = obj;
+		 	if (!obj.filingDate.stringDate)
+		 		copy.filingDate.stringDate = "Unknown";
+		 	if (!obj.expiryDate.stringDate)
+		 		copy.expiryDate.stringDate = "Unknown";
+		 	if (!obj.registrationDate.stringDate)
+		 		copy.registrationDate.stringDate = "Unknown";
 
-		       	  obj[key] = "Unknown";
-		       }*/
-		   }	
-		   return obj;
+		   return copy;
 		}
-	})
+	})*/
 	
 	.filter('createTen', function(){
 		return function(n){
