@@ -13,7 +13,6 @@ angular.module('app')
       $.openEditTrademarkModal = function(trademark){
         userService.isAdmin().then(function(){
                 trademarkModal.deactivate();
-                $filter('unknown')(trademark);
                 editTrademarkModal.activate({trademark: trademark});
                 $window.scrollTo(0, 0);
             }, function(res){
