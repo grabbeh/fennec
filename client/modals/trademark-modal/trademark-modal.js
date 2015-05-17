@@ -7,7 +7,6 @@ angular.module('app')
       
       $.closeModal = function() {
         trademarkModal.deactivate();
-        $rootScope.modal = false;
       };
           
       $.openEditTrademarkModal = function(trademark){
