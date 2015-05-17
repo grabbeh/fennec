@@ -2,7 +2,7 @@
     <div class="margin-top" ng-hide="paginatedMarks">Alas, you haven't favourited any marks yet...</div>
     <ul class="tm-list expiry-list">
         <li class="tm-list-li"  ng-repeat="tm in items track by $index">
-            <div class="hover tm-list-content" ng-click="innerShowModal(tm)" ><span mg-bold>{{ tm.mark }} </span><span> in {{ tm.country.name }} </span></div>
+            <div class="hover tm-list-content" ng-click="showModal(tm)" ><span mg-bold>{{ tm.mark }} </span><span> in {{ tm.country.name }} </span></div>
             <div class="view-icon"><a href="view/trademark/{{tm._id}}"><i class="fa fa-eye"></i></a></div>
         </li>
     </ul>

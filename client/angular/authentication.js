@@ -39,6 +39,10 @@ angular.module('app')
             $.$on('$routeChangeSuccess', function() {
               $scope.loadingView = false;
             });
+
+            $.$on('modal.activate', function(){
+                $rootScope.modal = true;
+            });
             
             $.toggleDropdownMenu = function(){
                 if (!$rootScope.dropdownMenu){
@@ -63,7 +67,6 @@ angular.module('app')
             
             $.login = function(){
                 loginModal.activate();
-                $rootScope.modal = true;
             };
             
             $.logout = function(){

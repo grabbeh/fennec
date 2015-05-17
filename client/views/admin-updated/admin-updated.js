@@ -25,10 +25,9 @@ angular.module('app')
         },
         scope: {
             activities: '=',
-            itemsPerPage: '=',
-            showModal: '&'
+            itemsPerPage: '='
         },
-        controller: function($scope) {
+        controller: function($scope, trademarkModal) {
             var $ = $scope;
             $.groupOfArrays = [];
             $.prevPage = function(pageNumber) {
@@ -53,9 +52,9 @@ angular.module('app')
                     return true;
                 }
             };
-            $.showModalWrapper = function(tm) {
-                var func = $scope.showModal();
-                func(tm);
+            $.showModal = function(trademark) {
+                trademarkModal.deactivate();
+                trademarkModal.activate({ trademark: trademark })
             }
         }
     }

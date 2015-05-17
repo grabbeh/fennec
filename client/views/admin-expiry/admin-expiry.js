@@ -8,11 +8,11 @@ angular.module('app')
             items: '=',
             showModal: '&'
         },
-         controller: function($scope) {
+         controller: function($scope, trademarkModal) {
             var $ = $scope;
-            $.innerShowModal = function(tm) {
-                var func = $.showModal();
-                func(tm);
+            $.showModal = function(trademark) {
+                trademarkModal.deactivate();
+                trademarkModal.activate({ trademark: trademark })
             }
         }
     }

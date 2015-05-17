@@ -37,8 +37,7 @@ angular.module('app')
         },
         scope: {
             paginatedMarks: '=',
-            itemsPerPage: '=',
-            showModal: '&'
+            itemsPerPage: '='
         },
         controller: function($scope) {
             var $ = $scope;
@@ -65,15 +64,7 @@ angular.module('app')
                     return true;
                 }
             };
-            $.outerShowModal = function(tm){
-                var func = $scope.showModal();
-                func(tm);
-            }
-            /*
-            this.outerShowModal = function(tm) {
-                var func = $scope.showModal();
-                func(tm);
-            }*/
+
         }
     }
 })

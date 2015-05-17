@@ -54,8 +54,8 @@
             <div class="one-half-container last last-margin-top">
                     <div ng-show="user.displayOptions.showFavourites.checked" class="standard-container shadow">
                         <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
-                    <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="favouriteMarks" items-per-page="10">
-                         <div show-modal="outerShowModal" items="items" paginated-marks="paginatedMarks" mg-admin-favourites></div>
+                    <div class="paginator" mg-paginator paginated-marks="favouriteMarks" items-per-page="10">
+                         <div items="items" paginated-marks="paginatedMarks" mg-admin-favourites></div>
                     </div> 
                 </div>
                 </div>
@@ -115,16 +115,16 @@
                 <div class="standard-container shadow">
                     <div mg-bold>Incomplete marks<i class="opaque float-right fa fa-ban fa-2x"></i>
                     </div>
-                    <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="incompleteMarks" items-per-page="10">
-                        <div show-modal="outerShowModal" mg-admin-incomplete items="items" paginated-marks="paginatedMarks"></div>
+                    <div class="paginator" mg-paginator paginated-marks="incompleteMarks" items-per-page="10">
+                        <div mg-admin-incomplete items="items" paginated-marks="paginatedMarks"></div>
                     </div>
                 </div>
              </div>
             <div ng-show="user.displayOptions.showExpiring.checked" class="one-half-container last last-margin-top">
                  <div class="standard-container shadow">
                         <div mg-bold>Upcoming expiries<i class="opaque float-right fa fa-clock-o fa-2x"></i></div>
-                        <div class="paginator" mg-paginator show-modal="showModal" paginated-marks="sortedByExpiry" items-per-page="10">
-                        <div show-modal="outerShowModal" mg-admin-expiry items="items" paginated-marks="paginatedMarks"></div>
+                        <div class="paginator" mg-paginator paginated-marks="sortedByExpiry" items-per-page="10">
+                        <div mg-admin-expiry items="items" paginated-marks="paginatedMarks"></div>
                     </div>
                     </div>
 
@@ -136,16 +136,12 @@
                 <div class="standard-container shadow">
                         <div mg-bold>Recent activity
                     </div>
-                       <div class="paginator" mg-activities-paginator show-modal="showModal" activities="activities" items-per-page="10">
+                       <div class="paginator" mg-activities-paginator activities="activities" items-per-page="10">
                     </div> 
                 </div>
             </div>
 
         </div>
-        
-            
-            
-         
     </div>
 </div>
 

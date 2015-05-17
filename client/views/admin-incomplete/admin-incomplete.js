@@ -5,14 +5,13 @@ angular.module('app')
         replace: true,
         scope: {
             paginatedMarks: '=',
-            items: '=',
-            showModal: '&'
+            items: '='
         },
-         controller: function($scope) {
+        controller: function($scope, trademarkModal) {
             var $ = $scope;
-            $.innerShowModal = function(tm) {
-                var func = $.showModal();
-                func(tm);
+            $.showModal = function(trademark) {
+                trademarkModal.deactivate();
+                trademarkModal.activate({ trademark: trademark })
             }
         }
     }

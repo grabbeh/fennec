@@ -1,27 +1,17 @@
 angular.module('app')
 .directive('mgAdminFavourites', function() {
     return {
-        //require: '^mgPaginator',
         templateUrl: "/views/admin-favourites/admin-favourites.html",
         replace: true,
         scope: {
             paginatedMarks: '=',
-            items: '=',
-            showModal: '&'
-        }/*,
-        link: function(scope, element, attrs, mgPaginatorCtrl){
-            var $ = scope;
-            $.innerShowModal = function(tm){
-                var func = mgPaginatorCtrl.outerShowModal();
-                func(tm);
-            }
-            
-        }*/,
-         controller: function($scope) {
+            items: '='
+        },
+         controller: function($scope, trademarkModal) {
             var $ = $scope;
-            $.innerShowModal = function(tm) {
-                var func = $.showModal();
-                func(tm);
+            $.showModal = function(trademark) {
+                trademarkModal.deactivate();
+                trademarkModal.activate({ trademark: trademark })
             }
         }
     }

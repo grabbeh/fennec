@@ -2,7 +2,7 @@
     <div ng-hide="activities" class="margin-top">No recently updated marks for this group of trade marks</div>
     <ul class="tm-list expiry-list">
         <li class="tm-list-li" ng-repeat="activity in items track by $index">
-            <div ng-click="showModalWrapper(activity.trademark)" class="hover tm-list-content">
+            <div ng-click="showModal(activity.trademark)" class="hover tm-list-content">
               <div><span mg-bold>{{ activity.trademark.mark }} </span><span> in {{ activity.trademark.country.name }} </span></div>
               <div> <span>{{ activity.user }} </span> on <span> {{ activity.created | date: 'longDate' }} </div>
             <div class="updated-tm-content" ng-repeat="change in activity.changes">

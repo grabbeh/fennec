@@ -11,7 +11,6 @@ angular.module('app')
             controller: function($scope) {
                 var $ = $scope;
                 this.showModal = $scope.showModal;
-                
           }
       }
 })
