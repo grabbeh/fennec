@@ -44,6 +44,10 @@ angular.module('app')
                 $rootScope.modal = true;
             });
             
+            $.$on('modal.deactivate', function(){
+                $rootScope.modal = false;
+            });
+            
             $.toggleDropdownMenu = function(){
                 if (!$rootScope.dropdownMenu){
                     $rootScope.dropdownMenu = true;
