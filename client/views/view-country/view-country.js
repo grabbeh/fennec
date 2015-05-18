@@ -51,7 +51,7 @@ angular.module('app')
             trademarkModal.activate({
                 trademark: trademark,
                 user: user
-            });
+            }, { broadcast: true });
         };
 
         $.sendMarksToServer = function(marks) {
