@@ -1,11 +1,16 @@
 angular.module('app')
 .directive('mgAdminFavourites', function() {
     return {
+        require: '^mgPaginator',
         templateUrl: "/views/admin-favourites/admin-favourites.html",
         replace: true,
         scope: {
-            paginatedMarks: '=',
+
             items: '='
+        },
+        link: function(scope, elem, attrs, mgPaginatorCtrl){
+            console.log(mgPaginatorCtrl);
+            scope.paginatedMarks = mgPaginatorCtrl.paginatedMarks;
         },
          controller: function($scope, trademarkModal) {
             var $ = $scope;
