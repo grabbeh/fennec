@@ -41,6 +41,7 @@ angular.module('app')
         },
         controller: function($scope) {
             var $ = $scope;
+            
             $.groupOfArrays = [];
             $.prevPage = function() {
                 $.pageNumber--;
