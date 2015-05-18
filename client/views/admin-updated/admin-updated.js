@@ -54,7 +54,7 @@ angular.module('app')
             };
             $.showModal = function(trademark) {
                 trademarkModal.deactivate();
-                trademarkModal.activate({ trademark: trademark })
+                trademarkModal.activate({ trademark: trademark }, { broadcast: true })
             }
         }
     }
