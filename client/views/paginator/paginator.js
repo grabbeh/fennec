@@ -42,7 +42,7 @@ angular.module('app')
         controller: function($scope) {
             var $ = $scope;
             
-            $.getData = function(){
+            this.getData = function(){
                 return $.items;
             }
             
