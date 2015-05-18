@@ -7,6 +7,9 @@ angular.module('app')
         scope: {
         },
         link: function(scope, elem, attrs, mgPaginatorCtrl){
+            if (!mgPaginatorCtrl.getData()){
+                mgPaginatorCtrl.getData();
+            }
             scope.items = mgPaginatorCtrl.getData();
             console.log(scope.items);
         },
