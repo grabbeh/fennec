@@ -185,11 +185,10 @@ angular.module('app')
                   if (tm.applicationNumber === "--"){
                   	
                       tm.issues.push("Application number unknown")
-                      console.log(tm);
+  
                   }
-		     	  if (tm.classes.length === 0){
-		     	  	console.log(tm);
-		     	  	console.log("Classes unknown");
+		     	  if (tm.classes.length === 0 || !tm.classes[0]){
+
 		     	  	tm.issues.push("Classes are unknown");
 		     	  }
 		     	  if (moment(tm.expiryDate.stringDate, "MM/DD/YYYY").year() - moment().year() > 10 ){
