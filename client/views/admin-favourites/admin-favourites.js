@@ -7,8 +7,8 @@ angular.module('app')
         scope: {
         },
         link: function(scope, elem, attrs, mgPaginatorCtrl){
-            console.log(mgPaginatorCtrl);
             scope.items = mgPaginatorCtrl.getData();
+            console.log(scope.items);
         },
          controller: function($scope, trademarkModal) {
             var $ = $scope;
