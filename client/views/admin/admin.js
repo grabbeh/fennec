@@ -64,7 +64,7 @@ angular.module('app')
                 trademarkService.getCountry($routeParams.portfolio, l.target.feature.id)
                         .then(function(res){
                             if (res.length === 0)
-                                notificationModal.activate({ error: "No trade marks in this country"}, 2)
+                                notificationModal.activate({ error: "No trade marks in this country"}, {time: 2})
                             else
                                 $location.path('/admin/country/' + $routeParams.portfolio).search('country', c);
                         })
