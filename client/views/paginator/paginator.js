@@ -42,6 +42,10 @@ angular.module('app')
         controller: function($scope) {
             var $ = $scope;
             
+            $.getData = function(){
+                return $.items;
+            }
+            
             $.groupOfArrays = [];
             $.prevPage = function() {
                 $.pageNumber--;
