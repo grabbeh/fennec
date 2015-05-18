@@ -5,13 +5,10 @@ angular.module('app')
         templateUrl: "/views/admin-favourites/admin-favourites.html",
         replace: true,
         scope: {
+            'items': '@',
+            'paginatedMarks:'@'
         },
-        link: function(scope, elem, attrs, mgPaginatorCtrl){
-            if (!mgPaginatorCtrl.getData()){
-                mgPaginatorCtrl.getData();
-            }
-            scope.items = mgPaginatorCtrl.getData();
-            console.log(scope.items);
+        link: function(scope, elem, attrs){
         },
          controller: function($scope, trademarkModal) {
             var $ = $scope;
