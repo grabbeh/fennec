@@ -47,7 +47,7 @@ angular.module('app')
                 $.trademark.comments[$.editIndex].text = text;
                 $.trademark.comments[$.editIndex].updated = new Date();
                 trademarkService.editMark($.trademark).then(function(res) {
-                    notificationModal.activate({ success: "Comment edited" }, 2);
+                    notificationModal.activate({ success: "Comment edited" }, {time: 2});
                     $.showEditButton = false;
                     $.text = "";
                 });
@@ -55,12 +55,12 @@ angular.module('app')
 
             $.deleteComment = function(comment, index) {
                 if (comment.author != $.user._id) {
-                    notificationModal.activate({ error: "Only author can delete" }, 2);
+                    notificationModal.activate({ error: "Only author can delete" }, {time: 2});
                     return;
                 }
                 $.trademark.comments.splice(index, 1);
                 trademarkService.editMark($.trademark).then(function(res) {
-                    notificationModal.activate({ success: "Comment deleted" }, 2);
+                    notificationModal.activate({ success: "Comment deleted" }, {time: 2});
                 })
             }
         }
