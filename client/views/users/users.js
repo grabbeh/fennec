@@ -8,7 +8,7 @@ angular.module('app')
         $.updateUser = function(user) {
             userService.updateUser(user)
                 .then(function() {
-                    notificationModal.activate({ success: "User updated" });
+                    notificationModal.activate({ success: "User updated" }, { time: 2 });
                 });
         };
 
@@ -16,7 +16,7 @@ angular.module('app')
             $.users.splice(index, 1);
             userService.deleteUser(user._id)
                 .then(function() {
-                    notificationModal.activate({ success: "User removed" });
+                    notificationModal.activate({ success: "User removed" }, {time: 2});
                 });
         };
 
@@ -24,9 +24,9 @@ angular.module('app')
             userService.sendInvite($.newUser)
                 .then(function(res) {
                     if (!res.error) 
-                        notificationModal.activate({ success: res.success });
+                        notificationModal.activate({ success: res.success }, {time: 2});
                     else 
-                        notificationModal.activate({error: res.error});
+                        notificationModal.activate({error: res.error}, { time: 2});
                 });
         };
 
