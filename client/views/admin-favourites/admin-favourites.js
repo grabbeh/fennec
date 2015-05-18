@@ -6,7 +6,7 @@ angular.module('app')
         replace: true,
         scope: {
             'items': '@',
-            'paginatedMarks:'@'
+            'paginatedMarks':'@'
         },
         link: function(scope, elem, attrs){
         },
