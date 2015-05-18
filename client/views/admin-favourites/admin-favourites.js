@@ -5,8 +5,6 @@ angular.module('app')
         templateUrl: "/views/admin-favourites/admin-favourites.html",
         replace: true,
         scope: {
-
-            items: '='
         },
         link: function(scope, elem, attrs, mgPaginatorCtrl){
             console.log(mgPaginatorCtrl);
