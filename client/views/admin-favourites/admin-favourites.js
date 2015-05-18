@@ -8,7 +8,7 @@ angular.module('app')
         },
         link: function(scope, elem, attrs, mgPaginatorCtrl){
             console.log(mgPaginatorCtrl);
-            scope.paginatedMarks = mgPaginatorCtrl.paginatedMarks;
+            scope.items = mgPaginatorCtrl.getData();
         },
          controller: function($scope, trademarkModal) {
             var $ = $scope;
