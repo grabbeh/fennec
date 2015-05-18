@@ -57,7 +57,7 @@ angular.module('app')
                     .then(function(data) {
                         notificationModal.activate({
                             success: "Alerts updated"
-                        })
+                        }, { time: 2 })
                         $.alert.type = "";
                         $.alert.number = "";
                         $.user = data;
