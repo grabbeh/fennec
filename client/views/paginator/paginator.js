@@ -18,10 +18,8 @@ angular.module('app')
                 }
                 if ($.groupOfArrays.length === 0)
                     $.items = false;
-                else {
+                else 
                     $.items = $.groupOfArrays[0];
-                    console.log($.items);
-                }
                 $.pageNumber = 1;
             })
 
