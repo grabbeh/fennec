@@ -185,6 +185,7 @@ angular.module('app')
                   if (tm.applicationNumber === "--"){
                   	
                       tm.issues.push("Application number unknown")
+                      console.log(tm);
                   }
 		     	  if (tm.classes.length === 0){
 		     	  	console.log(tm);
