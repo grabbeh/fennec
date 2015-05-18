@@ -18,7 +18,7 @@ angular.module('app')
                     $location.path('/home');
                 }
                 else
-                    notificationModal.activate({error: res.error});
+                    notificationModal.activate({error: res.error}, { time: 2});
               });
         }
     };
