@@ -13,19 +13,5 @@ angular.module('app')
         $.activateTrademark = function(trademark) {
             $.activeTrademark = trademark;
         };
-
-        $.openEditTrademarkModal = function(trademark) {
-            editTrademarkModal.activate({
-                trademark: trademark
-            });
-            $rootScope.modal = true;
-        };
-
-        $.deleteTrademark = function() {
-            trademarkService.deleteMark($.trademark)
-                .success(function(data) {
-                    $scope.message = data.message;
-                });
-        };
     }
 ])
