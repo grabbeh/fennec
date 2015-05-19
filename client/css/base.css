@@ -19,17 +19,18 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	overflow: hidden;
 }
 
 .unstyled-list li {
 	float: left;
-	margin-right: 10px;
+	margin: 10px;
 }
 
 .browser-bar-container {
   width: 100%;
   padding: 10px;
-  height: 11px;
+  height: 26px;
   background: #f0f0f0;
   border-radius: 7px;
 }
