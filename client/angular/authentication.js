@@ -70,7 +70,7 @@ angular.module('app')
             };
             
             $.login = function(){
-                loginModal.activate();
+                loginModal.activate({}, { broadcast: true });
             };
             
             $.logout = function(){
