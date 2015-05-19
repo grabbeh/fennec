@@ -4,7 +4,7 @@
         You haven't added any favourites yet...
       </div>
        <div class="row">
-            <div mg-search-panel swipe-event="swipeEvent" show-modal="showModal" active-portfolio="activePortfolio">
+            <div mg-search-panel swipe-event="swipeEvent" active-portfolio="activePortfolio">
             </div>
         </div>
     <div class="row margin-top-twenty">
@@ -12,8 +12,8 @@
     
     <div ng-show="favourites" class="shadow favourite-container">
           <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
-             <div class="paginator" mg-paginator paginated-marks="favourites" items-per-page="10">
-                    <div items="items" paginated-marks="paginatedMarks" mg-admin-favourites-no-modal></div>
+             <div class="paginator" mg-paginator active-trademark="activateTrademark" paginated-marks="favourites" items-per-page="10">
+                    <div items="items" active-trademark="activeTrademark" paginated-marks="paginatedMarks" mg-admin-favourites-no-modal></div>
              </div> 
       </div>
   </div>
