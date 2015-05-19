@@ -2,7 +2,7 @@ angular.module('app')
 .directive('mgAdminFavourites', function() {
     return {
         require: '^mgPaginator',
-        templateUrl: "/views/admin-favourites/admin-favourites.html",
+        templateUrl: "/views/admin-favourites-no-modal/admin-favourites-no-modal.html",
         replace: true,
         scope: {
             items: '=',
