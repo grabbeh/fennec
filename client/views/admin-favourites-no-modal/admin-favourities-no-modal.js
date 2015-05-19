@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('mgAdminFavourites', function() {
+.directive('mgAdminFavouritesNoModal', function() {
     return {
         require: '^mgPaginator',
         templateUrl: "/views/admin-favourites-no-modal/admin-favourites-no-modal.html",
