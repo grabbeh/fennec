@@ -11,17 +11,12 @@ angular.module('app')
         controller: function($scope, editTrademarkModal, notificationModal, trademarkService) {
             var $ = $scope;
             $.editTrademark = function(trademark) {
-                editTrademarkModal.activate({
-                    trademark: trademark
-                });
-                $rootScope.modal = true;
+                editTrademarkModal.activate({ trademark: trademark }, { broadcast: true });
             };
     
             $.deleteTrademark = function(trademark) {
                 trademarkService.deleteMark(trademark)
-                    .success(function(data) {
-                        notificationModal.activate({ success: data.message })
-                    });
+                    .success(function(data) { notificationModal.activate({ success: data.message }, { time: 2 }) });
             };
         }
     }
