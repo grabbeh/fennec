@@ -6,6 +6,7 @@ angular.module('app')
         transclude: true,
         link: function(scope, element, attrs, ctrl, transclude) {
             var $ = scope;
+            console.log($.paginatedMarks);
             $.$watch('paginatedMarks', function(newVal) {
                 if (!newVal) {
                     return;
