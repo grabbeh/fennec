@@ -8,6 +8,38 @@
 	font-weight:bold;
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
+
+.circle {
+	border-radius: 50%;
+	width: 10px;
+	height: 10px; 
+}
+
+.unstyled-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.browser-bar-container {
+  width: 100%;
+  padding: 10px;
+  height: 11px;
+  background: #f0f0f0;
+  border-radius: 7px;
+}
+
+.red {
+  background: red;
+}
+
+.green {
+  background: green;
+}
+
+.orange {
+  background: orange;
+}
 /* class selector */
 
 .select-boxes {
