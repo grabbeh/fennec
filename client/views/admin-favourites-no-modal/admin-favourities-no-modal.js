@@ -7,12 +7,13 @@ angular.module('app')
         scope: {
             items: '=',
             paginatedMarks:'=',
-            activeTrademark: '='
+            activeTrademark: '=?'
         },
         link: function(scope, elem, attrs){
         },
          controller: function($scope) {
             var $ = $scope;
+            console.log($.items)
             $.activateTrademark = function(trademark) {
               $.activeTrademark = trademark;
             };
