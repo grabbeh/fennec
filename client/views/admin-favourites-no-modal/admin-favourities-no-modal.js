@@ -13,7 +13,6 @@ angular.module('app')
         },
          controller: function($scope) {
             var $ = $scope;
-            console.log($.items)
             $.activateTrademark = function(trademark) {
               $.activeTrademark = trademark;
             };
