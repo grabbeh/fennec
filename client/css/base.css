@@ -21,6 +21,11 @@
 	margin: 0;
 }
 
+.unstyled-list.li {
+	float: left;
+	margin-right: 10px;
+}
+
 .browser-bar-container {
   width: 100%;
   padding: 10px;
