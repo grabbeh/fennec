@@ -12,13 +12,13 @@
     
     <div ng-show="favourites" class="shadow favourite-container">
           <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
-             <div class="paginator" mg-paginator show-modal="activateTrademark" paginated-marks="favourites" items-per-page="10">
-                         <div show-modal="outerShowModal" items="items" paginated-marks="paginatedMarks" mg-admin-favourites></div>
+             <div class="paginator" mg-paginator paginated-marks="favourites" items-per-page="10">
+                    <div items="items" paginated-marks="paginatedMarks" mg-admin-favourites-no-modal></div>
              </div> 
       </div>
   </div>
   <div class="one-third-container">
-      <div edit-trademark="openEditTrademarkModal" delete-trademark="deleteTrademark" ng-show="activeTrademark" mg-trademark-container trademark='activeTrademark' user='user'></div>
+      <div ng-show="activeTrademark" mg-trademark-container trademark='activeTrademark' user='user'></div>
   </div>
   <div class="one-third-container last last-margin-top">
       <div ng-show="activeTrademark" class="comments-container shadow">
