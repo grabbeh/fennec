@@ -29,10 +29,10 @@
 
 .browser-bar-container {
   width: 100%;
-  padding: 10px;
   height: 26px;
   background: #f0f0f0;
-  border-radius: 7px;
+  border-radius-top-right: 7px;
+  border-radius-top-left: 7px;
 }
 
 .red {
