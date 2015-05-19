@@ -21,7 +21,7 @@
 	margin: 0;
 }
 
-.unstyled-list.li {
+.unstyled-list li {
 	float: left;
 	margin-right: 10px;
 }
