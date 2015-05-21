@@ -1719,8 +1719,10 @@ body {
     margin: 0; 
     padding:0; 
     font-family:  'Karla', Arial;
-    background: #e4eff6;
     font-size: 18px;
+    background: linear-gradient(to bottom, #88bfe8 0%,#dbf6ff 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed
 }
 
 .display-none {
