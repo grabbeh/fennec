@@ -1797,7 +1797,7 @@ margin: 0px 10px 10px 0px;
 
 .header {
     width:100%;
-    background: #2D4879;
+      background: linear-gradient(to bottom, #2d4879 0%,#4c679b 100%);
     height: 40px;
     padding-top: 10px;
 }
