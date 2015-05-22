@@ -30,7 +30,7 @@ angular.module('app')
                     $.trademark.favourite = true;
                     $.user.favourites.push($.trademark._id)
                     userService.updateUser($.user).then(function(res) {
-
+                        console.log("User updated")
                     })
                 }
             }
