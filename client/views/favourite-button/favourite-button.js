@@ -22,6 +22,7 @@ angular.module('app')
                         }
                     })
                     userService.updateUser($.user).then(function(res) {
+                        console.log("User updated")
 
                     });
 
