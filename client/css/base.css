@@ -255,7 +255,11 @@
 }
 
 .margin-top-twenty {
-	padding-top: 20px !important;
+	margin-top: 20px !important;
+}
+
+.margin-bottom-twenty {
+	margin-bottom: 20px;
 }
 
 .no-margin-bottom {
