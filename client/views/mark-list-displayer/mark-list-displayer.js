@@ -4,19 +4,14 @@ angular.module('app')
     return {
         templateUrl: '/views/mark-list-displayer/mark-list-displayer.html',
         scope: {
-            marks: '=',
-            sendMarksToServer: '&'
+            listOfMarks: '=',
+            trademarks: '='
         },
         controller: function($scope, $filter, $http) {
             var $ = $scope;
 
-            $.markServerWrapper = function() {
-                var func = $.sendMarksToServer();
-                func($.marks);
-            }
-
             $.filterMarks = function(marks) {
-                $.markServerWrapper($.marks);
+                $.submitMarks($.marks);
             };
 
             $.toggleMark = function(index) {
@@ -36,6 +31,14 @@ angular.module('app')
             $.tickAll = function() {
                 $filter('tickAll')($.marks);
                 $.markServerWrapper($.marks);
+            };
+            
+            $.submitMarks = function(marks) {
+                $http.post('/api/country/' + $routeParams.portfolio + "/" + $location.search().country, {
+                        marks: $filter('extractCheckedMarks')(marks)
+                    }).success(function(trademarks) {
+                        $.trademarks = trademarks;
+                    });
             };
 
         }
