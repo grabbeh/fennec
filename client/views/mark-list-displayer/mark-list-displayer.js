@@ -11,7 +11,7 @@ angular.module('app')
             var $ = $scope;
             console.log($scope);
 
-            $.filterMarks = function(marks) {
+            $.filterMarks = function() {
                 $.submitMarks($.listOfMarks);
             };
 
