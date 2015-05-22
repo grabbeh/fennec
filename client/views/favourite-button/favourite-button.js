@@ -8,6 +8,9 @@ angular.module('app')
             trademark: '=',
             user: '='
         },
+        link: function(scope, elem, attrs){
+            console.log(scope.user){
+        },
         controller: function($scope, userService) {
             var $ = $scope;
             $.toggleFavourite = function() {
