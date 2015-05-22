@@ -4,16 +4,16 @@
             <div mg-search-panel swipe-event="swipeEvent" active-portfolio="activePortfolio">
             </div>
     </div>
-    
-    <div class="view-group-panel-container shadow margin-top-twenty">
      <div class="row">
+    <div class="view-group-panel-container shadow">
+    
          <div class="one-half-container">
              
         <div class="portfolio-home-title">{{ activePortfolio }}</div>
         <div class="view-group-title">{{ country }}</div>
         </div>
 
-    </div>
+   
         
         <div class="view-country-map" ng-show="trademark.country.coordinates">
            <img class="country-img" ng-src="//api.tiles.mapbox.com/v3/grabbeh.gch0omlb/{{trademark.country.coordinates[1]}},{{trademark.country.coordinates[0]}},3/900x300.png">
@@ -48,7 +48,7 @@
     </div>
         
     </div>
-</div>
+
       <!-- map -->
       
       <div ng-show="registered || pending || published || nocontent" class="trademark-container">
@@ -58,6 +58,8 @@
          <div class="one-third-container" mg-published-trademark-list published="published" show-modal="showModal"></div>
          <div class="one-third-container last" mg-pending-trademark-list pending="pending" show-modal="showModal"></div>
       </div>
-      <br></br>
+      </div>
+      </div>
    
 </div>
+
