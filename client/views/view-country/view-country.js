@@ -48,19 +48,7 @@ angular.module('app')
         $.showModal = function(trademark) {
             $rootScope.modal = true;
             trademarkModal.deactivate();
-            trademarkModal.activate({
-                trademark: trademark,
-                user: user
-            }, { broadcast: true });
+            trademarkModal.activate({ trademark: trademark }, { broadcast: true });
         };
-
-        $.sendMarksToServer = function(marks) {
-            $http.post('/api/country/' + $routeParams.portfolio + "/" + $location.search().country, {
-                    marks: $filter('extractCheckedMarks')(marks)
-                }).success(function(trademarks) {
-                    $.trademarks = trademarks;
-                });
-        };
-
     }
 ])
