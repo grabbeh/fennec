@@ -9,7 +9,6 @@ angular.module('app')
             user: '='
         },
         link: function(scope, elem, attrs){
-            console.log(scope.user)
         },
         controller: function($scope, userService) {
             var $ = $scope;
@@ -17,21 +16,15 @@ angular.module('app')
                 if ($.trademark.favourite) {
                     $.trademark.favourite = false;
                     $.user.favourites.forEach(function(fav, i) {
-                        if (fav === $.trademark._id) {
+                        if (fav === $.trademark._id) 
                             $.user.favourites.splice(i, 1);
-                        }
                     })
-                    userService.updateUser($.user).then(function(res) {
-                        console.log("User updated")
-
-                    });
+                    userService.updateUser($.user).then(function(res) {});
 
                 } else {
                     $.trademark.favourite = true;
                     $.user.favourites.push($.trademark._id)
-                    userService.updateUser($.user).then(function(res) {
-                        console.log("User updated")
-                    })
+                    userService.updateUser($.user).then(function(res) {})
                 }
             }
         }
