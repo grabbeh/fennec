@@ -9,7 +9,7 @@ angular.module('app')
             user: '='
         },
         link: function(scope, elem, attrs){
-            console.log(scope.user){
+            console.log(scope.user)
         },
         controller: function($scope, userService) {
             var $ = $scope;
