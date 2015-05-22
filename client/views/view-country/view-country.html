@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             
-            <div class="one-half-container">
+          <div class="one-half-container">
             <div mg-bold>Summary</div>
             <div class="stat-header">{{ trademarks.length }}</div>
             <div class="stat-subtitle">Total</div>
@@ -42,9 +42,10 @@
             </div>
            
     <div class="view-country-line"></div>   
-    <div class="hover margin-bottom-twenty" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks
- 
+    <div class="margin-bottom-twenty">
+    <div class="hover" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks</div>
         <div ng-show="showMarkList" mg-mark-list-displayer list-of-marks="listOfMarks" trademarks="trademarks"></div>
+    
     </div>
     </div>
         
