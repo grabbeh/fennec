@@ -19,7 +19,7 @@ angular.module('app')
 
         trademarkService.getListOfMarks($routeParams.portfolio, $location.search().country)
             .then(function(list) {
-                $.marks = list;
+                $.listOfMarks = list;
             });
 
         $.$watch('trademarks', function(data) {
