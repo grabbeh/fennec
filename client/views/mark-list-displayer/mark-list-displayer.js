@@ -9,6 +9,7 @@ angular.module('app')
         },
         controller: function($scope, $filter, $http) {
             var $ = $scope;
+            console.log($scope);
 
             $.filterMarks = function(marks) {
                 $.submitMarks($.listOfMarks);
