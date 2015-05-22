@@ -1,6 +1,6 @@
 <div>
      <ul class="mark-list">
-            <li ng-class="{  activemark: mark.checked, inactivemark: !mark.checked }" class="hover" ng-repeat="mark in marks">
+            <li ng-class="{  activemark: mark.checked, inactivemark: !mark.checked }" class="hover" ng-repeat="mark in listOfMarks">
                 <span style="display: none"><input ng-change="filterMarks()" class="checkbox" ng-model="mark.checked" type="checkbox" value="0"></span><span ng-click="toggleMark($index)">{{ mark.name }}</span>
             </li>
       </ul>
