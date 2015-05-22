@@ -11,26 +11,26 @@ angular.module('app')
             var $ = $scope;
 
             $.filterMarks = function(marks) {
-                $.submitMarks($.marks);
+                $.submitMarks($.listOfMarks);
             };
 
             $.toggleMark = function(index) {
-                angular.forEach($.marks, function(mark, i) {
+                angular.forEach($.listOfMarks, function(mark, i) {
                     if (index === i) {
                         mark.checked = !mark.checked;
                     }
                 })
-                $.markServerWrapper($.marks);
+                $.markServerWrapper($.listOfMarks);
             }
 
             $.untickAll = function() {
-                $filter('untickAll')($.marks);
-                $.submitMarks($.marks);
+                $filter('untickAll')($.listOfMarks);
+                $.submitMarks($.listOfMarks);
             }
 
             $.tickAll = function() {
-                $filter('tickAll')($.marks);
-                $.submitMarks($.marks);
+                $filter('tickAll')($.listOfMarks);
+                $.submitMarks($.listOfMarks);
             };
             
             $.submitMarks = function(marks) {
