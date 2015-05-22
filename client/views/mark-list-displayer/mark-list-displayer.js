@@ -7,7 +7,7 @@ angular.module('app')
             listOfMarks: '=',
             trademarks: '='
         },
-        controller: function($scope, $filter, $http) {
+        controller: function($scope, $filter, $http, $routeParams) {
             var $ = $scope;
             console.log($scope);
 
