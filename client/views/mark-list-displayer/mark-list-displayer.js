@@ -9,7 +9,6 @@ angular.module('app')
         },
         controller: function($scope, $filter, $http, $routeParams, $location) {
             var $ = $scope;
-            console.log($scope);
 
             $.filterMarks = function() {
                 $.submitMarks($.listOfMarks);
