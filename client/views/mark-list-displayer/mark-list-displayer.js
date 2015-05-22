@@ -25,12 +25,12 @@ angular.module('app')
 
             $.untickAll = function() {
                 $filter('untickAll')($.marks);
-                $.markServerWrapper($.marks);
+                $.submitMarks($.marks);
             }
 
             $.tickAll = function() {
                 $filter('tickAll')($.marks);
-                $.markServerWrapper($.marks);
+                $.submitMarks($.marks);
             };
             
             $.submitMarks = function(marks) {
