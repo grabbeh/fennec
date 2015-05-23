@@ -44,6 +44,10 @@ angular.module('app')
                 $rootScope.modal = true;
             });
             
+            $.$on('modal.deactivate', function(){
+                $rootScope.modal = false;
+            });
+            
             $.toggleDropdownMenu = function(){
                 if (!$rootScope.dropdownMenu){
                     $rootScope.dropdownMenu = true;
@@ -66,7 +70,7 @@ angular.module('app')
             };
             
             $.login = function(){
-                loginModal.activate();
+                loginModal.activate({}, { broadcast: true });
             };
             
             $.logout = function(){

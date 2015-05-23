@@ -37,10 +37,16 @@ angular.module('app')
         },
         scope: {
             paginatedMarks: '=',
-            itemsPerPage: '='
+            itemsPerPage: '=',
+            activeTrademark: '=?'
         },
         controller: function($scope) {
             var $ = $scope;
+            
+            this.getData = function(){
+                return $.items;
+            }
+            
             $.groupOfArrays = [];
             $.prevPage = function() {
                 $.pageNumber--;

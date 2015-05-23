@@ -12,7 +12,7 @@ angular.module('app')
             var $ = $scope;
             $.showModal = function(trademark) {
                 trademarkModal.deactivate();
-                trademarkModal.activate({ trademark: trademark })
+                trademarkModal.activate({ trademark: trademark }, { broadcast: true })
             }
         }
     }

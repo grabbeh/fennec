@@ -8,6 +8,44 @@
 	font-weight:bold;
 	src:local('Karla'),local('Karla'),url(../fonts/karla-bold-webfont.woff) format('woff');
 }
+
+.circle {
+	border-radius: 50%;
+	width: 10px;
+	height: 10px; 
+}
+
+.unstyled-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.unstyled-list li {
+	float: left;
+	margin: 10px 0 10px 10px;
+}
+
+.browser-bar-container {
+  width: 100%;
+  height: 26px;
+  background: #f0f0f0;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+}
+
+.red {
+  background: red;
+}
+
+.green {
+  background: green;
+}
+
+.orange {
+  background: orange;
+}
 /* class selector */
 
 .select-boxes {
@@ -217,7 +255,11 @@
 }
 
 .margin-top-twenty {
-	padding-top: 20px !important;
+	margin-top: 20px !important;
+}
+
+.margin-bottom-twenty {
+	margin-bottom: 20px;
 }
 
 .no-margin-bottom {
@@ -524,6 +566,10 @@ select:focus, textarea:focus, input:focus{
     outline: 0;
 }
 
+input {
+	font-family: 'Karla';
+}
+
 .center {
 	margin: 0 auto;
 }
@@ -748,11 +794,11 @@ input::-webkit-inner-spin-button {
     padding: 20px;
     background: white;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .view-group-title {
-    font-size: 20px;
-    font-weight: bold;
+   font-weight: bold;
 }
 
 .view-group-subtitle {
@@ -904,7 +950,6 @@ input::-webkit-inner-spin-button {
 .admin-panel-title {
     font-size: 30px;
     margin-top: 8px;
-    font-weight: bold;
 }
 
 .admin-panel-holder {
@@ -1007,7 +1052,7 @@ input::-webkit-inner-spin-button {
 }
 
 .stat-header {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 .stat-subtitle {
@@ -1030,6 +1075,7 @@ input::-webkit-inner-spin-button {
     background: white;
     width: 1000px;
     margin: 0 auto;
+    margin-top: 40px;
     overflow: hidden;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
@@ -1085,11 +1131,15 @@ input::-webkit-inner-spin-button {
 }
 
 .screenshot {
-    margin-top: 70px;
-    margin-bottom: 50px;
+    
     width: 100%;
     border: 0;
     vertical-align: bottom;
+}
+
+.screenshot-container {
+   margin-top: 70px;
+    margin-bottom: 50px;	
 }
 
 .home-title {
@@ -1100,7 +1150,7 @@ input::-webkit-inner-spin-button {
 }
 
 .portfolio-home-title {
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .portfolio-subtitle {
@@ -1192,7 +1242,7 @@ input::-webkit-inner-spin-button {
 
 .group-mark-select {  
     height: 45px;
-    width: 99%;
+    width: 99.5%;
     margin: 0;
     font-family: 'Karla';
     padding-left: 10px;	
@@ -1677,8 +1727,10 @@ body {
     margin: 0; 
     padding:0; 
     font-family:  'Karla', Arial;
-    background: #e4eff6;
     font-size: 18px;
+    background: linear-gradient(to bottom, #88bfe8 0%,#dbf6ff 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed
 }
 
 .display-none {
@@ -1752,7 +1804,7 @@ margin: 0px 10px 10px 0px;
 
 .header {
     width:100%;
-    background: #2D4879;
+      background: linear-gradient(to bottom, #2d4879 0%,#4c679b 100%);
     height: 40px;
     padding-top: 10px;
 }
@@ -1985,7 +2037,7 @@ margin-top: 20px;
     }
 
 .standard-container {
-    padding: 10px;
+    padding: 15px;
 }
     
     .country-list {

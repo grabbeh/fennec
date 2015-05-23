@@ -22,10 +22,7 @@ angular.module('app')
         $.showModal = function(trademark) {
             $rootScope.modal = true;
             trademarkModal.deactivate();
-            trademarkModal.activate({
-                trademark: trademark,
-                user: user
-            });
+            trademarkModal.activate({ trademark: trademark }, {broadcast: true});
         };
 
         $.showEditGroupModal = function() {
@@ -35,7 +32,7 @@ angular.module('app')
                 trademark: $.trademarks[0],
                 mark: mark,
                 portfolio: $routeParams.portfolio
-            });
+            }, { broadcast: true });
         };
 
         $.goToGroup = function(group) {
@@ -57,7 +54,7 @@ angular.module('app')
             var id = $.trademarks[0].mark;
             uploadImageModal.activate({
                 id: id
-            });
+            }, { broadcast: true });
         };
 
         $.$on('country.click', function(e, l) {

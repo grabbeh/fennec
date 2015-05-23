@@ -4,22 +4,20 @@ angular.module('app')
     return {
         scope: {
             trademark: '=',
-            user: '=',
-            editTrademark: '&',
-            deleteTrademark: '&'
+            user: '='
         },
         replace: true,
         templateUrl: '/views/trademark-container/trademark-container.html',
-        controller: function($scope) {
+        controller: function($scope, editTrademarkModal, notificationModal, trademarkService) {
             var $ = $scope;
-            $.editTrademarkWrapper = function(trademark) {
-                var func = $scope.editTrademark();
-                func(trademark);
-            }
-            $.deleteTrademarkWrapper = function(trademark) {
-                var func = $scope.deleteTrademark();
-                func(trademark);
-            }
+            $.editTrademark = function(trademark) {
+                editTrademarkModal.activate({ trademark: trademark }, { broadcast: true });
+            };
+    
+            $.deleteTrademark = function(trademark) {
+                trademarkService.deleteMark(trademark)
+                    .success(function(data) { notificationModal.activate({ success: data.message }, { time: 2 }) });
+            };
         }
     }
 })

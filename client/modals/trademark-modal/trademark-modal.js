@@ -7,17 +7,15 @@ angular.module('app')
       
       $.closeModal = function() {
         trademarkModal.deactivate();
-        $rootScope.modal = false;
       };
           
       $.openEditTrademarkModal = function(trademark){
         userService.isAdmin().then(function(){
                 trademarkModal.deactivate();
-                $filter('unknown')(trademark);
-                editTrademarkModal.activate({trademark: trademark});
+                editTrademarkModal.activate({trademark: trademark}, {broadcast: true});
                 $window.scrollTo(0, 0);
             }, function(res){
-                notificationModal.activate({ error: res.data.message});
+                notificationModal.activate({ error: res.data.message}, {time: 2});
             })
           }
     
@@ -25,10 +23,10 @@ angular.module('app')
         userService.isAdmin().then(function(res){
             trademarkService.deleteMark(trademark)
                .success(function(data){
-                    notificationModal.activate({ success: data.message })
+                    notificationModal.activate({ success: data.message }, { time: 2 })
                })
             }, function(res){
-                notificationModal.activate({error: res.data.message });
+                notificationModal.activate({error: res.data.message }, { time: 2});
             })
         }
     }])

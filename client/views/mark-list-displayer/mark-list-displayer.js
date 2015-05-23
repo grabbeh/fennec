@@ -4,38 +4,41 @@ angular.module('app')
     return {
         templateUrl: '/views/mark-list-displayer/mark-list-displayer.html',
         scope: {
-            marks: '=',
-            sendMarksToServer: '&'
+            listOfMarks: '=',
+            trademarks: '='
         },
-        controller: function($scope, $filter, $http) {
+        controller: function($scope, $filter, $http, $routeParams, $location) {
             var $ = $scope;
 
-            $.markServerWrapper = function() {
-                var func = $.sendMarksToServer();
-                func($.marks);
-            }
-
-            $.filterMarks = function(marks) {
-                $.markServerWrapper($.marks);
+            $.filterMarks = function() {
+                $.submitMarks($.listOfMarks);
             };
 
             $.toggleMark = function(index) {
-                angular.forEach($.marks, function(mark, i) {
+                angular.forEach($.listOfMarks, function(mark, i) {
                     if (index === i) {
                         mark.checked = !mark.checked;
                     }
                 })
-                $.markServerWrapper($.marks);
+                $.markServerWrapper($.listOfMarks);
             }
 
             $.untickAll = function() {
-                $filter('untickAll')($.marks);
-                $.markServerWrapper($.marks);
+                $filter('untickAll')($.listOfMarks);
+                $.submitMarks($.listOfMarks);
             }
 
             $.tickAll = function() {
-                $filter('tickAll')($.marks);
-                $.markServerWrapper($.marks);
+                $filter('tickAll')($.listOfMarks);
+                $.submitMarks($.listOfMarks);
+            };
+            
+            $.submitMarks = function(marks) {
+                $http.post('/api/country/' + $routeParams.portfolio + "/" + $location.search().country, {
+                        marks: $filter('extractCheckedMarks')(marks)
+                    }).success(function(trademarks) {
+                        $.trademarks = trademarks;
+                    });
             };
 
         }

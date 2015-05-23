@@ -4,7 +4,7 @@ Fennec
 
 **Fennec** is a tool you can use to visualise and analyse your trade mark portfolio (on the assumption you have one!). You can also allow non-legal types (PR/design teams) to check whether you are registered in a particular country to allow them to use appropriate trade marks ('R'/'TM' etc). A working demo is [here](https://tryfennec.com).
 
-Here's what the admin panel used to look like (it's been updated subsequently and I haven't been bothered to include a new screenshot here!):
+Here's what the admin panel used to look like (it's been rejigged a little):
 
 ![example](screenshot.png)
 
@@ -18,7 +18,7 @@ As a preliminary step you will also need Node.js installed. Additionally, the ap
 
 To get a copy of the code on your system just `git clone https://github.com/grabbeh/fennec` and then in the home directory `npm install` to install the dependencies. Once the importing process has been completed, you can `node app` in the home directory and go to `http://localhost:2002` where you will be asked to create an account (this should be an admin account). From that point, you will be taken to `/select-portfolio` where you can surprisingly, select your portfolio for viewing.
 
-To actually import trade marks you should create an account, then go to `/upload` to upload an .xlxs spreadsheet. This requires the columns to be in the following order at this moment in time so you should amend your portfolio as necessary (column headers don't actually matter, only the order):
+To import trade marks you should create an account, then go to `/upload` to upload an .xlxs spreadsheet. This requires the columns to be in the following order at this moment in time so you should amend your portfolio as necessary (column headers don't actually matter, only the order):
 
     Country | Mark | Classes | Filing Date | App. No. | Reg. Date | Reg. No. | Status | Expiry Date
 
@@ -39,6 +39,3 @@ In addition to the packages listed in `package.json` use is also made of:
 - https://github.com/mledoze/countries for the purposes of ISO codes and country coordinates. This is licensed under http://opendatacommons.org/licenses/odbl/1.0/. 
 - Geojson for the world is from https://github.com/johan/world.geo.json.
 
-**Licence**
-
-If I thought anyone looked at this page, I'd include a licence!
