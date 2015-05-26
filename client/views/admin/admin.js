@@ -49,10 +49,8 @@ angular.module('app')
             $.allTrademarks = trademarks;
             $.favouriteMarks = $filter('extractFavourites')(trademarks);
             $.user = user;
-            $.marks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
-            $.marks.unshift({
-                name: "ALL MARKS"
-            });
+            $.listOfMarks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
+            $.listOfMarks.unshift({ name: "ALL MARKS"});
             $.chart = barChartData;
             $.options = barChartOptions;
             $.activities = activities;
@@ -85,7 +83,7 @@ angular.module('app')
                 chartService.barChartData($routeParams.portfolio, group.name).then(function(barChartData) {
                     $.chart = barChartData;
                 });
-                $.marks = $filter('unTickAllExceptSelected')($.marks, group.name);
+                $.listOfMarks = $filter('unTickAllExceptSelected')($.listOfMarks, group.name);
             };
 
             $.showCountry = function(country) {
