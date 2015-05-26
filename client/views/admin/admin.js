@@ -110,15 +110,6 @@ angular.module('app')
                 return $.expiryForm.$valid;
             };
 
-            $.sendMarksToServer = function(marks) {
-                $http.post('/api/world/' + $routeParams.portfolio, {
-                        marks: $filter('extractCheckedMarks')(marks)
-                    })
-                    .success(function(world) {
-                        $.geojson = world;
-                    });
-            };
-
             $.goToGroup = function(group) {
                 $location.path('/admin/group/' + $routeParams.portfolio).search('group', group.name);
             };
