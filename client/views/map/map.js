@@ -6,18 +6,12 @@ angular.module('app')
         $.activePortfolio = $routeParams.portfolio;
         $.countries = $filter('orderBy')(countryData, 'name');
         $.geojson = world;
-        $.marks = $filter('groupByMarks')(trademarks);
-        $.marks.unshift({
-            name: "ALL MARKS"
-        });
+        $.listOfMarks = $filter('groupByMarks')(trademarks);
+        $.listOfMarks.unshift({ name: "ALL MARKS" });
 
         $.sendMarksToServer = function(marks) {
-            $http.post('/api/world/' + $routeParams.portfolio, {
-                    marks: $filter('extractCheckedMarks')(marks)
-                })
-                .success(function(world) {
-                    $.geojson = world;
-                });
+            $http.post('/api/world/' + $routeParams.portfolio, { marks: $filter('extractCheckedMarks')(marks) })
+                .success(function(world) { $.geojson = world; });
         };
 
         $.$on('country.click', function(e, l) {
@@ -53,7 +47,6 @@ angular.module('app')
             $.nocontent = true;
             _.each($.geojson, function(feature) {
                 if (country.alpha3 === feature.id) {
-
                     var tms = feature.properties.trademarks;
                     $.country = feature.properties.name;
                     if (tms) {
@@ -69,12 +62,8 @@ angular.module('app')
             });
         };
         $.showModal = function(trademark) {
-            $rootScope.modal = true;
             trademarkModal.deactivate();
-            trademarkModal.activate({
-                trademark: trademark,
-                user: user
-            });
+            trademarkModal.activate({ trademark: trademark }, { broadcast: true });
         };
 
     }
