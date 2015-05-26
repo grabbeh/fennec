@@ -37,8 +37,10 @@ angular.module('app')
             $.submitMarks = function(marks) {
                 console.log(marks);
                 var baseurl = "/api";
-                if ($.geojson)
+                if ($.geojson){
                     var url = baseurl + '/world/' + $routeParams.portfolio;
+                    console.log($.geojson);
+                }
                 if ($.trademarks)
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
                 
