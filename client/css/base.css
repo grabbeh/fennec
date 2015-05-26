@@ -798,8 +798,7 @@ input::-webkit-inner-spin-button {
 }
 
 .view-group-title {
-   margin-bottom: 10px;
-   font-size: 25px;
+   font-weight: bold;
 }
 
 .view-group-subtitle {
