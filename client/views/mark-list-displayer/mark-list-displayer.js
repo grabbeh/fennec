@@ -41,8 +41,10 @@ angular.module('app')
                     var url = baseurl + '/world/' + $routeParams.portfolio;
                     console.log("Geojson detected");
                 }
-                if ($.trademarks)
+                if ($.trademarks){
+                    console.log($.trademarks);
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
+                }
                 console.log(url);
                 $http.post(url, { marks: $filter('extractCheckedMarks')(marks)})
                     .success(function(res) { console.log(res);$.trademarks = $.geojson = res; });
