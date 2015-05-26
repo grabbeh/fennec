@@ -43,7 +43,7 @@ angular.module('app')
                 }
                 if ($.trademarks)
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
-                
+                console.log(url);
                 $http.post(url, { marks: $filter('extractCheckedMarks')(marks)})
                     .success(function(res) { console.log(res);$.trademarks = $.geojson = res; });
             };
