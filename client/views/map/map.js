@@ -1,7 +1,7 @@
 angular.module('app')
 
-.controller("mapCtrl", ['$scope', 'countryData', 'user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal',
-    function($scope, countryData, user, $routeParams, $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal) {
+.controller("mapCtrl", ['$scope', 'countryData', 'user', '$routeParams', '$filter', '$rootScope', 'world', 'trademarks', '$http', 'editTrademarkModal', 'trademarkModal', 'notificationModal',
+    function($scope, countryData, user, $routeParams, $filter, $rootScope, world, trademarks, $http, editTrademarkModal, trademarkModal, notificationModal) {
         var $ = $scope;
         $.activePortfolio = $routeParams.portfolio;
         $.countries = $filter('orderBy')(countryData, 'name');
@@ -18,7 +18,6 @@ angular.module('app')
             $.registered = false;
             $.pending = false;
             $.published = false;
-            $.nocontent = true;
             $.$apply(function() {
                 $.country = l.target.feature.properties.name;
                 var tms = l.target.feature.properties.trademarks;
@@ -33,6 +32,9 @@ angular.module('app')
                     if (tms.Pending)
                         $.pending = tms.Pending;
                 }
+                else {
+                     notificationModal.activate({ error: "No trade marks in this country"}, {time: 2});
+                }
 
             });
         });
@@ -44,7 +46,6 @@ angular.module('app')
             $.registered = false;
             $.pending = false;
             $.published = false;
-            $.nocontent = true;
             _.each($.geojson, function(feature) {
                 if (country.alpha3 === feature.id) {
                     var tms = feature.properties.trademarks;
@@ -57,6 +58,9 @@ angular.module('app')
                             $.published = tms.Published;}
                         if (tms.Pending){
                             $.pending = tms.Pending;}
+                    }
+                    else {
+                        notificationModal.activate({ error: "No trade marks in this country"}, {time: 2});
                     }
                 }
             });
