@@ -5,7 +5,8 @@ angular.module('app')
         templateUrl: '/views/mark-list-displayer/mark-list-displayer.html',
         scope: {
             listOfMarks: '=',
-            trademarks: '='
+            trademarks: '=?',
+            geojson: '=?'
         },
         controller: function($scope, $filter, $http, $routeParams, $location) {
             var $ = $scope;
@@ -20,7 +21,7 @@ angular.module('app')
                         mark.checked = !mark.checked;
                     }
                 })
-                $.markServerWrapper($.listOfMarks);
+                $.submitMarks($.listOfMarks);
             }
 
             $.untickAll = function() {
@@ -34,11 +35,14 @@ angular.module('app')
             };
             
             $.submitMarks = function(marks) {
-                $http.post('/api/country/' + $routeParams.portfolio + "/" + $location.search().country, {
-                        marks: $filter('extractCheckedMarks')(marks)
-                    }).success(function(trademarks) {
-                        $.trademarks = trademarks;
-                    });
+                var baseurl = "/api/";
+                if (scope.geojson)
+                    var url = baseurl + '/world/' + $routeParams.portfolio;
+                if (scope.trademarks)
+                    var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
+                
+                $http.post(url, { marks: $filter('extractCheckedMarks')(marks)})
+                    .success(function(res) { $.trademarks = $.geojson = res; });
             };
 
         }
