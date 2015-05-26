@@ -36,15 +36,10 @@ angular.module('app')
             
             $.submitMarks = function(marks) {
                 var baseurl = "/api";
-                if ($.geojson){
+                if ($.geojson)
                     var url = baseurl + '/world/' + $routeParams.portfolio;
-                    console.log("Geojson detected");
-                }
-                if ($.trademarks){
-                    console.log("Trademarks detected");
+                if ($.trademarks)
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
-                }
-                console.log(url);
                 $http.post(url, { marks: $filter('extractCheckedMarks')(marks)})
                     .success(function(res) { 
                         if ($.geojson) 
