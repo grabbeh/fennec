@@ -19,7 +19,7 @@
           <div mg-clear></div>
 
           <div class="hover show-mark-list" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks</div>
-          <div ng-show="showMarkList" mg-mark-list-displayer send-marks-to-server="sendMarksToServer" marks="marks"></div>
+          <div ng-show="showMarkList" mg-mark-list-displayer geojson="geojson" list-of-marks="listOfMarks"></div>
 
     
       <div mg-map id="map" geojson="geojson"></div>
