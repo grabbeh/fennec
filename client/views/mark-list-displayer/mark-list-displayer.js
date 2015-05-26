@@ -36,9 +36,9 @@ angular.module('app')
             
             $.submitMarks = function(marks) {
                 var baseurl = "/api/";
-                if (scope.geojson)
+                if ($.geojson)
                     var url = baseurl + '/world/' + $routeParams.portfolio;
-                if (scope.trademarks)
+                if ($.trademarks)
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
                 
                 $http.post(url, { marks: $filter('extractCheckedMarks')(marks)})
