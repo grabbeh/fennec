@@ -39,7 +39,7 @@ angular.module('app')
                 var baseurl = "/api";
                 if ($.geojson){
                     var url = baseurl + '/world/' + $routeParams.portfolio;
-                    console.log($.geojson);
+                    console.log("Geojson detected");
                 }
                 if ($.trademarks)
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
