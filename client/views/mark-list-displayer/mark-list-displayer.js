@@ -35,6 +35,7 @@ angular.module('app')
             };
             
             $.submitMarks = function(marks) {
+                console.log(marks);
                 var baseurl = "/api";
                 if ($.geojson)
                     var url = baseurl + '/world/' + $routeParams.portfolio;
@@ -42,7 +43,7 @@ angular.module('app')
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
                 
                 $http.post(url, { marks: $filter('extractCheckedMarks')(marks)})
-                    .success(function(res) { $.trademarks = $.geojson = res; });
+                    .success(function(res) { console.log(res);$.trademarks = $.geojson = res; });
             };
 
         }
