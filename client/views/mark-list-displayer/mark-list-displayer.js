@@ -42,7 +42,7 @@ angular.module('app')
                     console.log("Geojson detected");
                 }
                 if ($.trademarks){
-                    console.log($.trademarks);
+                    console.log("Trademarks detected");
                     var url = baseurl + '/country/' + $routeParams.portfolio + "/" + $location.search().country;
                 }
                 console.log(url);
