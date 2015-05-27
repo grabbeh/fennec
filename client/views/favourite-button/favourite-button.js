@@ -12,6 +12,7 @@ angular.module('app')
         },
         controller: function($scope, userService) {
             var $ = $scope;
+            console.log($.user);
             $.toggleFavourite = function() {
                 console.log($.trademark);
                 if ($.trademark.favourite) {
@@ -28,7 +29,9 @@ angular.module('app')
                     console.log("Not previously favourited");
                     $.trademark.favourite = true;
                     $.user.favourites.push($.trademark._id)
-                    userService.updateUser($.user).then(function(res) {})
+                    userService.updateUser($.user).then(function(res) {
+                        console.log("User updated");
+                    })
                 }
             }
         }
