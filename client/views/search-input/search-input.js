@@ -12,7 +12,7 @@ angular.module('app')
                 $http.post('/api/search', { query: $.query })
                     .success(function(data) {
                         if (data.length === 0) {
-                            notificationModal.activate({ error: "No results" })
+                            notificationModal.activate({ error: "No results" }, { time: 2 })
                             $.searchResults = false;
                         } else 
                             $.searchResults = data;
