@@ -28,7 +28,7 @@ var User = new Schema({
                 name: "Expiring marks",
                 checked: true
             },
-            showActivity: {
+            showActivities: {
   
                 name: "Activities",
                 checked: true
