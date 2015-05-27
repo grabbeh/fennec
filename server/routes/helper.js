@@ -163,8 +163,11 @@ exports.amendTrademark = function(tm, fn){
 		tm.expiryDate.DDate = new Date(moment(tm.expiryDate, 'MM-DD-YYYY')).toISOString();
 	}
 	Trademark.findOne({_id: exposeId(tm) }, function(err, oldTm){
+		if (err)
+			console.log(err);
 		oldTm = tm;
-	}, fn);
+		oldTm.save(fn);
+	});
 }
 
 exports.deleteTrademark = function(id, fn){
