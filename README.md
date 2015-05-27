@@ -6,7 +6,7 @@ Fennec
 
 Here's what the admin panel used to look like (it's been rejigged a little):
 
-![example](screenshot.png)
+![example](/client/images/screenshot.png)
 
 As a preliminary step you will also need Node.js installed. Additionally, the app uses 
 
