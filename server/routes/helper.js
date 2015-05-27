@@ -162,7 +162,9 @@ exports.amendTrademark = function(tm, fn){
 		tm.registrationDate.stringDate = tm.expiryDate;
 		tm.expiryDate.DDate = new Date(moment(tm.expiryDate, 'MM-DD-YYYY')).toISOString();
 	}
-	Trademark.findOneAndUpdate({_id: exposeId(tm) }, tm, fn)
+	Trademark.findOne({_id: exposeId(tm) }, function(err, oldTm){
+		oldTm = tm;
+	}, fn);
 }
 
 exports.deleteTrademark = function(id, fn){
