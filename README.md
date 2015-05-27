@@ -4,7 +4,7 @@ Fennec
 
 **Fennec** is a tool you can use to visualise and analyse your trade mark portfolio (on the assumption you have one!). You can also allow non-legal types (PR/design teams) to check whether you are registered in a particular country to allow them to use appropriate trade marks ('R'/'TM' etc). A working demo is [here](https://tryfennec.com).
 
-Here's what the admin panel used to look like (it's been rejigged a little):
+Here's what the admin panel looks like:
 
 ![example](/client/images/screenshot.png)
 
