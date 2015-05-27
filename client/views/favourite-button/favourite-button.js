@@ -23,7 +23,9 @@ angular.module('app')
                             $.user.favourites.splice(i, 1);
                         }
                     })
-                    userService.updateUser($.user).then(function(res) {});
+                    userService.updateUser($.user).then(function(res) {
+                        console.log("User updated and favourite removed")
+                    });
 
                 } else {
                     console.log("Not previously favourited");
