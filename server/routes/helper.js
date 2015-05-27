@@ -165,7 +165,10 @@ exports.amendTrademark = function(tm, fn){
 	Trademark.findOne({_id: exposeId(tm) }, function(err, oldTm){
 		if (err)
 			console.log(err);
-		oldTm = tm;
+		
+		for (var prop in tm){
+			oldTm[prop] = tm[prop];
+		}
 		oldTm.save(fn);
 	});
 }
