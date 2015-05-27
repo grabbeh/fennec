@@ -13,14 +13,17 @@ angular.module('app')
         controller: function($scope, userService) {
             var $ = $scope;
             console.log($.user);
+            console.log($.user.favourites.length);
             $.toggleFavourite = function() {
                 console.log($.trademark);
                 if ($.trademark.favourite) {
                     $.trademark.favourite = false;
                     $.user.favourites.forEach(function(fav, i) {
                         if (fav === $.trademark._id) {
+                            console.log($.trademark._id);
                             console.log("Favourite removed from user array");
                             $.user.favourites.splice(i, 1);
+                            console.log("User favourites" + " " + $.user.favourites.length);
                         }
                     })
                     userService.updateUser($.user).then(function(res) {
