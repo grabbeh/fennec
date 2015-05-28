@@ -16,7 +16,6 @@ angular.module('app')
         'chartService',
         'barChartData',
         'barChartOptions',
-        '$moment',
         'trademarkModal',
         'notificationModal',
         '$http',
@@ -37,7 +36,6 @@ angular.module('app')
             chartService,
             barChartData,
             barChartOptions,
-            $moment,
             trademarkModal,
             notificationModal,
             $http) {
