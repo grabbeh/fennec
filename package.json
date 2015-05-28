@@ -34,10 +34,10 @@
     "clean-css": "2.2.14"
   },
   "scripts": {
-    "build-js": "browserify client/angular/*.js client/views/*/*.js client/modals/*/*.js | uglifyjs -c > client/production/bundle.js",
+    "build-js": "browserify client/config.js client/angular/*.js client/views/*/*.js client/modals/*/*.js | uglifyjs -c > client/production/bundle.js",
     "build-css": " cat client/css/*.css | cleancss > client/production/bundle.css",
     "build": "npm run build-js && npm run build-css",
-    "watch-js": "watchify client/angular/*.js client/views/*/*.js client/modals/*/*.js -o client/production/bundle.js -dv",
+    "watch-js": "watchify client/config.js client/angular/*.js client/views/*/*.js client/modals/*/*.js -o client/production/bundle.js -dv",
     "watch-css": "catw client/css/*.css -o client/production/bundle.css -dv",
     "watch": "npm run watch-js & npm run watch-css",
     "develop": "npm run watch & node app.js",
