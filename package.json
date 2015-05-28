@@ -26,7 +26,8 @@
     "angular": "1.4.0",
     "angular-route": "1.4.0",
     "angular-animate": "1.4.0",
-    "angular-touch": "1.4.0"
+    "angular-touch": "1.4.0",
+    "leaflet": "1.0"
   },
   "devDependencies": {
     "watchify": "~0.1.0",
