@@ -1612,7 +1612,7 @@ a {
 }
 
 .trademark-container {
-    padding: 20px;
+    padding: 20px 0;
     display:block;
     overflow:auto;
     background: white;
