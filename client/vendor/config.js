@@ -1,4 +1,5 @@
 var angular = require('angular');
+var _ = require('underscore');
 
 var app = 
 angular.module('app',[
