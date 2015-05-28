@@ -7,8 +7,8 @@
               <div> <span>{{ activity.user }} </span> on <span> {{ activity.created | date: 'longDate' }} </div>
             <div class="updated-tm-content" ng-repeat="change in activity.changes">
                     <div mg-bold>{{ change.attr }}</div>
-                    <div> <span btf-markdown="change.added" class="tm-addition">{{ change.added }}</span></div>
-                    <div> <span btf-markdown="change.removed" class="tm-deletion">{{ change.removed }}</span> </div>
+                    <div> <span class="tm-addition">{{ change.added }}</span></div>
+                    <div> <span class="tm-deletion">{{ change.removed }}</span> </div>
             </div>
         </div>
             <div class="view-icon"><a href="view/trademark/{{activity.trademark._id}}"><i class="fa fa-eye"></i></a></div>
