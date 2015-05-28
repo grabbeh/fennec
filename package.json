@@ -22,7 +22,11 @@
     "mime": "~1.2.11",
     "jsonwebtoken": "5.0.0",
     "express-jwt": "~0.3.1",
-    "deep-diff": "~0.2.0"
+    "deep-diff": "~0.2.0",
+    "angular": "1.4.0"
+    "angular-route": "1.4.0",
+    "angular-animate": "1.4.0",
+    "angular-touch": "1.4.0"
   },
   "devDependencies": {
     "watchify": "~0.1.0",
