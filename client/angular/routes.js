@@ -1,5 +1,6 @@
 
-/*app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
+angular.module('app')
+    .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
     $locationProvider.html5Mode(true);
     $routeProvider.
         when('/', {
@@ -255,8 +256,8 @@
     });
 }]);
 
-app.config(['$momentProvider', function($momentProvider){
+angular.module('app').config(['$momentProvider', function($momentProvider){
     $momentProvider
       .asyncLoading(true)
       .scriptUrl('/vendor/moment.min.js');
-  }]);*/
+  }]);
