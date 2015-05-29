@@ -9,6 +9,7 @@ angular.module('app')
         controller: function($scope, $http, notificationModal) {
             var $ = $scope;
             $.search = function() {
+                console.log($.query);
                 if ($.query === "")
                     notificationModal.activate({ error: "Please provide a search term"}, { time: 2 })
                 $http.post('/api/search', { query: $.query })
