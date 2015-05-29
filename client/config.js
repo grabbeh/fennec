@@ -9,7 +9,7 @@ angular.module('app',[
  		require('angular-animate'),
  		require('angular-touch'),
 		require('angular-sanitize'),
- 		require('./client/vendor/upload.js'),
+ 		require('./vendor/upload.js'),
  		//'ngFileUpload',
  		'angular-momentjs',  
  		'angles', 
