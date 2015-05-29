@@ -1,7 +1,7 @@
 var angular = require('angular')
 var showdown = require('showdown')
 var L = require('leaflet')
-var modernizr = require('modernizr')
+var Modernizr = require('modernizr')
 
 var app = 
 angular.module('app',[
