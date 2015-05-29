@@ -1,4 +1,5 @@
 var angular = require('angular');
+var showdown = require('showdown');
 
 var app = 
 angular.module('app',[
