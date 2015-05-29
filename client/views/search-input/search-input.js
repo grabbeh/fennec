@@ -10,8 +10,10 @@ angular.module('app')
             var $ = $scope;
             $.search = "";
             $.search = function() {
-                if ($.query === "")
-                    notificationModal.activate({ error: "Please provide a search term"}, { time: 2 })
+                if ($.query === "" || undefined){
+                    notificationModal.activate({ error: "Please provide a search term"}, { time: 2 });
+                    return;
+                }
                 $http.post('/api/search', { query: $.query })
                     .success(function(data) {
                         if (data.length === 0) {
