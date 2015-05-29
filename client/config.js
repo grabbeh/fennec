@@ -1,6 +1,7 @@
 var angular = require('angular')
-var showdown = require('showdown')
+var Showdown = require('showdown')
 var L = require('leaflet')
+var Chart = require('./vendor/Chart.min')
 
 
 var app = 
