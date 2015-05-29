@@ -25,6 +25,7 @@
     "mongoose": "3.8.5",
     "mongoosastic": "~0.2.6",
     "multiparty": "~3.2.4",
+    "rome": "2.1.17",
     "serve-static": "~1.0.4",
     "sendgrid": "~1.0.3",
     "showdown": "1.0.2",
