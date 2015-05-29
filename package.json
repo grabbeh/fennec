@@ -30,7 +30,7 @@
     "sendgrid": "~1.0.3",
     "showdown": "1.0.2",
     "uglify-js": "~2.4.13",
-    "underscore": "~1.5.2",
+    "underscore": "~1.5.2"
       },
   "devDependencies": {
      "catw": "~0.0.1",
