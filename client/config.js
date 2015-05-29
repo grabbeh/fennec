@@ -5,9 +5,9 @@ angular.module('app',[
 		require('angular-route'), 
 		require('angular-animate'),
 		require('angular-touch'),
+		require('angular-sanitize'),
 		'ngFileUpload',
 		'angular-momentjs',  
-		'ngSanitize',
 		'angles', 
 		'btford.modal',
 		'btford.markdown']);
