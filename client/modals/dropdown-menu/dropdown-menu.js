@@ -6,14 +6,13 @@ angular.module('app')
 	        
 	        $.closeMenu = function(){
 	            dropdownMenu.deactivate();
-                $rootScope.dropdownMenu = false;
+                	$rootScope.dropdownMenu = false;
 	        }
 
             $.login = function(){
             	dropdownMenu.deactivate();
                 $rootScope.dropdownMenu = false;
                 loginModal.activate();
-                $rootScope.modal = true;
             }
   
 	        $.logout = function(){
