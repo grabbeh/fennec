@@ -1,5 +1,5 @@
 var angular = require('angular')
-var Showdown = require('showdown')
+//var Showdown = require('showdown')
 var L = require('leaflet')
 
 var app = 
