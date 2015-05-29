@@ -1,5 +1,6 @@
-var angular = require('angular');
-var showdown = require('showdown');
+var angular = require('angular')
+var showdown = require('showdown')
+var L = require('leaflet')
 
 var app = 
 angular.module('app',[
@@ -11,4 +12,4 @@ angular.module('app',[
 		'angular-momentjs',  
 		'angles', 
 		'btford.modal',
-		'btford.markdown']);
+		'btford.markdown'])
