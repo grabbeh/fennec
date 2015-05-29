@@ -8,8 +8,8 @@ angular.module('app',[
 		require('angular-animate'),
 		require('angular-touch'),
 		require('angular-sanitize'),
-		require('vendor/upload.js'),
-		require('vendor/angular-moment.js'),  
-		require('vendor/angles.js'), 
-		require('vendor/modal.min.js'),
+		require('client/vendor/upload.js'),
+		require('client/vendor/angular-moment.js'),  
+		require('client/vendor/angles.js'), 
+		require('client/vendor/modal.min.js'),
 		'btford.markdown'])
