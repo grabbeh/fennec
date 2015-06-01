@@ -4,6 +4,10 @@ angular.module('app')
         function($scope, notificationModal, loginModal, $window, $rootScope, trademarkService, pathService, $location, trademarkModal, editTrademarkModal, editGroupModal, menuModal, dropdownMenu, uploadImageModal, userService){
             var $ = $scope;
             $rootScope.dropdownMenu = false;
+            
+            $rootScope.$on('routeChangeStart', function(ev, att, prev, err){
+                console.log("rootScope on route change" + " " + $rootScope.user);
+            })
             $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
                 console.log(error);
                 console.log("Error in route change");
@@ -85,6 +89,8 @@ angular.module('app')
             };
             
             userService.getUser().then(function(data){
+                console.log(data);
+                console.log("User data")
                 $rootScope.user = data;
             });
         
