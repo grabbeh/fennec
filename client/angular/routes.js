@@ -150,7 +150,7 @@ angular.module('app')
                 }
             }
         }).
-   		when('/view/trademark/:id', {
+   		when('/view/trademark/:portfolio/:id', {
             templateUrl: '/views/view-trademark/view-trademark.html',
             controller: 'trademarkViewCtrl',
             resolve: {
