@@ -22,7 +22,7 @@ angular.module('app')
                     }
                     else {
                         $window.sessionStorage.token = res.data.token;
-                        $rootScope.user = true;
+                        //$rootScope.user = true;
                         loginModal.deactivate();
                         userService.getUser().then(function(data){
 
