@@ -5,6 +5,8 @@ angular.module('app')
             var $ = $scope;
             $rootScope.dropdownMenu = false;
             $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
+                console.log(error);
+                console.log("Error in route change");
                 var attemptedPath = attempted.$$route.originalPath;
                 if (attempted.params){
                     for (var key in attempted.params){
