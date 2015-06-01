@@ -87,12 +87,12 @@ angular.module('app')
                 $rootScope.user = false;
                 $location.path('/');
             };
-            
+            /*
             userService.getUser().then(function(data){
                 console.log(data);
                 console.log("User data")
                 $rootScope.user = data;
-            });
+            });*/
         
             $.isUser = function(){
                 return !!$rootScope.user;
