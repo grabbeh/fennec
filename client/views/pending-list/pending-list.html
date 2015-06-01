@@ -4,7 +4,7 @@
         <li class="tm-list-li" ng-repeat="pendingtm in pending">
             <div>
                 <span ng-click="showModalWrapper(pendingtm)" class="bold hover-cursor">{{ pendingtm.mark }}</span>
-                <span class="view-icon"><a href="/view/trademark/{{pendingtm._id}}"><i class="fa fa-eye"></i></a></span>
+                <span class="view-icon"><a href="/view/trademark/{{portfolio}}/{{pendingtm._id}}"><i class="fa fa-eye"></i></a></span>
             </div>
             <div>
                 <ul ng-show="pendingtm.classes" class="class-list" ng-repeat="class in pendingtm.classes track by $index">
