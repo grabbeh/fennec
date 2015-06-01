@@ -23,8 +23,11 @@ angular.module('app')
                     else {
                         $window.sessionStorage.token = res.data.token;
                         $rootScope.user = true;
-                        $rootScope.modal = false;
                         loginModal.deactivate();
+                        userService.getUser().then(function(data){
+
+                               $rootScope.user = data;
+                           });
                         if (pathService.returnPath() === undefined){
                             $location.path('/home');
                         }
