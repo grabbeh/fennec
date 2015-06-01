@@ -5,7 +5,7 @@
         <li class="tm-list-li" ng-repeat="publishedtm in published">
             <div>
                 <span ng-click="showModalWrapper(publishedtm)" class="bold hover-cursor">{{ publishedtm.mark }}</span>
-                <span class="view-icon"><a href="view/trademark/{{publishedtm._id}}"><i class="fa fa-eye"></i></a></span>
+                <span class="view-icon"><a href="view/trademark/{{publishedtm.portfolio}}/{{publishedtm._id}}"><i class="fa fa-eye"></i></a></span>
             </div>
             <div>
                 <ul ng-show="publishedtm.classes" class="class-list" ng-repeat="class in publishedtm.classes track by $index">
