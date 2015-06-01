@@ -60,12 +60,15 @@ exports.search = function(req, res){
 
 exports.getTrademark = function(req, res){
 	helper.getTrademark(req.params.id, function(err, trademark){
+		if (err) {
+			res.status(501).send();
+			return;
+		}
         helper.findUser(req.user._id, function(err, user){
             user.favourites.forEach(function(fav){
 			if (trademark._id.equals(fav)){ trademark.favourite = true;}
         })
 		res.json(trademark);
-
         })
 	})
 }
