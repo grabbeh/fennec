@@ -13,10 +13,10 @@ exports.downloadTrademarks = function(req, res){
     jwt.verifyToken(req.query.token, function(err, user){
         var entity = user.entity;
         helper.getTrademarks(entity, portfolio, function(err, trademarks){
-        fs.writeFile('server/config/trademarks.json', JSON.stringify(trademarks), function(err){
-            var file = 'server/config/trademarks.json';
-            res.download(file);
-            });
+	        fs.writeFile('server/config/trademarks.json', JSON.stringify(trademarks), function(err){
+	            var file = 'server/config/trademarks.json';
+	            	res.download(file);
+	            });
         }); 
     });
 }
@@ -61,8 +61,7 @@ exports.search = function(req, res){
 exports.getTrademark = function(req, res){
 	helper.getTrademark(req.params.id, function(err, trademark){
 		if (err || !trademark) {
-
-			res.status(501).send();
+			res.status(404).send();
 			return;
 		}
         helper.findUser(req.user._id, function(err, user){
