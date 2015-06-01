@@ -4,7 +4,7 @@ angular.module('app')
             var $ = $scope;
             $rootScope.dropdownMenu = false;
             
-            $rootScope.$on('routeChangeStart', function(ev, att, prev, err){
+            $rootScope.$on('$routeChangeStart', function(ev, att, prev, err){
                 console.log("rootScope on route change" + " " + $rootScope.user);
             })
             $rootScope.$on('$routeChangeError', function(event, attempted, previous, error){
