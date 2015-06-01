@@ -242,8 +242,7 @@
         getTrademark: function(id){
             return $http.get('/api/trademark/' + id)
               	.success(function(response){
-              	    console.log(response.data)
-                    return response.data;
+                    return response;
                 })
                 .error(function(res){
                     console.log(res);
