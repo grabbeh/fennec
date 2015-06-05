@@ -15,7 +15,6 @@ angular.module('app')
         };
 
         $scope.loading = function() {
-            console.log('loading...');
         };
 
         $.uploadFormValid = function() {
