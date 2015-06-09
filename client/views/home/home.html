@@ -5,7 +5,8 @@
            <div mg-bold>Portfolios</div>
           <ul class="tm-list">
              <li class="tm-list-li hover-underline"  ng-repeat="portfolio in portfolios">
-                <b><a href="home/{{ portfolio }}">{{ portfolio}} </a></b>
+                <div class="hover" ng-init="showList = false" ng-click="showList = !showList">><b>{{ portfolio}}</b></div>
+                <div ng-show="showList">Options</div>
              </li>
           </ul>
       </div> 
