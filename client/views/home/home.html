@@ -4,9 +4,34 @@
      <div class="standard-container shadow">
            <div mg-bold>Portfolios</div>
           <ul class="tm-list">
-             <li class="tm-list-li hover-underline"  ng-repeat="portfolio in portfolios">
-                <div class="hover" ng-init="showList = false" ng-click="showList = !showList">><b>{{ portfolio}}</b></div>
-                <div ng-show="showList">Options</div>
+             <li class="tm-list-li"  ng-repeat="portfolio in portfolios">
+                <div class="hover" ng-init="showList = false" ng-click="showList = !showList"><b>{{ portfolio }}</b></div>
+                <div ng-show="showList"><ul class="menu-list">
+             <li>
+                <a class="white-link" ng-href="home">Home</a>
+            </li>
+             <li>
+                <a class="white-link" ng-href="dashboard/{{portfolio}}">Dashboard</a>
+            </li>
+            <li>
+                <a class="white-link" ng-href="home/{{portfolio}}">Portfolio</a>
+            </li>
+            <li>
+                <a class="white-link" ng-href="map/{{portfolio}}">Map</a>
+            </li>
+            <li>
+                <a class="white-link" ng-href="quick-search/{{portfolio}}">Quick search</a>
+            </li>
+            <li>
+                <a class="white-link" ng-href="favourites/{{portfolio}}">Favourites</a>
+            </li>
+            <li>
+                <a class="white-link" ng-href="add/trademark/{{portfolio}}">Add trademark</a>
+            </li>
+            <li>
+                <a class="white-link" ng-href="/users">Users</a> 
+            </li>
+        </ul></div>
              </li>
           </ul>
       </div> 
