@@ -11,7 +11,7 @@ angular.module('app')
                 .then(function(res) {
                     $window.sessionStorage.token = res.data.token;
                     $rootScope.user = true;
-                    $location.path('/home/ACME INC');
+                    $location.path('/home');
                 });
         };
 
@@ -20,12 +20,8 @@ angular.module('app')
         };
 
         $.sendMessage = function() {
-            $http.post('/server/processMessage', {
-                    msg: $.msg
-                })
-                .success(function(response) {
-                    $.message = response.msg;
-                });
+            $http.post('/server/processMessage', { msg: $.msg})
+                .success(function(response) { $.message = response.msg; });
         };
     }
 ])
