@@ -762,9 +762,8 @@ input::-webkit-inner-spin-button {
 }
 
 .group-logo-holder{
-	width: 150px;
-	margin: 20px 0 0 20px;
-	margin-top: 20px;
+	width: 100px;
+	margin: 20px;
 	float: left;
 }
 
