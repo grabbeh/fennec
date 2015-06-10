@@ -1898,7 +1898,7 @@ margin: 0px 10px 10px 0px;
 	padding: 6px;
     margin-right: -5px;
     margin-top: 10px;
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px #9a9a9a;
 }
 
 .expiry-form-input {
