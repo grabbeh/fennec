@@ -93,7 +93,7 @@ angular.module('app')
         
             $.isUser = function(){
                 return !!$rootScope.user;
-                console.log(!!$rootScope.user);
+                console.log($rootScope.user);
             };
 
         }])
