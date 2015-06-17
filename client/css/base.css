@@ -612,9 +612,11 @@ a.fill-div {
 }
 
 .menu-list-slide {
+    transition: height 0.5s;
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 .menu-list-slide li {
