@@ -5,8 +5,8 @@
            <div mg-bold>Portfolios</div>
           <ul class="tm-list">
              <li class="tm-list-li"  ng-repeat="portfolio in portfolios">
-                <div class="hover" ng-init="showList = false" ng-click="showList = !showList"><b>{{ portfolio }}</b></div>
-                <div ng-show="showList"><ul class="menu-list">
+                <div class="hover" ng-init="showlist = false" ng-click="showlist = !showlist"><b>{{ portfolio }}</b></div>
+                <ul class="menu-list-slide" ng-class="{ open: showlist, closed: !showlist}">
              <li>
                 <a  ng-href="dashboard/{{portfolio}}">Dashboard</a>
             </li>
@@ -28,7 +28,7 @@
             <li>
                 <a ng-href="/users">Users</a> 
             </li>
-        </ul></div>
+        </ul>
              </li>
           </ul>
       </div> 
