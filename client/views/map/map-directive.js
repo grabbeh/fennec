@@ -75,6 +75,7 @@ angular.module('app')
                         })
                     }
                 })
+                console.log($rootScope.l.getBounds());
                 $rootScope.l.addTo(map)
             }
 
