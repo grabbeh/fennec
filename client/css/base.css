@@ -383,10 +383,11 @@ height: auto !important;
 }
 
 .notification-link {
-    background:#E7E7E7;
+    
     padding: 5px;
     margin-bottom: 10px;
     font-weight: bold;
+    border-bottom: solid 1px grey;
 }
 
 
