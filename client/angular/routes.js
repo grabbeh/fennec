@@ -79,26 +79,6 @@ angular.module('app')
                }
            }
         }).
-        when('/home/:portfolio', {
-            reloadOnSearch: false,
-            templateUrl: '/views/portfolio-home/portfolio-home.html',
-            controller: 'portfolioHomeCtrl',
-            resolve: {
-                isUser: function(userService){
-                    return userService.isUser();
-                },
-                user: function(userService){
-                    return userService.getUser();
-                },
-                countries: function(geoJsonService, $route){
-                    return geoJsonService.countryData($route.current.params.portfolio);
-                },
-                marks: function(trademarkService, $route){
-                    return trademarkService.getListOfMarks($route.current.params.portfolio);
-                }
-            }
-            
-        }).
         when('/map/:portfolio', {
             templateUrl: '/views/map/map.html',
             controller: 'mapCtrl',
