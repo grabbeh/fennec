@@ -387,10 +387,12 @@ height: auto !important;
     padding: 5px;
     margin-bottom: 10px;
     font-weight: bold;
-    border-bottom: solid 1px grey;
+    border-bottom: 1px solid #ebf1f4;
 }
 
-
+.notification-list-li:nth-child(even){
+       background: #f7f9fa;
+}
 .notification-symbol {
 	background: #FF3F3F;
 	padding: 10px;
@@ -1655,9 +1657,10 @@ a {
     overflow: hidden;
 }
 
-.tm-list-li:nth-child(odd){
+.tm-list-li:nth-child(even){
        background: #f7f9fa;
 }
+
 .tm-list-li.ng-enter {
   -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all;
