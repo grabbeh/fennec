@@ -1651,12 +1651,13 @@ a {
 .tm-list-li {
     font-size: 14px;
     padding: 12px;
-    border-bottom-style: solid;
-    border-width: 1px;
-    border-color: #9a9a9a;
+    border-bottom: 1px solid #ebf1f4;
     overflow: hidden;
 }
 
+.tm-list-li:nth-child(odd){
+       background: #f7f9fa;
+}
 .tm-list-li.ng-enter {
   -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all;
