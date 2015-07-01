@@ -1,5 +1,5 @@
 <div>
-    <div class="margin-top">No incomplete marks for this group of trade marks</div>
+    <div ng-hide="items" class="margin-top">No incomplete marks for this group of trade marks</div>
     <ul class="tm-list expiry-list">
         <li class="tm-list-li" ng-repeat="tm in items track by $index">
             <div ng-click="showModal(tm)" class="hover tm-list-content">
