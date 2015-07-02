@@ -19,15 +19,12 @@ angular.module('app')
                 }
                 if ($.groupOfArrays.length === 0)
                     $.items = false;
-                else {
+                else 
                     $.items = $.groupOfArrays[0];
-                    console.log($.items);
-                }
                 $.pageNumber = 1;
             })
 
             $.$watch('pageNumber', function(newPage) {
-                console.log(newPage);
                 $.items = $.groupOfArrays[newPage - 1];
             });
             // transclude function gives directive scope to transcluded content, rather
