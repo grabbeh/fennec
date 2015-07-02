@@ -2,7 +2,7 @@ angular.module('app')
 .directive('mgPaginator', function($compile) {
     return {
         templateUrl: "/views/paginator/paginator.html",
-        replace: true,
+        replace: false,
         transclude: true,
         link: function(scope, element, attrs, ctrl, transclude) {
             var $ = scope;
