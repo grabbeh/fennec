@@ -9,6 +9,7 @@ angular.module('app')
             $.$watch('paginatedMarks', function(newVal) {
                 console.log(newVal);
                 if (!newVal) {
+                    $.items = false;
                     return;
                 }
                 $.groupOfArrays = [];
