@@ -9,10 +9,10 @@ angular.module('app')
             //paginatedMarks:'='
         },
         link: function(scope, elem, attrs){
-            console.log(scope);
         },
          controller: function($scope, trademarkModal) {
             var $ = $scope;
+            $.items = $.items;
             $.showModal = function(trademark) {
                 trademarkModal.deactivate();
                 trademarkModal.activate({ trademark: trademark }, { broadcast: true })
