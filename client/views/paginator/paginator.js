@@ -7,6 +7,7 @@ angular.module('app')
         link: function(scope, element, attrs, ctrl, transclude) {
             var $ = scope;
             $.$watch('paginatedMarks', function(newVal) {
+                console.log(newVal);
                 if (!newVal) {
                     return;
                 }
