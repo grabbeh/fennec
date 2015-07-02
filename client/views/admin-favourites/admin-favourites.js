@@ -5,10 +5,11 @@ angular.module('app')
         templateUrl: "/views/admin-favourites/admin-favourites.html",
         replace: true,
         scope: {
-            items: '=',
-            paginatedMarks:'='
+            items: '='
+            //paginatedMarks:'='
         },
         link: function(scope, elem, attrs){
+            console.log(scope);
         },
          controller: function($scope, trademarkModal) {
             var $ = $scope;
