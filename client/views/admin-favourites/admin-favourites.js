@@ -6,13 +6,9 @@ angular.module('app')
         replace: true,
         scope: {
             items: '='
-            //paginatedMarks:'='
         },
-        link: function(scope, elem, attrs){
-        },
-         controller: function($scope, trademarkModal) {
+        controller: function($scope, trademarkModal) {
             var $ = $scope;
-            $.items = $.items;
             $.showModal = function(trademark) {
                 trademarkModal.deactivate();
                 trademarkModal.activate({ trademark: trademark }, { broadcast: true })
