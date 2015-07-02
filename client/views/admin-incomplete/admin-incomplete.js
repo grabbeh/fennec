@@ -4,7 +4,7 @@ angular.module('app')
         templateUrl: "/views/admin-incomplete/admin-incomplete.html",
         replace: true,
         scope: {
-            paginatedMarks: '=',
+            //paginatedMarks: '=',
             items: '='
         },
         controller: function($scope, trademarkModal) {
