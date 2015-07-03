@@ -10,6 +10,7 @@ angular.module('app')
                 console.log(newVal);
                 if (!newVal) {
                     $.items = false;
+                    $.paginatedMarks = false;
                     return;
                 }
                 $.groupOfArrays = [];
