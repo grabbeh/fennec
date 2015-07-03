@@ -8,7 +8,7 @@ angular.module('app')
             var $ = scope;
             $.$watch('paginatedMarks', function(newVal) {
                 console.log(newVal);
-                if (!newVal || newVal.length = 0) {
+                if (!newVal || newVal.length === 0) {
                     $.items = false;
                     $.paginatedMarks = false;
                     return;
