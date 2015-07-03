@@ -1,4 +1,4 @@
-
+<div ng-hide="paginatedMarks">
     <div class="paginator-holder">
         <div class="pagination-prev hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="prevPage(pageNumber)">Prev</div>
         <div class="pagination-first hover-cursor" ng-hide="checkIfFirst(pageNumber)" ng-click="firstPage()">1</div>
@@ -6,4 +6,5 @@
         <div class="pagination-last hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="lastPage()"> {{ groupOfArrays.length }} </div>
         <div class="pagination-next hover-cursor" ng-hide="checkIfLast(pageNumber)" ng-click="nextPage(pageNumber)">Next</div>
     </div>
+</div>
 
