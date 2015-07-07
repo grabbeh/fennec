@@ -1972,16 +1972,15 @@ margin: 0px 10px 10px 0px;
 	padding: 25px 25px 50px 25px;
 	background: white;
 	margin-top: 20px;
+	font-size: 18px;
 }
 
 .quick-search-title {
 	font-weight: bold;
-	font-size: 25px;
 }
 
 .quick-search-msg {
 	margin-top: 30px;
-	font-size: 20px;
 }
 
 .quick-search-result {
@@ -1992,8 +1991,6 @@ margin: 0px 10px 10px 0px;
 
 .qs-wording {
 	margin: 20px 0 15px 0;
-	font-size: 20px;
-
 }
 
 .qs-line {
@@ -2005,13 +2002,12 @@ margin: 0px 10px 10px 0px;
     margin: 0;
     width: 400px;
     font-family: 'Karla';
-    font-size: 20px;
+    font-size: 18px;
     /*-webkit-appearance: button;*/
     border: 0;
 }
 
 .qs-question-mark{
-	font-size: 20px;
 	margin-left: 20px;
 	line-height: 2em;	
 }
