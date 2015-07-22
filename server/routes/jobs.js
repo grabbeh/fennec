@@ -1,7 +1,7 @@
 
 var email = require('./email')
   , moment = require('moment')
-	, html = require('./html')
+  , html = require('./html')
   , fs = require('fs')
   , path = require('path')
   , helper = require('./helper')
