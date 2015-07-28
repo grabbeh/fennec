@@ -261,6 +261,10 @@
 	margin-bottom: 20px;
 }
 
+.margin-bottom-ten {
+	margin-bottom: 10px;
+}
+
 .no-margin-bottom {
      margin-bottom: 0 !important;
 }
