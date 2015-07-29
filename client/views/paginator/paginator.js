@@ -7,7 +7,6 @@ angular.module('app')
         link: function(scope, element, attrs, ctrl, transclude) {
             var $ = scope;
             $.$watch('paginatedMarks', function(newVal) {
-                console.log(newVal);
                 if (!newVal || newVal.length === 0) {
                     $.items = false;
                     $.paginatedMarks = false;
@@ -23,7 +22,6 @@ angular.module('app')
                     $.items = false;
                 else {
                     $.items = $.groupOfArrays[0];
-                    console.log($.items);
                 }
                 $.pageNumber = 1;
             })
