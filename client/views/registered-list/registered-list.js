@@ -4,8 +4,7 @@ angular.module('app')
         replace: true,
         templateUrl: '/views/registered-list/registered-list.html',
         scope: {
-            registered: '=',
-            showModal: '&'
+            registered: '='
         },
         controller: function($scope, trademarkModal) {
             var $ = $scope;
