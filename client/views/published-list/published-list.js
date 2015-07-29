@@ -7,11 +7,11 @@ angular.module('app')
             published: '=',
             showModal: '&'
         },
-        controller: function($scope) {
+        controller: function($scope, trademarkModal) {
             var $ = $scope;
-            $.showModalWrapper = function(tm) {
-                var func = $scope.showModal();
-                func(tm);
+             $.showModal = function(trademark) {
+                trademarkModal.deactivate();
+                trademarkModal.activate({ trademark: trademark }, { broadcast: true })
             }
         }
     }
