@@ -25,9 +25,12 @@
       <div mg-map id="map" geojson="geojson"></div>
       
       <div ng-show="registered || pending || published" class="trademark-container">
-         <div class="one-third-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
-         <div class="one-third-container" mg-published-trademark-list published="published" show-modal="showModal"></div>
-         <div class="one-third-container last" mg-pending-trademark-list pending="pending" show-modal="showModal"></div>
+         <div class="country-holder f32"> {{ country }}  </div>
+         <div>
+             <div class="one-third-container" mg-registered-trademark-list registered="registered" show-modal="showModal"></div>
+             <div class="one-third-container" mg-published-trademark-list published="published" show-modal="showModal"></div>
+             <div class="one-third-container last" mg-pending-trademark-list pending="pending" show-modal="showModal"></div>
+         </div>
          
       </div>
 
