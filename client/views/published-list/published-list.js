@@ -4,8 +4,7 @@ angular.module('app')
         replace: true,
         templateUrl: '/views/published-list/published-list.html',
         scope: {
-            published: '=',
-            showModal: '&'
+            published: '='
         },
         controller: function($scope, trademarkModal) {
             var $ = $scope;
