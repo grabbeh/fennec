@@ -4,8 +4,7 @@ angular.module('app')
         replace: true,
         templateUrl: '/views/pending-list/pending-list.html',
         scope: {
-            pending: '=',
-            showModal: '&'
+            pending: '='
         },
         controller: function($scope, trademarkModal) {
             var $ = $scope;
