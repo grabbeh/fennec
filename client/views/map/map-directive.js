@@ -16,6 +16,11 @@ angular.module('app')
                 if ($rootScope.l) {
                     map.removeLayer($rootScope.l);
                 }
+                
+                angular.forEach(world, function(country){
+                    console.log(country.feature.properties.status);
+                })
+                
                 $rootScope.l = L.geoJson(world, {
                     style: function(feature) {
                         switch (feature.properties.status) {
