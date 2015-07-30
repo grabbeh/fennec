@@ -23,9 +23,6 @@ angular.module('app')
                     if (status === "only pending" || status === "only published" || status === "pending published" || status === "only registered" || status === "registered pending published" || status === "registered pending" || status === "registered published" )
                         onlyMarks.push(country);
                 });
-                console.log(onlyMarks.length);
-                console.log(world.length);
-                console.log(world);
                 $rootScope.m = L.geoJson(onlyMarks)
                 map.fitBounds($rootScope.m.getBounds());
                 
