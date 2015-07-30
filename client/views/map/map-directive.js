@@ -13,8 +13,9 @@ angular.module('app')
             });
 
             function updateGeoJson(world) {
-                if ($rootScope.l) {
+                if ($rootScope.l || $rootScope.m) {
                     map.removeLayer($rootScope.l);
+                    map.removeLayer($rootScope.m);
                 }
                 var onlyMarks = [];
                 angular.forEach(world, function(country){
