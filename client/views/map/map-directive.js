@@ -18,7 +18,8 @@ angular.module('app')
                 }
                 
                 angular.forEach(world, function(country){
-                    console.log(country.feature.properties.status);
+                    if 
+                    console.log(country.properties.status);
                 })
                 
                 $rootScope.l = L.geoJson(world, {
