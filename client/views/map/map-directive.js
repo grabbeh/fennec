@@ -9,7 +9,7 @@ angular.module('app')
             map = L.mapbox.map(attrs.id, 'grabbeh.gch0omlb', {
                 //center: [33, 31],
                 //zoom: 2,
-                minZoom: 3
+                minZoom: 2
             });
 
             function updateGeoJson(world) {
