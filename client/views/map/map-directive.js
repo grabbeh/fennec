@@ -16,10 +16,13 @@ angular.module('app')
                 if ($rootScope.l) {
                     map.removeLayer($rootScope.l);
                 }
-                
+                var onlyMarks = [];
                 angular.forEach(world, function(country){
-                    console.log(country.properties.status);
-                })
+                    if (country.properties.status === "only pending" || "only published" || "pending published" || "only registered" || "registered pending published" || "registered pending" || "registered published") )
+                        onlyMarks.push(country);
+                });
+                $rootScope.m = L.geoJson(onlyMarks)
+                map.fitBounds($rootScope.m.getBounds());
                 
                 $rootScope.l = L.geoJson(world, {
                     style: function(feature) {
