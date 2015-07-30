@@ -9,7 +9,6 @@ angular.module('app')
         controller: function($scope, trademarkModal) {
             var $ = $scope;
              $.showModal = function(trademark) {
-                console.log("Item clicked");
                 trademarkModal.deactivate();
                 trademarkModal.activate({ trademark: trademark }, { broadcast: true })
             }
