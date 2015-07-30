@@ -7,8 +7,9 @@ angular.module('app')
         link: function(scope, element, attrs) {
 
             map = L.mapbox.map(attrs.id, 'grabbeh.gch0omlb', {
-                center: [33, 31],
+                //center: [33, 31],
                 zoom: 2,
+                maxZoom: 2,
                 minZoom: 1
             });
 
