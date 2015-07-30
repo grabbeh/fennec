@@ -18,7 +18,6 @@ angular.module('app')
                 }
                 
                 angular.forEach(world, function(country){
-                    if 
                     console.log(country.properties.status);
                 })
                 
