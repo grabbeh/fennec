@@ -18,7 +18,7 @@ angular.module('app')
                 }
                 var onlyMarks = [];
                 angular.forEach(world, function(country){
-                    if (country.properties.status === "only pending" || "only published" || "pending published" || "only registered" || "registered pending published" || "registered pending" || "registered published" )
+                    if (country.properties.status === /*"only pending" || "only published" || "pending published" ||*/ "only registered" /*|| "registered pending published" || "registered pending" || "registered published"*/ )
                         onlyMarks.push(country);
                 });
                 console.log(onlyMarks.length);
