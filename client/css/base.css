@@ -1040,6 +1040,7 @@ input::-webkit-inner-spin-button {
 .search-text-mark {
     margin-bottom: 5px;
     font-weight: bold;
+    float: left;
 }
 
 .map-container {
