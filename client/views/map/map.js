@@ -9,11 +9,6 @@ angular.module('app')
         $.listOfMarks = $filter('groupByMarks')(trademarks);
         $.listOfMarks.unshift({ name: "ALL MARKS" });
 
-        $.sendMarksToServer = function(marks) {
-            $http.post('/api/world/' + $routeParams.portfolio, { marks: $filter('extractCheckedMarks')(marks) })
-                .success(function(world) { $.geojson = world; });
-        };
-
         $.$on('country.click', function(e, l) {
             $.registered = false;
             $.pending = false;
@@ -21,21 +16,10 @@ angular.module('app')
             $.$apply(function() {
                 $.country = l.target.feature.properties.name;
                 var tms = l.target.feature.properties.trademarks;
-                if (tms) {
-                    $.nocontent = false;
-                    if (tms.Registered)
-                        $.registered = tms.Registered;
-
-                    if (tms.Published)
-                        $.published = tms.Published;
-
-                    if (tms.Pending)
-                        $.pending = tms.Pending;
-                }
-                else {
+                if (tms) 
+                    updateListings(tms);
+                else 
                      notificationModal.activate({ error: "No trade marks in this country"}, {time: 2});
-                }
-
             });
         });
 
@@ -50,25 +34,23 @@ angular.module('app')
                 if (country.alpha3 === feature.id) {
                     var tms = feature.properties.trademarks;
                     $.country = feature.properties.name;
-                    if (tms) {
-                        $.nocontent = false;
-                        if (tms.Registered){
-                            $.registered = tms.Registered;}
-                        if (tms.Published){
-                            $.published = tms.Published;}
-                        if (tms.Pending){
-                            $.pending = tms.Pending;}
-                    }
-                    else {
+                    if (tms) 
+                        updateListings(tms);
+                    else 
                         notificationModal.activate({ error: "No trade marks in this country"}, {time: 2});
-                    }
                 }
             });
         };
-        $.showModal = function(trademark) {
-            trademarkModal.deactivate();
-            trademarkModal.activate({ trademark: trademark }, { broadcast: true });
-        };
+        function updateListings(tms){
+            $.nocontent = false;
+            if (tms.Registered)
+                $.registered = tms.Registered;
 
+                if (tms.Published)
+                        $.published = tms.Published;
+
+                 if (tms.Pending)
+                    $.pending = tms.Pending;   
+        }
     }
 ]);
