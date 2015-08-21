@@ -24,9 +24,8 @@ angular.module('app')
         });
 
         $.showCountry = function(country) {
-            if (!country) {
+            if (!country) 
                 return;
-            }
             $.registered = false;
             $.pending = false;
             $.published = false;
