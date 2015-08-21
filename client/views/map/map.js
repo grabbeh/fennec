@@ -45,12 +45,10 @@ angular.module('app')
             $.nocontent = false;
             if (tms.Registered)
                 $.registered = tms.Registered;
-
-                if (tms.Published)
-                        $.published = tms.Published;
-
-                 if (tms.Pending)
-                    $.pending = tms.Pending;   
+            if (tms.Published)
+                $.published = tms.Published;
+            if (tms.Pending)
+                $.pending = tms.Pending;   
         }
     }
 ]);
