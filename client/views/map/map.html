@@ -4,36 +4,26 @@
         <div mg-search-panel swipe-event="swipeEvent" active-portfolio="activePortfolio">
         </div>
     </div>
-
-
     <div class="row">
-    <div class="standard-container shadow">
-
+        <div class="standard-container shadow">
             <div class="one-half-container">
-              <div class="map-country-selector">
-                  <div mg-country-selector countries="countries" title="Go to country" go-to-group="showCountry">
-                  </div>
-              </div>
+                <div class="map-country-selector">
+                    <div mg-country-selector countries="countries" title="Go to country" go-to-group="showCountry">
+                    </div>
+                </div>
             </div>
-
-          <div mg-clear></div>
-
-          <div class="hover show-mark-list" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks</div>
-          <div ng-show="showMarkList" mg-mark-list-displayer geojson="geojson" list-of-marks="listOfMarks"></div>
-
-    
-      <div mg-map id="map" geojson="geojson"></div>
-      
-      <div ng-show="registered || pending || published" class="trademark-container">
-         <div class="country-holder f32"> {{ country }}  </div>
-         <div>
-             <div class="one-third-container" mg-registered-trademark-list registered="registered"></div>
-             <div class="one-third-container" mg-published-trademark-list published="published"></div>
-             <div class="one-third-container last" mg-pending-trademark-list pending="pending"></div>
-         </div>
-         
-      </div>
-
-</div>
-</div>
+            <div mg-clear></div>
+            <div class="hover show-mark-list" ng-init="showMarkList = false" ng-click="showMarkList = !showMarkList"><span ng-hide="showMarkList">Show</span><span ng-show="showMarkList">Hide</span> list of marks</div>
+            <div ng-show="showMarkList" mg-mark-list-displayer geojson="geojson" list-of-marks="listOfMarks"></div>
+            <div mg-map id="map" geojson="geojson"></div>
+            <div ng-show="registered || pending || published" class="trademark-container">
+                <div class="country-holder f32"> {{ country }} </div>
+                <div>
+                    <div class="one-third-container" mg-registered-trademark-list registered="registered"></div>
+                    <div class="one-third-container" mg-published-trademark-list published="published"></div>
+                    <div class="one-third-container last" mg-pending-trademark-list pending="pending"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
