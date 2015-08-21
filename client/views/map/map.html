@@ -16,7 +16,7 @@
             <div ng-show="showMarkList" mg-mark-list-displayer geojson="geojson" list-of-marks="listOfMarks"></div>
             <div mg-map id="map" geojson="geojson"></div>
             <div ng-show="registered || pending || published" class="trademark-container">
-                <div class="country-holder f32"> {{ country }} </div>
+                <div class="country-holder"> {{ country }} </div>
                 <div>
                     <div class="one-third-container" mg-registered-trademark-list registered="registered"></div>
                     <div class="one-third-container" mg-published-trademark-list published="published"></div>
