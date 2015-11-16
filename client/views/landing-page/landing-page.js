@@ -1,7 +1,7 @@
 angular.module('app')
 
-.controller('landingPageCtrl', ['$scope', '$window', '$http', 'userService', '$location', '$rootScope',
-    function($scope, $window, $http, userService, $location, $rootScope) {
+.controller('landingPageCtrl', ['$scope', '$window', '$http', 'notificationModal', 'userService', '$location', '$rootScope',
+    function($scope, $window, $http, notificationModal, userService, $location, $rootScope) {
         var $ = $scope;
         $.loadDemo = function() {
             userService.logIn({
