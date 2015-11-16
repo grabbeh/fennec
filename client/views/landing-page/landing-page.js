@@ -21,7 +21,9 @@ angular.module('app')
 
         $.sendMessage = function() {
             $http.post('/server/processMessage', { msg: $.msg})
-                .success(function(response) { $.message = response.msg; });
+                .success(function() { 
+                    notificationModal.activate({ success: "Thank you - we'll be in touch"}, {time: 2})
+                });
         };
     }
 ])
