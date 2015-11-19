@@ -4,11 +4,13 @@ angular.module('app')
     function($scope, $window, $http, notificationModal, userService, $location, $rootScope) {
         var $ = $scope;
         $.loadDemo = function() {
+            console.log("Button clicked");
             userService.logIn({
                     password: "demo",
                     email: "demo@demo.com"
                 })
                 .then(function(res) {
+                    console.log("Data returned");
                     $window.sessionStorage.token = res.data.token;
                     $rootScope.user = true;
                     $location.path('/home');
