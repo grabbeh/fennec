@@ -60,10 +60,8 @@ exports.updateUser = function(req, res){
 }
 
 exports.logIn = function(req, res){
-    console.log(req.body);
     authenticate(req.body.email, req.body.password, function(err, user){
        if (user) {
-           console.log(user);
            jwt.createToken(user, function(err, token){
                res.status(200).send({ token: token });  
            })
