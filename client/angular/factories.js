@@ -91,8 +91,10 @@
         logIn: function(user){
             return $http.post('/server/login', user)
             	.then(function(res){
+            	    console.log(res);
                  	return res;
                 }, function(res){
+                    console.log(res);
     				return res;
                 })
         },
