@@ -1,5 +1,5 @@
 <div>
   <ul>
-    <li ng-repeat="m in potentialNames">{{ m }}</li>
+    <li class="hover" ng-model="" ng-click="selectName(m)" ng-repeat="m in potentialNames | filter:mark">{{ m }}</li>
   </ul>
 </div>
