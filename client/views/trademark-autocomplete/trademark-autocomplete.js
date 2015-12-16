@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('classSelector', function($compile, $http, $window, $filter, $templateCache) {
+.directive('trademarkAutocomplete', function($compile, $http, $window, $templateCache) {
     return {
       scope: {
         trademark: '=trademark'
@@ -39,9 +39,7 @@ angular.module('app')
         
         element.children().bind('click', addContent);
 
-        $.toggleClass = function(m) {
-                $.trademark.mark = m;
-            }
+        $.selectName = function(m) { $.trademark.mark = m; }
         
         angular.element($window).on('click', function(){
            if (active){
