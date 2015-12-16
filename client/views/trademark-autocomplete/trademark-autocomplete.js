@@ -2,23 +2,16 @@ angular.module('app')
 .directive('classSelector', function($compile, $http, $window, $filter, $templateCache) {
     return {
       scope: {
-        data: '=classInfo'
+        mark: '=mark'
       },
       link: function(scope, element, attrs, ctrl, transclude) {
             
         var $ = scope
         , active = false
-        , allClasses = [];
-        
-        for (var i = 1; i < 46; i++) {
-            var o = {};
-            o.cl = i;
-            allClasses.push(o);
-        }
 
-        $.fullClasses = $filter('highlightClasses')($.data, allClasses);
+        $.potentialMarks = $http.get('').then(function(response){ return response.data; })
         
-        html = $http.get('/views/class-selector/class-selector.html', {
+        html = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
         }).then(function (response) {
           return response.data;
@@ -45,30 +38,9 @@ angular.module('app')
         
         element.children().bind('click', addContent);
 
-        $.toggleClass = function(index) {
-                angular.forEach($.fullClasses, function(c, i) {
-                    if (index === i) {
-                        c.checked = !c.checked;
-                    }
-                })
-                $.data = $filter('extracttmClasses')($.fullClasses);
+        $.toggleClass = function(m) {
+                $.mark = m;
             }
-        
-         $.selectAll = function(){
-          $.fullClasses.forEach(function(a){
-             a.checked = true
-          })
-          
-          $.data = $filter('extracttmClasses')($.fullClasses);
-        }
-        
-        $.removeAll = function(){
-          $.fullClasses.forEach(function(a){
-            a.checked = false
-          })
-          
-          $.data = [];
-        }
         
         angular.element($window).on('click', function(){
            if (active){
