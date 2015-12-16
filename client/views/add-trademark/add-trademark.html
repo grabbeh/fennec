@@ -4,7 +4,7 @@
           <div class="form-title" mg-bold>Add trade mark</div>
            <form novalidate name="addTrademarkForm" class="basic-form" ng-submit="addTrademark(trademark)">
             
-              <div><input required class="form-input" ng-model="trademark.mark" placeholder="Mark"></div>
+              <div><input trademark-autocomplete required class="form-input" ng-model="trademark.mark" placeholder="Mark"></div>
                <div class="radio"><input required type="radio" ng-model="trademark.status" value="Registered">Registered</div>
                <div class="radio"><input required type="radio" ng-model="trademark.status" value="Published">Published</div>
               <div class="radio"><input required type="radio" ng-model="trademark.status" value="Pending">Pending</div>
