@@ -2,14 +2,15 @@ angular.module('app')
 .directive('classSelector', function($compile, $http, $window, $filter, $templateCache) {
     return {
       scope: {
-        mark: '=mark'
+        trademark: '=trademark'
       },
       link: function(scope, element, attrs, ctrl, transclude) {
             
         var $ = scope
+        , $.trademark = trademark
         , active = false
 
-        $.potentialMarks = $http.get('').then(function(response){ return response.data; })
+        $.potentialMarks = $http.get('/api/list/' + trademark.portfolio + "'").then(function(response){ return response.data; })
         
         html = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
@@ -39,7 +40,7 @@ angular.module('app')
         element.children().bind('click', addContent);
 
         $.toggleClass = function(m) {
-                $.mark = m;
+                $.trademark.mark = m;
             }
         
         angular.element($window).on('click', function(){
