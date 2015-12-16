@@ -7,8 +7,9 @@ angular.module('app')
       link: function(scope, element, attrs, ctrl, transclude) {
             
         var $ = scope
-        , $.trademark = trademark
         , active = false
+        
+        $.trademark = trademark
 
         $.potentialMarks = $http.get('/api/list/' + trademark.portfolio + "'").then(function(response){ return response.data; })
         
