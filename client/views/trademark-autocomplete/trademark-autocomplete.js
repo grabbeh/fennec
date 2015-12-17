@@ -8,12 +8,9 @@ angular.module('app')
             
         var $ = scope
         , active = false
-        
-        console.log(trademark);
-        
         $.trademark = trademark
 
-        $.potentialMarks = $http.get('/api/list/' + trademark.portfolio + "'").then(function(response){ return response.data; })
+        $.potentialMarks = $http.get('/api/list/' + trademark.portfolio + "'").then(function(response){ console.log(response.data);return response.data; })
         
         html = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
