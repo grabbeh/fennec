@@ -10,7 +10,8 @@ angular.module('app')
         , active = false
         var portfolio = $routeParams.portfolio;
         var url = '"' + 'api/list/' + portfolio + '"';
-        $.potentialMarks = $http.get(url).then(function(response){ return response.data; });
+        console.log(url);
+        $.potentialMarks = $http.get(url).then(function(response){ console.log(response);return response.data; });
         
         template = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
