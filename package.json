@@ -22,7 +22,7 @@
     "mime": "~1.2.11",
     "moment": "~2.6.0",
     "mustache": "~0.8.1",
-    "mongoose": "3.8.5",
+    "mongoose": "4.3.2",
     "mongoosastic": "~0.2.6",
     "multiparty": "~3.2.4",
     "rome": "2.1.17",
