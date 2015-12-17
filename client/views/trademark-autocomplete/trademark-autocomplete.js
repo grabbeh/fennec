@@ -2,7 +2,7 @@ angular.module('app')
 .directive('trademarkAutocomplete', function($compile, $http, $window, $templateCache) {
     return {
       scope: {
-        trademark: '=trademark'
+        trademark: '='
       },
       link: function(scope, element, attrs, ctrl, transclude) {
             
