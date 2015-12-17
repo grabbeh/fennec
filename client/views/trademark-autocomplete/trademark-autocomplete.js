@@ -14,8 +14,11 @@ angular.module('app')
         html = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
         }).then(function (response) {
+            
           return response.data;
         });
+        
+        console.log(html);
         
         var addContent = function(ev) {
           ev.stopPropagation();
