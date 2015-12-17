@@ -8,7 +8,7 @@ angular.module('app')
             
         var $ = scope
         , active = false
-        $.trademark = trademark
+        console.log(trademark);
 
         $.potentialMarks = $http.get('/api/list/' + trademark.portfolio + "'").then(function(response){ console.log(response.data);return response.data; })
         
