@@ -15,7 +15,7 @@
     "deep-diff": "~0.2.0",
     "excel": "~0.1.1",
     "express": "4.0.x",
-    "express-jwt": "~0.4.1",
+    "express-jwt": "3.3.0",
     "jsonwebtoken": "5.0.0",
     "knox": "~0.9.0",
     "leaflet": "0.7.3",
