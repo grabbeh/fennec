@@ -9,7 +9,7 @@ angular.module('app')
         var $ = scope
         , active = false
         
-        console.log(trademark);
+        console.log($.trademark);
         $.potentialMarks = $http.get('/api/list/' + trademark.portfolio + "'").then(function(response){ console.log(response.data);return response.data; })
         
         html = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
