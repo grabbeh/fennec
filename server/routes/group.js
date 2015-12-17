@@ -51,6 +51,7 @@ exports.groupOfMarks = function(req, res){
 // if country is provided in query, delimit list of marks by country
 
 exports.listOfMarks = function(req, res){
+    console.log("Route hit");
     var entity = req.user.entity;
     var portfolio = req.params.portfolio.replace(/%20/g, " ");
    
@@ -66,6 +67,7 @@ exports.listOfMarks = function(req, res){
             	.lean()
             	.exec(function(err, trademarks){
             		createList(trademarks, function(err, list){
+            		    console.log(list);
             			res.json(list);
             		})
        		})
