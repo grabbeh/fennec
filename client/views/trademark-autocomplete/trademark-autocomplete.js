@@ -2,15 +2,15 @@ angular.module('app')
 .directive('trademarkAutocomplete', function($compile, $http, $window, $templateCache) {
     return {
       scope: {
-        data: '=data'
+        trademark: '=trademark'
       },
       link: function(scope, element, attrs, ctrl, transclude) {
             
         var $ = scope
         , active = false
         
-        console.log(data);
-        $.potentialMarks = $http.get('/api/list/' + data.portfolio + "'").then(function(response){ console.log(response.data);return response.data; })
+        console.log(trademark);
+        $.potentialMarks = $http.get('/api/list/' + trademark.portfolio + "'").then(function(response){ console.log(response.data);return response.data; })
         
         html = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
