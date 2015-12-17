@@ -12,7 +12,7 @@ angular.module('app')
         var url = '"' + 'api/list/' + portfolio + '"';
         $.potentialMarks = $http.get(url).then(function(response){ return response.data; });
         
-        var template = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
+        template = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
         }).then(function (response) {
           return response.data;
@@ -22,7 +22,7 @@ angular.module('app')
           ev.stopPropagation();
           if (!active) {
             template.then(function(html){
-                var ht = angular.element(template);
+                ht = angular.element(template);
                 console.log(ht);
                 content = $compile(ht)(scope)
                 element.append(content);
