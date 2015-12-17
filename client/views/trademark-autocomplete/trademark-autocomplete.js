@@ -21,7 +21,7 @@ angular.module('app')
         var addContent = function(ev) {
           ev.stopPropagation();
           if (!active) {
-            template.then(function(html){
+            template.then(function(template){
                 ht = angular.element(template);
                 console.log(ht);
                 content = $compile(ht)(scope)
