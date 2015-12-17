@@ -11,19 +11,18 @@ angular.module('app')
         
         $.potentialMarks = $http.get('/api/list/' + $routeParams.portfolio + "'").then(function(response){ console.log(response.data);return response.data; })
         
-        template = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
+        var template = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', {
           cache: $templateCache
         }).then(function (response) {
           return response.data;
         });
-        
-        console.log(html);
-        
+
         var addContent = function(ev) {
           ev.stopPropagation();
           if (!active) {
             template.then(function(html){
-                ht = angular.element(template);
+                var ht = angular.element(template);
+                console.log(ht);
                 content = $compile(ht)(scope)
                 element.append(content);
                 active = true;
