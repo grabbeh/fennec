@@ -1,5 +1,5 @@
 angular.module('app')
-	.factory('authInterceptor', function ($rootScope, $location, $q, $window) {
+	.factory('authInterceptor', function ($q, $window) {
       return {
         request: function (config) {
           config.headers = config.headers || {};
