@@ -35,7 +35,7 @@ angular.module('app')
         
         element.children().bind('click', addContent);
 
-        $.selectName = function(m) { $.trademark.mark = m; }
+        $.selectName = function(m) { $.trademark.mark = m; ht.remove(); }
         
         angular.element($window).on('click', function(){
            if (active){
