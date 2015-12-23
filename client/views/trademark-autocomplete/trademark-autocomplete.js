@@ -8,10 +8,7 @@ angular.module('app')
             
         var $ = scope
         , active = false
-        var portfolio = $routeParams.portfolio;
-        //var url = '"' + '/api/list/' + portfolio + '"';
-        //console.log(url);
-        $http.get('/api/list/' + portfolio).then(function(response){ $.potentialMarks = response.data; console.log($.potentialMarks)});
+        $http.get('/api/list/' + $routeParams.portfolio).then(function(response){ $.potentialMarks = response.data; });
     
         template = $http.get('/views/trademark-autocomplete/trademark-autocomplete.html', { cache: $templateCache })
           .then(function (response) { return response.data; });
