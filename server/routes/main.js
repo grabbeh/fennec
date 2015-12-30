@@ -52,7 +52,7 @@ exports.search = function(req, res){
             }
         }
 
-    Trademark.search( { query: query }, { hydrate: true }, function(err, results){
+    Trademark.search( { query_string: { query: red.body.query} }, { hydrate: true }, function(err, results){
         if (err){ console.log(err); res.status(401).send(err);}
         console.log(results);
     	res.json(results.hits);	
