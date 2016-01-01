@@ -12,7 +12,7 @@ angular.module('app')
                 userService.logIn({ password: $.password, email: $.email })
                     .then(function(res){
                         $window.sessionStorage.token = res.data.token;
-                        $rootScope.user = true;
+                        $rootScope.isUser = true;
                         if (pathService.returnPath() === undefined){
                             $location.path('/home');
                         }

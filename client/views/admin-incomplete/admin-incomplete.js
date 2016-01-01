@@ -4,13 +4,14 @@ angular.module('app')
         templateUrl: "/views/admin-incomplete/admin-incomplete.html",
         replace: true,
         scope: {
-            items: '='
+            items: '=',
+            user: '='
         },
         controller: function($scope, trademarkModal) {
             var $ = $scope;
             $.showModal = function(trademark) {
                 trademarkModal.deactivate();
-                trademarkModal.activate({ trademark: trademark }, { broadcast: true })
+                trademarkModal.activate({ trademark: trademark, user: $.user }, { broadcast: true })
             }
         }
     }

@@ -113,10 +113,8 @@ angular.module('app')
             $.goToCountry = function(country) {
                     trademarkService.getCountry($routeParams.portfolio, country)
                         .then(function(res){
-                            console.log(res);
                             $location.path('/admin/country/' + $routeParams.portfolio).search('country', country.alpha3);
                         }, function(){
-                            console.log("No marks")
                             notificationModal.activate({ error: "No trade marks in this country"})
                         })
             };

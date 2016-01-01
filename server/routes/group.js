@@ -1,7 +1,7 @@
 var helper = require('./helper')
 , _ = require('underscore')
 , Trademark = require('../models/trademarkSchema')
-, checkFavourites = require('./favourites')
+, fav = require('./favourites')
 , async = require('async');
 
 exports.favourites = function(req, res){
@@ -39,10 +39,10 @@ exports.groupOfMarks = function(req, res){
         }]
     }, function(err, results){
         var favourites = results.user.favourites;
-        var tms = checkFavourites(results.trademarks, favourites);
+        var tms = fav.checkTrademarks(results.trademarks, favourites);
         if (req.query && req.query.group){
             var group = req.query.group.replace(/%20/g, " ");
-            var tms = checkFavourites(_.groupBy(results.trademarks, 'mark')[group], favourites); 
+            var tms = fav.checkTrademarks(_.groupBy(results.trademarks, 'mark')[group], favourites); 
         }
         res.json(tms);
     });

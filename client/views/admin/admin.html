@@ -55,7 +55,7 @@
                     <div ng-show="user.displayOptions.showFavourites.checked" class="standard-container shadow">
                         <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
                     <div class="paginator" mg-paginator paginated-marks="favouriteMarks" items-per-page="10">
-                         <div mg-admin-favourites items="items"></div>
+                         <div mg-admin-favourites items="items" user="user"></div>
                     </div> 
                 </div>
                 </div>
@@ -116,7 +116,7 @@
                     <div mg-bold>Incomplete marks<i class="opaque float-right fa fa-ban fa-2x"></i>
                     </div>
                     <div class="paginator" mg-paginator paginated-marks="incompleteMarks" items-per-page="10">
-                        <div mg-admin-incomplete items="items"></div>
+                        <div mg-admin-incomplete items="items" user="user"></div>
                     </div>
                 </div>
              </div>
@@ -124,7 +124,7 @@
                  <div class="standard-container shadow">
                         <div mg-bold>Upcoming expiries<i class="opaque float-right fa fa-clock-o fa-2x"></i></div>
                         <div class="paginator" mg-paginator paginated-marks="sortedByExpiry" items-per-page="10">
-                        <div mg-admin-expiry items="items" paginated-marks="paginatedMarks"></div>
+                        <div mg-admin-expiry items="items" user="user"></div>
                     </div>
                     </div>
 
@@ -136,7 +136,8 @@
                 <div class="standard-container shadow">
                         <div mg-bold>Recent activity
                     </div>
-                       <div class="paginator" mg-activities-paginator activities="activities" items-per-page="10">
+                       <div class="paginator" mg-paginator paginated-marks="activities" items-per-page="10">
+                       <div mg-admin-activities items="items" user="user"></div>
                     </div> 
                 </div>
             </div>

@@ -40,8 +40,8 @@
            <div class="notification-link"> {{ notification.portfolio}}</div>
               <div class="notification-content hover" ng-click="showModal(notification.trademark)">
 
-                 <div><span mg-bold>{{ notification.trademark.mark }}</span> in <span mg-bold> {{notification.trademark.country.name }}</span> is due to expire <span mg-bold> {{ notification.trademark.expiryDate.stringDate }}</span></div> 
-                 <div><span> {{ notification.incident.expiringIn.number }} {{ notification.incident.expiringIn.type }}</span> from <span>{{ notification.created | date: 'longDate' }} </span></div>
+                 <div><span mg-bold>{{ notification.trademark.mark }}</span> in <span mg-bold> {{notification.trademark.country.name }}</span> is due to expire 
+                  {{ notification.incident.expiringIn.number }} {{ notification.incident.expiringIn.type }} from {{ notification.created | date: 'longDate' }} </div>
              </div>
              
        

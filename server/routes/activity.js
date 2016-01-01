@@ -1,4 +1,7 @@
-var Activity = require('../models/activitySchema');
+var Activity = require('../models/activitySchema')
+, async = require('async')
+, helper = require('./helper')
+, fav = require('./favourites');
 
 exports.addActivity = function(trademark, changes, type, user, fn){
 
@@ -12,12 +15,28 @@ exports.addActivity = function(trademark, changes, type, user, fn){
 	}).save(fn);
 }
 
-exports.findActivities = function(req, res){
-	Activity.find({ entity: req.user.entity, portfolio: req.params.portfolio })
+function getActivities(entity, portfolio, fn){
+	Activity.find({ entity: entity, portfolio: portfolio })
 		.lean()
 		.sort('-created')
 		.populate('trademark')
 		.exec(function(err, activities){
-			res.json(activities);
-	});
+			fn(null, activities);
+	})
+}
+
+exports.processActivities = function(req, res){
+	async.auto({
+        user: function(cb, results){
+            helper.findUser(req.user._id, cb);
+        },
+        activities: function(cb, results){
+            getActivities(req.user.entity, req.params.portfolio, cb);
+        },
+        favourites: ['user', 'activities', function(cb, results){
+        	fav.checkActivities(results.activities, results.user.favourites, cb)
+        }]
+    }, function(err, results){
+        res.json(results.favourites);
+    });
 }

@@ -41,7 +41,8 @@ angular.module('app')
         scope: {
             paginatedMarks: '=',
             itemsPerPage: '=',
-            activeTrademark: '=?'
+            activeTrademark: '=?',
+            user: '=?'
         },
         controller: function($scope) {
             var $ = $scope;

@@ -123,8 +123,11 @@ exports.getTrademarks = function(entity, portfolio, fn){
 	}
 
 exports.getTrademark = function(id, fn){
-	Trademark.findOne({ _id: id }).lean().exec(function(err, trademark){
-		fn(null, trademark);
+	Trademark
+		.findOne({ _id: id })
+		.lean()
+		.exec(function(err, trademark){
+			fn(null, trademark);
 	});
 }
 

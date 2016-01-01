@@ -4,15 +4,14 @@ angular.module('app')
         templateUrl: "/views/admin-expiry/admin-expiry.html",
         replace: true,
         scope: {
-            paginatedMarks: '=',
             items: '=',
-            showModal: '&'
+            user: '='
         },
          controller: function($scope, trademarkModal) {
             var $ = $scope;
             $.showModal = function(trademark) {
                 trademarkModal.deactivate();
-                trademarkModal.activate({ trademark: trademark }, { broadcast: true })
+                trademarkModal.activate({ trademark: trademark, user: $.user }, { broadcast: true })
             }
         }
     }

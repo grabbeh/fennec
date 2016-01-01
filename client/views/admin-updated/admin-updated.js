@@ -1,60 +1,17 @@
 angular.module('app')
-.directive('mgActivitiesPaginator', function() {
+.directive('mgAdminActivities', function() {
     return {
         templateUrl: "/views/admin-updated/admin-updated.html",
         replace: true,
-        link: function(scope, elements, attrs) {
-            var $ = scope;
-            $.$watch('activities', function(newVal) {
-                if (!newVal) {
-                    return;
-                }
-                $.groupOfArrays = [];
-
-                for (var i = 0; i < newVal.length; i += $.itemsPerPage) {
-                    var slice = newVal.slice(i, i + $.itemsPerPage);
-                    $.groupOfArrays.push(slice);
-                }
-                $.items = $.groupOfArrays[0];
-                $.pageNumber = 1;
-            })
-
-            $.$watch('pageNumber', function(newPage) {
-                $.items = $.groupOfArrays[newPage - 1];
-            })
-        },
         scope: {
-            activities: '=',
-            itemsPerPage: '='
+            items: '=',
+            user: '='
         },
         controller: function($scope, trademarkModal) {
             var $ = $scope;
-            $.groupOfArrays = [];
-            $.prevPage = function(pageNumber) {
-                $.pageNumber--;
-            };
-            $.nextPage = function(pageNumber) {
-                $.pageNumber++;
-            };
-            $.firstPage = function() {
-                $.pageNumber = 1;
-            };
-            $.lastPage = function() {
-                $.pageNumber = $scope.groupOfArrays.length;
-            };
-            $.checkIfFirst = function(pageNumber) {
-                if (pageNumber === 1) {
-                    return true;
-                }
-            };
-            $.checkIfLast = function(pageNumber) {
-                if (pageNumber === $scope.groupOfArrays.length) {
-                    return true;
-                }
-            };
             $.showModal = function(trademark) {
                 trademarkModal.deactivate();
-                trademarkModal.activate({ trademark: trademark }, { broadcast: true })
+                trademarkModal.activate({ trademark: trademark, user: $.user }, { broadcast: true })
             }
         }
     }

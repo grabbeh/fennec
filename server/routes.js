@@ -81,7 +81,7 @@ module.exports = function(app){
 	app.post('/api/notifications', notification.updateNotification);
 
 	// Activities
-	app.get('/api/activities/:portfolio', activity.findActivities);
+	app.get('/api/activities/:portfolio', activity.processActivities);
 
 	// Users
 	app.post('/server/login', user.logIn);
@@ -118,7 +118,5 @@ module.exports = function(app){
 	app.post('/server/processMessage', contact.processMessage);
 
 	// Serve .html file if route not matched
-	app.get('*', function(req, res){
-		res.sendfile('./client/index.html');
-	});
+	app.get('*', function(req, res){ res.sendfile('./client/index.html');});
 };

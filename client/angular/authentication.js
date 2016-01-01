@@ -81,19 +81,18 @@ angular.module('app')
                 $rootScope.menuModal = false;
                 menuModal.deactivate();
                 delete $window.sessionStorage.token;
-                $rootScope.user = false;
+                $rootScope.isUser = false;
                 $location.path('/');
             };
-            /*
-            userService.getUser().then(function(data){
-                console.log(data);
-                console.log("User data")
-                $rootScope.user = data;
-            });*/
+            
+            userService.isUser().then(function(data){
+                $rootScope.isUser = true;
+            }, function(){
+                $rootScope.isUser = false;
+            });
         
             $.isUser = function(){
-                return !!$rootScope.user;
-                console.log($rootScope.user);
+                return !!$rootScope.isUser;
             };
 
         }])

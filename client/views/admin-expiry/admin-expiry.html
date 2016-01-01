@@ -1,10 +1,10 @@
 <div>
-    <div ng-hide="paginatedMarks" class="margin-top">No trade marks due to expire for this group of trade marks</div>
+    <div ng-hide="items" class="margin-top">No trade marks due to expire for this group of trade marks</div>
     <ul class="tm-list expiry-list">
         <li class="tm-list-li" ng-repeat="tm in items">
             <div ng-click="showModal(tm)" class="hover tm-list-content">
-                  <div><span mg-bold>{{ tm.mark }}</span> <span> in {{ tm.country.name }}</span> </div>
-                  <div class="expires-in">expires {{ tm.fromNow }}</div>
+                  <div><span mg-bold>{{ tm.mark }}</span> <span>in {{ tm.country.name }}</span>
+                  <span class="expires-in">expires {{ tm.fromNow }}</span></div>
             </div>
             <div class="view-icon"><a href="view/trademark/{{tm._id}}"><i class="fa fa-eye"></i></a></div>
         </li>

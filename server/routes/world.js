@@ -1,5 +1,5 @@
 var helper = require('./helper')
-	, checkFavourites = require('./favourites')
+	, checkTrademarks = require('./favourites').checkTrademarks
 	, _ = require('underscore')
 	, countryData = require('../data/country-data.json')
 	, async = require('async');
@@ -35,14 +35,14 @@ exports.worldForGroup = function(req, res){
 		async.apply(helper.findUser, req.user._id)
 	    ],
 	    function(err, results){
-           	var tms = checkFavourites(results[1], results[2].favourites);
+           	var tms = checkTrademarks(results[1], results[2].favourites);
 	        if (q && q.group){
 	        	var group = q.group.replace(/%20/g, " ");
-		        var tms = checkFavourites(_.groupBy(results[1], 'mark')[group], results[2].favourites);	
+		        var tms = checkTrademarks(_.groupBy(results[1], 'mark')[group], results[2].favourites);	
 	        }
 	        if (q && q.country){
 	        	var country = q.country;
-	        	var tms = checkFavourites(_.groupBy(results[1], 'alpha3')[country], results[2].favourites);
+	        	var tms = checkTrademarks(_.groupBy(results[1], 'alpha3')[country], results[2].favourites);
 	        }
 
 	        helper.convertPortfolioAndAddToGeoJSON(results[0], tms, function(err, gj){
