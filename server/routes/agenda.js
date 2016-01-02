@@ -39,9 +39,12 @@ exports.setUpAgenda = function(db){
             done();
         });
     })
+
+    agenda.on('ready', function() {
+      agenda.every('1440 minutes', ['check for alerts', 'email me']);
+      agenda.start();
+    })
     
-    agenda.every('1440 minutes', ['check for alerts', 'email me']);
-    agenda.start();
 }
 
 function testAgenda(){

@@ -1,16 +1,16 @@
 {
   "name": "fennec",
   "dependencies": {
-    "agenda": "~0.6.12",
+    "agenda": "~0.7.5",
     "angular": "1.4.0",
     "angular-route": "1.4.0",
     "angular-animate": "1.4.0",
     "angular-touch": "1.4.0",
     "angular-sanitize": "1.4.0", 
     "async": "~0.7.0",
-    "bcrypt": "~0.8.2",
+    "bcrypt": "~0.8.5",
     "body-parser": "~1.0.1",
-    "browserify": "~2.35.2",
+    "browserify": "~12.0.1",
     "connect-multiparty": "~1.0.3",
     "deep-diff": "~0.2.0",
     "excel": "~0.1.1",
@@ -20,7 +20,7 @@
     "knox": "~0.9.0",
     "leaflet": "0.7.3",
     "mime": "~1.2.11",
-    "moment": "~2.6.0",
+    "moment": "2.10.6",
     "mustache": "~0.8.1",
     "mongoose": "4.3.2",
     "mongoosastic": "3.6.0",
@@ -35,7 +35,7 @@
   "devDependencies": {
      "catw": "~0.0.1",
     "clean-css": "2.2.14",
-    "watchify": "~0.1.0"
+    "watchify": "~3.6.1"
     
   },
   "scripts": {
@@ -49,7 +49,7 @@
     "develop-vps": "npm run watch & node fennec-app.js"
   },
   "engines": {
-    "node": "v0.10.22"
+    "node": "v0.12.08"
   },
   "version": "0.0.0-01"
 }
