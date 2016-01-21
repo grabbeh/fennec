@@ -4,9 +4,9 @@ angular.module('app')
     $locationProvider.html5Mode(true);
     $routeProvider.
         when('/', {
- -            templateUrl: '/views/landing-page/landing-page.html',
- -            controller: 'landingPageCtrl'
- -      }).
+             templateUrl: '/views/landing-page/landing-page.html',
+             controller: 'landingPageCtrl'
+       }).
         when('/terms', {
             templateUrl: '/views/terms/terms.html'
         }).
