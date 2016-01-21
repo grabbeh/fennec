@@ -3,9 +3,10 @@ angular.module('app')
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
     $locationProvider.html5Mode(true);
     $routeProvider.
-        when('/loaderio-1778b7f94d8675ae72723f248ad8e5b6/', {
-            controller: 'loaderCtrl'
-        }).
+        when('/', {
+ -            templateUrl: '/views/landing-page/landing-page.html',
+ -            controller: 'landingPageCtrl'
+ -      }).
         when('/terms', {
             templateUrl: '/views/terms/terms.html'
         }).
