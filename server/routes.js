@@ -24,10 +24,6 @@ module.exports = function(app){
 		res.sendfile('./client/index.html');
 	});
 	
-	app.get('/loaderio-1778b7f94d8675ae72723f248ad8e5b6.txt', function(req, res){
-		res.sendfile('./client/loaderio-1778b7f94d8675ae72723f248ad8e5b6.txt');
-	});
-	
 	// Download trade marks based on query parameter "portfolio"
 	app.get('/download/downloadTrademarks', main.downloadTrademarks);
 
