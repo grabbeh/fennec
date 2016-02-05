@@ -54,7 +54,7 @@
             <div class="one-half-container last last-margin-top">
                     <div ng-show="user.displayOptions.showFavourites.checked" class="standard-container shadow">
                         <div mg-bold>Favourite marks<i class="favourite float-right fa fa-star fa-2x"></i></div>
-                    <div class="paginator" mg-paginator paginated-marks="favouriteMarks" items-per-page="10">
+                    <div class="paginator" user="user" mg-paginator paginated-marks="favouriteMarks" items-per-page="10">
                          <div mg-admin-favourites items="items" user="user"></div>
                     </div> 
                 </div>
