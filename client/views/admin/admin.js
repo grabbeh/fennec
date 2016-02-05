@@ -47,7 +47,6 @@ angular.module('app')
             $.allTrademarks = trademarks;
             $.favouriteMarks = $filter('extractFavourites')(trademarks);
             $.user = user;
-            console.log($.user);
             $.listOfMarks = $filter('orderBy')($filter('groupByMarks')(trademarks), 'name');
             $.listOfMarks.unshift({ name: "ALL MARKS"});
             $.chart = barChartData;
