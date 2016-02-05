@@ -11,9 +11,6 @@ angular.module('app')
         controller: function($scope, trademarkModal) {
             var $ = $scope;
             console.log($);
-            //$.user = user;
-            //console.log(user);
-            console.log($.user);
             $.showModal = function(trademark) {
                 console.log($.user);
                 trademarkModal.deactivate();
