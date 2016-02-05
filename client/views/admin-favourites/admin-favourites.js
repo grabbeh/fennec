@@ -10,9 +10,7 @@ angular.module('app')
         
         controller: function($scope, trademarkModal) {
             var $ = $scope;
-            console.log($);
             $.showModal = function(trademark) {
-                console.log($.user);
                 trademarkModal.deactivate();
                 trademarkModal.activate({ trademark: trademark, user: $.user }, { broadcast: true })
             }
