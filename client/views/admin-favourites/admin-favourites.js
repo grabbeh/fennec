@@ -7,9 +7,11 @@ angular.module('app')
             items: '=',
             user: '='
         },
+        
         controller: function($scope, trademarkModal) {
             var $ = $scope;
-            $.user = user;
+            console.log($);
+            //$.user = user;
             console.log(user);
             console.log($.user);
             $.showModal = function(trademark) {
