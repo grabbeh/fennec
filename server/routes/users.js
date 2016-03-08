@@ -64,6 +64,7 @@ exports.logIn = function(req, res){
         
         
        if (user) {
+           console.log(user);
            jwt.createToken(user, function(err, token){
                if (err) { console.log(err); console.log("Token error") }
                else {
