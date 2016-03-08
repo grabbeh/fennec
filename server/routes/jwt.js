@@ -7,8 +7,10 @@ exports.createToken = function(user, fn){
    payload._id = user._id;
    payload.entity = user.entity;
    payload.isAdmin = user.isAdmin;
-    var token = jwt.sign(payload, secret);
-    return fn(null, token);
+    var token = jwt.sign(payload, secret, {}, function(err, token){
+    	if (err) { return fn(err)}
+    	return fn(null, token);
+    });
 }
 
 exports.verifyToken = function(token, fn){
