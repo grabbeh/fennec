@@ -12,7 +12,7 @@ var express = require('express')
     , db = require('./server/config/paid-db')
     , job = require('./server/routes/agenda');
 
-app.use('/api', expressJwt({secret: secret, credentialsRequired: false }));
+app.use('/api', expressJwt({secret: secret }));
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
