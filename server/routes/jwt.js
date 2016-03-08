@@ -2,6 +2,7 @@ var jwt = require('jsonwebtoken')
 , secret = require('../config/jwt-secret')
 
 exports.createToken = function(user, fn){
+	console.log(secret);
 	console.log("Create token fn called")
    console.log(user);
    
