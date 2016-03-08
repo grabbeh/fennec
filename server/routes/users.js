@@ -60,11 +60,12 @@ exports.updateUser = function(req, res){
 }
 
 exports.logIn = function(req, res){
+    console.log("Login route called")
     authenticate(req.body.email, req.body.password, function(err, user){
-        
+        console.log("Auth route called");
         
        if (user) {
-           console.log(user);
+           console.log("User returned")
            jwt.createToken(user, function(err, token){
                if (err) { console.log(err); console.log("Token error") }
                else {
