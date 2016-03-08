@@ -73,7 +73,7 @@ exports.logIn = function(req, res){
                };  
            })
        }
-       else { console.log(err); console.log("No user returned error"); res.status(401).send({message: "Incorrect username or password"})}
+       else { console.log(err); console.log("No user returned error"); console.log(err); res.status(401).send({message: "Incorrect username or password"})}
     })
 }
 
