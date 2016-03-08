@@ -61,8 +61,11 @@ exports.updateUser = function(req, res){
 
 exports.logIn = function(req, res){
     authenticate(req.body.email, req.body.password, function(err, user){
+        if (err){ console.log(err) }
+        
        if (user) {
            jwt.createToken(user, function(err, token){
+               if (err) { console.log(err) };
                res.status(200).send({ token: token });  
            })
        }
