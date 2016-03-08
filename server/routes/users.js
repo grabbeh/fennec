@@ -6,7 +6,7 @@ var jwt = require('./jwt')
 , passwordReset = require('../models/passwordResetSchema')
 , email = require('./email')
 , html = require('./html')
-, fs = require('fs')
+, fs = require('fs')l
 , path = require('path')
 , helper = require('./helper')
 , entity = require('./entities')
@@ -65,8 +65,10 @@ exports.logIn = function(req, res){
         
        if (user) {
            jwt.createToken(user, function(err, token){
-               if (err) { console.log(err) };
-               res.status(200).send({ token: token });  
+               if (err) { console.log(err) }
+               else {
+                   res.status(200).send({ token: token })
+               };  
            })
        }
        else { res.status(401).send({message: "Incorrect username or password"})}
