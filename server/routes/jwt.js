@@ -8,6 +8,7 @@ exports.createToken = function(user, fn){
    payload._id = user._id;
    payload.entity = user.entity;
    payload.isAdmin = user.isAdmin;
+   console.log(payload);
     var token = jwt.sign(payload, secret, {}, function(err, token){
     	if (err) { console.log("Error with token creation"); console.log(err); return fn(err)}
     	console.log(token);
