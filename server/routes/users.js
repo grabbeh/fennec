@@ -63,12 +63,7 @@ exports.logIn = function(req, res){
     authenticate(req.body.email, req.body.password, function(err, user){
        if (user) {
            jwt.createToken(user, function(err, token){
-               if (err) { console.log(err); console.log("Token error") }
-               else {
-                   console.log("Token");
-                   console.log(token);
-                   res.status(200).send({ token: token })
-               };  
+                res.status(200).send({ token: token })
            })
        }
        else { console.log("No user returned error"); console.log(err); res.status(401).send({message: "Incorrect username or password"})}
