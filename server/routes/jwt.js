@@ -6,7 +6,7 @@ exports.createToken = function(user, fn){
    payload._id = user._id;
    payload.entity = user.entity;
    payload.isAdmin = user.isAdmin;
-   jwt.sign({foo: 'bar'}, secret, {}, function(token){
+   jwt.sign({foo: 'bar'}, "Katie", {}, function(token){
     	console.log(token);
     	return fn(null, token);
     });
