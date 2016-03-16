@@ -11,6 +11,7 @@ exports.createToken = function(user, fn){
    console.log(payload);
     var token = jwt.sign(payload, secret, {}, function(err, token){
     	if (err) { console.log("Error with token creation"); console.log(err); return fn(err)}
+    	console.log("Token returned");
     	console.log(token);
     	return fn(null, token);
     });
