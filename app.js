@@ -25,7 +25,12 @@ app.use(bodyParser());
 app.use(multipart());
 app.use(serveStatic(__dirname + '/client'));
 
-mongoose.createConnection(db);
+mongoose.createConnection(db, {}, function(err, success){
+    if (err) 
+        console.log(err);
+    else 
+        console.log(success);
+});
 
 // Agenda
 job.setUpAgenda(db);
