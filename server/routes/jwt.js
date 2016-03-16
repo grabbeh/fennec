@@ -2,16 +2,15 @@ var jwt = require('jsonwebtoken')
 , secret = require('../config/jwt-secret')
 
 exports.createToken = function(user, fn){
-	console.log(secret);
-	console.log("Create token fn called")
-   console.log(user);
+
    
     var payload = {};
    payload._id = user._id;
    payload.entity = user.entity;
    payload.isAdmin = user.isAdmin;
     var token = jwt.sign(payload, secret, {}, function(err, token){
-    	if (err) { return fn(err)}
+    	if (err) { console.log(err); return fn(err)}
+    	console.log(token);
     	return fn(null, token);
     });
 }
