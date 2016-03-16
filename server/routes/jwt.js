@@ -8,11 +8,7 @@ exports.createToken = function(user, fn){
    payload.isAdmin = user.isAdmin;
    console.log(payload);
    console.log(secret);
-   jwt.sign(payload, secret, {}, function(err, token){
-   	console.log(err);
-   	console.log(token);
-    	if (err) { console.log("Error with token creation"); console.log(err); return fn(err)}
-    	console.log("Token returned");
+   jwt.sign(payload, secret, {}, function(token){
     	console.log(token);
     	return fn(null, token);
     });
