@@ -10,6 +10,7 @@ angular.module('app')
                 })
                 .then(function(res) {
                     console.log("Success");
+                    console.log(res.data.token);
                     $window.sessionStorage.token = res.data.token;
                     $rootScope.isUser = true;
 
