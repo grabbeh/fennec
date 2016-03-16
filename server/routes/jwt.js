@@ -6,14 +6,14 @@ exports.createToken = function(user, fn){
    payload._id = user._id;
    payload.entity = user.entity;
    payload.isAdmin = user.isAdmin;
-   jwt.sign({foo: 'bar'}, "Katie", {}, function(token){
+   jwt.sign({foo: 'bar'}, "Katie",  function(token){
     	console.log(token);
     	return fn(null, token);
     });
 }
 
 exports.verifyToken = function(token, fn){
-	jwt.verify(token, secret, {}, function(err, payload){
+	jwt.verify(token, secret,  function(err, payload){
         return fn(null, payload);  
    });
 }
