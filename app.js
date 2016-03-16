@@ -29,7 +29,7 @@ mongoose.createConnection(db, {}, function(err, success){
     if (err) 
         console.log(err);
     else 
-        console.log(success);
+        console.log("Connection successful");
 });
 
 // Agenda
