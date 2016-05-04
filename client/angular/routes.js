@@ -1,6 +1,7 @@
 
 angular.module('app')
-    .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider){
+    .config(['$compileProvider', '$locationProvider', '$routeProvider', function($compileProvider, $locationProvider, $routeProvider){
+    $compileProvider.debugInfoEnabled(false);
     $locationProvider.html5Mode(true);
     $routeProvider.
         when('/', {
