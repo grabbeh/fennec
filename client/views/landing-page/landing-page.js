@@ -9,15 +9,12 @@ angular.module('app')
                     email: "demo@demo.com"
                 })
                 .then(function(res) {
-                    console.log("Success");
-                    console.log(res.data.token);
                     $window.sessionStorage.token = res.data.token;
                     $rootScope.isUser = true;
 
                     $location.path('/home');
                 }, function(err){
-                    console.log(err);
-                    console.log("Error")
+
                 });
         };
 

@@ -125,9 +125,13 @@ angular.module('app')
     	when('/add/trademark/:portfolio', {
             templateUrl: '/views/add-trademark/add-trademark.html',
             controller: 'addTrademarkCtrl',
+            controllerAs: 'atm',
             resolve: {
                 admin: function(userService){
                     return userService.isAdmin();
+                },
+                countryData: function(geoJsonService){
+                    return geoJsonService.countryData();
                 }
             }
         }).

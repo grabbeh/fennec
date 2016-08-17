@@ -2,23 +2,23 @@
 <div ng-swipe-right="swipeEvent=true" ng-swipe-left="swipeEvent=false" ng-hide="loadingView" class="form-body">
      <div class="form-container shadow">
           <div class="form-title" mg-bold>Add trade mark</div>
-           <form novalidate name="addTrademarkForm" class="basic-form" ng-submit="addTrademark(trademark)">
+           <form novalidate name="atm.addTrademarkForm" class="basic-form" ng-submit="atm.addTrademark(atm.trademark)">
             
-              <div trademark-autocomplete trademark="trademark"><input  required class="form-input" ng-model="trademark.mark" placeholder="Mark"></div>
-               <div class="radio"><input required type="radio" ng-model="trademark.status" value="Registered">Registered</div>
-               <div class="radio"><input required type="radio" ng-model="trademark.status" value="Published">Published</div>
-              <div class="radio"><input required type="radio" ng-model="trademark.status" value="Pending">Pending</div>
-              <select class="form-select" ng-model="trademark.country" ng-options="country.name for country in countrydata">
+              <div trademark-autocomplete trademark="atm.trademark"><input  required class="form-input" ng-model="atm.trademark.mark" placeholder="Mark"></div>
+               <div class="radio"><input required type="radio" ng-model="atm.trademark.status" value="Registered">Registered</div>
+               <div class="radio"><input required type="radio" ng-model="atm.trademark.status" value="Published">Published</div>
+              <div class="radio"><input required type="radio" ng-model="atm.trademark.status" value="Pending">Pending</div>
+              <select required class="form-select" ng-model="atm.trademark.country" ng-options="country.name for country in atm.countrydata">
                 <option value="">Select country</option>
               </select>
-              <div class-selector class-info="trademark.classes"><input required class="form-input" ng-model="trademark.classes" placeholder="Classes"></div>
-              <div><input rome-datepicker required class="form-input" ng-model="trademark.filingDate" placeholder="Filing date"></div>
-              <div><input rome-datepicker class="form-input" ng-model="trademark.registrationDate" placeholder="Reg. date"></div>
-              <div><input rome-datepicker class="form-input" ng-model="trademark.expiryDate" placeholder="Expiry date"></div>
-              <div><input required class="form-input" ng-model="trademark.applicationNumber" placeholder="App. no."></div>
-              <div><input class="form-input" ng-model="trademark.registrationNumber" placeholder="Reg. no."></div>
+              <div class-selector class-info="atm.trademark.classes"><input required class="form-input" ng-model="atm.trademark.classes" placeholder="Classes"></div>
+              <div><input rome-datepicker required class="form-input" ng-model="atm.trademark.filingDate" placeholder="Filing date"></div>
+              <div><input rome-datepicker class="form-input" ng-model="atm.trademark.registrationDate" placeholder="Reg. date"></div>
+              <div><input rome-datepicker class="form-input" ng-model="atm.trademark.expiryDate" placeholder="Expiry date"></div>
+              <div><input required class="form-input" ng-model="atm.trademark.applicationNumber" placeholder="App. no."></div>
+              <div><input class="form-input" ng-model="atm.trademark.registrationNumber" placeholder="Reg. no."></div>
 
-              <div><input ng-disabled="!canAddTrademark()" class="add-button" type=submit value="Submit"></div>
+              <div><input ng-disabled="!atm.canAddTrademark()" class="add-button" type=submit value="Submit"></div>
             </form>
       </div> 
  </div>

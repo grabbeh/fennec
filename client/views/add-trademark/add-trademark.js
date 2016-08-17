@@ -1,25 +1,23 @@
 angular.module('app')
 
-.controller('addTrademarkCtrl', ['$scope', '$http', 'trademarkService', '$routeParams', 'notificationModal',
-    function($scope, $http, trademarkService, $routeParams, notificationModal) {
+.controller('addTrademarkCtrl', ['$scope', '$http', 'trademarkService', '$routeParams', 'notificationModal', 'countryData',
+    function($scope, $http, trademarkService, $routeParams, notificationModal, countryData) {
         var $ = $scope;
-        $.trademark = {};
-        $.trademark.classes = [];
-        $.activePortfolio = $routeParams.portfolio;
-        $http.get('/api/countrydata')
-            .success(function(data) {
-                $.countrydata = data;
-            });
+        var self = this;
+        this.trademark = {};
+        this.trademark.classes = [];
+        this.activePortfolio = $routeParams.portfolio;
+        this.countrydata = countryData;
 
-        $.addTrademark = function(trademark) {
+        this.addTrademark = function(trademark) {
             trademarkService.addMark(trademark, $routeParams.portfolio)
                 .success(function(data) { 
                     notificationModal.activate({ success: data.message });
                 })
         };
         
-        $.canAddTrademark = function() {
-            return $.addTrademarkForm.$valid;
+        this.canAddTrademark = function() {
+            return self.addTrademarkForm.$valid;
         };
     }
 ])

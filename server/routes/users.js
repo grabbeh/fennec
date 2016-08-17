@@ -66,7 +66,7 @@ exports.logIn = function(req, res){
                 res.status(200).send({ token: token })
            })
        }
-       else { console.log("No user returned error"); console.log(err); res.status(401).send({message: "Incorrect username or password"})}
+       else {  res.status(401).send({message: "Incorrect username or password"})}
     })
 }
 

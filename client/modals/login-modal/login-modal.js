@@ -9,10 +9,6 @@ angular.module('app')
             $rootScope.modal = false;
         }
         
-       // $.canSubmitLogin = function(){
-         //    return $.loginForm.$valid;
-       // }
-
         $.login = function(){
 
             userService.logIn({ password: $.password, email: $.email })
@@ -22,12 +18,8 @@ angular.module('app')
                     }
                     else {
                         $window.sessionStorage.token = res.data.token;
-                        //$rootScope.user = true;
+                        $rootScope.isUser = true;
                         loginModal.deactivate();
-                        userService.getUser().then(function(data){
-
-                               $rootScope.user = data;
-                           });
                         if (pathService.returnPath() === undefined){
                             $location.path('/home');
                         }
