@@ -37,7 +37,6 @@ angular.module('app')
         };
 
         $.expirySearch = function(year) {
-            console.log(year);
             $location.path('/admin/expiring/' + $routeParams.portfolio + '/' + year);
         };
 

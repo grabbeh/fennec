@@ -49,7 +49,7 @@
     "develop-vps": "npm run watch & node fennec-app.js"
   },
   "engines": {
-    "node": "v0.12.08"
+    "node": "v4.0"
   },
   "version": "0.0.0-01"
 }

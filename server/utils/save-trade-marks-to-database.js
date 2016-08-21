@@ -4,7 +4,6 @@ var moment = require('moment')
 , trademark = require('../models/trademarkSchema');
 
 function saveTrademarksToDatabase(portfolio, opts, fn){
-    console.log(opts);
     portfolio.forEach(function(tm){
         var filingDateObject = {}
         , registrationDateObject = {}
