@@ -47,7 +47,7 @@
     "watch-js": "watchify client/config.js client/angular/*.js client/views/*/*.js client/modals/*/*.js -o client/production/bundle.js -dv",
     "watch-ts": "watchify client/views/*/*.ts -o client/production/bundle-ts.js -dv",
     "watch-css": "catw client/css/*.css -o client/production/bundle.css -dv",
-    "watch": "npm run watch-js & npm run watch-css",
+    "watch": "npm run watch-js & npm run watch-ts & npm run watch-css",
     "develop": "npm run watch & node app.js",
     "develop-vps": "npm run watch & node fennec-app.js"
   },
