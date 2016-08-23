@@ -9,14 +9,13 @@ exports.countryData = function(req, res){
 		var entity = req.user.entity;
 		var portfolio = req.query.portfolio.replace(/%20/g, " ");
 		helper.getTrademarks(entity, portfolio, function(err, tms){
-		var arr = [];
-		tms.forEach(function(tm){
-		    countryData.forEach(function(c){
-		        if (tm.country.alpha3 === c.alpha3){
-		            arr.push(c);
-		        }
-		    })
-		})
+			var arr = [];
+			tms.forEach(function(tm){
+			countryData.forEach(function(c){
+				if (tm.country.alpha3 === c.alpha3) 
+		        		arr.push(c);
+		    		})
+			})
 		res.json(_.uniq(arr));
 	    })	
 	}
