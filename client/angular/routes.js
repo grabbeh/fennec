@@ -123,9 +123,7 @@ angular.module('app')
             }
         }). 
     	when('/add/trademark/:portfolio', {
-            templateUrl: '/views/add-trademark/add-trademark.html',
-            controller: 'addTrademarkCtrl',
-            controllerAs: 'atm',
+            template: '<mg-add-trademark></mg-add-trademark>',
             resolve: {
                 admin: function(userService){
                     return userService.isAdmin();
