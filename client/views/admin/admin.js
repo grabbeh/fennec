@@ -53,7 +53,6 @@ angular.module('app')
             $.options = barChartOptions;
             $.activities = activities;
             $.countries = $filter('orderBy')(countries, 'name');
-            console.log($.countries);
 
             $.$on('country.click', function(e, l) {
                 var c = l.target.feature.id;
