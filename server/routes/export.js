@@ -17,33 +17,33 @@ mongoose.createConnection(db, {}, function(err, success){
         console.log("Connection successful");
 });
 
-Trademark.find({}, function(err, data){
+Trademark.find({}).lean().exec(function(err, data){
 	        fs.writeFile('server/exported/trademarks.json', JSON.stringify(data), function(err){
 	            console.log("File written")
 	            });
         }); 
         
-User.find({}, function(err, data){
+User.find({}).lean().exec(function(err, data){
 	        fs.writeFile('server/exported/user.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
         }); 
         
-Notifications.find({}, function(err, data){
+Notifications.find({}).lean().exec(function(err, data){
 	        fs.writeFile('server/exported/notifications.json', JSON.stringify(data), function(err){
 	                   console.log("File written")
 	            });
         }); 
         
-Activities.find({}, function(err, data){
+Activities.find({}).lean().exec(function(err, data){
 	        fs.writeFile('server/exported/activities.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
         }); 
         
- Entities.find({}, function(err, data){
+ Entities.find({}).lean().exec(function(err, data){
 	        fs.writeFile('server/exported/entities.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
@@ -51,14 +51,14 @@ Activities.find({}, function(err, data){
         }); 
         
         
-geoJ.find({}, function(err, data){
+geoJ.find({}).lean().exec(function(err, data){
 	  fs.writeFile('server/exported/geojson.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
         }); 
         
-    Invites.find({}, function(err, data){
+Invites.find({}, function(err, data){
 	        fs.writeFile('server/exported/invites.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
