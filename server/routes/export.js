@@ -7,66 +7,79 @@ var Trademark = require('../models/trademarkSchema'),
   geoJ = require('../models/geoJSONSchema'),
   Invites = require('../models/inviteSchema'),
   passW = require('../models/passwordResetSchema'),
-  
-   db = require('./server/config/paid-db')
+  mongoose = require('mongoose'),
+  fs = require('fs'),
+   db = require('../config/paid-db');
 
-mongoose.createConnection(db, {}, function(err, success){
-    if (err) 
-        console.log(err);
-    else 
-        console.log("Connection successful");
-});
+mongoose.connect(db)
+console.log("Connection successful");
+
 
 Trademark.find({}).lean().exec(function(err, data){
-	        fs.writeFile('server/exported/trademarks.json', JSON.stringify(data), function(err){
-	            console.log("File written")
-	            });
-        }); 
-        
+	fs.writeFile('../exported/trademarks.json', JSON.stringify(data), function(err){
+		console.log("File written")
+		});
+	}); 
+
+
+
+
 User.find({}).lean().exec(function(err, data){
-	        fs.writeFile('server/exported/user.json', JSON.stringify(data), function(err){
+	        fs.writeFile('../exported/user.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
-        }); 
-        
+        });
+
+
+
 Notifications.find({}).lean().exec(function(err, data){
-	        fs.writeFile('server/exported/notifications.json', JSON.stringify(data), function(err){
+	        fs.writeFile('../exported/notifications.json', JSON.stringify(data), function(err){
+				console.log(err)
 	                   console.log("File written")
-	            });
-        }); 
-        
+	            })
+        })
+		
+  
 Activities.find({}).lean().exec(function(err, data){
-	        fs.writeFile('server/exported/activities.json', JSON.stringify(data), function(err){
+	        fs.writeFile('../exported/activities.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
         }); 
+
+		
+
+		
         
  Entities.find({}).lean().exec(function(err, data){
-	        fs.writeFile('server/exported/entities.json', JSON.stringify(data), function(err){
+	        fs.writeFile('../exported/entities.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
         }); 
         
-        
+
+
+
+       
 geoJ.find({}).lean().exec(function(err, data){
-	  fs.writeFile('server/exported/geojson.json', JSON.stringify(data), function(err){
+	  fs.writeFile('../exported/geojson.json', JSON.stringify(data), function(err){
+	              console.log("File written")
+	            	
+	            });
+        }); 
+       
+	   
+Invites.find({}).lean().exec(function(err, data){
+	        fs.writeFile('../exported/invites.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
         }); 
         
-Invites.find({}, function(err, data){
-	        fs.writeFile('server/exported/invites.json', JSON.stringify(data), function(err){
-	              console.log("File written")
-	            	
-	            });
-        }); 
-        
- passW.find({}, function(err, data){
-	        fs.writeFile('server/exported/passwords.json', JSON.stringify(data), function(err){
+ passW.find({}).lean().exec(function(err, data){
+	        fs.writeFile('../exported/passwords.json', JSON.stringify(data), function(err){
 	              console.log("File written")
 	            	
 	            });
